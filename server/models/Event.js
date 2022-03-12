@@ -12,7 +12,7 @@ const eventSchema = new Schema({
     descripion: {
         type: String,
     },  
-    post: [{
+    posts: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: "Post"
     }],    
