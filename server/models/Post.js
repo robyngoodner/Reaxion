@@ -4,22 +4,31 @@ const Schema = mongoose.Schema;
 
 const postSchema = new Schema(
   {
-        User: {type:mongoose.Schema.Types.ObjectId,
-               ref:"User"},
-        content: {type:String},
+        User: {
+            type:mongoose.Schema.Types.ObjectId,
+            ref:"User"
+        },
+        content: {
+            type: String
+        },
         User_Comment:  {
             type: mongoose.Schema.Types.ObjectId,
-            ref:"Comment",
+            ref: "Comment",
                  },
-        Comments:[{ type:mongoose.Schema.Types.ObjectId,
-                    ref:"Comment"
+        Comments: [{ 
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "Comment"
                  }],
-        upVotes:{type:Number},
+        upVotes: {
+            type:Number
+        },
         Community: {
-            type:mongoose.Schema.Types.ObjectId,
-            ref:"Community"
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "Community"
                 },
-        isAnonymous:{type:Boolean},
+        isAnonymous: {
+            type: Boolean
+        },
         
     }
    
