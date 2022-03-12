@@ -10,4 +10,6 @@ mongoose
         console.log(`mongodb connection failed: ${err}`)
     })
 
-    
+module.exports = {
+    Event: require("./Event")
+}
