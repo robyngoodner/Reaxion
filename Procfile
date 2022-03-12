@@ -1,1 +1,0 @@
-web: --cwd server node server.js
