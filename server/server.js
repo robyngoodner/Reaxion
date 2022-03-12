@@ -24,7 +24,9 @@ app.use(express.json())
 
 /* ====  Routes & Controllers  ==== */
 // app.use("/api", routes)
-
+app.get('/favicon.ico', function(req,res){
+    res.send("404");
+  })
 // app.all("/api/*", (req, res, next) => {
 // 	res.send("HOLD UP THESE ARE NOT THE APIS YOU ARE LOOKING FOR")
 // })
