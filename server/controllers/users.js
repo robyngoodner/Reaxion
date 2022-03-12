@@ -1,4 +1,5 @@
 // Rest Routes
+const db = require('../models');
 /*
  * Index - GET - /users  - Presentational - respond with all users
  * New - GET - /users/new  - Presentational Form - a page with a form to create a new user
@@ -8,3 +9,22 @@
  * Update - PUT - /users/:id  - Functional - recieve data from edit to update a specific user
  * Delete - DELETE - /users/:id  - Functional - Deletes user by id from request
  */
+
+//delete profile
+
+const destroy = (req, res) => {
+    db.User.findByIdAndDelete(req.params.id, (err, deleteUser)=>{
+        if (err) res.send(err);
+
+        db.User.findById(deleteUser.id, (err, foundUser)=>{
+            foundUser.delete();
+            foundUser.save();
+
+            res.redirect("/");
+        })
+    })
+}
+
+models.exports = {
+    destroy,
+}
