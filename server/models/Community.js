@@ -1,0 +1,13 @@
+const mongoose = require("mongoose");
+//const User = require('./User');
+//const Events = require('./Event');
+//const Post = require('./Post');
+const communitySchema = new mongoose.Schema ({
+    Facilitator: {type: mongoose.Schema.Types.ObjectId, ref:User},
+    Members: {type: mongoose.Schema.Types.ObjectId, ref:[User]},
+    Event: {type: mongoose.Schema.Types.ObjectId, ref:[Events]},
+    Posts: {type: mongoose.Schema.Types.ObjectId, ref:[Post]},
+    Keyword: String,required: true, unique: true
+})
+
+module.exports = mongoose.model("Community", communitySchema)

@@ -1,25 +1,23 @@
 const mongoose = require("mongoose")
 const Schema = mongoose.Schema;
-const User = require("../models/User");
-const Comment = require("../models/Comment");
+
 
 const postSchema = new Schema(
-    {
-        
-        user: {type:mongoose.Schema.Types.ObjectId,
-               ref:"user"},
+  {
+        User: {type:mongoose.Schema.Types.ObjectId,
+               ref:"User"},
         content: {type:String},
-        user_comment:  {
+        User_Comment:  {
             type: mongoose.Schema.Types.ObjectId,
-            ref:"comment",
+            ref:"Comment",
                  },
-        comments:[{ type:mongoose.Schema.Types.ObjectId,
-                    ref:"comment"
+        Comments:[{ type:mongoose.Schema.Types.ObjectId,
+                    ref:"Comment"
                  }],
         upVotes:{type:Number},
-        community: {
+        Community: {
             type:mongoose.Schema.Types.ObjectId,
-            ref:"community"
+            ref:"Community"
                 },
         isAnonymous:{type:Boolean},
         
