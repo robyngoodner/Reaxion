@@ -26,3 +26,7 @@ const userSchema = new Schema ({
         ref: "Comment"
     }]
 })
+
+const User = mongoose.model('User', userSchema);
+
+module.exports = User;
