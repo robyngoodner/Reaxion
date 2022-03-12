@@ -1,5 +1,7 @@
 const path = require("path")
-require("dotenv").config({path: "../.env"})
+//require("dotenv").config({path: "../.env"})
+
+
 /* ==== External Modules ==== */
 const express = require("express");
 const cors = require("cors")
@@ -15,9 +17,9 @@ const config = require("@react/config");
 
 app.use(express.static(path.join("build")))
 // //this helps us read the body, req.body also works with Postman
-// app.use(express.urlencoded({extended: true}))
+app.use(express.urlencoded({extended: true}))
 // //parse some json :)))
-// app.use(express.json())
+app.use(express.json())
 // app.use(cors())
 
 /* ====  Routes & Controllers  ==== */
