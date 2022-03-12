@@ -11,6 +11,8 @@ mongoose
     })
 
 module.exports = {
+
     Comment: require("./Comment"),
+    Event: require("./Event")
 }
-    
+
