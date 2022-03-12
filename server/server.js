@@ -1,4 +1,4 @@
-// const path = require("path")
+const path = require("path")
 require("dotenv").config({path: "../.env"})
 /* ==== External Modules ==== */
 const express = require("express");
@@ -12,7 +12,8 @@ const app = express();
 const config = require("@react/config");
 
 /* ==== Middleware ==== */
-// app.use(express.static(path.join("build")))
+
+app.use(express.static(path.join("build")))
 // //this helps us read the body, req.body also works with Postman
 // app.use(express.urlencoded({extended: true}))
 // //parse some json :)))
