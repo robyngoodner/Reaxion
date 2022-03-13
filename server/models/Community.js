@@ -3,6 +3,10 @@ const mongoose = require("mongoose");
 //const Events = require('./Event');
 //const Post = require('./Post');
 const communitySchema = new mongoose.Schema ({
+    communityName: {
+        type: String,
+        require: true
+    },
     Facilitator: {
         type: mongoose.Schema.Types.ObjectId, 
         ref: "User"
@@ -19,7 +23,7 @@ const communitySchema = new mongoose.Schema ({
         type: mongoose.Schema.Types.ObjectId, 
         ref: "Post"
     }],
-    Keyword: {
+    keyword: {
         type: String,
         required: true, 
         unique: true

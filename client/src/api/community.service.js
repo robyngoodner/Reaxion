@@ -1,9 +1,9 @@
 import client from "./axios.config.js";
 
-const communities = '/communities';
+const community = '/community';
 
 const create = (data) => {
-    return client.post(`${communities}`, data)
+    return client.post(`${community}`, data)
 }
 
 export { create }
