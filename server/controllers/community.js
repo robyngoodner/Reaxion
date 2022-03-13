@@ -39,7 +39,7 @@ const createCommunity = (req, res) => {
         })
     })
 
-}
+};
 
 
 module.exports = {
