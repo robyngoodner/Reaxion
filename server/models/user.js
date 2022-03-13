@@ -5,6 +5,11 @@ const userSchema = new Schema ({
     _id: {
         type: mongoose.Schema.Types.ObjectId
     },
+    password: {
+        type: String, 
+        required: true,
+        select: false,
+    },
     email: String,
     Communities: [{
         type: mongoose.Schema.Types.ObjectId,
