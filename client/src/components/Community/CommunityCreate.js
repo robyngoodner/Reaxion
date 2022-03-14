@@ -15,10 +15,7 @@ export default function CommunityCreate () {
     const handleSubmit = async () => {
         let newCommunity = { communityName, Facilitator, keyword };
         let res = await communityService.create(newCommunity).then(() => {
-            setCommunityName("");
-            setFacilitator("");
-            setKeyword("");
-            console.log("components-> Community -> Community Create: New Community: ", newCommunity)
+            
         });
 
         if (!res ===201) {
