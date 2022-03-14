@@ -49,7 +49,5 @@ export default function CommunityCreate () {
                 <button onClick={handleSubmit}>Create Community</button>
             </form>
         </div>
-    )
-
-    
+    )    
 }

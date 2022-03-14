@@ -1,7 +1,7 @@
 import CommunityCreate from "./Community/CommunityCreate";
 import Register from "./Register";
 import CommunityJoin from "./Community/CommunityJoin";
-
+import PostCreate from "./Posts/PostCreate"
 
 function App() {
 
@@ -11,6 +11,7 @@ function App() {
       <CommunityCreate />
       <Register />
       <CommunityJoin />
+      <PostCreate />
     </div>
   );
 }
