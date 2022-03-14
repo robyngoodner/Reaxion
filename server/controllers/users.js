@@ -14,13 +14,19 @@ const db = require('../models');
 
 const destroy = (req, res) => {
     db.User.findByIdAndDelete(req.params.id, (err, deleteUser)=>{
-        if (err) res.send(err);
-
-        db.User.findById(deleteUser.id, (err, foundUser)=>{
-            foundUser.delete();
-            foundUser.save();
-
-            res.redirect("/");
+        if (err) {
+        return res
+        .status(400)
+        .json({
+            message: "Bad Request; Profile could not be deleted",
+            error: err,
+        })
+    }
+    return res
+        .status(200)
+        .json({
+            message: "Profile Deleted",
+            data: deleteUser
         })
     })
 }
