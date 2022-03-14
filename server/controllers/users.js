@@ -32,7 +32,7 @@ const destroy = (req, res) => {
     })
 }
 
-models.exports = {
+module.exports = {
     destroy,
 }
 
