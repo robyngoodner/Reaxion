@@ -1,5 +1,7 @@
 import CommunityCreate from "./Community/CommunityCreate";
+import Register from "./Register";
 import CommunityJoin from "./Community/CommunityJoin";
+
 
 function App() {
 
@@ -7,6 +9,7 @@ function App() {
     <div className="App">
       <h1>Reaxion</h1>
       <CommunityCreate />
+      <Register />
       <CommunityJoin />
     </div>
   );

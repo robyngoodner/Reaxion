@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import * as authService from "../../api/auth.service";
 
+//** missing authservice in api */
+
 const Register = () => {
 
     const [email, setEmail] = useState("");
