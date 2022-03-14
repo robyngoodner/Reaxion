@@ -41,7 +41,31 @@ const createCommunity = (req, res) => {
 
 };
 
+const joinCommunity = (req, res) => {
+    db.Community.find({ keyword: req.body.keyword })
+        .exec((err, foundCommunity) => {
+            if (err) {
+                return res
+                    .status(400)
+                    .json({
+                        message: "Failed to join community",
+                        error: err,
+                    })
+            } else {
+            foundCommunity.Members.push(req.body.user);
+            foundCommunity.save();
+            return res
+                .status(200)
+                .json({
+                    message: "Successfully joined community",
+                    data: foundCommunity
+                })
+            }
+        })
+}
+
 
 module.exports = {
-    createCommunity
+    createCommunity,
+    joinCommunity
 }
