@@ -1,6 +1,5 @@
-const router = require("express").Router();
-const { posts } = require("../controllers");
+const router = require('express').Router();
 
-router.get("/", posts.create);
+router.use('/community', require('./community'))
 
 module.exports = router;

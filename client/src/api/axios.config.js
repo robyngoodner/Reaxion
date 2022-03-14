@@ -2,14 +2,13 @@
 import axios from "axios";
 
 const backendAPI = "http://localhost:4000/";
-// const backendAPI = "http://reaxion.herokuapp.com/api/"
-// baseURLs are used in real industry code to keep things DRY and not repeating.
+// const backendAPI = "http://reaxion.herokuapp.com/"
 
-const tellReaxion = axios.create({
+const client = axios.create({
 	baseURL: `${backendAPI}`,
 	headers: {
 		"Content-type": "application/json",
 	},
 });
 
-export default tellReaxion;
+export default client;
