@@ -6,4 +6,8 @@ const create = (data) => {
     return client.post(`${community}`, data)
 }
 
-export { create }
+const update = (id, data) => {
+    return client.put(`${community}/${id}`, data)
+}
+
+export { create, update }
