@@ -1,5 +1,5 @@
 module.exports = {
-    posts: require("./post")
+    post: require("./post")
     users: require('./users'),
     community: require('./community'),
 }
