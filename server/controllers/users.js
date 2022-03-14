@@ -10,6 +10,7 @@ const db = require('../models');
  * Delete - DELETE - /users/:id  - Functional - Deletes user by id from request
  */
 
+
 //delete profile
 
 const destroy = (req, res) => {
@@ -34,3 +35,4 @@ const destroy = (req, res) => {
 models.exports = {
     destroy,
 }
+

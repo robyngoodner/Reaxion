@@ -5,6 +5,11 @@ const userSchema = new Schema ({
     _id: {
         type: mongoose.Schema.Types.ObjectId
     },
+    password: {
+        type: String, 
+        required: true,
+        select: false,
+    },
     email: String,
     Communities: [{
         type: mongoose.Schema.Types.ObjectId,
@@ -27,6 +32,4 @@ const userSchema = new Schema ({
     }]
 })
 
-const User = mongoose.model('User', userSchema);
-
-module.exports = User;
+module.exports = mongoose.model('User', userSchema);
