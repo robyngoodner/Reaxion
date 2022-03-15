@@ -4,38 +4,55 @@ const db = require ('../models');
 
 
 const register = async (req, res) => {
+    console.log( req.body)
     try {
         const foundUser = await db.User.findOne({
             email: req.body.email
         })
-
+console.log(foundUser)
         if(foundUser) {
+           
+            // const updatedUser = await db.User.findByIdAndUpdate(
+            //     {
+            //         _id: foundUser._id
+            //     },
+            //     {
+            //         $set: { password: hash }
+            //     },
+            //     { new: true }
+            //)
+            console.log("inside founduser if if ")
+            return res
+                .status
+                .json({ message: "Email in use."})
+        } else {
+            console.log("elseee")
             const salt = await bcrypt.genSalt(9)
             const hash = await bcrypt.hash(req.body.password, salt)
 
-            const updatedUser = await db.User.findByIdAndUpdate(
-                {
-                    _id: foundUser._id
-                },
-                {
-                    $set: { password: hash }
-                },
-                { new: true }
-            )
-            return res
-                .status(201)
-                .json({
-                    status: 201,
-                    message: "User successfully registered.",
-                    updatedUser
+            const newUser = {
+                firstName: req.body.firstName,
+                lastName: req.body.lastName,
+                email:req.body.email,
+                password:hash
+            }
+
+            
+            await console.log(newUser)
+
+          await db.User.create({newUser})
+                .then((err, createdUser) => {
+                    console.log("created user here" + createdUser)
+                   
+                    if(err) return handleError(err)
                 })
+      
+                    return res
+                   .status(201)
+                   .json({status:201, message:"registered new user", createdUser})
+
         }
-        return res  
-            .status(400)
-            .json({
-                status: 400,
-                message: "Registration failed; please try again."
-            })
+       
     } catch (err) {
         return res
             .status(500)
@@ -49,7 +66,7 @@ const register = async (req, res) => {
 
 const login = async(req,res)  => {
     try{
-        const foundUser=await db.User.findOne({email: req.body.email}) 
+        const foundUser = await db.User.findOne({email: req.body.email}) 
         .select("+password") 
         if (!foundUser) {
             return res 

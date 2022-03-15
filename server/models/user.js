@@ -10,7 +10,12 @@ const userSchema = new Schema ({
         required: true,
         select: false,
     },
+    firstName:String,
+    lastName:String,
     email: String,
+    userName: String,
+    description: String,
+    userIcon: String,
     Communities: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: "Community"
