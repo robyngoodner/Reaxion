@@ -1,6 +1,6 @@
 // Rest Routes
 const db = require('../models');
-const User = require('../models/user');
+const User = require('../models/User');
 const Community = require('../models/Community');
 /*
  * Index - GET - /users  - Presentational - respond with all users
@@ -13,8 +13,8 @@ const Community = require('../models/Community');
  */
 
 
-const userProfile= (req,res) => {
-    User.find({name: req.user.name},(err,foundUserProfile) => {
+const show= (req,res) => {
+    db.User.find({name: req.user.name},(err,foundUserProfile) => {
         if (err) {
             return res.status(400)
             .json({
@@ -67,7 +67,7 @@ const updateProfile= (req, res) => {
 }
 
 module.exports = {
-    userProfile,
+    show,
     editProfile,
     updateProfile,
 }
