@@ -10,32 +10,41 @@ const register = async (req, res) => {
         })
 
         if(foundUser) {
+           
+            // const updatedUser = await db.User.findByIdAndUpdate(
+            //     {
+            //         _id: foundUser._id
+            //     },
+            //     {
+            //         $set: { password: hash }
+            //     },
+            //     { new: true }
+            //)
+            console.log(foundUser)
+            return res
+                .status
+                .json({ message: "Email in use."})
+        } else {
+
             const salt = await bcrypt.genSalt(9)
             const hash = await bcrypt.hash(req.body.password, salt)
 
-            const updatedUser = await db.User.findByIdAndUpdate(
-                {
-                    _id: foundUser._id
-                },
-                {
-                    $set: { password: hash }
-                },
-                { new: true }
-            )
-            return res
-                .status(201)
-                .json({
-                    status: 201,
-                    message: "User successfully registered.",
-                    updatedUser
-                })
-        }
-        return res  
-            .status(400)
-            .json({
-                status: 400,
-                message: "Registration failed; please try again."
+            const newUser = await db.User.create({
+                firstName: req.body.firstName,
+                lastName: req.body.lastName,
+                email:req.body.email,
+                password:hash
             })
+
+            newUser.save();
+           const savedUser = newUser.save();
+
+                    return res
+                   .status(201)
+                   .json({status:201, message:"registered new user", savedUser})
+
+        }
+       
     } catch (err) {
         return res
             .status(500)
@@ -49,7 +58,7 @@ const register = async (req, res) => {
 
 const login = async(req,res)  => {
     try{
-        const foundUser=await db.User.findOne({email: req.body.email}) 
+        const foundUser = await db.User.findOne({email: req.body.email}) 
         .select("+password") 
         if (!foundUser) {
             return res 

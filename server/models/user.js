@@ -10,6 +10,8 @@ const userSchema = new Schema ({
         required: true,
         select: false,
     },
+    firstName:String,
+    lastName:String,
     email: String,
     Communities: [{
         type: mongoose.Schema.Types.ObjectId,
