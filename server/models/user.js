@@ -11,6 +11,9 @@ const userSchema = new Schema ({
         select: false,
     },
     email: String,
+    userName: String,
+    description: String,
+    userIcon: String,
     Communities: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: "Community"
