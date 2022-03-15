@@ -50,7 +50,7 @@ const updateProfile= (req, res) => {
     db.User.findByIdAndUpdate(
         req.params.id,
         {
-         name: req.body.name,
+         userName: req.body.userName,
          description: req.body.description,
          userIcon: req.body.userIcon   
         },
