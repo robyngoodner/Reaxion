@@ -26,9 +26,10 @@ const eventSchema = new Schema({
     isPublic: {
         type: Boolean
     },
+},
     {
         timeStamp: true,
     }
-})
+)
 
 module.exports = mongoose.model("Event", eventSchema);
