@@ -25,6 +25,9 @@ const eventSchema = new Schema({
     },
     isPublic: {
         type: Boolean
+    },
+    {
+        timeStamp: true,
     }
 })
 
