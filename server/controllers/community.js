@@ -19,7 +19,7 @@ const createCommunity = async (req, res) => {
                 error: err,
             })
         };
-       await db.User.findById(CreatedCommunity.User)
+       db.User.findById(CreatedCommunity.User)
         .exec(function (err, foundUser) {
             if (err) {
                 return res.status(400).json({
