@@ -28,9 +28,12 @@ const postSchema = new Schema(
                 },
         isAnonymous: {
             type: Boolean
-        },
+        }
+    },
+        {
+            timeStamp: true,
+        }
         
-    }
    
 )
 
