@@ -20,9 +20,10 @@ const handleSubmit = async () => {
 
 return (
     <div>
+        <h1>Update your Public Profile</h1>
     <form>
         <label>
-            Would you like to change your User Name:
+            Would you like to change your User Name?
             <input
                 onChange={(e) => setuserName(e.target.value)}
                 value={userName}
@@ -32,7 +33,7 @@ return (
             />
         </label>
         <label>
-            Would you like to change your description:
+            Would you like to change your description?
             <input
                 onChange={(e) => setdescription(e.target.value)}
                 value={description}

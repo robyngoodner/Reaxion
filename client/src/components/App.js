@@ -1,9 +1,9 @@
-
+import UpdateUserProfile from "./UserProfile/UserProfileUpdate";
 
 function App() {
   return (
     <div className="App">
-      React App
+     < UpdateUserProfile/>
     </div>
   );
 }
