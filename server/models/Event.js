@@ -9,7 +9,7 @@ const eventSchema = new Schema({
         type: String,
         required: true
     },
-    descripion: {
+    description: {
         type: String,
     },  
     posts: [{

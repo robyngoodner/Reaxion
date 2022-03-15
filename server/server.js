@@ -23,7 +23,7 @@ app.use(express.json())
 // app.use(cors())
 
 /* ====  Routes & Controllers  ==== */
-app.use("/", routes)
+app.use("/api", routes)
 app.get('/favicon.ico', function(req,res){
     res.send("404");
   })
