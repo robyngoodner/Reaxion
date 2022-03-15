@@ -11,22 +11,27 @@ const db = require('../models');
  */
 
 const show = (req, res) => {
-    db.Post.findById(req.params.id, (err, foundPost) => {
-        if (err) {
+    db.Event.findById(req.params.id, foundEvent)
+          //.populate post reference
+        .populate({
+            path: 'posts',
+        })
+        .exec((err, foundEvent)=>{
+            if (err){
+                return res
+                    .status(400)
+                    .json({
+                        message: "Bad Request; Cannot view event",
+                        err: err,
+                    })
+            }
             return res
-                .status(400)
+                .status(200)
                 .json({
-                    message: "Bad Request; Cannot view event",
-                    err: err,
+                    message: "Event Found",
+                    data: foundEvent
                 })
-        }
-        return res
-            .status(200)
-            .json({
-                message: "Event Found",
-                data: foundPost
-            })
-    })
+        })
 }
 
 
