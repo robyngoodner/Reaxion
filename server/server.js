@@ -1,6 +1,6 @@
 const path = require("path")
-//require("dotenv").config({path: "../.env"})
-
+require("dotenv").config({path: "../.env"})
+// require('dotenv').config()
 
 /* ==== External Modules ==== */
 const express = require("express");
@@ -9,7 +9,7 @@ const cors = require("cors")
 
 /* ==== Instanced Modules  ==== */
 const app = express();
-// const routes = require("./routes");
+const routes = require("./routes");
 /* ==== Configuration ==== */
 const config = require("@react/config");
 
@@ -23,7 +23,7 @@ app.use(express.json())
 // app.use(cors())
 
 /* ====  Routes & Controllers  ==== */
-// app.use("/api", routes)
+app.use("/", routes)
 app.get('/favicon.ico', function(req,res){
     res.send("404");
   })

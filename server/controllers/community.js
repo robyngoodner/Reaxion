@@ -1,3 +1,5 @@
+const db=require('../models')
+
 // Rest Routes
 /*
  * Index - GET - /communities  - Presentational - respond with all community
@@ -8,3 +10,62 @@
  * Update - PUT - /communities/:id  - Functional - recieve data from edit to update a specific community
  * Delete - DELETE - /communities/:id  - Functional - Deletes community by id from request
  */
+
+const createCommunity = (req, res) => {
+    db.Community.create(req.body, (err, createdCommunity) => {
+        if (err) {
+            return res.status(400).json({
+                message: "Failed",
+                error: err,
+            })
+        };
+        db.User.findById(CreatedCommunity.User)
+        .exec(function (err, foundUser) {
+            if (err) {
+                return res.status(400).json({
+                    message: "Failed",
+                    error: err,
+                })
+            };
+
+            foundUser.Facilitator_Communities.push(createdCommunity);
+            createdCommunity.save();
+            foundUser.save();
+
+            return res.status(200).json({
+                message: "Success",
+                data: createdCommunity,
+            })
+        })
+    })
+
+};
+
+const joinCommunity = (req, res) => {
+    db.Community.find({ keyword: req.body.keyword })
+        .exec((err, foundCommunity) => {
+            if (err) {
+                return res
+                    .status(400)
+                    .json({
+                        message: "Failed to join community",
+                        error: err,
+                    })
+            } else {
+            foundCommunity.Members.push(req.body.user);
+            foundCommunity.save();
+            return res
+                .status(200)
+                .json({
+                    message: "Successfully joined community",
+                    data: foundCommunity
+                })
+            }
+        })
+}
+
+
+module.exports = {
+    createCommunity,
+    joinCommunity
+}
