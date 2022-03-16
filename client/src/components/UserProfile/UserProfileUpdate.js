@@ -1,22 +1,26 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import * as userProfileService from "../../api/userprofile.service";
 
 export default function UpdateUserProfile () {
     const [userName, setuserName]= useState("");
     const [description, setdescription]= useState("");
     const [userIcon, setUserIcon]= useState("");
-const handleSubmit = async () => {
-    let newUserInfo = {userName, description, userIcon};
-    let res = await userProfileService.update(newUserInfo).then(() => {
-        setuserName("");
-        setdescription("");
-        setUserIcon("");
-        UpdateUserProfile();
-    });
-    if (!res === 201) {
-        alert(`error updating user information, ${res.status}`);
-    }
-};
+    //delete userProfile
+    
+
+    const handleSubmit = async () => {
+        let newUserInfo = {userName, description, userIcon};
+        let res = await userProfileService.update(newUserInfo).then(() => {
+            setuserName("");
+            setdescription("");
+            setUserIcon("");
+            UpdateUserProfile();
+        });
+        if (!res === 201) {
+            alert(`error updating user information, ${res.status}`);
+        }
+    };
+
 
 return (
     <div>
