@@ -33,6 +33,7 @@ const create = (req, res) => {
         req.body, 
         (err, savedPost) => {
         if (err) {
+            console.log(err)
             return res.status(400).json({
                 message: "Error 400",
                 error: err 
