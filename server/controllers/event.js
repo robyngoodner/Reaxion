@@ -15,6 +15,7 @@ const show = (req, res) => {
           //.populate post reference
         .populate({
             path: 'posts',
+            path: 'comments',
         })
         .exec((err, foundEvent)=>{
             if (err){
