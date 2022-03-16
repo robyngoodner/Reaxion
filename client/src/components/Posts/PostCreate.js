@@ -32,7 +32,7 @@ export default function PostCreate () {
                         name="reaction"
                         value="happy"
                     />
-                    <label for="happyEmoji">Happy</label>
+                    <label htmlFor="happyEmoji">Happy</label>
                     <input 
                         onChange={(e) => setReaction(e.target.value)}
                         type="radio"
@@ -40,7 +40,7 @@ export default function PostCreate () {
                         name="reaction"
                         value="sad"
                     />
-                    <label for="sadEmoji">Sad</label>
+                    <label htmlFor="sadEmoji">Sad</label>
                     <input 
                         onChange={(e) => setReaction(e.target.value)}
                         type="radio"
@@ -48,7 +48,7 @@ export default function PostCreate () {
                         name="reaction"
                         value="content"
                     />
-                    <label for="contentEmoji">Content</label>
+                    <label htmlFor="contentEmoji">Content</label>
                     <input 
                         onChange={(e) => setReaction(e.target.value)}
                         type="radio"
@@ -56,7 +56,7 @@ export default function PostCreate () {
                         name="reaction"
                         value="angry"
                     />
-                    <label for="angryEmoji">Angry</label>
+                    <label htmlFor="angryEmoji">Angry</label>
                     <input 
                         onChange={(e) => setReaction(e.target.value)}
                         type="radio"
@@ -64,7 +64,7 @@ export default function PostCreate () {
                         name="reaction"
                         value="excited"
                     />
-                    <label for="excitedEmoji">Excited</label>
+                    <label htmlFor="excitedEmoji">Excited</label>
                     <input 
                         onChange={(e) => setReaction(e.target.value)}
                         type="radio"
@@ -72,7 +72,7 @@ export default function PostCreate () {
                         name="reaction"
                         value="disinterested"
                     />
-                    <label for="disinterestedEmoji">Disinterested</label>
+                    <label htmlFor="disinterestedEmoji">Disinterested</label>
                 </div>
                 <label>
                     If you would like, please leavea an additional comment about your experience (optional):

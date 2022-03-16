@@ -20,8 +20,8 @@ const Login = ({ checkUserActive }) => {
 
 
 return (
-    <div >
-        <form >
+    <div>
+        <form>
             <label  htmlFor="email">
                 Email
                 <input

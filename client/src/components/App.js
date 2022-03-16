@@ -1,6 +1,8 @@
 import UpdateUserProfile from "./UserProfile/UserProfileUpdate";
 import CommunityCreate from "./Community/CommunityCreate";
 import Register from "./Register";
+import Login from "./Login";
+import Logout from "./Logout";
 import CommunityJoin from "./Community/CommunityJoin";
 import PostCreate from "./Posts/PostCreate"
 
@@ -12,6 +14,8 @@ function App() {
       <h1>Reaxion</h1>
       <CommunityCreate />
       <Register />
+      <Login />
+      <Logout />
       <CommunityJoin />
       <PostCreate />
     </div>
