@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import * as postService from '../../api/post.service';
 
-export default function PostUpdate () {
+export default function PostCreate () {
     const [reaction, setReaction] = useState("");
     const [comment, setComment] = useState("");
 
     const handleSubmit = async () => {
         let newPost = { reaction, comment};
-        let res = await postService.update(newPost)
+        let res = await postService.create(newPost)
             .then(() => {
                 setReaction([]);
                 setComment("");

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import * as eventService from "../../api/event.service"
+import * as postService from "../../api/post.service"
 
 export default function EventView() {
 
