@@ -1,15 +1,12 @@
-import { useState } from "react";
 import * as authService from "../../api/auth.service";
 
 //**we do not have a CheckUserActive */
 
 const Logout = () => {
-    // const [email, setEmail] = useState("");
-    // const [password, setPassword] =useState("");
 
     const handleSubmit = (e) => {
-     
          authService.logout()
+         console.log("im outta here,log out")
     }
 
 return (
