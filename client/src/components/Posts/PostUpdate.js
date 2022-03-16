@@ -2,15 +2,15 @@ import React, { useState } from 'react';
 import * as postService from '../../api/post.service';
 
 export default function PostCreate () {
-    const [reaction, setReaction] = useState("");
-    const [comment, setComment] = useState("");
+    const [content, setContent] = useState("");
+    const [User_Comment, setUser_Comment] = useState("");
 
     const handleSubmit = async () => {
-        let newPost = { reaction, comment};
-        let res = await postService.create(newPost)
+        let newPost = { content, User_Comment};
+        let res = await postService.update(newPost)
             .then(() => {
-                setReaction([]);
-                setComment("");
+                setContent([]);
+                setUser_Comment("");
                 console.log(newPost)
             });
         
@@ -30,7 +30,7 @@ export default function PostCreate () {
                         type="radio"
                         id="happyEmoji"
                         name="reaction"
-                        value="happy"
+                        value="Happy"
                     />
                     <label for="happyEmoji">Happy</label>
                     <input 
@@ -38,7 +38,7 @@ export default function PostCreate () {
                         type="radio"
                         id="sadEmoji"
                         name="reaction"
-                        value="sad"
+                        value="Sad"
                     />
                     <label for="sadEmoji">Sad</label>
                     <input 
@@ -46,7 +46,7 @@ export default function PostCreate () {
                         type="radio"
                         id="contentEmoji"
                         name="reaction"
-                        value="content"
+                        value="Content"
                     />
                     <label for="contentEmoji">Content</label>
                     <input 
@@ -54,7 +54,7 @@ export default function PostCreate () {
                         type="radio"
                         id="angryEmoji"
                         name="reaction"
-                        value="angry"
+                        value="Angry"
                     />
                     <label for="angryEmoji">Angry</label>
                     <input 
@@ -62,7 +62,7 @@ export default function PostCreate () {
                         type="radio"
                         id="excitedEmoji"
                         name="reaction"
-                        value="excited"
+                        value="Excited"
                     />
                     <label for="excitedEmoji">Excited</label>
                     <input 
@@ -70,7 +70,7 @@ export default function PostCreate () {
                         type="radio"
                         id="disinterestedEmoji"
                         name="reaction"
-                        value="disinterested"
+                        value="Disinterested"
                     />
                     <label for="disinterestedEmoji">Disinterested</label>
                 </div>
@@ -78,7 +78,7 @@ export default function PostCreate () {
                     If you would like, please leavea an additional comment about your experience (optional):
                     <textarea 
                         onChange={(e) => setComment(e.target.value)}
-                        value={comment}
+                        value="comment"
                         type="text"
                         name="comment"
                         placeholder="Additional comment"
