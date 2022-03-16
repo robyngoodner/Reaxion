@@ -11,8 +11,8 @@ const db=require('../models')
  * Delete - DELETE - /communities/:id  - Functional - Deletes community by id from request
  */
 
-const createCommunity = async (req, res) => {
-    await db.Community.create(req.body, (err, createdCommunity) => {
+const createCommunity = (req, res) => {
+    db.Community.create(req.body, (err, createdCommunity) => {
         if (err) {
             return res.status(400).json({
                 message: "Failed",
