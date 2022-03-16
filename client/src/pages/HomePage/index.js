@@ -18,16 +18,16 @@ const Home = () => {
                     element={<EventView/>}
                     />
                 <Route 
-                    path="api/community" 
+                    path="community/new" 
                     element={<CommunityCreate />}></Route>
                 <Route  
-                    path="api/community"
+                    path="community/join"
                     element={<CommunityJoin />}></Route>
                 <Route  
                     path="profile"
                     element={<UpdateUserProfile />}></Route>
                 <Route  
-                    path="api/register"
+                    path="register"
                     element={<Register />}></Route>
                 <Route  
                     path="post/new"
