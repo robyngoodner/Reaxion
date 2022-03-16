@@ -38,13 +38,12 @@ console.log(foundUser)
             }
 
             
-            await console.log(newUser)
+             console.log(newUser)
 
-          await db.User.create({newUser})
+          const createdUser = db.User.create(newUser)
                 .then((err, createdUser) => {
-                    console.log("created user here" + createdUser)
                    
-                    if(err) return handleError(err)
+        
                 })
       
                     return res
