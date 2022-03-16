@@ -25,7 +25,7 @@ const communitySchema = new mongoose.Schema ({
     }],
     keyword: {
         type: String,
-        required: true, 
+        // required: true, 
         unique: true
     }
 })

@@ -21,10 +21,12 @@ console.log(foundUser)
             //     },
             //     { new: true }
             //)
+            console.log("inside founduser if if ")
             return res
                 .status
                 .json({ message: "Email in use."})
         } else {
+            console.log("elseee")
             const salt = await bcrypt.genSalt(9)
             const hash = await bcrypt.hash(req.body.password, salt)
 
@@ -34,9 +36,14 @@ console.log(foundUser)
                 email:req.body.email,
                 password:hash
             }
+
             
+             console.log(newUser)
+
           const createdUser = db.User.create(newUser)
                 .then((err, createdUser) => {
+                   
+        
                 })
       
                     return res
@@ -45,6 +52,7 @@ console.log(foundUser)
             }
 
         } catch (err) {
+
         return res
             .status(500)
             .json({
@@ -95,7 +103,6 @@ const login = async(req,res)  => {
         })
     }
 }
-
 module.exports = {
     register,
     login

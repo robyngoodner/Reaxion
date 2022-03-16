@@ -1,5 +1,7 @@
+
 import NavBar from './NavBar';
 import Home from "../pages/HomePage";
+
 
 function App() {
 
@@ -12,6 +14,7 @@ function App() {
       <Home />
       {/* <CommunityCreate />
       <Register />
+      <Login />
       <CommunityJoin />
       <PostCreate /> */}
     </div>
