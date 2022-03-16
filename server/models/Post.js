@@ -8,6 +8,7 @@ const postSchema = new Schema(
             type:mongoose.Schema.Types.ObjectId,
             ref:"User"
         },
+        //Content is the reaction
         content: {
             type: String
         },
