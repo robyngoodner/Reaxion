@@ -11,8 +11,27 @@
 
 const db = require("../models");
 
+const showOne = (req, res) => {
+    db.Post.findById(
+        req.params.id, 
+        (err, foundPost) => {
+        if(err) {
+            return res.status(400).json({
+                message: "Error 400",
+                error: err,
+            })
+        }
+        return res.status(200).json({
+            message: "Found Post",
+            data: foundPost,
+        })
+    })
+}
+
 const create = (req, res) => {
-    db.Post. create(req.body, (err, savedPost) => {
+    db.Post. create(
+        req.body, 
+        (err, savedPost) => {
         if (err) {
             return res.status(400).json({
                 message: "Error 400",
@@ -26,6 +45,47 @@ const create = (req, res) => {
     })
 }
 
+const update = (req, res) => {
+    db.Post.findByIdAndUpdate(
+        req.params.id,
+        req.body,
+        {new: true}, (err, updatedPost) => {
+            if(err) {
+                return res.status(400).json({
+                    message: "Error 400",
+                    error: err,
+                })
+            }
+            return res.status(200).json({
+                message: "Updated Post",
+                data: updatedPost
+            })
+        }
+    )
+}
+
+const destroy = (req, res) => {
+    db.Post.findOneAndDelete(
+        req.params.id,
+        (err, deletedPost) => {
+            if(err) {
+                return res.status(400).json({
+                    message: "Error 400",
+                    error: err
+                })
+            }
+            return res.status(200).json({
+                message: "Deleted Post",
+                data: deletedPost
+            })
+        }
+    )
+}
+
+
 module.exports = {
+    showOne,
     create,
+    update,
+    destroy
 }    
