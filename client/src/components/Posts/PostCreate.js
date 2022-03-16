@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import * as postService from '../../api/post.service';
 
 export default function PostCreate () {
-    const [reaction, setReaction] = useState([]);
+    const [reaction, setReaction] = useState("");
     const [comment, setComment] = useState("");
 
     const handleSubmit = async () => {
@@ -23,11 +23,10 @@ export default function PostCreate () {
         <div>
             <h1>Leave your Reaction</h1>
             <form>
-                <label>
+                <div>
                     Reaction:
                     <input 
                         onChange={(e) => setReaction(e.target.value)}
-                        value={reaction}
                         type="radio"
                         id="happyEmoji"
                         name="reaction"
@@ -36,7 +35,6 @@ export default function PostCreate () {
                     <label for="happyEmoji">Happy</label>
                     <input 
                         onChange={(e) => setReaction(e.target.value)}
-                        value={reaction}
                         type="radio"
                         id="sadEmoji"
                         name="reaction"
@@ -45,7 +43,6 @@ export default function PostCreate () {
                     <label for="sadEmoji">Sad</label>
                     <input 
                         onChange={(e) => setReaction(e.target.value)}
-                        value={reaction}
                         type="radio"
                         id="contentEmoji"
                         name="reaction"
@@ -54,7 +51,6 @@ export default function PostCreate () {
                     <label for="contentEmoji">Content</label>
                     <input 
                         onChange={(e) => setReaction(e.target.value)}
-                        value={reaction}
                         type="radio"
                         id="angryEmoji"
                         name="reaction"
@@ -63,7 +59,6 @@ export default function PostCreate () {
                     <label for="angryEmoji">Angry</label>
                     <input 
                         onChange={(e) => setReaction(e.target.value)}
-                        value={reaction}
                         type="radio"
                         id="excitedEmoji"
                         name="reaction"
@@ -72,15 +67,14 @@ export default function PostCreate () {
                     <label for="excitedEmoji">Excited</label>
                     <input 
                         onChange={(e) => setReaction(e.target.value)}
-                        value={reaction}
                         type="radio"
                         id="disinterestedEmoji"
                         name="reaction"
                         value="disinterested"
                     />
-                    <label for="disinterestedEmoji">disinterested</label>
-                </label>
-                <lable>
+                    <label for="disinterestedEmoji">Disinterested</label>
+                </div>
+                <label>
                     If you would like, please leavea an additional comment about your experience (optional):
                     <textarea 
                         onChange={(e) => setComment(e.target.value)}
@@ -89,7 +83,7 @@ export default function PostCreate () {
                         name="comment"
                         placeholder="Additional comment"
                     />
-                </lable>
+                </label>
             </form>
             <button onClick={handleSubmit}>Submit Reaction</button>
         </div>
