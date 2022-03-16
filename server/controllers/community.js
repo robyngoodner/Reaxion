@@ -1,4 +1,4 @@
-const db=require('../models')
+const db = require('../models')
 
 // Rest Routes
 /*
@@ -12,14 +12,24 @@ const db=require('../models')
  */
 
 const createCommunity = async (req, res) => {
-    await db.Community.create(req.body, (err, createdCommunity) => {
-        if (err) {
-            return res.status(400).json({
-                message: "Failed",
-                error: err,
-            })
-        };
-       db.User.findById(CreatedCommunity.User)
+
+    const newCommunity = req.body;
+    
+
+    const createdCommunity = db.Community.create(newCommunity)
+    .then((err, createdCommunity) => {
+        console.log("createdCommunity" + createdCommunity)
+
+    })
+
+    // await db.Community.create(req.body, (err, createdCommunity) => {
+    //     if (err) {
+    //         return res.status(400).json({
+    //             message: "Failed",
+    //             error: err,
+    //        })
+      //  };
+       db.User.findByIdAndUpdate(createdCommunity.Facilitator)
         .exec(function (err, foundUser) {
             if (err) {
                 return res.status(400).json({
@@ -28,18 +38,14 @@ const createCommunity = async (req, res) => {
                 })
             };
 
-            foundUser.Facilitator_Communities.push(createdCommunity);
-            createdCommunity.save();
-            foundUser.save();
+           
 
             return res.status(200).json({
                 message: "Success",
                 data: createdCommunity,
             })
         })
-    })
-
-};
+    };
 
 const joinCommunity = (req, res) => {
     db.Community.find({ keyword: req.body.keyword })
