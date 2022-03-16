@@ -3,16 +3,15 @@ import * as eventService from "../../api/event.service"
 
 export default function EventView() {
 
-    const [event, setEvent] = useState(null);
-
-    useEffect((event) => {
-        eventService.get(event).then((response) => {
-            setEvent(response.data);
-
-        })
-    }, []);
-
-    if (!event) return null;
+    const [event, setEvent] = useState([]);
+    
+    useEffect(() => {
+        async function getEvent() {
+            const events = await eventService.get();
+                setEvent(events.data);
+        }
+        getEvent();
+    }, [])
 
     return(
         <>
