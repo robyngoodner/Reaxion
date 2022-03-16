@@ -11,19 +11,21 @@ const db=require('../models')
  * Delete - DELETE - /communities/:id  - Functional - Deletes community by id from request
  */
 
-const createCommunity = (req, res) => {
-    db.Community.create(req.body, (err, createdCommunity) => {
+const createCommunity = async (req, res) => {
+    console.log("is console.log working")
+    console.log("req.body", req.body);
+    await db.Community.create(req.body, (err, createdCommunity) => {
         if (err) {
             return res.status(400).json({
-                message: "Failed",
+                message: "Failed community creation",
                 error: err,
             })
         };
-       db.User.findById(CreatedCommunity.User)
+       db.User.findById(createdCommunity.Facilitator)
         .exec(function (err, foundUser) {
             if (err) {
                 return res.status(400).json({
-                    message: "Failed",
+                    message: "Failed to find user",
                     error: err,
                 })
             };
