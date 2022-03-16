@@ -11,11 +11,14 @@ const db = require('../models');
  */
 
 const show = (req, res) => {
-    db.Event.findById(req.params.id, foundEvent)
+    db.Event.findById(req.params.id)
           //.populate post reference
-        .populate({
-            path: 'posts',
-        })
+          .populate({
+            path : 'posts',
+            populate : {
+              path : 'comments'
+            }
+          })
         .exec((err, foundEvent)=>{
             if (err){
                 return res
@@ -25,17 +28,38 @@ const show = (req, res) => {
                         err: err,
                     })
             }
-            return res
+            return res        .populate({
+            path: 'posts',
+        })
                 .status(200)
                 .json({
                     message: "Event Found",
                     data: foundEvent
                 })
         })
-}
+};
+
+const create = (req, res) => {
+    db.Event.create(req.body, (err, savedEvent) => {
+        if(err) {
+            return res  
+                .status(400)
+                .json({
+                    message: "Failed to create event.",
+                    error: err
+                })
+        }
+        return res  
+            .status(201)
+            .json({
+                message: "Successfully created event.",
+                data: savedEvent
+            })
+    })
+};
 
 
 module.exports = {
     show,
-
+    create
 }

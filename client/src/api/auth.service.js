@@ -3,15 +3,16 @@ import client from "./axios.config";
 const auth = "/auth";
 const users = "/users";
 
-const register = (email, password) => {
+const register = (email, password, firstName, lastName) => {
     return client
-    .post(`${auth}/register`, {email,password})
+    .post(`${auth}/register`, {email,password,firstName,lastName})
     .then((res) => {console.log(res)})
 }
 
 
 const login = (email, password) => {
     console.log("before try in login")
+   console.log(email,password)
     try {
         return client
         .prototype(`${auth}/login`, {email,password})
