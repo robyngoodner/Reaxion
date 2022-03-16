@@ -21,7 +21,9 @@ function App() {
       <Login />
       <Logout />
       <CommunityJoin />
-      <PostCreate /> */}
+      <PostCreate />
+      <Post />*/}
+
     </div>
   );
 }
