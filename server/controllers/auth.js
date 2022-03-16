@@ -4,11 +4,12 @@ const db = require ('../models');
 
 
 const register = async (req, res) => {
+    console.log( req.body)
     try {
         const foundUser = await db.User.findOne({
             email: req.body.email
         })
-
+console.log(foundUser)
         if(foundUser) {
            
             // const updatedUser = await db.User.findByIdAndUpdate(
@@ -20,29 +21,28 @@ const register = async (req, res) => {
             //     },
             //     { new: true }
             //)
-            console.log(foundUser)
             return res
                 .status
                 .json({ message: "Email in use."})
         } else {
-
             const salt = await bcrypt.genSalt(9)
             const hash = await bcrypt.hash(req.body.password, salt)
 
-            const newUser = await db.User.create({
+            const newUser = {
                 firstName: req.body.firstName,
                 lastName: req.body.lastName,
                 email:req.body.email,
                 password:hash
-            })
-
-            newUser.save();
-           const savedUser = newUser.save();
-
+            }
+            
+          const createdUser = db.User.create(newUser)
+                .then((err, createdUser) => {
+                })
+      
                     return res
                    .status(201)
-                   .json({status:201, message:"registered new user", savedUser})
-
+                   .json({status:201, message:"registered new user", createdUser})
+            })
         }
        
     } catch (err) {
@@ -96,6 +96,7 @@ const login = async(req,res)  => {
         })
     }
 }
+
 module.exports = {
     register,
     login
