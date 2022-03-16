@@ -32,10 +32,29 @@ const show = (req, res) => {
                     data: foundEvent
                 })
         })
-}
+};
+
+const create = (req, res) => {
+    db.Event.create(req.body, (err, savedEvent) => {
+        if(err) {
+            return res  
+                .status(400)
+                .json({
+                    message: "Failed to create event.",
+                    error: err
+                })
+        }
+        return res  
+            .status(201)
+            .json({
+                message: "Successfully created event.",
+                data: savedEvent
+            })
+    })
+};
 
 
 module.exports = {
     show,
-
+    create
 }
