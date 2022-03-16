@@ -43,6 +43,7 @@ console.log(foundUser)
                    .status(201)
                    .json({status:201, message:"registered new user", createdUser})
             }
+
         } catch (err) {
         return res
             .status(500)
