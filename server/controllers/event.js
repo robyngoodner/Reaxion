@@ -11,29 +11,43 @@ const db = require('../models');
  */
 
 const show = (req, res) => {
-    db.Event.findById(req.params.id, foundEvent)
-          //.populate post reference
-        .populate({
-            path: 'posts',
-            path: 'comments',
+    console.log('show', req.data)
+    db.Event.findById(req.params.id, (err, foundEvent) => {
+        if (err) {
+            return res.status(400).json({
+                message: "Utter failure!",
+                error: err,
+            })
+        }
+        return res.status(200).json({
+            message: "Success!",
+            data: foundEvent, 
         })
-        .exec((err, foundEvent)=>{
-            if (err){
-                return res
-                    .status(400)
-                    .json({
-                        message: "Bad Request; Cannot view event",
-                        err: err,
-                    })
-            }
-            return res
-                .status(200)
-                .json({
-                    message: "Event Found",
-                    data: foundEvent
-                })
-        })
+    })
 }
+
+//     db.Event.findById(req.params.id)
+//           //.populate post reference
+
+//         .exec((err, foundEvent)=>{
+//             if (err){
+//                 return res
+//                     .status(400)
+//                     .json({
+//                         message: "Bad Request; Cannot view event",
+//                         err: err,
+//                     })
+//             }
+//             return res        .populate({
+//             path: 'posts',
+//         })
+//                 .status(200)
+//                 .json({
+//                     message: "Event Found",
+//                     data: foundEvent
+//                 })
+//         })
+// }
 
 
 module.exports = {
