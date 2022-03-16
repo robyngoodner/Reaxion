@@ -1,6 +1,6 @@
 // Rest Routes
 const db = require('../models');
-const User = require('../models/User');
+const User = require('../models/user');
 const Community = require('../models/Community');
 /*
  * Index - GET - /users  - Presentational - respond with all users
@@ -50,7 +50,8 @@ const updateProfile= (req, res) => {
     db.User.findByIdAndUpdate(
         req.params.id,
         {
-         userName: req.body.userName,
+         firstName: req.body.firstName,
+         lastName: req.body.lastName,
          description: req.body.description,
          userIcon: req.body.userIcon   
         },
