@@ -1,4 +1,4 @@
-import { Link, NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 export default function NavBar() {
     return (
@@ -15,6 +15,13 @@ export default function NavBar() {
             <NavLink
                 to="/register"
             >Register</NavLink>
+            <NavLink
+                to="/profile"
+            >Profile</NavLink>
+            <NavLink
+                to="/post/new"
+            >New Post</NavLink>
         </div>
     )
 }
+
