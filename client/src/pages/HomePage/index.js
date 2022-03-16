@@ -18,10 +18,10 @@ const Home = () => {
                     element={<EventView/>}
                     />
                 <Route 
-                    path="community/new" 
+                    path="new" 
                     element={<CommunityCreate />}></Route>
                 <Route  
-                    path="community/join"
+                    path="join"
                     element={<CommunityJoin />}></Route>
                 <Route  
                     path="profile"
