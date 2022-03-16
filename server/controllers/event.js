@@ -11,11 +11,14 @@ const db = require('../models');
  */
 
 const show = (req, res) => {
-    db.Event.findById(req.params.id, foundEvent)
+    db.Event.findById(req.params.id)
           //.populate post reference
-        .populate({
-            path: 'posts',
-        })
+          .populate({
+            path : 'posts',
+            populate : {
+              path : 'comments'
+            }
+          })
         .exec((err, foundEvent)=>{
             if (err){
                 return res
@@ -25,7 +28,9 @@ const show = (req, res) => {
                         err: err,
                     })
             }
-            return res
+            return res        .populate({
+            path: 'posts',
+        })
                 .status(200)
                 .json({
                     message: "Event Found",
