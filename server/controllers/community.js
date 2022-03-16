@@ -13,14 +13,15 @@ const db = require('../models')
 
 const createCommunity = async (req, res) => {
 
-    const newCommunity = req.body;
+
+//     const newCommunity = req.body;
     
 
-    const createdCommunity = db.Community.create(newCommunity)
-    .then((err, createdCommunity) => {
-        console.log("createdCommunity" + createdCommunity)
+//     const createdCommunity = db.Community.create(newCommunity)
+//     .then((err, createdCommunity) => {
+//         console.log("createdCommunity" + createdCommunity)
 
-    })
+//     })
 
     // await db.Community.create(req.body, (err, createdCommunity) => {
     //     if (err) {
@@ -29,11 +30,22 @@ const createCommunity = async (req, res) => {
     //             error: err,
     //        })
       //  };
-       db.User.findByIdAndUpdate(createdCommunity.Facilitator)
+       // db.User.findByIdAndUpdate(createdCommunity.Facilitator)
+
+    console.log("is console.log working")
+    console.log("req.body", req.body);
+    await db.Community.create(req.body, (err, createdCommunity) => {
+        if (err) {
+            return res.status(400).json({
+                message: "Failed community creation",
+                error: err,
+            })
+        };
+       db.User.findById(createdCommunity.Facilitator)
         .exec(function (err, foundUser) {
             if (err) {
                 return res.status(400).json({
-                    message: "Failed",
+                    message: "Failed to find user",
                     error: err,
                 })
             };

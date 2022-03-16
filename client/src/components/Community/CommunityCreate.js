@@ -28,12 +28,13 @@ export default function CommunityCreate () {
 
     return (
         <div>
+            <h1>Create a new Community</h1>
             <form>
-            {/* <input
+                {/* <input
                 type="hidden"
                 name="Facilitator"
-                value={ user._id}
-            /> */}
+                value={ user._id }
+                />  */}
                 <label>Name your Community</label>
                 <input 
                     type="text"

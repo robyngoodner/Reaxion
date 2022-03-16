@@ -16,6 +16,7 @@ const Register = () => {
         setEmail("");
         setPassword("");
         setSuccessMsg("Your Registration was Successful.");
+        console.log("components-->register-->index handlesubmit: ", email, password)
 
     };
 

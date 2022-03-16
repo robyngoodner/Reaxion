@@ -10,7 +10,6 @@ const userSchema = new Schema ({
     firstName:String,
     lastName:String,
     email: String,
-    userName: String,
     description: String,
     userIcon: String,
     Communities: [{
