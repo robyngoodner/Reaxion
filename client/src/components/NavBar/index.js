@@ -21,6 +21,9 @@ export default function NavBar() {
             <NavLink
                 to="/post/new"
             >New Post</NavLink>
+            <NavLink    
+                to="event/new"
+            >New Event</NavLink>
         </div>
     )
 }

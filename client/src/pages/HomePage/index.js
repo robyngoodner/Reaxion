@@ -6,6 +6,7 @@ import EventView from "../../components/Event/EventView";
 import UpdateUserProfile from "../../components/UserProfile/UserProfileUpdate";
 import Register from "../../components/Register";
 import PostCreate from "../../components/Posts/PostCreate";
+import EventCreate from "../../components/Event/EventCreate";
 
 
 const Home = () => {
@@ -32,6 +33,9 @@ const Home = () => {
                 <Route  
                     path="post/new"
                     element={<PostCreate />}></Route>
+                <Route
+                    path="event/new"
+                    element={<EventCreate />}></Route>
             </Routes>
         </>
     )
