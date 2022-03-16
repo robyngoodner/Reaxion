@@ -22,6 +22,13 @@ function showPost() {
          } 
     }        
 
+    const handleSubmitEdit = async () => {
+        window.location.href = `/${post}/${id}`;
+    
+     if ( !res === 201 ) {
+         alert(`Post error. Please submit again. ${res.status}`) 
+     } 
+}  
     return (
         <>
         <div>
