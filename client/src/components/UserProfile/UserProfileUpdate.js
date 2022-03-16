@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import * as userProfileService from "../../api/userprofile.service";
 
 export default function UpdateUserProfile () {
@@ -6,6 +6,18 @@ export default function UpdateUserProfile () {
     const [lastName, setlastName]= useState("");
     const [description, setdescription]= useState("");
     const [userIcon, setUserIcon]= useState("");
+
+    const [deleteProfile, setDeleteProfile] = useState(null);
+
+    const handleDelete = useEffect(() => {
+        async function deleteUser() {
+            await userProfileService.destroy();
+            setDeleteProfile('User Deleted');
+        }
+        deleteUser();
+    }, []);
+
+ 
 const handleSubmit = async () => {
     let newUserInfo = {firstName, lastName, description, userIcon};
     let res = await userProfileService.update(newUserInfo).then(() => {
@@ -19,6 +31,7 @@ const handleSubmit = async () => {
         alert(`error updating user information, ${res.status}`);
     }
 };
+
 
 return (
     <div>
@@ -63,8 +76,11 @@ return (
                 placeholder="input your new image, please use .jpg or .png"
             />
         </label>
+        
     </form>
     <button onClick={handleSubmit}>Update user profile information +</button>
+    <p> Would you like to delete {deleteProfile}'s profile?</p>
+    <button onClick={handleDelete}>Delete Profile</button>
 </div>
 );  
 };
