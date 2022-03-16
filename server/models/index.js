@@ -12,7 +12,7 @@ mongoose
 
 
 module.exports = {
-    User: require('./User'),
+    User: require('./user'),
     Comment: require("./Comment"),
     Event: require("./Event"),
     Community: require('./Community'),

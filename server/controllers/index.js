@@ -2,5 +2,6 @@ module.exports = {
     post: require("./post"),
     users: require('./users'),
     community: require('./community'),
-    auth: require("./auth")
+    auth: require("./auth"),
+    event: require("./event")
 }

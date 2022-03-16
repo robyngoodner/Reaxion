@@ -6,4 +6,8 @@ const get = (id) => {
     return client.get(`${event}/${id}`)
 }
 
-export { get }
+const create = (data) => {
+    return client.post(`${event}`, data)
+}
+
+export { get, create }
