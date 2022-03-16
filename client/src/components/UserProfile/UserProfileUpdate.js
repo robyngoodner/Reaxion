@@ -5,8 +5,15 @@ export default function UpdateUserProfile () {
     const [userName, setuserName]= useState("");
     const [description, setdescription]= useState("");
     const [userIcon, setUserIcon]= useState("");
-    //delete userProfile
-    
+    const [deleteProfile, setDeleteProfile] = useState(null);
+
+    const handleDelete = useEffect(() => {
+        async function deleteUser() {
+            await userProfileService.destroy();
+            setDeleteProfile('User Deleted');
+        }
+        deleteUser();
+    }, []);
 
     const handleSubmit = async () => {
         let newUserInfo = {userName, description, userIcon};
@@ -56,8 +63,11 @@ return (
                 placeholder="input your new image, please use .jpg or .png"
             />
         </label>
+        
     </form>
     <button onClick={handleSubmit}>Update user profile information +</button>
+    <p> Would you like to delete {deleteProfile}'s profile?</p>
+    <button onClick={handleDelete}>Delete Profile</button>
 </div>
 );  
 };
