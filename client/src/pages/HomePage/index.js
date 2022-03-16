@@ -1,4 +1,5 @@
 import { Route, Routes } from "react-router-dom";
+import { useReducer, useEffect } from "react";
 // import * as communityService from '../../api/community.service';
 import CommunityJoin from '../../components/Community/CommunityJoin';
 import CommunityCreate from '../../components/Community/CommunityCreate';
@@ -8,14 +9,42 @@ import Register from "../../components/Register";
 import PostCreate from "../../components/Posts/PostCreate";
 import EventCreate from "../../components/Event/EventCreate";
 import * as authService from "../../api/auth.service";
+import Login from "../../components/Login";
+
+const reducer = (prevState, action) => {
+    switch(action.type) {
+        case 'setIsLoggedIn':
+            return {...prevState, isLoggedIn: action.payload};
+        default:
+            return prevState
+    }
+}
+
+const initialState = {
+    isLoggedIn: false,
+}
 
 
+const Home = () => {
+    const [state, dispatch] = useReducer(reducer, initialState);
+    const { isLoggedIn } = state;
 
+    const checkLogin = () => {
+        if (authService.currentUser()) {
+            dispatch({type: 'setIsLoggedIn', payload: true})
+        }else{
+            dispatch({type: 'setIsLoggedIn', payload: false})
+        }
+    }
 
-const Home = ({checkUserActive}) => {
+    useEffect(() => {
+        checkLogin();
+    }, []);
+
+    if (isLoggedIn) {
+
     return (
         <>
-            
             <Routes>
                 <Route  
                     path='/'
@@ -42,6 +71,18 @@ const Home = ({checkUserActive}) => {
             </Routes>
         </>
     )
+    }else{
+        return (
+            <div>
+                <h1>LOG IN!!!</h1>
+                <Routes>
+                    <Route
+                    path = "login"
+                    element = {<Login />}>Log In</Route>
+                </Routes>
+            </div>
+        )
+    }
 
 }
 
