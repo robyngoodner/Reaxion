@@ -10,10 +10,10 @@ const Login = ({ checkUserActive }) => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         await authService.login(email, password).then(() =>{
-            {checkUserActive();}
+            checkUserActive();
 
-            setEmail = "";
-            setPassword = "";
+            setEmail("");
+            setPassword("");
 
         });
     };

@@ -57,7 +57,8 @@ const createCommunity = async (req, res) => {
                 data: createdCommunity,
             })
         })
-    };
+    })
+}
 
 const joinCommunity = (req, res) => {
     db.Community.find({ keyword: req.body.keyword })

@@ -1,6 +1,6 @@
 // Rest Routes
 const db = require('../models');
-const User = require('../models/User');
+const User = require('../models/user');
 const Community = require('../models/Community');
 /*
  * Index - GET - /users  - Presentational - respond with all users
