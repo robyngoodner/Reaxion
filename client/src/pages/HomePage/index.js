@@ -7,9 +7,12 @@ import UpdateUserProfile from "../../components/UserProfile/UserProfileUpdate";
 import Register from "../../components/Register";
 import PostCreate from "../../components/Posts/PostCreate";
 import EventCreate from "../../components/Event/EventCreate";
+import * as authService from "../../api/auth.service";
 
 
-const Home = () => {
+
+
+const Home = ({checkUserActive}) => {
     return (
         <>
             
