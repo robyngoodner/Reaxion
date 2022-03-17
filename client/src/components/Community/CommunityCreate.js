@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import * as communityService from "../../api/community.service"
+import * as authService from "../../api/auth.service"
 
 /*
 NOTE:
@@ -9,14 +10,12 @@ Have to pass in user as a prop in order to use user._id as the facilitator value
 
 export default function CommunityCreate () {
     const [communityName, setCommunityName] = useState("");
-    const [Facilitator, setFacilitator] = useState("");
     const [keyword, setKeyword] = useState("");
 
     const handleSubmit = async () => {
-        let newCommunity = { communityName, Facilitator, keyword };
+        let newCommunity = { communityName, keyword };
         let res = await communityService.create(newCommunity).then(() => {
             setCommunityName("");
-            setFacilitator("");
             setKeyword("");
             console.log("components-> Community -> Community Create: New Community: ", newCommunity)
         });
@@ -26,15 +25,15 @@ export default function CommunityCreate () {
         }
     };
 
+    const userTest = async () => {
+        let res = await authService.currentUser();
+        console.log(res)
+    }
+
     return (
         <div>
             <h1>Create a new Community</h1>
             <form>
-                {/* <input
-                type="hidden"
-                name="Facilitator"
-                value={ user._id }
-                />  */}
                 <label>Name your Community</label>
                 <input 
                     type="text"
@@ -52,6 +51,7 @@ export default function CommunityCreate () {
                 />
                 <button onClick={handleSubmit}>Create Community</button>
             </form>
+            <button onClick={userTest}>Console log objects</button>
         </div>
     )    
 }

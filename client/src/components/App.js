@@ -12,11 +12,7 @@ function App() {
   return (
     <div className="App">
       {/* <NavBar /> */}
-      
       {/* < UpdateUserProfile/> */}
-
-
-
       <Home />
       {/* <CommunityCreate />
       <Register />

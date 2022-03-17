@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, Link } from "react-router-dom";
 import { useReducer, useEffect } from "react";
 // import * as communityService from '../../api/community.service';
 import CommunityJoin from '../../components/Community/CommunityJoin';
@@ -8,9 +8,11 @@ import UpdateUserProfile from "../../components/UserProfile/UserProfileUpdate";
 import PostCreate from "../../components/Posts/PostCreate";
 import EventCreate from "../../components/Event/EventCreate";
 import * as authService from "../../api/auth.service";
+
 import Comment from "../../components/Comment/CommentView";
 import NavBar from "../../components/NavBar";
 import Welcome from "../../components/Welcome";
+
 
 const reducer = (prevState, action) => {
     switch(action.type) {
@@ -46,6 +48,7 @@ const Home = () => {
 
     return (
         <>
+
         <div>
     
   <NavBar 
@@ -53,6 +56,7 @@ const Home = () => {
           />
         </div>
         {/* <h1>Successful Sign In</h1> */}
+
             <Routes>
                 <Route  
                     path='/'
@@ -83,9 +87,8 @@ const Home = () => {
         return (
             <div>
              	<div>
-				<Welcome checkUserActive={() => dispatch({type: "setIsLoggedIn", payload: true})}/>
-			    </div>
-              
+				        <Welcome checkUserActive={() => dispatch({type: "setIsLoggedIn", payload: true})}/>
+			        </div>
             </div>
         )
     }
