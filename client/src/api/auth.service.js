@@ -12,10 +12,10 @@ const register = (email, password, firstName, lastName) => {
 
 const login = (email, password) => {
     console.log("before try in login")
-   console.log(email,password)
+    console.log(email,password)
     try {
         return client
-        .prototype(`${auth}/login`, {email,password})
+        .post(`${auth}/login`, {email,password})
         .then((res) => {
             console.log(res)
             if(res.data.token) {

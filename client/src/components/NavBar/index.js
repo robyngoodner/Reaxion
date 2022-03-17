@@ -1,5 +1,5 @@
 import { NavLink } from 'react-router-dom';
-import * as authService from '../auth/auth.service';
+import * as authService from '../../api/auth.service';
 
 export default function NavBar({checkUserActive}) {
         const handleLogout = async () => {
@@ -34,6 +34,10 @@ export default function NavBar({checkUserActive}) {
                 to='/'
                 onClick = {handleLogout}
             >Logout
+            </NavLink>
+            <NavLink
+                to='/login'
+            >Login
             </NavLink>
         </div>
     )

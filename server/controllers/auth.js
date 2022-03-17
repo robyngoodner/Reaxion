@@ -62,6 +62,7 @@ console.log(foundUser)
 }
 
 const login = async(req,res)  => {
+    console.log('in login!!');
     try{
         const foundUser = await db.User.findOne({email: req.body.email}) 
         .select("+password") 
