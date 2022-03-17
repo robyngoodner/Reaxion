@@ -9,7 +9,7 @@ module.exports = async(req, res, next) => {
         }
         const token = bearerHeader.split(' ')[1]
         const payload = await jwt.verify(token, 'reaxion')
-        req.userId = payload._id
+        req.userId = payload._id;
         next()
     }catch (err) {
         console.log(err);
@@ -20,4 +20,5 @@ module.exports = async(req, res, next) => {
                 message: "Internal server error. Refresh your page and try again."
             })
     }
+
 }

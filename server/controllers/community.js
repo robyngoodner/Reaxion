@@ -1,4 +1,5 @@
 const db = require('../models')
+const jwt = require('jsonwebtoken');
 
 // Rest Routes
 /*
@@ -32,9 +33,19 @@ const createCommunity = async (req, res) => {
       //  };
        // db.User.findByIdAndUpdate(createdCommunity.Facilitator)
 
-    console.log("is console.log working")
-    console.log("req.body", req.body);
-    await db.Community.create(req.body, (err, createdCommunity) => {
+
+    const bearerHeader = req.headers.authorization;
+    const token = bearerHeader.split(' ')[1];
+    const payload = await jwt.verify(token, 'reaxion')
+    req.userId = payload._id;
+    console.log("Req: ", req.userId)
+    let user = req.userId;
+    let incomingReq = {
+        Facilitator: user,
+        communityName: req.body.communityName,
+        keyword: req.userId
+    }
+    await db.Community.create(incomingReq, (err, createdCommunity) => {
         if (err) {
             return res.status(400).json({
                 message: "Failed community creation",
@@ -55,6 +66,7 @@ const createCommunity = async (req, res) => {
             return res.status(200).json({
                 message: "Success",
                 data: createdCommunity,
+                user: foundUser
             })
         })
     })

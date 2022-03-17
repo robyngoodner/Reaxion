@@ -64,9 +64,6 @@ const Home = () => {
                     path="profile"
                     element={<UpdateUserProfile />}></Route>
                 <Route  
-                    path="register"
-                    element={<Register />}></Route>
-                <Route  
                     path="post/new"
                     element={<PostCreate />}></Route>
                 <Route
