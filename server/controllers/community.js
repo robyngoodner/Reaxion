@@ -43,7 +43,7 @@ const createCommunity = async (req, res) => {
     let incomingReq = {
         Facilitator: user,
         communityName: req.body.communityName,
-        keyword: req.userId
+        keyword: req.body.keyword
     }
     await db.Community.create(incomingReq, (err, createdCommunity) => {
         if (err) {
