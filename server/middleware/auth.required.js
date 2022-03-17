@@ -3,7 +3,7 @@ const jwt = require('jsonwebtoken');
 module.exports = async(req, res, next) => {
     try {
         const bearerHeader = req.headers.authorization;
-        console.log(bearerHeader);
+       // console.log(bearerHeader);
         if (typeof bearerHeader === 'undefined') {
             return res.sendStatus(403);
         }
