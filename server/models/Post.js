@@ -13,8 +13,9 @@ const postSchema = new Schema(
             type: String
         },
         User_Comment:  {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: "Comment",
+            type: String
+            // type: mongoose.Schema.Types.ObjectId,
+            // ref: "Comment",
                  },
         Comments: [{ 
             type: mongoose.Schema.Types.ObjectId,
