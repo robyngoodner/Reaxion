@@ -1,14 +1,13 @@
 import React, { useState } from 'react';
-import * as communityService from "../../api/community.service"
+import * as communityService from "../../api/community.service";
 
 export default function CommunityJoin () {
     const [keyword, setKeyword] = useState("");
-
+    console.log("keyword line 6: ",keyword)
     const handleSubmit = async () => {
-        let existingCommunity = { keyword };
-        let res = await communityService.update(existingCommunity).then(() => {
+        let res = await communityService.update(keyword).then(() => {
             setKeyword("");
-            console.log("components-> Community -> Community Join: Existing Community: ", existingCommunity)
+            console.log("keyword: ",keyword)
         });
 
         if (!res === 201) {
