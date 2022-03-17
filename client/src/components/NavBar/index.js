@@ -36,9 +36,6 @@ export default function NavBar({checkUserActive}) {
                 to="/join" style={contentStyles}
             >Join a community</NavLink>
             <NavLink
-                to="/register" style={contentStyles}
-            >Register</NavLink>
-            <NavLink
                 to="/profile" style={contentStyles}
             >Profile</NavLink>
             <NavLink

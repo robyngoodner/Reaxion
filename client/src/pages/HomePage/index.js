@@ -54,7 +54,7 @@ const Home = () => {
               checkUserActive={() => userActive()}
           />
         </div>
-        <h1>Successful Sign In</h1>
+        {/* <h1>Successful Sign In</h1> */}
             <Routes>
                 <Route  
                     path='/'
@@ -88,8 +88,6 @@ const Home = () => {
 				<Welcome checkUserActive={() => dispatch({type: "setIsLoggedIn", payload: true})}/>
 			</div>
               
-             
-               
             </div>
         )
     }
