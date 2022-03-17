@@ -7,7 +7,7 @@ export default function EventView() {
     
     useEffect(() => {
         async function getEvent() {
-            const events = await eventService.get();
+            const events = await eventService.getAll();
                 setEvent(events.data);
         }
         getEvent();

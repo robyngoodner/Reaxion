@@ -8,7 +8,7 @@ export default function CommentView() {
     
     useEffect(() => {
         async function getComment() {
-            const comments = await commentService.get();
+            const comments = await commentService.getAll();
                 setComment(comments.data);
         }
         getComment();
