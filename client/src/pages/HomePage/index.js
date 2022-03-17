@@ -75,7 +75,7 @@ const Home = () => {
             </Routes>
         </>
     )
-    }else{
+    } else {
         return (
             <div>
                 <h1>LOG IN!!!</h1>
@@ -83,6 +83,9 @@ const Home = () => {
                     <Route
                     path = "login"
                     element = {<Login />}>Log In</Route>
+                    <Route  
+                    path="register"
+                    element={<Register />}></Route>
                 </Routes>
             </div>
         )
