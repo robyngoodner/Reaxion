@@ -25,6 +25,10 @@ const initialState = {
 }
 
 
+
+
+
+
 const Home = () => {
     const [state, dispatch] = useReducer(reducer, initialState);
     const { isLoggedIn } = state;
