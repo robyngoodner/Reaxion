@@ -4,14 +4,14 @@ import * as authService from "../../api/auth.service";
 //**we do not have a CheckUserActive */
 
 
-const Login = ( {checkUserActive} ) => {
+const Login = ( {checkLogin} ) => {
     const [email, setEmail] = useState("");
     const [password, setPassword] =useState("");
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         await authService.login(email, password).then(() =>{
-            checkUserActive();
+            checkLogin();
 
             setEmail("");
             setPassword("");

@@ -39,6 +39,10 @@ export default function NavBar({checkUserActive}) {
                 to='/login'
             >Login
             </NavLink>
+            <NavLink
+                to='/comment'
+            >comment
+            </NavLink>
         </div>
     )
 }

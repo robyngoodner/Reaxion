@@ -10,6 +10,7 @@ import PostCreate from "../../components/Posts/PostCreate";
 import EventCreate from "../../components/Event/EventCreate";
 import * as authService from "../../api/auth.service";
 import Login from "../../components/Login";
+import Comment from "../../components/Comment"
 
 const reducer = (prevState, action) => {
     switch(action.type) {
@@ -23,10 +24,6 @@ const reducer = (prevState, action) => {
 const initialState = {
     isLoggedIn: false,
 }
-
-
-
-
 
 
 const Home = () => {
@@ -72,6 +69,9 @@ const Home = () => {
                 <Route
                     path="event/new"
                     element={<EventCreate />}></Route>
+                     <Route
+                    path="/comment"
+                    element={<Comment />}></Route>
             </Routes>
         </>
     )
