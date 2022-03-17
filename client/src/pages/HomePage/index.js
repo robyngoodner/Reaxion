@@ -86,7 +86,7 @@ const Home = () => {
             <div>
              	<div>
 				<Welcome checkUserActive={() => dispatch({type: "setIsLoggedIn", payload: true})}/>
-			</div>
+			    </div>
               
             </div>
         )
