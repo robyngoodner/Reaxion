@@ -1,5 +1,5 @@
 import client from "./axios.config.js";
-const userProfile = '/users';
+const userProfile = '/UserProfile';
 
 const update =(id, data) => {
     return client.post(`${userProfile}/${id}`, data)
