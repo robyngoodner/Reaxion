@@ -7,15 +7,16 @@ export default function UpdateUserProfile () {
     const [description, setdescription]= useState("");
     const [userIcon, setUserIcon]= useState("");
 
-    const [deleteProfile, setDeleteProfile] = useState(null);
-
-    const handleDelete = useEffect(() => {
-        async function deleteUser() {
-            await userProfileService.destroy();
-            setDeleteProfile('User Deleted');
-        }
-        deleteUser();
-    }, []);
+    const handleProfileDelete = async () => {
+        console.log('in handleProfileDelete');
+        let res = await userProfileService.destroy()
+            .then(() => {
+                // window.location.href = "/";
+            });
+         if ( !res === 201 ) {
+             alert("Profile Not Deleted") 
+         } 
+    }        
 
  
 const handleSubmit = async () => {
@@ -79,8 +80,8 @@ return (
         
     </form>
     <button onClick={handleSubmit}>Update user profile information +</button>
-    <p> Would you like to delete {deleteProfile}'s profile?</p>
-    <button onClick={handleDelete}>Delete Profile</button>
+    <p> Would you like to delete your profile?</p>
+    <button onClick={handleProfileDelete}>Delete Profile</button>
 </div>
 );  
 };
