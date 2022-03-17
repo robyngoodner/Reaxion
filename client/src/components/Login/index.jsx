@@ -10,9 +10,9 @@ const Login = ( {checkUserActive} ) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        await authService.login(email, password).then(() =>{
-            checkUserActive();
-
+      await  authService.login(email, password).then(() =>{
+          //allows redirect after sign in dont delete
+         {checkUserActive();}
             setEmail("");
             setPassword("");
 
