@@ -9,6 +9,10 @@ import PostCreate from "../../components/Posts/PostCreate";
 import EventCreate from "../../components/Event/EventCreate";
 
 
+
+
+
+
 const Home = () => {
     return (
         <>

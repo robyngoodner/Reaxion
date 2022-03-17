@@ -11,7 +11,7 @@ const Register = () => {
     const [successMsg, setSuccessMsg] = useState("");
 
     const handleSubmit = async (e) => {
-        e.PreventDefault();
+     //   e.PreventDefault();
         await authService.register(email,password,firstName,lastName);
         setEmail("");
         setPassword("");

@@ -9,7 +9,7 @@ const register = async (req, res) => {
         const foundUser = await db.User.findOne({
             email: req.body.email
         })
-console.log(foundUser)
+
         if(foundUser) {
            
             // const updatedUser = await db.User.findByIdAndUpdate(
@@ -21,12 +21,13 @@ console.log(foundUser)
             //     },
             //     { new: true }
             //)
-            console.log("inside founduser if if ")
+            console.log("inside founduser if statement")
             return res
                 .status
                 .json({ message: "Email in use."})
         } else {
             console.log("elseee")
+            
             const salt = await bcrypt.genSalt(9)
             const hash = await bcrypt.hash(req.body.password, salt)
 
@@ -42,7 +43,7 @@ console.log(foundUser)
 
           const createdUser = db.User.create(newUser)
                 .then((err, createdUser) => {
-                   
+                   console.log("new user created " + createdUser)
         
                 })
       
@@ -56,7 +57,7 @@ console.log(foundUser)
             .json({
                 status: 500,
                 errorMsg: err,
-                message: "Internal server error. Refresh your page and try again."
+                message: "Internal Server Error."
             })
     }
 }

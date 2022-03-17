@@ -3,7 +3,8 @@ import * as authService from "../../api/auth.service";
 
 //**we do not have a CheckUserActive */
 
-const Login = ({ checkUserActive }) => {
+
+const Login = ( {checkUserActive} ) => {
     const [email, setEmail] = useState("");
     const [password, setPassword] =useState("");
 
