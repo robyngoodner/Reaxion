@@ -6,6 +6,11 @@ const get = (id) => {
     return client.get(`${comment}/${id}`)
 }
 
+const getAll = () => {
+    return client.get(`${comment}`);
+};
+
+
 const create = (data) => {
     return client.post(`${comment}`, data)
 }
@@ -19,4 +24,4 @@ const destroy = (id) => {
     return client.delete(`${comment}/${id}`)
 }
 
-export { get, create, update, destroy }
+export { get, getAll, create, update, destroy }
