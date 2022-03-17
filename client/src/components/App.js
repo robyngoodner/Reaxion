@@ -11,10 +11,12 @@ function App() {
 
   return (
     <div className="App">
-      <NavBar />
+      {/* <NavBar /> */}
       
       {/* < UpdateUserProfile/> */}
-      <h1>Reaxion</h1>
+
+
+
       <Home />
       {/* <CommunityCreate />
       <Register />

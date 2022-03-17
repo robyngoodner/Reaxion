@@ -3,16 +3,16 @@ import { useState } from 'react';
 import * as commentService from '../../api/comment.service';
 
 const Comment = () => {
-    const [title, setTitle] = useState("");
+  
     const [content, setContent] = useState("");
 
     const handleSubmit = async () => {
-        let newEvent = { title, content };
-        let res = await commentService.create(newEvent)
+        let newComment = { content };
+        let res = await commentService.create(newComment)
             .then(() => {
-                setTitle("");
+               
                 setContent("");
-                console.log(newEvent);
+                console.log(newComment);
             });
 
         if (!res === 201) {
@@ -23,15 +23,7 @@ const Comment = () => {
     return (
         <div>
             <form>
-                <label>Event Title
-                <input  
-                    onChange={(e) => setTitle(e.target.value)}
-                    value={title}
-                    type="text"
-                    name="title"
-                    placeholder="Date or name of event"
-                /></label>
-                <label>Event Description
+                <label>Comment:
                 <input  
                     onChange={(e) => setContent(e.target.value)}
                     value={content}

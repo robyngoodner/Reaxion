@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom";
+import { NavLink, Route, Routes } from "react-router-dom";
 import { useReducer, useEffect } from "react";
 // import * as communityService from '../../api/community.service';
 import CommunityJoin from '../../components/Community/CommunityJoin';
@@ -10,7 +10,9 @@ import PostCreate from "../../components/Posts/PostCreate";
 import EventCreate from "../../components/Event/EventCreate";
 import * as authService from "../../api/auth.service";
 import Login from "../../components/Login";
-import Comment from "../../components/Comment"
+import Comment from "../../components/Comment";
+import NavBar from "../../components/NavBar";
+import Welcome from "../../components/Welcome";
 
 const reducer = (prevState, action) => {
     switch(action.type) {
@@ -30,7 +32,7 @@ const Home = () => {
     const [state, dispatch] = useReducer(reducer, initialState);
     const { isLoggedIn } = state;
 
-    const checkLogin = () => {
+    const userActive = () => {
         if (authService.currentUser()) {
             dispatch({type: 'setIsLoggedIn', payload: true})
         }else{
@@ -39,13 +41,20 @@ const Home = () => {
     }
 
     useEffect(() => {
-        checkLogin();
+        userActive();
     }, []);
 
     if (isLoggedIn) {
 
     return (
         <>
+        <div>
+    
+  <NavBar 
+              checkUserActive={() => userActive()}
+          />
+        </div>
+        <h1>Successful Sign In</h1>
             <Routes>
                 <Route  
                     path='/'
@@ -61,9 +70,6 @@ const Home = () => {
                     path="profile"
                     element={<UpdateUserProfile />}></Route>
                 <Route  
-                    path="register"
-                    element={<Register />}></Route>
-                <Route  
                     path="post/new"
                     element={<PostCreate />}></Route>
                 <Route
@@ -78,15 +84,12 @@ const Home = () => {
     } else {
         return (
             <div>
-                <h1>LOG IN!!!</h1>
-                <Routes>
-                    <Route
-                    path = "login"
-                    element = {<Login />}>Log In</Route>
-                    <Route  
-                    path="register"
-                    element={<Register />}></Route>
-                </Routes>
+             	<div>
+				<Welcome checkUserActive={() => dispatch({type: "setIsLoggedIn", payload: true})}/>
+			</div>
+              
+             
+               
             </div>
         )
     }
