@@ -1,15 +1,15 @@
-import { Route, Routes } from "react-router-dom";
+// import { Route, Routes } from "react-router-dom";
 import { NavLink } from 'react-router-dom';
 import * as authService from '../../api/auth.service';
-import CommunityJoin from '../../components/Community/CommunityJoin';
-import CommunityCreate from '../../components/Community/CommunityCreate';
-import EventView from "../../components/Event/EventView";
-import UpdateUserProfile from "../../components/UserProfile/UserProfileUpdate";
-import PostCreate from "../../components/Posts/PostCreate";
-import EventCreate from "../../components/Event/EventCreate";
-import Comment from "../../components/Comment";
-import Register from "../Register";
-import Login from "../Login";
+// import CommunityJoin from '../../components/Community/CommunityJoin';
+// import CommunityCreate from '../../components/Community/CommunityCreate';
+// import EventView from "../../components/Event/EventView";
+// import UpdateUserProfile from "../../components/UserProfile/UserProfileUpdate";
+// import PostCreate from "../../components/Posts/PostCreate";
+// import EventCreate from "../../components/Event/EventCreate";
+// import Comment from "../../components/Comment";
+// import Register from "../Register";
+// import Login from "../Login";
 
 
 const contentStyles = {
@@ -52,7 +52,7 @@ export default function NavBar({checkUserActive}) {
                 to='/comment' style={contentStyles}
             >comment
             </NavLink>
-            
+
             <NavLink
                 to='/' style={contentStyles}
                 onClick = {handleLogout}
