@@ -1,6 +1,12 @@
 import { NavLink } from 'react-router-dom';
+import * as authService from '../../api/auth.service';
 
-export default function NavBar() {
+export default function NavBar({checkUserActive}) {
+        const handleLogout = async () => {
+            const res = await authService.logout();
+            checkUserActive();
+            return res;
+        }
     return (
         <div>
             <NavLink
@@ -24,6 +30,15 @@ export default function NavBar() {
             <NavLink    
                 to="event/new"
             >New Event</NavLink>
+            <NavLink
+                to='/'
+                onClick = {handleLogout}
+            >Logout
+            </NavLink>
+            <NavLink
+                to='/login'
+            >Login
+            </NavLink>
         </div>
     )
 }
