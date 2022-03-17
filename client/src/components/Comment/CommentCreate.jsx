@@ -16,7 +16,7 @@ const Comment = () => {
             });
 
         if (!res === 201) {
-                alert("Your event failed to save. More information: ", res.status)
+                alert("Your comment failed to save. More information: ", res.status)
         }
     };
 

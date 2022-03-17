@@ -1,16 +1,14 @@
-import { NavLink, Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import { useReducer, useEffect } from "react";
 // import * as communityService from '../../api/community.service';
 import CommunityJoin from '../../components/Community/CommunityJoin';
 import CommunityCreate from '../../components/Community/CommunityCreate';
 import EventView from "../../components/Event/EventView";
 import UpdateUserProfile from "../../components/UserProfile/UserProfileUpdate";
-import Register from "../../components/Register";
 import PostCreate from "../../components/Posts/PostCreate";
 import EventCreate from "../../components/Event/EventCreate";
 import * as authService from "../../api/auth.service";
-import Login from "../../components/Login";
-import Comment from "../../components/Comment";
+import Comment from "../../components/Comment/CommentView";
 import NavBar from "../../components/NavBar";
 import Welcome from "../../components/Welcome";
 
