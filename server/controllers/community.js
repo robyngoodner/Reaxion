@@ -34,14 +34,15 @@ const createCommunity = async (req, res) => {
        // db.User.findByIdAndUpdate(createdCommunity.Facilitator)
 
 
-    const bearerHeader = req.headers.authorization;
-    const token = bearerHeader.split(' ')[1];
-    const payload = await jwt.verify(token, 'reaxion')
-    req.userId = payload._id;
-    console.log("Req: ", req.userId)
-    let user = req.userId;
+    // const bearerHeader = req.headers.authorization;
+    // const token = bearerHeader.split(' ')[1];
+    // const payload = await jwt.verify(token, 'reaxion')
+    // req.userId = payload._id;
+    // console.log("Req: ", req.userId)
+    // let user = req.userId;
+
     let incomingReq = {
-        Facilitator: user,
+        Facilitator: req.userId,
         communityName: req.body.communityName,
         keyword: req.body.keyword
     }
@@ -72,9 +73,16 @@ const createCommunity = async (req, res) => {
     })
 }
 
-const joinCommunity = (req, res) => {
-    db.Community.find({ keyword: req.body.keyword })
-        .exec((err, foundCommunity) => {
+const joinCommunity =  (req, res) => {
+    // const bearerHeader = req.headers.authorization;
+    // const token = bearerHeader.split(' ')[1];
+    // const payload = await jwt.verify(token, 'reaxion')
+    // req.userId = payload._id;
+    // console.log("Req: ", req.userId)
+  
+    let user = req.userId;
+     db.Community.find({ keyword: req.params.id }, 
+        (err, foundCommunity) => {
             if (err) {
                 return res
                     .status(400)
@@ -83,8 +91,9 @@ const joinCommunity = (req, res) => {
                         error: err,
                     })
             } else {
-            foundCommunity.Members.push(req.body.user);
-            foundCommunity.save();
+                console.log(foundCommunity[0].Members)
+            foundCommunity[0].Members.push(user);
+            foundCommunity[0].save();
             return res
                 .status(200)
                 .json({
