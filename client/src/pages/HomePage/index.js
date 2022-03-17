@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, Link } from "react-router-dom";
 import { useReducer, useEffect } from "react";
 // import * as communityService from '../../api/community.service';
 import CommunityJoin from '../../components/Community/CommunityJoin';
@@ -10,6 +10,7 @@ import PostCreate from "../../components/Posts/PostCreate";
 import EventCreate from "../../components/Event/EventCreate";
 import * as authService from "../../api/auth.service";
 import Login from "../../components/Login";
+import NavBar from "../../components/NavBar";
 
 const reducer = (prevState, action) => {
     switch(action.type) {
@@ -49,6 +50,7 @@ const Home = () => {
 
     return (
         <>
+        <NavBar />
             <Routes>
                 <Route  
                     path='/'
@@ -75,15 +77,23 @@ const Home = () => {
     } else {
         return (
             <div>
+                <h1>Reaxion</h1>
                 <h1>LOG IN!!!</h1>
                 <Routes>
                     <Route
                     path = "login"
-                    element = {<Login />}>Log In</Route>
+                    element = {<Login />}>
+                    </Route>
                     <Route  
                     path="register"
                     element={<Register />}></Route>
                 </Routes>
+                <Link  
+                    to="/login"
+                    >Login</Link>
+                <Link  
+                to="/register"
+                >Register</Link>
             </div>
         )
     }
