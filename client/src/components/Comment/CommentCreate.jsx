@@ -4,14 +4,14 @@ import * as commentService from '../../api/comment.service';
 
 const Comment = () => {
   
-    const [content, setContent] = useState("");
+    const [comment, setComment] = useState("");
 
     const handleSubmit = async () => {
-        let newComment = { content };
+        let newComment = { comment };
         let res = await commentService.create(newComment)
             .then(() => {
                
-                setContent("");
+                setComment("");
                 console.log(newComment);
             });
 
@@ -25,8 +25,8 @@ const Comment = () => {
             <form>
                 <label>Comment:
                 <input  
-                    onChange={(e) => setContent(e.target.value)}
-                    value={content}
+                    onChange={(e) => setComment(e.target.value)}
+                    value={comment}
                     type="text"
                     name="content"
                     placeholder="Feel free to add a comment"
