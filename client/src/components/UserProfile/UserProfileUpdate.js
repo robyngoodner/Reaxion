@@ -11,10 +11,10 @@ export default function UpdateUserProfile () {
         console.log('in handleProfileDelete');
         let res = await userProfileService.destroy()
             .then(() => {
-                window.location.href = "/";
+                // window.location.href = "/";
             });
          if ( !res === 201 ) {
-             alert("Profile Deleted") 
+             alert("Profile Not Deleted") 
          } 
     }        
 
