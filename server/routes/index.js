@@ -6,5 +6,6 @@ router.use('/post', require("./post"));
 router.use("/auth", require("./auth"));
 router.use("/user", require("./users"));
 router.use("/event", require('./event'))
+router.use("/comment", require('./comment'))
 
 module.exports = router;
