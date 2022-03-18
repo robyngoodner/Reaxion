@@ -10,11 +10,12 @@ const EventCreate = () => {
     const [community, setCommunity] = useState("");
 
     const handleSubmit = async () => {
-        let newEvent = { title, description };
+        let newEvent = { community, title, description };
         let res = await eventService.create(newEvent)
             .then(() => {
                 setTitle("");
                 setDescription("");
+                setCommunity("");
                 console.log(newEvent);
             });
 
@@ -38,14 +39,12 @@ const EventCreate = () => {
     return (
         <div>
           <h2>Community</h2>
-          {/* MUST SET SETCOMMUNITY VALUE TO COMMUNITY'S ID, NOT E.TARGET.VALUE */}
             <select onChange={(e) => setCommunity(e.target.value)}>
             {communities.map((community)=> {
                 return (
                     <option 
                     value={community._id}
-                    name="community">
-                    {community.communityName}</option>
+                    name="community">{community.communityName}</option>
                 )
             })}
             </select> 
