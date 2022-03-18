@@ -1,5 +1,5 @@
+const { User } = require("../models");
 const db = require("../models");
-
 // Rest Routes
 /*
  * Index - GET - /comments  - Presentational - respond with all comment
@@ -45,9 +45,13 @@ const show = (req, res) => {
 
 
 
-const create = (req, res) => {
-    db.Comment.create(req.body, (err, createdComment) => {
-        console.log(createdComment)
+const create = async (req, res) => {
+
+  await db.Comment.create({ User: req.userId, comment:req.body.comment} ,
+     (err, createdComment) => {
+     console.log(createdComment + " created comment")
+        //console.log(createdComment.User)
+       
         if(err) {
             return res  
                 .status(400)
@@ -56,20 +60,35 @@ const create = (req, res) => {
                     error: err
                 })
         }
+        db.User.findById(createdComment.User)
+        .exec(function(err, foundUser){
+            console.log("found user " + foundUser)
+    
+            if(err){
+                return res.status(400).json({
+                    message: "Failed to find user",
+                    error:err,
+                    
+                })
+            };
+       
         return res  
             .status(201)
             .json({
                 message: "Successfully created a comment.",
-                data: createdComment
+                data: createdComment,
+                user: foundUser
             })
-    })
+          })
+     })
+
 };
 
 
 
 const update = (req, res) => {
     db.Comment.findByIdAndUpdate(
-        req.params.id,
+        req.userId,
         req.body,
         {new: true}, (err, updatedComment) => {
             if(err) {
