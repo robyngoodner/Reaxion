@@ -16,7 +16,7 @@ const EventCreate = () => {
                 setTitle("");
                 setDescription("");
                 setCommunity("");
-                console.log(newEvent);
+                console.log("event-->eventcreate: ",newEvent);
             });
 
         if (!res === 201) {

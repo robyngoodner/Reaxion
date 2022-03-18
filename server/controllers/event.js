@@ -55,16 +55,32 @@ const create = (req, res) => {
                     message: "Failed to create event.",
                     error: err
                 })
-        }
-        return res  
-            .status(201)
-            .json({
-                message: "Successfully created event.",
-                data: savedEvent
+        } else {
+            db.Community.findById(req.body.community, (err, foundCommunity) => {
+                if (err) {
+                    return res
+                        .status(400)
+                        .json({
+                            message: "Failed to find community",
+                            error: err
+                        })
+                } else {
+                   console.log("found this community to push to: ",foundCommunity)
+                   console.log("is the event saved yet? ", savedEvent._id)
+                    foundCommunity.Events.push(savedEvent._id) ;
+                    foundCommunity.save();
+                    console.log("Event hopefully: ",foundCommunity.Events)
+                }
             })
+            return res  
+                .status(201)
+                .json({
+                    message: "Successfully created event.",
+                    data: savedEvent
+                })
+        }
     })
 };
-
 
 module.exports = {
     show,
