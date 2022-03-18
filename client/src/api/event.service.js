@@ -10,4 +10,8 @@ const create = (data) => {
     return client.post(`${event}`, data)
 }
 
-export { get, create }
+const index = (data) => {
+    return client.get(`${event}`, data)
+}
+
+export { get, create, index }

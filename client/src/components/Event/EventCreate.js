@@ -43,7 +43,7 @@ const EventCreate = () => {
             {communities.map((community)=> {
                 return (
                     <option 
-                    value={community._id}
+                    value={community._id} key={community.keyword}
                     name="community">{community.communityName}</option>
                 )
             })}
