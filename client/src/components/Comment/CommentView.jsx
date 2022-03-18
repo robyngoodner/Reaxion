@@ -17,6 +17,7 @@ export default function CommentView() {
     return(
         <>
             <h1>{comment.comment}</h1>
+            
             <CommentCreate />
         </>
     )

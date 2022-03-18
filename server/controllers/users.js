@@ -2,6 +2,7 @@
 const db = require('../models');
 const User = require('../models/user');
 const Community = require('../models/Community');
+
 /*
  * Index - GET - /users  - Presentational - respond with all users
  * New - GET - /users/new  - Presentational Form - a page with a form to create a new user
@@ -32,6 +33,7 @@ const show= (req,res) => {
     }
     })
     })
+    
 }
 
 const editProfile = (req, res) => {
