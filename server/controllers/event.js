@@ -40,7 +40,14 @@ const show = (req, res) => {
 };
 
 const create = (req, res) => {
-    db.Event.create(req.body, (err, savedEvent) => {
+    let incomingReq={
+        facilitator: req.userId,
+        title: req.body.title,
+        description: req.body.description,
+        community: req.body.community
+    }
+    console.log("incomingReq: ",incomingReq)
+    db.Event.create(incomingReq, (err, savedEvent) => {
         if(err) {
             return res  
                 .status(400)
