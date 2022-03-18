@@ -63,14 +63,18 @@ const create = async (req, res) => {
         db.User.findById(createdComment.User)
         .exec(function(err, foundUser){
             console.log("found user " + foundUser)
-    
+            
             if(err){
                 return res.status(400).json({
                     message: "Failed to find user",
                     error:err,
                     
                 })
-            };
+            } else {
+                foundUser.Comments.push(createdComment);
+                foundUser.save();
+                console.log("Comment hopefully: ", foundUser.Comments)
+            }
        
         return res  
             .status(201)
