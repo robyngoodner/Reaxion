@@ -88,7 +88,7 @@ export default function PostUpdate () {
                 <input
                 type="hidden"
                 name="User"
-                value={ user._id }
+                value={ req.User }
                 /> 
             </form>
             <button onClick={handleSubmit}>Submit Reaction</button>

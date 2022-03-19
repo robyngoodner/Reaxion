@@ -32,7 +32,11 @@ const showOne = (req, res) => {
 }
 
 const create = (req, res) => {
-    db.Post. create(
+    let incomingReq = {
+        User: req.userId,
+    }
+    
+    await db.Post. create(
         req.body, 
         (err, savedPost) => {
         if (err) {
