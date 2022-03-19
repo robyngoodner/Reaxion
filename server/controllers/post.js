@@ -109,10 +109,13 @@ const create = (req, res) => {
 }
 
 const update = (req, res) => {
+    console.log('hello')
+    console.log("outside update", req.body)
     db.Post.findByIdAndUpdate(
         req.params.id,
         req.body,
         {new: true}, (err, updatedPost) => {
+            console.log("inside update", req.body)
             if(err) {
                 return res.status(400).json({
                     message: "Error 400",
