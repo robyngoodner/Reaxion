@@ -29,6 +29,12 @@ const showOne = (req, res) => {
 }
 
 const create = (req, res) => {
+    let incomingReq = {
+        User: req.userId,
+        content: req.body.content,
+        User_Comment: req.body.User_Comment,
+        Event: req.body.Event
+    }
     db.Post. create(
         req.body, 
         (err, savedPost) => {
@@ -38,11 +44,38 @@ const create = (req, res) => {
                 message: "Error 400",
                 error: err 
             })
+        } else {
+            db.User.findById(incomingReq.User)
+            .exec(function (err, foundUser) {
+                if (err) return res 
+                    .status(400)
+                    .json({
+                        message: "Failed to find user to create post",
+                        error: err
+                    })
+                else {
+                    foundUser.Posts.push(savedPost);
+                    foundUser.save();
+                }
+            });
+            db.Event.findById(incomingReq.Event)
+            .exec(function (err, foundEvent) {
+                if (err) return res
+                    .status(400)
+                    .json({
+                        message: "Failed to find event to create post",
+                        error: err
+                    })
+                else{
+                    foundEvent.posts.push(savedPost);
+                    foundEvent.save();
+                }
+            });  
+            return res.status(201).json({
+                message: "Created Post",
+                data: savedPost
+            })
         }
-        return res.status(201).json({
-            message: "Created Post",
-            data: savedPost
-        })
     })
 }
 
