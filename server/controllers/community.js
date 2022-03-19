@@ -86,7 +86,7 @@ const joinCommunity =  (req, res) => {
                         error: err,
                     })
             } else {
-                console.log(foundCommunity[0].Members)
+                console.log('joined',foundCommunity[0].Members)
             foundCommunity[0].Members.push(user);
             foundCommunity[0].save();
             return res
@@ -99,9 +99,26 @@ const joinCommunity =  (req, res) => {
         })
 }
 
+const getAll = (req, res) => {
+    db.Community.findById(req.params.id, (err, foundCommunity) => { if (err) { 
+        return res
+            .status(400)
+            .json({ error: err }) 
+        } else { 
+            return res
+                .status(200)
+                .json({ 
+                    message: "Found Community",
+                    data: foundCommunity,
+                })}
+
+    })
+}
+
 
 module.exports = {
     index, 
     createCommunity,
-    joinCommunity
+    joinCommunity,
+    getAll
 }

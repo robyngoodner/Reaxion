@@ -11,4 +11,9 @@ const destroy = (id) => {
     return client.delete(`${userProfile}/${id}`)
 }
 
+// const showCommunity = (id) => {
+//     console.log('hitting show!')
+//     return client.get(`${userProfile}/${id}`)
+// }
+
 export {update, destroy};

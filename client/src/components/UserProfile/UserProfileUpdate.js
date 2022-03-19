@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import * as userProfileService from "../../api/userprofile.service";
 import * as postService from "../../api/post.service";
+import * as communityService from "../../api/community.service";
 
 export default function UpdateUserProfile () {
     const [firstName, setfirstName]= useState("");
@@ -8,6 +9,7 @@ export default function UpdateUserProfile () {
     const [description, setdescription]= useState("");
     const [userIcon, setUserIcon]= useState("");
     const [posts, setPosts] = useState([]);
+    const [community, setCommunity] = useState([]);
     
     const handleProfileDelete = async () => {
         console.log('in handleProfileDelete');
@@ -39,9 +41,22 @@ export default function UpdateUserProfile () {
         await postService.getAll().then((res) => {
             setPosts(res.data.data);
         });
-
+    }
     useEffect(() => {
         findPosts();
+    }, []);
+
+
+
+const findCommunity = async () => {
+    await communityService.getAll().then((res) => {
+        setCommunity(res.data.data);
+        console.log("found community: ", community)
+        setCommunity(res.data.data[0]._id)
+    });
+}
+    useEffect(() => {
+        findCommunity();
     }, []);
 
 return (
@@ -104,6 +119,17 @@ return (
                 )
             })}
         </ul> 
+        <h1>Communities</h1>
+        <ul onChange={(e) => setCommunity(e.target.value)}>
+            {community.map((community)=> {
+                return (
+                    <li> 
+                        communityName:{community.communityName}
+                    </li>
+                )
+            })}
+        </ul> 
+
 </div>
 );  
-};
+        }
