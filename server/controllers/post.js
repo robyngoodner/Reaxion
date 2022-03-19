@@ -10,6 +10,9 @@
  */
 
 const db = require("../models");
+const jwt = require('jsonwebtoken');
+const { findById } = require('../models/user');
+
 
 const showOne = (req, res) => {
     db.Post.findById(
