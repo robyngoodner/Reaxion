@@ -1,6 +1,10 @@
 import client from "./axios.config.js";
 const userProfile = '/user';
 
+const show = (data) => {
+    return client.get(`${userProfile}`, data)
+}
+
 const update =(data, id) => {
     console.log("in axios")
     console.log("id in userprofile service: ",id)
@@ -12,4 +16,4 @@ const destroy = (id) => {
     return client.delete(`${userProfile}/${id}`)
 }
 
-export {update, destroy};
+export {show, update, destroy};
