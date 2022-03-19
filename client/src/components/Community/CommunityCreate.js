@@ -42,7 +42,7 @@ export default function CommunityCreate () {
                     placeholder="Name your Community"
                 /> 
                 <br />
-                <label>Create a unique keyword to give to your participants</label>
+                <label>Create a unique keyword so your participants can find you. Make sure you remember your keyword!</label>
                 <input
                     type="text" 
                     name="keyword" 

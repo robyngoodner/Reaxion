@@ -143,6 +143,7 @@ const getAll = (req, res) => {
 
 module.exports = {
     index, 
+    getCommunities,
     createCommunity,
     joinCommunity,
     getCommunities,
