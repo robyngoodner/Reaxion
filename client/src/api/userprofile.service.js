@@ -2,7 +2,8 @@ import client from "./axios.config.js";
 const userProfile = '/user';
 
 const update =(id, data) => {
-    console.log("in axios", id)
+    console.log("in axios")
+    console.log(id)
     console.log(data)
     return client.put(`${userProfile}/${id}`)
 }

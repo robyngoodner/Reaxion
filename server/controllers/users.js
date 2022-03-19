@@ -40,30 +40,35 @@ const show= (req,res) => {
 const updateProfile= (req, res) => {
     console.log("in controller");
     db.User.findByIdAndUpdate(
-        req.userId,
-        {
-         firstName: req.body.firstName,
-         lastName: req.body.lastName,
-         description: req.body.description,
-         userIcon: req.body.userIcon   
-        },
+        {_id:req.userId},{
+            $set: {firstName: req.body.firstName,
+                lastName: req.body.lastName,
+                description: req.body.description,
+                userIcon: req.body.userIcon  }
+        }, 
         {new: true},
         (err,foundProfile) => {
+            console.log(foundProfile)
         if (err) {
             return res.status(400)
             .json({
                 message: "Failed to edit the profile.",
                 error: err,
             })
-        } else {
-            console.log(foundProfile);
-            foundProfile[0].push(req.userId)
-            foundProfile[0].save();
-        }
-        return res.status(200).json({
+        } 
+        //else {
+        //     console.log(foundProfile);
+        //     foundProfile[0].push(req.userId.firstName)
+        //     foundProfile[0].save();
+        // }
+         else {
+            console.log("inside success"+foundProfile)
+             return res.status(200).json({
             message: "Updated User Profile",
-            data: foundProfile
+            data: foundProfile,
+            id: req.userId
         })
+    }
     })
 }
 

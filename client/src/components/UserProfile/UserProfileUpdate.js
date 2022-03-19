@@ -1,11 +1,25 @@
 import React, {useState, useEffect} from 'react';
 import * as userProfileService from "../../api/userprofile.service";
 
-export default function UpdateUserProfile () {
+export default function UpdateUserProfile() {
     const [firstName, setfirstName]= useState("");
     const [lastName, setlastName]= useState("");
     const [description, setdescription]= useState("");
     const [userIcon, setUserIcon]= useState("");
+
+    const handleSubmit = async () => {
+        let newUserInfo = {firstName, lastName, description, userIcon};
+        let res = await userProfileService.update(newUserInfo).then(() => {
+            setfirstName("");
+            setlastName("");
+            setdescription("");
+            setUserIcon("");
+            UpdateUserProfile();
+        });
+        if (!res === 201) {
+            alert(`error updating user information, ${res.status}`);
+        }
+    };
 
     const handleProfileDelete = async () => {
         console.log('in handleProfileDelete');
@@ -17,23 +31,6 @@ export default function UpdateUserProfile () {
              alert("Profile Not Deleted") 
          } 
     }        
-
- 
-const handleSubmit = async () => {
-    let newUserInfo = {firstName, lastName, description, userIcon};
-    let res = await userProfileService.update(newUserInfo).then(() => {
-        setfirstName("");
-        setlastName("");
-        setdescription("");
-        setUserIcon("");
-        UpdateUserProfile();
-        console.log(newUserInfo)
-    });
-    if (!res === 201) {
-        alert(`error updating user information, ${res.status}`);
-    }
-};
-
 
 return (
     <div>
