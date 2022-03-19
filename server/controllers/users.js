@@ -89,34 +89,9 @@ const destroy = (req, res) => {
     })
 }
 
-const userCommunity = (req, res) => {
-    console.log('user community controller')
-    db.User.findById(req.params.id) 
-        .populate({
-            path: 'Communities'
-        })
-        .exec((err, foundCommunity) => {
-        if (err) {
-            return res
-                .status(400)
-                .json({
-                    message: "Bad Request; Community could not be found",
-                    err: err,
-                })
-        }
-        return res
-            .status(200)
-            .json({
-                message: "Community Found",
-                data: foundCommunity
-            })
-    })
-}
-
 module.exports = {
     show,
     updateProfile,
     destroy,
-    userCommunity
 }
 

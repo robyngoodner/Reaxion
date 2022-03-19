@@ -52,7 +52,7 @@ const findCommunity = async () => {
     await communityService.getAll().then((res) => {
         setCommunity(res.data.data);
         console.log("found community: ", community)
-        setCommunity(res.data.data[0]._id)
+        setCommunity(res.data.data)
     });
 }
     useEffect(() => {
