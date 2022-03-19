@@ -127,7 +127,7 @@ return (
                             User Comment:{post.User_Comment}
                         </li>
                         <div>
-                            <Link to={`../../post/${post._id}`}>
+                            <Link to={`../../post/${post._id}`} state={{ postId: post._id }} >
                                 <button>Edit</button>
                             </Link>
                             <button onClick={handleSubmitDelete}>Delete</button>

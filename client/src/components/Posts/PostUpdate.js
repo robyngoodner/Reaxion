@@ -1,17 +1,24 @@
 import React, { useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import * as postService from '../../api/post.service';
 
 export default function PostUpdate () {
+    const location = useLocation();
+    const { postId } = location.state;
+
     const [content, setContent] = useState("");
     const [User_Comment, setUser_Comment] = useState("");
-
+    const [_id, set_id] = useState( postId )
+    
     const handleSubmit = async () => {
-        let updatedPost = { content, User_Comment};
+        console.log("before res")
+        console.log({ postId })
+
+        let updatedPost = { _id, content, User_Comment};
         let res = await postService.update(updatedPost)
-        console.log("hello", res)
-
+        console.log("after res", res)
         .then(() => {
-
+                set_id("")
                 setContent([]);
                 setUser_Comment("");
                 console.log("updated post", updatedPost)
@@ -87,6 +94,12 @@ export default function PostUpdate () {
                         placeholder="Additional comment"
                     />
                 </label>
+                {/* <input 
+                    onChange={() => set_id( { postId } )}
+                    type="hidden"
+                    name="_id"
+                    value={ postId }
+                /> */}
             </form>
             <button onClick={handleSubmit}>Submit Reaction</button>
         </div>

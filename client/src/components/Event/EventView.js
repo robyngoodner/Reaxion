@@ -31,7 +31,7 @@ export default function EventView() {
     return(
         <>
             <h1>{event.title}</h1>
-            <Post post={post}/>
+            {/* <Post post={post}/> */}
         </>
     )
 }
