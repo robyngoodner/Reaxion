@@ -10,6 +10,10 @@ const showOne = (id) => {
     return client.get(`${post}/${id}`)
 }
 
+const getAll = (data) => {
+    return client.get(`${post}`, data)
+}
+
 const update = (id, data) => {
     return client.put(`${post}/${id}`)
 }
@@ -18,4 +22,4 @@ const destroy = (id) => {
     return client.delete(`${post}/${id}`)
 }
 
-export { create, showOne, update, destroy }
+export { create, showOne, update, destroy, getAll }
