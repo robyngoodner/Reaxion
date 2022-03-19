@@ -1,8 +1,9 @@
 import { Route, Routes, Link } from "react-router-dom";
 import { useReducer, useEffect } from "react";
 // import * as communityService from '../../api/community.service';
-import CommunityJoin from '../../components/Community/CommunityJoin';
-import CommunityCreate from '../../components/Community/CommunityCreate';
+// import CommunityJoin from '../../components/Community/CommunityJoin';
+// import CommunityCreate from '../../components/Community/CommunityCreate';
+import Community from '../../components/Community/index';
 import EventView from "../../components/Event/EventView";
 import UpdateUserProfile from "../../components/UserProfile/UserProfileUpdate";
 import PostCreate from "../../components/Posts/PostCreate";
@@ -64,11 +65,14 @@ const Home = () => {
                     element={<EventView/>}
                     />
                 <Route 
+                    path="community" 
+                    element={<Community />}></Route>
+                {/* <Route 
                     path="new" 
                     element={<CommunityCreate />}></Route>
                 <Route  
                     path="join"
-                    element={<CommunityJoin />}></Route>
+                    element={<CommunityJoin />}></Route> */}
                 <Route  
                     path="profile"
                     element={<UpdateUserProfile />}></Route>

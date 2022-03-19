@@ -1,19 +1,20 @@
 import client from "./axios.config.js";
 const userProfile = '/user';
 
-const update =(id, data) => {
-    console.log("in axios", id)
-    console.log(data)
-    return client.put(`${userProfile}/${id}`)
+const show = (data) => {
+    return client.get(`${userProfile}`, data)
+}
+
+const update =(data, id) => {
+    console.log("in axios")
+    console.log("id in userprofile service: ",id)
+    console.log("data in userprofile service: ",data)
+    return client.put(`${userProfile}/${id}`, data)
 }
 
 const destroy = (id) => {
     return client.delete(`${userProfile}/${id}`)
 }
 
-// const showCommunity = (id) => {
-//     console.log('hitting show!')
-//     return client.get(`${userProfile}/${id}`)
-// }
+export {show, update, destroy};
 
-export {update, destroy};
