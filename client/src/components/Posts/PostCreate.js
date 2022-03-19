@@ -10,12 +10,12 @@ export default function PostCreate () {
     const [event, setEvent] = useState("");
 
     const handleSubmit = async () => {
-        let newPost = { content, User, User_Comment, event};
+
+        let newPost = { content, User_Comment, event};
         let res = await postService.create(newPost)
             .then(() => {
                 setContent([]);
                 setUser_Comment("");
-                setUser("");
                 setEvent("");
                 console.log(newPost)
             });
@@ -106,11 +106,6 @@ export default function PostCreate () {
                     />
                 </label>
 
-              {/* <input
-                type="hidden"
-                name="User"
-                value={ User }
-                />  */}
 
                 <input 
                     type="hidden"
