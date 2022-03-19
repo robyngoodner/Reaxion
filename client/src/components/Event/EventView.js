@@ -16,6 +16,7 @@ export default function EventView() {
     return(
         <>
             <h1>{event.title}</h1>
+            
         </>
     )
 }

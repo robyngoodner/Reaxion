@@ -47,7 +47,12 @@ export default function NavBar({checkUserActive}) {
            
             <NavLink
                 to='/comment' style={contentStyles}
-            >comment
+            >Comment
+            </NavLink>
+
+            <NavLink
+                to='/events' style={contentStyles}
+            >All Events
             </NavLink>
 
             <NavLink

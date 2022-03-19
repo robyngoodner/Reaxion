@@ -10,6 +10,35 @@ const db = require('../models');
  * Delete - DELETE - /events/:id  - Functional - Deletes event by id from request
  */
 
+const index = (req, res) => {
+    db.Community.find({Members: req.userId})
+        .populate({
+            path: 'Events',
+            populate : {
+                path: 'posts'
+            }
+        })
+        .exec((err, foundCommunity) => {
+            if(err) {
+                return res  
+                    .status(400)
+                    .json({
+                        message: "Bad request; cannot load communities",
+                        err: err
+                    })
+            }
+            return res  
+                // .populate({
+                //     path: 'Events'
+                // })
+                .status(200)
+                .json({
+                    message: "Community and events found",
+                    data: foundCommunity
+                })
+        })
+}
+
 const show = (req, res) => {
     db.Event.findById(req.params.id)
           //.populate post reference
@@ -83,6 +112,7 @@ const create = (req, res) => {
 };
 
 module.exports = {
+    index,
     show,
     create
 }
