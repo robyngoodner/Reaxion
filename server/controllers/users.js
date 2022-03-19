@@ -1,6 +1,7 @@
 // Rest Routes
 const db = require('../models');
-const User = require('../models/user');
+const {User} = require('../models/user');
+const jwt = require('jsonwebtoken');
 const Community = require('../models/Community');
 
 /*
@@ -13,9 +14,17 @@ const Community = require('../models/Community');
  * Delete - DELETE - /users/:id  - Functional - Deletes user by id from request
  */
 
-
+//Show user profile
 const show= (req,res) => {
-    db.User.find({name: req.user.name},(err,foundUserProfile) => {
+    // let incomingReq = {
+    //     User: req.userId,
+    //     Communities: req.body.Communities,
+    //     Facilitator_Communities: req.body.Facilitator_Communities,
+    //     Posts: req.body.Posts,
+    //     Comments: req.body.Comments,
+    //     firstName: User.firstName,
+    // }
+    db.User.findById(req.userId, (err,foundUserProfile) => {
         if (err) {
             return res.status(400)
             .json({
@@ -23,41 +32,22 @@ const show= (req,res) => {
                 error: err,
             })
     }  
-    Community.find({Members:foundUserProfile[0]._id},(err,foundMembership) => {
-    if (err) {
-        return res.status(400)
-        .json({
-            message: "Failed to find the user profile.",
-            error: err,
-        })
-    }
-    })
     })
     
 }
 
-const editProfile = (req, res) => {
-    db.User.findById(req.params.id, (err,foundProfile) => {
-        if (err) {
-            return res.status(400)
-            .json({
-                message: "Failed to edit the profile.",
-                error: err,
-            })
-    }
-    })
-}
-
+//Update profile 
 const updateProfile= (req, res) => {
+    console.log("in controller");
     db.User.findByIdAndUpdate(
-        req.params.id,
+        req.userId,
         {
          firstName: req.body.firstName,
          lastName: req.body.lastName,
          description: req.body.description,
          userIcon: req.body.userIcon   
         },
-        {new: true, returnOriginal: false},
+        {new: true},
         (err,foundProfile) => {
         if (err) {
             return res.status(400)
@@ -65,7 +55,15 @@ const updateProfile= (req, res) => {
                 message: "Failed to edit the profile.",
                 error: err,
             })
+        } else {
+            console.log(foundProfile);
+            foundProfile[0].push(req.userId)
+            foundProfile[0].save();
         }
+        return res.status(200).json({
+            message: "Updated User Profile",
+            data: foundProfile
+        })
     })
 }
 
@@ -94,7 +92,6 @@ const destroy = (req, res) => {
 
 module.exports = {
     show,
-    editProfile,
     updateProfile,
     destroy,
 }

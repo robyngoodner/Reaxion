@@ -97,7 +97,7 @@ export default function PostCreate () {
                     <label htmlFor="disinterestedEmoji">Disinterested</label>
                 </div>
                 <label>
-                    If you would like, please leavea an additional comment about your experience (optional):
+                    If you would like, please leave an additional comment about your experience (optional):
                     <textarea 
                         onChange={(e) => setUser_Comment(e.target.value)}
                         value={User_Comment}
@@ -106,13 +106,7 @@ export default function PostCreate () {
                         placeholder="Additional comment"
                     />
                 </label>
-
-                {/* <input 
-                    type="hidden"
-                    name="User"
-                    value={incomingReq.User}
-                /> */}
-                {/* <input 
+               {/* <input 
                     type="hidden"
                     name="Event"
                     value={event._id}

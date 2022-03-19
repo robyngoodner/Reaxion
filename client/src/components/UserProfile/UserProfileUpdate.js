@@ -19,8 +19,7 @@ export default function UpdateUserProfile () {
              alert("Profile Not Deleted") 
          } 
     }        
-
- 
+    
     const handleSubmit = async () => {
         let newUserInfo = {firstName, lastName, description, userIcon};
         let res = await userProfileService.update(newUserInfo).then(() => {
@@ -29,6 +28,7 @@ export default function UpdateUserProfile () {
             setdescription("");
             setUserIcon("");
             UpdateUserProfile();
+            console.log(newUserInfo)
         });
         if (!res === 201) {
             alert(`error updating user information, ${res.status}`);
@@ -36,12 +36,9 @@ export default function UpdateUserProfile () {
     };
 
     const findPosts = async () => {
-        console.log("hello")
         await postService.getAll().then((res) => {
             setPosts(res.data.data);
-            console.log("found posts: ", posts)
         });
-    }
 
     useEffect(() => {
         findPosts();
@@ -92,7 +89,7 @@ return (
         </label>
         
     </form>
-    <button onClick={handleSubmit}>Update user profile information +</button>
+    <button onClick={handleSubmit}>Update user profile information</button>
     <p> Would you like to delete your profile?</p>
     <button onClick={handleProfileDelete}>Delete Profile</button>
         <h1>Posts</h1>
