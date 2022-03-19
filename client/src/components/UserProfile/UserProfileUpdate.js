@@ -15,7 +15,6 @@ export default function UpdateUserProfile(data) {
             setDescription("");
             setUserIcon("");
             console.log("userprofile newuserinfo: ", newUserInfo)
-            // UpdateUserProfile();
         });
         if (!res === 201) {
             alert(`Error updating user information, ${res.status}`);

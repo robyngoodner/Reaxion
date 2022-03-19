@@ -36,7 +36,7 @@ const show= (req,res) => {
 
 //Update profile 
 const updateProfile= (req, res) => {
-    console.log("req.body: ", req)
+    console.log("req.body: ", req.body)
     console.log("userId: ", req.userId)
     db.User.findByIdAndUpdate(
         {_id: req.userId },

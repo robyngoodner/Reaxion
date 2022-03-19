@@ -1,7 +1,7 @@
 import client from "./axios.config.js";
 const userProfile = '/user';
 
-const update =(id, data) => {
+const update =(data, id) => {
     console.log("in axios")
     console.log("id in userprofile service: ",id)
     console.log("data in userprofile service: ",data)
