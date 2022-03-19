@@ -17,3 +17,4 @@ const destroy = (id) => {
 }
 
 export {show, update, destroy};
+

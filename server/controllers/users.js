@@ -75,7 +75,6 @@ const updateProfile= (req, res) => {
 //delete profile
 
 const destroy = (req, res) => {
-    console.log("backend");
     db.User.findByIdAndDelete(req.userId, (err, deleteUser)=>{
         if (err) {
         return res

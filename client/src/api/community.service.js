@@ -2,12 +2,14 @@ import client from "./axios.config.js";
 
 const community = '/community';
 
+
 const getAll = (data, id) => {
     return client.get(`${community}/${id}`, data)
 }
 
 const getCommunities = (data) => {
     return client.get(`${community}`, data)
+
 }
 
 const create = (data) => {
