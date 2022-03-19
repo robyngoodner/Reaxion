@@ -1,19 +1,36 @@
 import React, { useEffect, useState } from 'react';
 import * as postService from '../../api/post.service';
-import * as eventService from '../../api/event.service'
+import * as authService from '../../api/auth.service';
+import * as eventService from '../../api/event.service';
 
 export default function PostUpdate () {
     const [content, setContent] = useState("");
     const [User_Comment, setUser_Comment] = useState("");
+//     const [User, setUser] = useState("");
     const [event, setEvent] = useState("");
 
     const handleSubmit = async () => {
-        let newPost = { content, User_Comment, event};
+        let newPost = { reaction, User, comment, event};
         let res = await postService.create(newPost)
             .then(() => {
                 setContent([]);
-                setUser_Comment("");
+                setComment("");
+                setUser("");
                 setEvent("");
+// import * as eventService from '../../api/event.service'
+
+// export default function PostUpdate () {
+//     const [content, setContent] = useState("");
+//     const [User_Comment, setUser_Comment] = useState("");
+//     const [event, setEvent] = useState("");
+
+//     const handleSubmit = async () => {
+//         let newPost = { content, User_Comment, event};
+//         let res = await postService.create(newPost)
+//             .then(() => {
+//                 setContent([]);
+//                 setUser_Comment("");
+//                 setEvent("");
                 console.log(newPost)
             });
         
@@ -31,6 +48,11 @@ export default function PostUpdate () {
     useEffect(() => {
         findEvent();
     }, []);
+
+    const userFind = async () => {
+        let res = await authService.currentUser();
+        console.log(res)
+    }
 
     return (
         <div>
@@ -97,11 +119,19 @@ export default function PostUpdate () {
                         placeholder="Additional comment"
                     />
                 </label>
+
+//                 <input
+//                 type="hidden"
+//                 name="User"
+//                 value={ User }
+//                 /> 
+
                 <input 
                     type="hidden"
                     name="Event"
                     value={event._id}
                 />
+
             </form>
             <button onClick={handleSubmit}>Submit Reaction</button>
         </div>

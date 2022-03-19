@@ -10,6 +10,9 @@
  */
 
 const db = require("../models");
+const jwt = require('jsonwebtoken');
+const { findById } = require('../models/user');
+
 
 const showOne = (req, res) => {
     db.Post.findById(
@@ -35,8 +38,8 @@ const create = (req, res) => {
         User_Comment: req.body.User_Comment,
         Event: req.body.Event
     }
-    db.Post. create(
-        req.body, 
+    await db.Post. create(
+        incomingReq, 
         (err, savedPost) => {
         if (err) {
             console.log(err)
