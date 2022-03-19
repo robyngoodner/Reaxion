@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import * as postService from '../../api/post.service';
+import * as authService from '../../api/auth.service';
 
 export default function PostUpdate () {
     const [reaction, setReaction] = useState("");
@@ -19,6 +20,11 @@ export default function PostUpdate () {
          if ( !res === 201 ) {
              alert(`Post error. Please submit again. ${res.status}`) 
          }    
+    }
+
+    const userFind = async () => {
+        let res = await authService.currentUser();
+        console.log(res)
     }
 
     return (
@@ -89,7 +95,7 @@ export default function PostUpdate () {
                 <input
                 type="hidden"
                 name="User"
-                value={ req.User }
+                value={ User }
                 /> 
             </form>
             <button onClick={handleSubmit}>Submit Reaction</button>
