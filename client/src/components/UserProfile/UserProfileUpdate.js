@@ -27,6 +27,7 @@ const handleSubmit = async () => {
         setdescription("");
         setUserIcon("");
         UpdateUserProfile();
+        console.log(newUserInfo)
     });
     if (!res === 201) {
         alert(`error updating user information, ${res.status}`);
@@ -79,7 +80,7 @@ return (
         </label>
         
     </form>
-    <button onClick={handleSubmit}>Update user profile information +</button>
+    <button onClick={handleSubmit}>Update user profile information</button>
     <p> Would you like to delete your profile?</p>
     <button onClick={handleProfileDelete}>Delete Profile</button>
 </div>
