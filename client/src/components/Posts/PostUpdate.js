@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import * as postService from '../../api/post.service';
 
-export default function PostCreate () {
+export default function PostUpdate () {
     const [content, setContent] = useState("");
     const [User_Comment, setUser_Comment] = useState("");
 

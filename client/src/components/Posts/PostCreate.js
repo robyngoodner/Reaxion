@@ -3,7 +3,7 @@ import * as postService from '../../api/post.service';
 import * as authService from '../../api/auth.service';
 import * as eventService from '../../api/event.service';
 
-export default function PostUpdate () {
+export default function PostCreate () {
     const [content, setContent] = useState("");
     const [User_Comment, setUser_Comment] = useState("");
     const [User, setUser] = useState("");
@@ -17,20 +17,6 @@ export default function PostUpdate () {
                 setUser_Comment("");
                 setUser("");
                 setEvent("");
-// import * as eventService from '../../api/event.service'
-
-// export default function PostUpdate () {
-//     const [content, setContent] = useState("");
-//     const [User_Comment, setUser_Comment] = useState("");
-//     const [event, setEvent] = useState("");
-
-//     const handleSubmit = async () => {
-//         let newPost = { content, User_Comment, event};
-//         let res = await postService.create(newPost)
-//             .then(() => {
-//                 setContent([]);
-//                 setUser_Comment("");
-//                 setEvent("");
                 console.log(newPost)
             });
         

@@ -38,7 +38,7 @@ const create = (req, res) => {
         User_Comment: req.body.User_Comment,
         Event: req.body.Event
     }
-    await db.Post. create(
+    await db.Post.create(
         incomingReq, 
         (err, savedPost) => {
         if (err) {
