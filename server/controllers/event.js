@@ -10,6 +10,35 @@ const db = require('../models');
  * Delete - DELETE - /events/:id  - Functional - Deletes event by id from request
  */
 
+const index = (req, res) => {
+    db.Community.find({Members: req.userId})
+        .populate({
+            path: 'Events',
+            populate : {
+                path: 'posts'
+            }
+        })
+        .exec((err, foundCommunity) => {
+            if(err) {
+                return res  
+                    .status(400)
+                    .json({
+                        message: "Bad request; cannot load communities",
+                        err: err
+                    })
+            }
+            return res  
+                // .populate({
+                //     path: 'Events'
+                // })
+                .status(200)
+                .json({
+                    message: "Community and events found",
+                    data: foundCommunity
+                })
+        })
+}
+
 const show = (req, res) => {
     db.Event.findById(req.params.id)
           //.populate post reference
@@ -28,9 +57,10 @@ const show = (req, res) => {
                         err: err,
                     })
             }
-            return res        .populate({
-            path: 'posts',
-        })
+            return res        
+        //     .populate({
+        //     path: 'posts',
+        // })
                 .status(200)
                 .json({
                     message: "Event Found",
@@ -40,7 +70,14 @@ const show = (req, res) => {
 };
 
 const create = (req, res) => {
-    db.Event.create(req.body, (err, savedEvent) => {
+    let incomingReq={
+        facilitator: req.userId,
+        title: req.body.title,
+        description: req.body.description,
+        community: req.body.community
+    }
+    console.log("incomingReq: ",incomingReq)
+    db.Event.create(incomingReq, (err, savedEvent) => {
         if(err) {
             return res  
                 .status(400)
@@ -48,18 +85,35 @@ const create = (req, res) => {
                     message: "Failed to create event.",
                     error: err
                 })
-        }
-        return res  
-            .status(201)
-            .json({
-                message: "Successfully created event.",
-                data: savedEvent
+        } else {
+            db.Community.findById(req.body.community, (err, foundCommunity) => {
+                if (err) {
+                    return res
+                        .status(400)
+                        .json({
+                            message: "Failed to find community",
+                            error: err
+                        })
+                } else {
+                   console.log("found this community to push to: ",foundCommunity)
+                   console.log("is the event saved yet? ", savedEvent._id)
+                    foundCommunity.Events.push(savedEvent._id) ;
+                    foundCommunity.save();
+                    console.log("Event hopefully: ",foundCommunity.Events)
+                }
             })
+            return res  
+                .status(201)
+                .json({
+                    message: "Successfully created event.",
+                    data: savedEvent
+                })
+        }
     })
 };
 
-
 module.exports = {
+    index,
     show,
     create
 }

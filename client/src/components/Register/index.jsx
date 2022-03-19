@@ -10,9 +10,9 @@ const Register = () => {
     const [password, setPassword] = useState("");
     const [successMsg, setSuccessMsg] = useState("");
 
-    const handleSubmit = async (e) => {
-        e.PreventDefault();
-        await authService.register(email,password,firstName,lastName);
+    const handleSubmit =  (e) => {
+     //   e.PreventDefault();
+         authService.register(email,password,firstName,lastName);
         setEmail("");
         setPassword("");
         setSuccessMsg("Your Registration was Successful.");

@@ -1,4 +1,6 @@
 const db = require('../models')
+const jwt = require('jsonwebtoken');
+const { findById } = require('../models/user');
 
 // Rest Routes
 /*
@@ -11,30 +13,35 @@ const db = require('../models')
  * Delete - DELETE - /communities/:id  - Functional - Deletes community by id from request
  */
 
+
+const index =  (req, res) => {
+     db.Community.find({Facilitator: req.userId}, (err, foundCommunities) => {
+        // console.log("community controller ",req.userId);
+        // console.log ("foundCommunity",foundCommunities)
+        if (err) {
+            return res
+                .status(400)
+                .json({
+                    message: "Error 400",
+                    err: err,
+                })
+        }
+        return res  
+            .status(200)
+            .json({
+                message: "Found communities",
+                data: foundCommunities
+            })
+    })
+}
+
 const createCommunity = async (req, res) => {
-
-
-//     const newCommunity = req.body;
-    
-
-//     const createdCommunity = db.Community.create(newCommunity)
-//     .then((err, createdCommunity) => {
-//         console.log("createdCommunity" + createdCommunity)
-
-//     })
-
-    // await db.Community.create(req.body, (err, createdCommunity) => {
-    //     if (err) {
-    //         return res.status(400).json({
-    //             message: "Failed",
-    //             error: err,
-    //        })
-      //  };
-       // db.User.findByIdAndUpdate(createdCommunity.Facilitator)
-
-    console.log("is console.log working")
-    console.log("req.body", req.body);
-    await db.Community.create(req.body, (err, createdCommunity) => {
+    let incomingReq = {
+        Facilitator: req.userId,
+        communityName: req.body.communityName,
+        keyword: req.body.keyword
+    }
+    await db.Community.create(incomingReq, (err, createdCommunity) => {
         if (err) {
             return res.status(400).json({
                 message: "Failed community creation",
@@ -55,13 +62,22 @@ const createCommunity = async (req, res) => {
             return res.status(200).json({
                 message: "Success",
                 data: createdCommunity,
+                user: foundUser
             })
         })
-    };
+    })
+}
 
-const joinCommunity = (req, res) => {
-    db.Community.find({ keyword: req.body.keyword })
-        .exec((err, foundCommunity) => {
+const joinCommunity =  (req, res) => {
+    // const bearerHeader = req.headers.authorization;
+    // const token = bearerHeader.split(' ')[1];
+    // const payload = await jwt.verify(token, 'reaxion')
+    // req.userId = payload._id;
+    // console.log("Req: ", req.userId)
+  
+    let user = req.userId;
+     db.Community.find({ keyword: req.params.id }, 
+        (err, foundCommunity) => {
             if (err) {
                 return res
                     .status(400)
@@ -70,8 +86,9 @@ const joinCommunity = (req, res) => {
                         error: err,
                     })
             } else {
-            foundCommunity.Members.push(req.body.user);
-            foundCommunity.save();
+                console.log(foundCommunity[0].Members)
+            foundCommunity[0].Members.push(user);
+            foundCommunity[0].save();
             return res
                 .status(200)
                 .json({
@@ -84,6 +101,7 @@ const joinCommunity = (req, res) => {
 
 
 module.exports = {
+    index, 
     createCommunity,
     joinCommunity
 }

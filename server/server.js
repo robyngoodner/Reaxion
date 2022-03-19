@@ -34,7 +34,7 @@ app.all("/api/*", (req, res, next) => {
 //This targets all routes that aren't specified by our specific server routes that are not "/api"
 //ANY REQUESTS not covered by our routes will get piped into this middleware! This literally hands over control to React
 app.use((req, res, next) => {
-res.sendFile(path.join(__dirname, "build", "index.html"))
+//res.sendFile(path.join(__dirname, "build", "index.html"))
 })
 
 

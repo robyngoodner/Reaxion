@@ -3,17 +3,18 @@ import * as authService from "../../api/auth.service";
 
 //**we do not have a CheckUserActive */
 
-const Login = ({ checkUserActive }) => {
+
+const Login = ( {checkUserActive} ) => {
     const [email, setEmail] = useState("");
     const [password, setPassword] =useState("");
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        await authService.login(email, password).then(() =>{
-            {checkUserActive();}
-
-            setEmail = "";
-            setPassword = "";
+      await  authService.login(email, password).then(() =>{
+          //allows redirect after sign in dont delete
+         {checkUserActive();}
+            setEmail("");
+            setPassword("");
 
         });
     };

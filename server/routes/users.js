@@ -8,6 +8,6 @@ const authRequired = require("../middleware/auth.required")
 router.get("/profile", authRequired, users.show)
 router.get("profile/:id/edit", users.editProfile)
 router.post("/profile/update", users.updateProfile) 
-router.delete("/:id", users.destroy)
+router.delete("/:id", authRequired, users.destroy)
 
 module.exports = router;

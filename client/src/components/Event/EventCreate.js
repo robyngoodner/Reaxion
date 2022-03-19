@@ -1,18 +1,22 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 // import { func } from 'prop-types';
 import * as eventService from '../../api/event.service';
+import * as communityService from '../../api/community.service';
 
 const EventCreate = () => {
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
+    const [communities, setCommunities] = useState([]);
+    const [community, setCommunity] = useState("");
 
     const handleSubmit = async () => {
-        let newEvent = { title, description };
+        let newEvent = { community, title, description };
         let res = await eventService.create(newEvent)
             .then(() => {
                 setTitle("");
                 setDescription("");
-                console.log(newEvent);
+                setCommunity("");
+                console.log("event-->eventcreate: ",newEvent);
             });
 
         if (!res === 201) {
@@ -20,8 +24,32 @@ const EventCreate = () => {
         }
     };
 
+    const findCommunity = async () => {
+        await communityService.getAll().then((res) => {
+            setCommunities(res.data.data);
+            console.log("found community: ", communities)
+        });
+
+    }
+
+    useEffect(() => {
+        findCommunity();
+    }, []);
+
     return (
         <div>
+          <h2>Community</h2>
+            <select onChange={(e) => setCommunity(e.target.value)}>
+            {communities.map((community)=> {
+                return (
+                    <option 
+                    value={community._id} key={community.keyword}
+                    name="community">{community.communityName}</option>
+                )
+            })}
+            </select> 
+          
+
             <form>
                 <label>Event Title
                 <input  

@@ -1,7 +1,8 @@
 // Rest Routes
 const db = require('../models');
-const User = require('../models/User');
+const User = require('../models/user');
 const Community = require('../models/Community');
+
 /*
  * Index - GET - /users  - Presentational - respond with all users
  * New - GET - /users/new  - Presentational Form - a page with a form to create a new user
@@ -32,6 +33,7 @@ const show= (req,res) => {
     }
     })
     })
+    
 }
 
 const editProfile = (req, res) => {
@@ -70,7 +72,8 @@ const updateProfile= (req, res) => {
 //delete profile
 
 const destroy = (req, res) => {
-    db.User.findByIdAndDelete(req.params.id, (err, deleteUser)=>{
+    console.log("backend");
+    db.User.findByIdAndDelete(req.userId, (err, deleteUser)=>{
         if (err) {
         return res
         .status(400)
@@ -78,13 +81,14 @@ const destroy = (req, res) => {
             message: "Bad Request; Profile could not be deleted",
             error: err,
         })
-    }
+    }else{
     return res
         .status(200)
         .json({
             message: "Profile Deleted",
             data: deleteUser
         })
+    }
     })
 }
 

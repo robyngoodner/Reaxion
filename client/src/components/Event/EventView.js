@@ -8,7 +8,7 @@ export default function EventView() {
     useEffect(() => {
         async function getEvent() {
             const events = await eventService.get();
-                setEvent(events.data);
+                setEvent(events);
         }
         getEvent();
     }, [])
@@ -16,6 +16,7 @@ export default function EventView() {
     return(
         <>
             <h1>{event.title}</h1>
+            
         </>
     )
 }

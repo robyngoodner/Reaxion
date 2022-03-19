@@ -3,5 +3,6 @@ module.exports = {
     users: require('./users'),
     community: require('./community'),
     auth: require("./auth"),
-    event: require("./event")
+    event: require("./event"),
+    comment: require("./comment")
 }
