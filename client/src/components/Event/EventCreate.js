@@ -28,6 +28,7 @@ const EventCreate = () => {
         await communityService.getAll().then((res) => {
             setCommunities(res.data.data);
             console.log("found community: ", communities)
+            setCommunity(res.data.data[0]._id)
         });
 
     }

@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 // import { func } from 'prop-types';
 import * as eventService from '../../api/event.service';
-import { Link } from 'react-router-dom';
+//import { Link } from 'react-router-dom';
 import EventView from './EventView';
 
 
@@ -24,13 +24,14 @@ const EventsIndex = () => {
             communities.map((community) => {
                 if(community.Events.posts){
                     community.Events.posts.map((post) => {
-                        setPosts(post)
+                        return setPosts(post)
                     })
                 }
+                else return null
             })
         }
         findPosts();
-    }, [])
+    }, [communities])
     
     
 

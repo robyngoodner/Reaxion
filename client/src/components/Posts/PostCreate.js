@@ -3,34 +3,20 @@ import * as postService from '../../api/post.service';
 import * as authService from '../../api/auth.service';
 import * as eventService from '../../api/event.service';
 
-export default function PostUpdate () {
+export default function PostCreate () {
     const [content, setContent] = useState("");
     const [User_Comment, setUser_Comment] = useState("");
-//     const [User, setUser] = useState("");
+    const [User, setUser] = useState("");
     const [event, setEvent] = useState("");
 
     const handleSubmit = async () => {
-        let newPost = { reaction, User, comment, event};
+
+        let newPost = { content, User_Comment, event};
         let res = await postService.create(newPost)
             .then(() => {
                 setContent([]);
-                setComment("");
-                setUser("");
+                setUser_Comment("");
                 setEvent("");
-// import * as eventService from '../../api/event.service'
-
-// export default function PostUpdate () {
-//     const [content, setContent] = useState("");
-//     const [User_Comment, setUser_Comment] = useState("");
-//     const [event, setEvent] = useState("");
-
-//     const handleSubmit = async () => {
-//         let newPost = { content, User_Comment, event};
-//         let res = await postService.create(newPost)
-//             .then(() => {
-//                 setContent([]);
-//                 setUser_Comment("");
-//                 setEvent("");
                 console.log(newPost)
             });
         
@@ -110,7 +96,7 @@ export default function PostUpdate () {
                     <label htmlFor="disinterestedEmoji">Disinterested</label>
                 </div>
                 <label>
-                    If you would like, please leavea an additional comment about your experience (optional):
+                    If you would like, please leave an additional comment about your experience (optional):
                     <textarea 
                         onChange={(e) => setUser_Comment(e.target.value)}
                         value={User_Comment}
@@ -119,12 +105,6 @@ export default function PostUpdate () {
                         placeholder="Additional comment"
                     />
                 </label>
-
-                {/* <input 
-                type="hidden"
-                name="User"
-                value={ User }
-                />  */}
 
                 <input 
                     type="hidden"
