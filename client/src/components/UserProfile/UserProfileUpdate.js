@@ -52,11 +52,31 @@ export default function UpdateUserProfile(data) {
 //     };
 
 
+    const handleSubmitDelete = async () => {
+        let res = await postService.destroy()
+            // .then(() => {
+            //     // window.location.href = "/post";
+            // });
+        
+         if ( !res === 201 ) {
+             alert(`Post error. Please submit again. ${res.status}`) 
+         } 
+    }        
+
+    const handleSubmitEdit = async () => {
+        // window.location.href = `/${post}/${id}`;
+    
+    //  if ( !res === 201 ) {
+    //      alert(`Post error. Please submit again. ${res.status}`) 
+    //  } 
+} 
     
     const findPosts = async () => {
         await postService.getAll().then((res) => {
+            console.log(res.data.data)
             setPosts(res.data.data);
         });
+    }
 
     useEffect(() => {
         findPosts();
@@ -116,11 +136,17 @@ return (
         <ul onChange={(e) => setPosts(e.target.value)}>
             {posts.map((post)=> {
                 return (
-                    <li> 
-                        Event:{post.event}
-                        Reaction:{post.content}
-                        User Comment:{post.User_Comment}
-                    </li>
+                    <>
+                        <li> 
+                            Event:{post.event}
+                            Reaction:{post.content}
+                            User Comment:{post.User_Comment}
+                        </li>
+                        <div>
+                            <button onClick={handleSubmitEdit}>Edit</button>
+                            <button onClick={handleSubmitDelete}>Delete</button>
+                        </div>
+                    </>
                 )
             })}
         </ul> 
