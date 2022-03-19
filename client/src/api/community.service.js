@@ -6,6 +6,11 @@ const getAll = (data) => {
     return client.get(`${community}/`, data)
 }
 
+const getCommunities = (data) => {
+    return client.get(`${community}`, data)
+
+}
+
 const create = (data) => {
     return client.post(`${community}`, data)
 }
@@ -16,4 +21,4 @@ const update = (id, data) => {
 
 
 
-export { getAll, create, update }
+export { getAll, getCommunities, create, update }
