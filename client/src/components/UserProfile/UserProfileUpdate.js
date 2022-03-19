@@ -81,6 +81,7 @@ export default function UpdateUserProfile(data) {
 
 
 
+
 return (
     <div>
         <h1>Update your Public Profile</h1>
@@ -148,15 +149,6 @@ return (
             })}
         </ul> 
         <h1>Communities</h1>
-        <ul onChange={(e) => setCommunity(e.target.value)}>
-            {community.map((community)=> {
-                return (
-                    <li> 
-                        communityName:{community.communityName}
-                    </li>
-                )
-            })}
-        </ul> 
 
 </div>
 );  
