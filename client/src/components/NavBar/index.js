@@ -51,7 +51,7 @@ export default function NavBar({checkUserActive}) {
             </NavLink>
 
             <NavLink
-                to='/events' style={contentStyles}
+                to='/event' style={contentStyles}
             >All Events
             </NavLink>
 
