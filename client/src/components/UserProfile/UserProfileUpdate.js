@@ -3,12 +3,14 @@ import * as userProfileService from "../../api/userprofile.service";
 import * as postService from "../../api/post.service";
 import * as communityService from "../../api/community.service";
 
+
 export default function UpdateUserProfile(data) {
     const [firstName, setFirstName]= useState("");
     const [lastName, setLastName]= useState("");
     const [description, setDescription]= useState("");
     const [userIcon, setUserIcon]= useState("");
     const [posts, setPosts] = useState([]);
+    const [community, setCommunity] = useState([]);
 
     const handleSubmit = async () => {
         let newUserInfo = { firstName, lastName, description, userIcon };
@@ -79,7 +81,17 @@ export default function UpdateUserProfile(data) {
         getExistingProfile();
     }, []);
 
+    const findCommunity = async () => {
+        await communityService.getCommunities()
+            .then((res) => {
+           setCommunity(res.data.data)
+        });
+    }
+        useEffect(() => {
+            findCommunity();
 
+        }, []);
+    
 
 
 return (
@@ -149,6 +161,17 @@ return (
             })}
         </ul> 
         <h1>Communities</h1>
+        <ul>
+            {community?.map((community, index)=> {
+                return (
+                    <>
+                        <li> 
+                        {community.communityName}
+                        </li>
+                    </>
+                )
+            })}
+        </ul> 
 
 </div>
 );  

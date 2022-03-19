@@ -124,7 +124,6 @@ const joinCommunity =  (req, res) => {
             }
         })
 }
-
 const getAll = (req, res) => {
     db.Community.findById(req.params.id, (err, foundCommunity) => { if (err) { 
         return res
@@ -147,5 +146,6 @@ module.exports = {
     getCommunities,
     createCommunity,
     joinCommunity,
+    getCommunities,
     getAll
 }
