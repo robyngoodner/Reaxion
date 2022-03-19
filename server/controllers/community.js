@@ -107,9 +107,26 @@ const joinCommunity =  (req, res) => {
         })
 }
 
+const getAll = (req, res) => {
+    db.Community.findById(req.params.id, (err, foundCommunity) => { if (err) { 
+        return res
+            .status(400)
+            .json({ error: err }) 
+        } else { 
+            return res
+                .status(200)
+                .json({ 
+                    message: "Found Community",
+                    data: foundCommunity,
+                })}
+
+    })
+}
+
 
 module.exports = {
     index, 
     createCommunity,
-    joinCommunity
+    joinCommunity,
+    getAll
 }

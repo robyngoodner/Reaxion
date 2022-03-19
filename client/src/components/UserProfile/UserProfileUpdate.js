@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import * as userProfileService from "../../api/userprofile.service";
 import * as postService from "../../api/post.service";
+import * as communityService from "../../api/community.service";
 
 export default function UpdateUserProfile(data) {
     const [firstName, setFirstName]= useState("");
@@ -8,7 +9,6 @@ export default function UpdateUserProfile(data) {
     const [description, setDescription]= useState("");
     const [userIcon, setUserIcon]= useState("");
     const [posts, setPosts] = useState([]);
-
 
     const handleSubmit = async () => {
         let newUserInfo = { firstName, lastName, description, userIcon };
@@ -23,7 +23,6 @@ export default function UpdateUserProfile(data) {
             alert(`Error updating user information, ${res.status}`);
         }
     };
-
 
     const handleProfileDelete = async () => {
         console.log('in handleProfileDelete');
@@ -75,14 +74,13 @@ export default function UpdateUserProfile(data) {
             setPosts(res.data.data);
         });
     }
-
     useEffect(() => {
         findPosts();
         getExistingProfile();
     }, []);
 
 
-      
+
 return (
     <div>
         <h1>Update your Public Profile</h1>
@@ -149,6 +147,17 @@ return (
                 )
             })}
         </ul> 
+        <h1>Communities</h1>
+        <ul onChange={(e) => setCommunity(e.target.value)}>
+            {community.map((community)=> {
+                return (
+                    <li> 
+                        communityName:{community.communityName}
+                    </li>
+                )
+            })}
+        </ul> 
+
 </div>
 );  
-};
+        }
