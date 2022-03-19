@@ -6,15 +6,15 @@ import * as eventService from '../../api/event.service';
 export default function PostUpdate () {
     const [content, setContent] = useState("");
     const [User_Comment, setUser_Comment] = useState("");
-//     const [User, setUser] = useState("");
+    const [User, setUser] = useState("");
     const [event, setEvent] = useState("");
 
     const handleSubmit = async () => {
-        let newPost = { reaction, User, comment, event};
+        let newPost = { content, User, User_Comment, event};
         let res = await postService.create(newPost)
             .then(() => {
                 setContent([]);
-                setComment("");
+                setUser_Comment("");
                 setUser("");
                 setEvent("");
 // import * as eventService from '../../api/event.service'
@@ -120,11 +120,11 @@ export default function PostUpdate () {
                     />
                 </label>
 
-//                 <input
-//                 type="hidden"
-//                 name="User"
-//                 value={ User }
-//                 /> 
+              {/* <input
+                type="hidden"
+                name="User"
+                value={ User }
+                />  */}
 
                 <input 
                     type="hidden"
