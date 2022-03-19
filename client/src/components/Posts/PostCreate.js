@@ -4,6 +4,7 @@ import * as postService from '../../api/post.service';
 export default function PostUpdate () {
     const [reaction, setReaction] = useState("");
     const [comment, setComment] = useState("");
+    const [User, setUser] = useState("");
 
     const handleSubmit = async () => {
         let newPost = { reaction, comment};
@@ -84,6 +85,11 @@ export default function PostUpdate () {
                         placeholder="Additional comment"
                     />
                 </label>
+                <input
+                type="hidden"
+                name="User"
+                value={ user._id }
+                /> 
             </form>
             <button onClick={handleSubmit}>Submit Reaction</button>
         </div>
