@@ -2,7 +2,7 @@ import client from "./axios.config.js";
 const userProfile = '/user';
 
 const update =(id, data) => {
-    return client.post(`${userProfile}/${id}`, data)
+    return client.put(`${userProfile}/${id}`, data)
 }
 
 const destroy = (id) => {

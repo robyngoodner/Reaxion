@@ -70,7 +70,7 @@ const Home = () => {
                     path="join"
                     element={<CommunityJoin />}></Route>
                 <Route  
-                    path="profile"
+                    path="user"
                     element={<UpdateUserProfile />}></Route>
                 <Route  
                     path="post/new"
