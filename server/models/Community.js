@@ -19,10 +19,6 @@ const communitySchema = new mongoose.Schema ({
         type: mongoose.Schema.Types.ObjectId, 
         ref: "Event"
     }],
-    Posts: [{
-        type: mongoose.Schema.Types.ObjectId, 
-        ref: "Post"
-    }],
     keyword: {
         type: String,
         // required: true, 

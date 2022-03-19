@@ -57,9 +57,10 @@ const show = (req, res) => {
                         err: err,
                     })
             }
-            return res        .populate({
-            path: 'posts',
-        })
+            return res        
+        //     .populate({
+        //     path: 'posts',
+        // })
                 .status(200)
                 .json({
                     message: "Event Found",

@@ -1,16 +1,19 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import * as postService from '../../api/post.service';
+import * as eventService from '../../api/event.service'
 
 export default function PostUpdate () {
     const [content, setContent] = useState("");
     const [User_Comment, setUser_Comment] = useState("");
+    const [event, setEvent] = useState("");
 
     const handleSubmit = async () => {
-        let newPost = { content, User_Comment};
+        let newPost = { content, User_Comment, event};
         let res = await postService.create(newPost)
             .then(() => {
                 setContent([]);
                 setUser_Comment("");
+                setEvent("");
                 console.log(newPost)
             });
         
@@ -18,6 +21,16 @@ export default function PostUpdate () {
              alert(`Post error. Please submit again. ${res.status}`) 
          }    
     }
+    const findEvent = async () => {
+        await eventService.get().then((res) => {
+            setEvent(res.data.data);
+            console.log("found event: ", event)
+        })
+    }
+
+    useEffect(() => {
+        findEvent();
+    }, []);
 
     return (
         <div>
@@ -84,6 +97,11 @@ export default function PostUpdate () {
                         placeholder="Additional comment"
                     />
                 </label>
+                <input 
+                    type="hidden"
+                    name="Event"
+                    value={event._id}
+                />
             </form>
             <button onClick={handleSubmit}>Submit Reaction</button>
         </div>

@@ -24,9 +24,9 @@ const postSchema = new Schema(
         upVotes: {
             type:Number
         },
-        Community: {
+        Event: {
             type: mongoose.Schema.Types.ObjectId,
-            ref: "Community"
+            ref: "Event"
                 },
         isAnonymous: {
             type: Boolean
