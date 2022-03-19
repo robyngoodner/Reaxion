@@ -84,6 +84,9 @@ const Home = () => {
                 <Route
                     path="/events"
                     element={<EventsIndex />}></Route>
+                {/* <Route
+                    path="/events/"
+                    element={<EventView />}></Route> */}
             </Routes>
         </>
     )

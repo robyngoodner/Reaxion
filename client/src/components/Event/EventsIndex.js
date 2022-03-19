@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 // import { func } from 'prop-types';
 import * as eventService from '../../api/event.service';
 import { Link } from 'react-router-dom';
+import EventView from './EventView';
 
 
 const EventsIndex = () => {
@@ -44,7 +45,8 @@ const EventsIndex = () => {
                     </Link> */}
                     <h1>{community.communityName}</h1>
                     <h4>{community.Events.map((event) => {
-                        return event.title
+                        return (
+                            event.title)
                     })
                     }</h4>
                     {posts.map((post) => {
