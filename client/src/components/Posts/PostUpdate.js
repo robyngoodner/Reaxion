@@ -8,7 +8,10 @@ export default function PostUpdate () {
     const handleSubmit = async () => {
         let updatedPost = { content, User_Comment};
         let res = await postService.update(updatedPost)
-            .then(() => {
+        console.log("hello", res)
+
+        .then(() => {
+
                 setContent([]);
                 setUser_Comment("");
                 console.log("updated post", updatedPost)

@@ -14,11 +14,14 @@ const getAll = (data) => {
     return client.get(`${post}`, data)
 }
 
-const update = (id, data) => {
+const update = (data, id) => {
+    console.log("in axios", id)
+    console.log(data)
     return client.put(`${post}/${id}`)
 }
 
 const destroy = (id) => {
+    console.log(id)
     return client.delete(`${post}/${id}`)
 }
 
