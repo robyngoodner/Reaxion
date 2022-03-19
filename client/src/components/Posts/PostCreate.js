@@ -3,33 +3,20 @@ import * as postService from '../../api/post.service';
 import * as authService from '../../api/auth.service';
 import * as eventService from '../../api/event.service';
 
-export default function PostUpdate () {
+export default function PostCreate () {
     const [content, setContent] = useState("");
     const [User_Comment, setUser_Comment] = useState("");
-//     const [User, setUser] = useState("");
+    const [User, setUser] = useState("");
     const [event, setEvent] = useState("");
 
     const handleSubmit = async () => {
+
         let newPost = { content, User_Comment, event};
         let res = await postService.create(newPost)
             .then(() => {
                 setContent([]);
                 setUser_Comment("");
                 setEvent("");
-// import * as eventService from '../../api/event.service'
-
-// export default function PostUpdate () {
-//     const [content, setContent] = useState("");
-//     const [User_Comment, setUser_Comment] = useState("");
-//     const [event, setEvent] = useState("");
-
-//     const handleSubmit = async () => {
-//         let newPost = { content, User_Comment, event};
-//         let res = await postService.create(newPost)
-//             .then(() => {
-//                 setContent([]);
-//                 setUser_Comment("");
-//                 setEvent("");
                 console.log(newPost)
             });
         
@@ -119,11 +106,6 @@ export default function PostUpdate () {
                     />
                 </label>
 
-                 {/* <input
-                 type="hidden"
-                 name="User"
-                 value={ User }
-                 />  */}
 
                 <input 
                     type="hidden"
