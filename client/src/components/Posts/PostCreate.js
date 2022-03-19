@@ -7,11 +7,12 @@ export default function PostUpdate () {
     const [User, setUser] = useState("");
 
     const handleSubmit = async () => {
-        let newPost = { reaction, comment};
+        let newPost = { reaction, User, comment};
         let res = await postService.update(newPost)
             .then(() => {
                 setReaction([]);
                 setComment("");
+                setUser("")
                 console.log(newPost)
             });
         
