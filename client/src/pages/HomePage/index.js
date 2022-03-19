@@ -86,7 +86,7 @@ const Home = () => {
                     path="/comment"
                     element={<Comment />}></Route>
                 <Route
-                    path="/events"
+                    path="/event"
                     element={<EventsIndex />}></Route>
                 {/* <Route
                     path="/events/"
