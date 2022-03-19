@@ -14,24 +14,22 @@ const db = require('../models');
 
 //Show user profile
 const show= (req,res) => {
-    // let incomingReq = {
-    //     User: req.userId,
-    //     Communities: req.body.Communities,
-    //     Facilitator_Communities: req.body.Facilitator_Communities,
-    //     Posts: req.body.Posts,
-    //     Comments: req.body.Comments,
-    //     firstName: User.firstName,
-    // }
-    db.User.findById(req.userId, (err,foundUserProfile) => {
+    db.User.findById(req.userId, 
+        (err,foundUser) => {
         if (err) {
             return res.status(400)
             .json({
                 message: "Failed to find the user profile.",
                 error: err,
-            })
-    }  
-    })
-    
+            }) 
+        }  else {
+            // console.log(foundUser)
+            return res.status(200).json({
+            message: "Updated User Profile",
+            data: foundUser
+                })
+            }
+})
 }
 
 //Update profile 

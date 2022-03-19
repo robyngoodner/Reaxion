@@ -36,20 +36,18 @@ export default function UpdateUserProfile(data) {
          } 
     }        
     
-//     const handleSubmit = async () => {
-//         let newUserInfo = {firstName, lastName, description, userIcon};
-//         let res = await userProfileService.update(newUserInfo).then(() => {
-//             setfirstName("");
-//             setlastName("");
-//             setdescription("");
-//             setUserIcon("");
-//             UpdateUserProfile();
-//             console.log(newUserInfo)
-//         });
-//         if (!res === 201) {
-//             alert(`error updating user information, ${res.status}`);
-//         }
-//     };
+    const getExistingProfile = async () => {
+        let res = await userProfileService.show()
+            .then((data) => {
+            // console.log("get existing profile: ", data.data.data)
+            setFirstName(data.data.data.firstName);
+            setLastName(data.data.data.lastName);
+            setDescription(data.data.data.description);
+            setUserIcon(data.data.data.setUserIcon)
+        })
+
+    }
+
 
 
     const handleSubmitDelete = async () => {
@@ -80,6 +78,7 @@ export default function UpdateUserProfile(data) {
 
     useEffect(() => {
         findPosts();
+        getExistingProfile();
     }, []);
 
 
@@ -95,7 +94,7 @@ return (
                 value={firstName}
                 type="text"
                 name="firstName"
-                placeholder={data.firstName}
+                placeholder={firstName}
             />
         </label>
         <label>
