@@ -7,7 +7,7 @@ const get = (id, data) => {
 }
 
 const create = (data) => {
-    return client.post(`${event}`, data)
+    return client.post(`${event}/new`, data)
 }
 
 const index = (data) => {
