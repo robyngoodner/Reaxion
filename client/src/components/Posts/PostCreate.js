@@ -120,11 +120,11 @@ export default function PostUpdate () {
                     />
                 </label>
 
-//                 <input
-//                 type="hidden"
-//                 name="User"
-//                 value={ User }
-//                 /> 
+                {/* <input 
+                type="hidden"
+                name="User"
+                value={ User }
+                />  */}
 
                 <input 
                     type="hidden"

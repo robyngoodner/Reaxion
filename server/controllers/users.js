@@ -1,6 +1,7 @@
 // Rest Routes
 const db = require('../models');
 const {User} = require('../models/user');
+const jwt = require('jsonwebtoken');
 const Community = require('../models/Community');
 
 /*
@@ -37,8 +38,9 @@ const show= (req,res) => {
 
 //Update profile 
 const updateProfile= (req, res) => {
+    console.log("in controller");
     db.User.findByIdAndUpdate(
-        req.params.id,
+        req.userId,
         {
          firstName: req.body.firstName,
          lastName: req.body.lastName,
@@ -53,6 +55,10 @@ const updateProfile= (req, res) => {
                 message: "Failed to edit the profile.",
                 error: err,
             })
+        } else {
+            console.log(foundProfile);
+            foundProfile[0].push(req.userId)
+            foundProfile[0].save();
         }
         return res.status(200).json({
             message: "Updated User Profile",
