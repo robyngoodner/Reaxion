@@ -35,6 +35,24 @@ const index =  (req, res) => {
     })
 }
 
+const getCommunities = (req, res) => {
+    db.Community.find({Members: req.userId}, (err, foundCommunities) => {
+        if(err) {
+            return res
+                .status(400)
+                .json({
+                    message: "Failed to find communities",
+                    error: err
+                })
+        } return res
+            .status(200)
+            .json({
+                message: "Successfully found communities",
+                data: foundCommunities
+            })
+    })
+};
+
 const createCommunity = async (req, res) => {
     let incomingReq = {
         Facilitator: req.userId,
@@ -110,6 +128,7 @@ const joinCommunity =  (req, res) => {
 
 module.exports = {
     index, 
+    getCommunities,
     createCommunity,
     joinCommunity
 }

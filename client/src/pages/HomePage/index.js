@@ -67,6 +67,9 @@ const Home = () => {
                 <Route 
                     path="community" 
                     element={<Community />}></Route>
+                <Route 
+                    path="community/:id" 
+                    element={<EventsIndex />}></Route>
                 {/* <Route 
                     path="new" 
                     element={<CommunityCreate />}></Route>
