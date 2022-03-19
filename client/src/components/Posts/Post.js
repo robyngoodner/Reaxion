@@ -1,18 +1,11 @@
 import { string } from 'prop-types';
+import * as postService from "../../api/post.service"
 
-function showPost() {
-    const [post, setPost] = useState([]);
-    
-    useEffect(() => {
-        async function getPost() {
-            const post = await postService.get();
-                setPost(post.data);
-        }
-        getPost();
-    }, [])
+
+function showPost(props) {
 
     const handleSubmitDelete = async () => {
-        let res = await postService.desroy()
+        let res = await postService.destroy()
             .then(() => {
                 window.location.href = "/post";
             });
@@ -23,24 +16,24 @@ function showPost() {
     }        
 
     const handleSubmitEdit = async () => {
-        window.location.href = `/${post}/${id}`;
+        // window.location.href = `/${post}/${id}`;
     
-     if ( !res === 201 ) {
-         alert(`Post error. Please submit again. ${res.status}`) 
-     } 
+    //  if ( !res === 201 ) {
+    //      alert(`Post error. Please submit again. ${res.status}`) 
+    //  } 
 }  
     return (
         <>
         <div>
-            <h2>User: {props.User}</h2>
-            <p>Reaction: {props.content}</p>
-            <p>Comment: {props.User_Comment}</p>
-            <p>Comments: {props.Comments}</p>
-            <p>UpVotes: {props.upVotes}</p>
+            <h2>User: {props.post.User}</h2>
+            <p>Reaction: {props.post.content}</p>
+            <p>User Comment: {props.post.User_Comment}</p>
+            {/* <p>Comments: {props.post.Comments}</p>
+            <p>UpVotes: {props.post.upVotes}</p> */}
         </div>
         <div>
-            <button onClick={handleSubmit}>Edit</button>
-            <button onClick={handleSubmit}>Delete</button>
+            <button onClick={handleSubmitEdit}>Edit</button>
+            <button onClick={handleSubmitDelete}>Delete</button>
         </div>
         </>
         

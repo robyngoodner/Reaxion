@@ -37,26 +37,29 @@ const EventsIndex = () => {
 
 
     return (
-        <div>
-            {communities.map((community) => {
-                return (
-                    <>
-                    {/* <Link
-                    to={community._id}>{community.communityName}
-                    </Link> */}
-                    <h1>{community.communityName}</h1>
-                    <h4>{community.Events.map((event) => {
-                        return (
-                            event.title)
-                    })
-                    }</h4>
-                    {posts.map((post) => {
-                        return post.content
-                    })}
-                    </>
-                )
-            })}
-        </div>
+        <>
+            <h1>Events</h1>
+            <div>
+                {communities.map((community) => {
+                    return (
+                        <>
+                        {/* <Link
+                        to={community._id}>{community.communityName}
+                        </Link> */}
+                        <h1>{community.communityName}</h1>
+                        <h4>{community.Events.map((event) => {
+                            return (
+                                event.title)
+                        })
+                        }</h4>
+                        {posts.map((post) => {
+                            return post.content
+                        })}
+                        </>
+                    )
+                })}
+            </div>
+        </>
     )
 
 }
