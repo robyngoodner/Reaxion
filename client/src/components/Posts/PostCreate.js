@@ -6,18 +6,15 @@ import * as eventService from '../../api/event.service';
 export default function PostCreate () {
     const [content, setContent] = useState("");
     const [User_Comment, setUser_Comment] = useState("");
-    // const [User, setUser] = useState("");
     const [event, setEvent] = useState("");
 
     const handleSubmit = async () => {
-
         let newPost = { content, User_Comment, event};
         let res = await postService.create(newPost)
             .then(() => {
                 setContent([]);
                 setUser_Comment("");
                 // setEvent("");
-                // setUser("")
                 console.log(newPost)
             });
         
@@ -38,7 +35,6 @@ export default function PostCreate () {
 
     const userFind = async () => {
         let res = await authService.currentUser();
-        console.log(res)
     }
 
     return (

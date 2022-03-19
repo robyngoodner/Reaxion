@@ -32,7 +32,10 @@ const showOne = (req, res) => {
 }
 
 const index = (req, res) => {
-    db.Post.find({User: req.userID}, (err, foundPosts) => {
+    let incomingReq = {
+        User: req.userId,
+    }
+    db.Post.find(incomingReq, (err, foundPosts) => {
         if (err) {
             return res
                 .status(400)
@@ -93,8 +96,8 @@ const create = (req, res) => {
                     })
                 else{
                     console.log(foundEvent)
-                    foundEvent.posts.push(savedPost);
-                    foundEvent.save();
+                    // foundEvent.posts.push(savedPost);
+                    // foundEvent.save();
                 }
             });  
             return res.status(201).json({

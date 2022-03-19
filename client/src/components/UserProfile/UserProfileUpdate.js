@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import * as userProfileService from "../../api/userprofile.service";
 import * as postService from "../../api/post.service";
+import { Link } from 'react-router-dom';
 
 export default function UpdateUserProfile () {
     const [firstName, setfirstName]= useState("");
@@ -35,28 +36,8 @@ export default function UpdateUserProfile () {
         }
     };
 
-    const handleSubmitDelete = async () => {
-        let res = await postService.destroy()
-            // .then(() => {
-            //     // window.location.href = "/post";
-            // });
-        
-         if ( !res === 201 ) {
-             alert(`Post error. Please submit again. ${res.status}`) 
-         } 
-    }        
-
-    const handleSubmitEdit = async () => {
-        // window.location.href = `/${post}/${id}`;
-    
-    //  if ( !res === 201 ) {
-    //      alert(`Post error. Please submit again. ${res.status}`) 
-    //  } 
-}  
-
     const findPosts = async () => {
         await postService.getAll().then((res) => {
-            console.log(res.data.data)
             setPosts(res.data.data);
         });
     }
@@ -64,6 +45,28 @@ export default function UpdateUserProfile () {
     useEffect(() => {
         findPosts();
     }, []);
+
+    const handleSubmitDelete = async () => {
+        let res = await postService.destroy()
+            .then(() => {
+                findPosts();
+            });
+        
+         if ( !res === 201 ) {
+             alert(`Post error. Please submit again. ${res.status}`) 
+         } 
+    }        
+
+    const handleSubmitEdit = (id) => {
+        console.log(`/post/${id}`)
+        // console.log(`/post/${post.id}`)
+    
+    //  if ( !res === 201 ) {
+    //      alert(`Post error. Please submit again. ${res.status}`) 
+    //  } 
+}  
+
+    
 
 return (
     <div>
@@ -124,7 +127,9 @@ return (
                             User Comment:{post.User_Comment}
                         </li>
                         <div>
-                            <button onClick={handleSubmitEdit}>Edit</button>
+                            <Link to={`../../post/${post._id}`}>
+                                <button>Edit</button>
+                            </Link>
                             <button onClick={handleSubmitDelete}>Delete</button>
                         </div>
                     </>
