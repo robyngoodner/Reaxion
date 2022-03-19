@@ -1,12 +1,14 @@
 import React, {useState, useEffect} from 'react';
 import * as userProfileService from "../../api/userprofile.service";
+import * as postService from "../../api/post.service";
 
 export default function UpdateUserProfile () {
     const [firstName, setfirstName]= useState("");
     const [lastName, setlastName]= useState("");
     const [description, setdescription]= useState("");
     const [userIcon, setUserIcon]= useState("");
-
+    const [posts, setPosts] = useState([]);
+    
     const handleProfileDelete = async () => {
         console.log('in handleProfileDelete');
         let res = await userProfileService.destroy()
@@ -19,20 +21,31 @@ export default function UpdateUserProfile () {
     }        
 
  
-const handleSubmit = async () => {
-    let newUserInfo = {firstName, lastName, description, userIcon};
-    let res = await userProfileService.update(newUserInfo).then(() => {
-        setfirstName("");
-        setlastName("");
-        setdescription("");
-        setUserIcon("");
-        UpdateUserProfile();
-    });
-    if (!res === 201) {
-        alert(`error updating user information, ${res.status}`);
-    }
-};
+    const handleSubmit = async () => {
+        let newUserInfo = {firstName, lastName, description, userIcon};
+        let res = await userProfileService.update(newUserInfo).then(() => {
+            setfirstName("");
+            setlastName("");
+            setdescription("");
+            setUserIcon("");
+            UpdateUserProfile();
+        });
+        if (!res === 201) {
+            alert(`error updating user information, ${res.status}`);
+        }
+    };
 
+    const findPosts = async () => {
+        console.log("hello")
+        await postService.getAll().then((res) => {
+            setPosts(res.data.data);
+            console.log("found posts: ", posts)
+        });
+    }
+
+    useEffect(() => {
+        findPosts();
+    }, []);
 
 return (
     <div>
@@ -82,6 +95,18 @@ return (
     <button onClick={handleSubmit}>Update user profile information +</button>
     <p> Would you like to delete your profile?</p>
     <button onClick={handleProfileDelete}>Delete Profile</button>
+        <h1>Posts</h1>
+        <ul onChange={(e) => setPosts(e.target.value)}>
+            {posts.map((post)=> {
+                return (
+                    <li> 
+                        Event:{post.event}
+                        Reaction:{post.content}
+                        User Comment:{post.User_Comment}
+                    </li>
+                )
+            })}
+        </ul> 
 </div>
 );  
 };

@@ -6,7 +6,7 @@ import * as eventService from '../../api/event.service';
 export default function PostCreate () {
     const [content, setContent] = useState("");
     const [User_Comment, setUser_Comment] = useState("");
-    const [User, setUser] = useState("");
+    // const [User, setUser] = useState("");
     const [event, setEvent] = useState("");
 
     const handleSubmit = async () => {
@@ -16,7 +16,8 @@ export default function PostCreate () {
             .then(() => {
                 setContent([]);
                 setUser_Comment("");
-                setEvent("");
+                // setEvent("");
+                // setUser("")
                 console.log(newPost)
             });
         
@@ -106,12 +107,16 @@ export default function PostCreate () {
                     />
                 </label>
 
-
-                <input 
+                {/* <input 
+                    type="hidden"
+                    name="User"
+                    value={incomingReq.User}
+                /> */}
+                {/* <input 
                     type="hidden"
                     name="Event"
                     value={event._id}
-                />
+                /> */}
 
             </form>
             <button onClick={handleSubmit}>Submit Reaction</button>

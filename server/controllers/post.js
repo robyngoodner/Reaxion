@@ -31,6 +31,26 @@ const showOne = (req, res) => {
     })
 }
 
+const index = (req, res) => {
+    db.Post.find({User: req.userID}, (err, foundPosts) => {
+        if (err) {
+            return res
+                .status(400)
+                .json({
+                    message: "Error 400",
+                    err: err,
+                })
+        }
+        return res
+            .status(200)
+            .json({
+                message: "Found posts",
+                data: foundPosts
+            })
+    })
+}
+
+
 const create = (req, res) => {
     let incomingReq = {
         User: req.userId,
@@ -38,7 +58,8 @@ const create = (req, res) => {
         User_Comment: req.body.User_Comment,
         Event: req.body.Event
     }
-    await db.Post.create(
+
+    db.Post.create(
         incomingReq, 
         (err, savedPost) => {
         if (err) {
@@ -48,6 +69,7 @@ const create = (req, res) => {
                 error: err 
             })
         } else {
+            console.log(savedPost)
             db.User.findById(incomingReq.User)
             .exec(function (err, foundUser) {
                 if (err) return res 
@@ -70,6 +92,7 @@ const create = (req, res) => {
                         error: err
                     })
                 else{
+                    console.log(foundEvent)
                     foundEvent.posts.push(savedPost);
                     foundEvent.save();
                 }
@@ -124,5 +147,6 @@ module.exports = {
     showOne,
     create,
     update,
-    destroy
+    destroy,
+    index
 }    
