@@ -3,9 +3,9 @@ const userProfile = '/user';
 
 const update =(id, data) => {
     console.log("in axios")
-    console.log(id)
-    console.log(data)
-    return client.put(`${userProfile}/${id}`)
+    console.log("id in userprofile service: ",id)
+    console.log("data in userprofile service: ",data)
+    return client.put(`${userProfile}/${id}`, data)
 }
 
 const destroy = (id) => {

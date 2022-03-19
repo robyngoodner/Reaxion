@@ -1,23 +1,24 @@
 import React, {useState, useEffect} from 'react';
 import * as userProfileService from "../../api/userprofile.service";
 
-export default function UpdateUserProfile() {
-    const [firstName, setfirstName]= useState("");
-    const [lastName, setlastName]= useState("");
-    const [description, setdescription]= useState("");
+export default function UpdateUserProfile(data) {
+    const [firstName, setFirstName]= useState("");
+    const [lastName, setLastName]= useState("");
+    const [description, setDescription]= useState("");
     const [userIcon, setUserIcon]= useState("");
 
     const handleSubmit = async () => {
-        let newUserInfo = {firstName, lastName, description, userIcon};
+        let newUserInfo = { firstName, lastName, description, userIcon };
         let res = await userProfileService.update(newUserInfo).then(() => {
-            setfirstName("");
-            setlastName("");
-            setdescription("");
+            setFirstName("");
+            setLastName("");
+            setDescription("");
             setUserIcon("");
-            UpdateUserProfile();
+            console.log("userprofile newuserinfo: ", newUserInfo)
+            // UpdateUserProfile();
         });
         if (!res === 201) {
-            alert(`error updating user information, ${res.status}`);
+            alert(`Error updating user information, ${res.status}`);
         }
     };
 
@@ -39,29 +40,29 @@ return (
         <label>
             Would you like to change your First and/or Last name?
             <input
-                onChange={(e) => setfirstName(e.target.value)}
+                onChange={(e) => setFirstName(e.target.value)}
                 value={firstName}
                 type="text"
-                name="first name"
-                placeholder="input your new first name"
+                name="firstName"
+                placeholder={data.firstName}
             />
         </label>
         <label>
             <input
-                onChange={(e) => setlastName(e.target.value)}
+                onChange={(e) => setLastName(e.target.value)}
                 value={lastName}
                 type="text"
-                name="last name"
+                name="lastName"
                 placeholder="input your new last name"
             />
         </label>
         <label>
             Would you like to change your description?
             <input
-                onChange={(e) => setdescription(e.target.value)}
+                onChange={(e) => setDescription(e.target.value)}
                 value={description}
                 type="text"
-                name="User Description"
+                name="description"
                 placeholder="tell everyone a little bit about yourself"
             />
         </label>
@@ -71,7 +72,7 @@ return (
                 onChange={(e) => setUserIcon(e.target.value)}
                 value={userIcon}
                 type="text"
-                name="body"
+                name="userIcon"
                 placeholder="input your new image, please use .jpg or .png"
             />
         </label>

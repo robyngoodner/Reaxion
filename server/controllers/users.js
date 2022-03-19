@@ -1,8 +1,6 @@
 // Rest Routes
 const db = require('../models');
-const {User} = require('../models/user');
-const jwt = require('jsonwebtoken');
-const Community = require('../models/Community');
+
 
 /*
  * Index - GET - /users  - Presentational - respond with all users
@@ -38,17 +36,21 @@ const show= (req,res) => {
 
 //Update profile 
 const updateProfile= (req, res) => {
-    console.log("in controller");
+    console.log("req.body: ", req)
+    console.log("userId: ", req.userId)
     db.User.findByIdAndUpdate(
-        {_id:req.userId},{
-            $set: {firstName: req.body.firstName,
+        {_id: req.userId },
+        {
+            $set: {
+                firstName: req.body.firstName,
                 lastName: req.body.lastName,
                 description: req.body.description,
-                userIcon: req.body.userIcon  }
+                userIcon: req.body.userIcon  
+            }
         }, 
         {new: true},
         (err,foundProfile) => {
-            console.log(foundProfile)
+            console.log("found profile line 55: ",foundProfile)
         if (err) {
             return res.status(400)
             .json({
@@ -62,11 +64,11 @@ const updateProfile= (req, res) => {
         //     foundProfile[0].save();
         // }
          else {
-            console.log("inside success"+foundProfile)
-             return res.status(200).json({
-            message: "Updated User Profile",
-            data: foundProfile,
-            id: req.userId
+            console.log("found profile line 69: "+foundProfile)
+            return res.status(200).json({
+                message: "Updated User Profile",
+                data: foundProfile,
+                id: req.userId
         })
     }
     })
