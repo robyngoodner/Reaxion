@@ -58,7 +58,7 @@ const show = (req, res) => {
                         message: "Bad Request; Cannot view event",
                         err: err,
                     })
-            }else {
+            } else {
                 console.log("found event", foundEvent)
                 return res        
                 .status(200)
