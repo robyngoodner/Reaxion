@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import * as communityService from "../../api/community.service"
 import * as authService from "../../api/auth.service"
 
@@ -49,7 +50,8 @@ export default function CommunityCreate () {
                     onChange={(e) => setKeyword(e.target.value)}
                     placeholder="Create a unique keyword to give to your participants"
                 />
-                <button onClick={handleSubmit}>Create Community</button>
+               
+                <Link to="/user/:id">  <button onClick={handleSubmit}>Create Community</button></Link>
             </form>
         </div>
     )    

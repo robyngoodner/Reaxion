@@ -116,9 +116,9 @@ return (
 {/*Add User Icon Here*/}
    
         <h2>My Communities</h2>
-        <ul>
         <Link to="/community/new"><button type="submit">CREATE A COMMUNITY</button></Link>
         <Link to="/community/join"><button type="submit">JOIN A COMMUNITY</button></Link>
+        <ul>
            {/* community also needs an index in order to show all post*/ } 
             {community?.map((community, index)=> {
                 return (
@@ -136,6 +136,14 @@ return (
 
 
         <h2>My Recent Posts</h2>
+
+        {/*here for easy access can be removed later on */}
+        <Link to="/post/new"><button type="submit">CREATE A POST</button></Link>
+
+
+        {/*here for easy access can be removed later on */}
+        <Link to="/post/new"><button type="submit">CREATE A POST</button></Link>
+        
         <ul>
             {posts.map((post)=> {
                 return (
