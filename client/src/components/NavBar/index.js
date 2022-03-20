@@ -28,35 +28,35 @@ export default function NavBar({checkUserActive}) {
         <div>
             <NavLink
                 to="/" style={contentStyles}
-            >Home</NavLink>
+            >User Profile</NavLink>
             {/* <NavLink
                 to="/new" style={contentStyles}
             >Create new community</NavLink> */}
-            <NavLink
+            {/* <NavLink
                 to="/community" style={contentStyles}
-            >My Communities</NavLink>
+            >My Communities</NavLink> */}
             {/* <NavLink
                 to="/join" style={contentStyles}
             >Join a community</NavLink> */}
-            <NavLink
+            {/* <NavLink
                 to="/profile" style={contentStyles}
-            >Profile</NavLink>
-            <NavLink
+            >Profile</NavLink> */}
+            {/* <NavLink
                 to="/post/new" style={contentStyles}
-            >New Post</NavLink>
-            <NavLink    
+            >New Post</NavLink> */}
+            {/* <NavLink    
                 to="event/new" style={contentStyles}
-            >New Event</NavLink>
+            >New Event</NavLink> */}
            
             {/* <NavLink
                 to='/comment' style={contentStyles}
             >Comment
             </NavLink> */}
 
-            <NavLink
+            {/* <NavLink
                 to='/events' style={contentStyles}
             >All Events
-            </NavLink>
+            </NavLink> */}
 
             <NavLink
                 to='/' style={contentStyles}
