@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import * as authService from "../../api/auth.service";
+import '../../../src/'
 
 
 const Register = () => {
@@ -21,7 +22,7 @@ const Register = () => {
     };
 
     return (
-        <div>
+        <div className="main">
             <form>
                 <label htmlFor="email">
             Email
