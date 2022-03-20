@@ -13,6 +13,7 @@ const getCommunities = (data) => {
 }
 
 const create = (data) => {
+    console.log(data)
     return client.post(`${community}`, data)
 }
 

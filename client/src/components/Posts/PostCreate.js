@@ -29,14 +29,14 @@ export default function PostCreate () {
         })
     }
 
-    useEffect(() => {
-        findEvent();
-    }, []);
+    // useEffect(() => {
+    //     findEvent();
+    // }, []);
 
-    // const userFind = async () => {
-    //     let res = await authService.currentUser();
-    //     console.log(res)
-    // }
+    const userFind = async () => {
+        let res = await authService.currentUser();
+        console.log(res)
+    }
 
     return (
         <div>
