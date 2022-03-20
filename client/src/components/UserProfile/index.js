@@ -15,6 +15,16 @@ const UserIndex = () => {
     //const [userIcon, setUserIcon]= useState("");
     const [posts, setPosts] = useState([]);
     const [community, setCommunity] = useState([]);
+    const [user, setUser] = useState([]);
+
+    const findUser = async () => {
+        await userProfileService.show().then((res) => {
+            setUser(res.data.data);
+        });
+    }
+    useEffect(() => {
+        findUser();
+    }, []);
 
 
 
@@ -112,7 +122,7 @@ const UserIndex = () => {
 
 return (
     <div>
-    <h1>Welcome, Name Here</h1>
+    <h1>Welcome, {user.firstName}</h1>
     <Link to="/user/edit"><button type="submit">CHANGE PROFILE</button></Link>
        
 {/*Add User Icon Here*/}
