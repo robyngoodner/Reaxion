@@ -49,6 +49,7 @@ const show = (req, res) => {
         //       path : 'Comments'
         //     }
         //   })
+        .populate("posts")
         .exec((err, foundEvent)=>{
             // console.log("found event", foundEvent);
             if (err){

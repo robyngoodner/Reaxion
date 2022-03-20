@@ -10,6 +10,7 @@ export default function EventView() {
     const location = useLocation();
     const [event, setEvent] = useState("");   
     const [post, setPost] = useState([]);
+    const [posts, setPosts] = useState([]);
     const [id, setId] = useState("");
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("")
@@ -34,11 +35,13 @@ export default function EventView() {
         try {
         const foundEvent = await eventService.get(id);
         setEvent(foundEvent);
+        console.log("foundEvent with posts??: ", foundEvent.data.data.posts)
         // console.log("front end events", event)
         setTitle(event.data.data.title)
         setDescription(event.data.data.description)
         console.log(event.data.data)
-        
+        setPosts(foundEvent.data.data.posts)
+        console.log("posts: ",posts)
         } catch(err) {
             console.log(err.message)
         }
@@ -68,11 +71,20 @@ export default function EventView() {
                 <h2>{description}</h2>
             </div>
             <div>
-                <PostCreate eventId={eventId}/>
-            </div>
-            <div>
+                {posts?.map((post, index) => {
+                    return (
+                    <li style={{listStyle:"none"}} key={index}>
+                        <Post post={post}/>
+                        {console.log(post)} 
+                    </li>
+                    )
+                })}
                 {/* <Post post={post}/> */}
             </div>
+            <div>
+                <PostCreate eventId={eventId}/>
+            </div>
+            
         </>
     )
 }
