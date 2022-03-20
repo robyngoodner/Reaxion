@@ -16,13 +16,13 @@ export default function CommunityView () {
 
     useEffect(() => {
         getCommunities();
-    }, communities)
+    }, [])
 
     return (
         <>
             {communities?.map((community, index)=> {
                 return (
-                    <li style={{listStyle:"none"}} key={index}><Link to={`${community._id}`}><h3>{community.communityName}</h3></Link></li>
+                    <li style={{listStyle:"none"}} key={index}><Link to={`/community/${community._id}`}><h3>{community.communityName}</h3></Link></li>
                 )
             })}
         </>

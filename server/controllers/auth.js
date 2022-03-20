@@ -79,7 +79,8 @@ const login = async(req,res)  => {
 
         if(isMatch){
             console.log('is a match')
-            const token= jwt.sign({_id:foundUser._id}, "reaxion", {expiresIn: "1h"})
+            const token= jwt.sign({_id:foundUser._id}, "reaxion", {expiresIn: "48h"}
+            )
             return res 
                 .status(200)
                 .json({

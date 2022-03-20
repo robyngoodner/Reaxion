@@ -2,9 +2,9 @@ import client from "./axios.config.js";
 
 const event = '/event';
 
-const get = (data) => {
-    console.log("client data", data)
-    return client.get(`${event}/${data.eventId}`, data)
+const get = (id, data) => {
+    console.log("client id", id)
+    return client.get(`${event}/${id}`, data)
 }
 
 const create = (data) => {
