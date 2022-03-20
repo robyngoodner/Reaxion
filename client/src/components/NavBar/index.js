@@ -29,7 +29,7 @@ export default function NavBar({checkUserActive}) {
 
         {/* need user index to display id */}
             <NavLink
-                to="/user/:id" style={contentStyles}
+                to="/user/" style={contentStyles}
             >User Profile</NavLink>
             
             {/* <NavLink
