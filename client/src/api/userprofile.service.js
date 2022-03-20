@@ -4,8 +4,8 @@ const userProfile = '/user';
 //awaiting user index for user profile ID 
 
 
-const show = (id) => {
-    return client.get(`${userProfile}/${id}`, id)
+const show = (data, id) => {
+    return client.get(`${userProfile}/${id}`, data)
 }
 
 const update =(data, id) => {
