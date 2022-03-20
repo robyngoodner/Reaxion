@@ -25,8 +25,8 @@ function showPost( { post }) {
      return (
          <>
          <div>
-            <p>Reaction: {post.content}</p>
-            <p>User Comment: {post.User_Comment}</p>
+            <p>{post.content}</p>
+            <p>{post.User_Comment}</p>
 
          </div>
          <div>
