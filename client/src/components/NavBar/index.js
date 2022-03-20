@@ -26,6 +26,8 @@ export default function NavBar({checkUserActive}) {
 
     return (      
         <div>
+
+        {/* need user index to display id */}
             <NavLink
                 to="/user/:id" style={contentStyles}
             >User Profile</NavLink>
@@ -34,9 +36,9 @@ export default function NavBar({checkUserActive}) {
                 to="/new" style={contentStyles}
             >Create new community</NavLink> */}
 
-            <NavLink
+            {/* <NavLink
                 to="/community" style={contentStyles}
-            >My Communities</NavLink>
+            >My Communities</NavLink> */}
 
             {/* <NavLink
                 to="/join" style={contentStyles}
@@ -46,12 +48,16 @@ export default function NavBar({checkUserActive}) {
                 to="/profile" style={contentStyles}
             >Profile</NavLink> */}
 
+
+
+{/* need page to show index of single community to nest these links in*/}
+
             <NavLink
                 to="/post/new" style={contentStyles}
             >New Post</NavLink>
-            {/* <NavLink    
+            <NavLink    
                 to="event/new" style={contentStyles}
-            >New Event</NavLink> */}
+            >New Event</NavLink>
            
             {/* <NavLink
                 to='/comment' style={contentStyles}
@@ -71,50 +77,6 @@ export default function NavBar({checkUserActive}) {
            
 
 
-
-               {/*** routes ****/}
-{/* 
-              <Routes>
-
-                <Route  
-                    path='/'
-                    element={<EventView />}
-                    />
-
-                <Route 
-                    path="new" 
-                    element={<CommunityCreate />}></Route>
-
-                <Route  
-                    path="join"
-                    element={<CommunityJoin />}></Route>
-
-                <Route  
-                    path="profile"
-                    element={<UpdateUserProfile />}></Route>
-               
-                <Route  
-                    path="post/new"
-                    element={<PostCreate />}></Route>
-
-                <Route
-                    path="event/new"
-                    element={<EventCreate />}></Route>
-
-                     <Route
-                    path="/comment"
-                    element={<Comment />}></Route>
-
-                    <Route
-                    path = "login"
-                    element = {<Login />}>Log In</Route>
-
-                     <Route  
-                    path="register"
-                    element={<Register />}></Route>
-                   
-              
-            </Routes> */}
          </div>
         
     )
