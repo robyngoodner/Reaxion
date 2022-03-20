@@ -27,16 +27,16 @@ export default function EventView() {
    
 
     const findEvent = async () => {
-        console.log("eventsViewID before set: ",id)
+        // console.log("eventsViewID before set: ",id)
         setId(eventId);
-        console.log("eventsView ID after set: ",id)
+        // console.log("eventsView ID after set: ",id)
         try {
         const foundEvent = await eventService.get(id);
         setEvent(foundEvent);
-        console.log("front end events", event)
+        // console.log("front end events", event)
         setTitle(event.data.data.title)
         setDescription(event.data.data.description)
-        console.log(title)
+        // console.log(title)
         
         } catch(err) {
             console.log(err.message)
@@ -67,7 +67,9 @@ export default function EventView() {
                 <h2>{description}</h2>
             </div>
             
-            <Post post={post}/>
+            <div>
+                {/* <Post post={post}/> */}
+            </div>
         </>
     )
 }
