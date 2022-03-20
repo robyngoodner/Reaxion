@@ -40,15 +40,17 @@ const index = (req, res) => {
 }
 
 const show = (req, res) => {
+    console.log("event show req.params.id",req.params.id)
     db.Event.findById(req.params.id)
-          //.populate post reference
-          .populate({
-            path : 'posts',
-            populate : {
-              path : 'comments'
-            }
-          })
+        //   .populate post reference
+        //   .populate({
+        //     path : 'Posts',
+        //     populate : {
+        //       path : 'Comments'
+        //     }
+        //   })
         .exec((err, foundEvent)=>{
+            // console.log("found event", foundEvent);
             if (err){
                 return res
                     .status(400)
@@ -56,16 +58,15 @@ const show = (req, res) => {
                         message: "Bad Request; Cannot view event",
                         err: err,
                     })
-            }
-            return res        
-        //     .populate({
-        //     path: 'posts',
-        // })
+            }else {
+                console.log("found event", foundEvent)
+                return res        
                 .status(200)
                 .json({
                     message: "Event Found",
                     data: foundEvent
                 })
+            }
         })
 };
 

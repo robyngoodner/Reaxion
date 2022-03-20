@@ -62,14 +62,21 @@ const Home = () => {
             <Routes>
                 <Route  
                     path='/'
-                    element={<EventView/>}
+                    element={<Community/>}
                     />
+                {/* <Route  
+                    path='/'
+                    element={<EventView />}
+                    /> */}
                 <Route 
                     path="community" 
                     element={<Community />}></Route>
                 <Route 
                     path="community/:id" 
                     element={<EventsIndex />}></Route>
+                {/* <Route 
+                    path="community/:id/event/:id" 
+                    element={<EventsIndex />}></Route> */}
                 {/* <Route 
                     path="new" 
                     element={<CommunityCreate />}></Route>
@@ -89,8 +96,12 @@ const Home = () => {
                     path="/comment"
                     element={<Comment />}></Route>
                 <Route
+                    path="/event/:id"
+                    element={<EventView />}></Route>
+                <Route
                     path="/event"
                     element={<EventsIndex />}></Route>
+                
                 {/* <Route
                     path="/events/"
                     element={<EventView />}></Route> */}
