@@ -109,13 +109,14 @@ const create = (req, res) => {
 
 const update = (req, res) => {
     console.log('before findbyid')
-    console.log("req.params", req.params.id)
+    console.log("req.params", req.body._id)
     console.log("req.body", req.body)
     db.Post.findByIdAndUpdate(
-        req.params.id,
+        req.body._id,
         req.body,
         {new: true}, (err, updatedPost) => {
-            console.log("req.params", req.params.id)
+            console.log('after findbyid')
+            console.log("req.params", req.body._id)
             console.log("req.body", req.body)
             if(err) {
                 return res.status(400).json({
