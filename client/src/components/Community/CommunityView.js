@@ -22,7 +22,12 @@ export default function CommunityView () {
         <>
             {communities?.map((community, index)=> {
                 return (
+                    <div>
                     <li style={{listStyle:"none"}} key={index}><Link to={`/community/${community._id}`}><h3>{community.communityName}</h3></Link></li>
+                    
+                    </div>
+                   
+                    
                 )
             })}
         </>

@@ -60,6 +60,7 @@ const createCommunity = async (req, res) => {
         keyword: req.body.keyword
     }
     await db.Community.create(incomingReq, (err, createdCommunity) => {
+        console.log(createdCommunity)
         if (err) {
             return res.status(400).json({
                 message: "Failed community creation",

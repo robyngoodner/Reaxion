@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, Link}  from 'react-router-dom';
 import * as postService from '../../api/post.service';
 
 export default function PostUpdate () {
@@ -101,7 +101,9 @@ export default function PostUpdate () {
                     value={ postId }
                 /> */}
             </form>
-            <button onClick={handleSubmit}>Submit Reaction</button>
+             {/*redirect can be change to into the community once index controller is  completed. */}
+            <Link to="/user/:id"> <button onClick={handleSubmit}>Submit Reaction</button></Link>
+           
         </div>
     )
 }

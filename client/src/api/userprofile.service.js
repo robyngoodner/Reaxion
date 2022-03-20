@@ -1,14 +1,15 @@
 import client from "./axios.config.js";
 const userProfile = '/user';
 
-const show = (data) => {
-    return client.get(`${userProfile}`, data)
+//awaiting user index for user profile ID 
+
+
+const show = (id) => {
+    return client.get(`${userProfile}/${id}`, id)
 }
 
 const update =(data, id) => {
-    console.log("in axios")
-    console.log("id in userprofile service: ",id)
-    console.log("data in userprofile service: ",data)
+  
     return client.put(`${userProfile}/${id}`, data)
 }
 

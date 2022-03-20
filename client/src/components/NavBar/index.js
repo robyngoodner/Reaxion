@@ -26,37 +26,48 @@ export default function NavBar({checkUserActive}) {
 
     return (      
         <div>
+
+        {/* need user index to display id */}
             <NavLink
-                to="/" style={contentStyles}
-            >Home</NavLink>
+                to="/user/:id" style={contentStyles}
+            >User Profile</NavLink>
+            
             {/* <NavLink
                 to="/new" style={contentStyles}
             >Create new community</NavLink> */}
+
             <NavLink
                 to="/community" style={contentStyles}
-            >My Communities</NavLink>
+            >All Communities</NavLink>
+
             {/* <NavLink
                 to="/join" style={contentStyles}
             >Join a community</NavLink> */}
-            <NavLink
+
+            {/* <NavLink
                 to="/profile" style={contentStyles}
-            >Profile</NavLink>
-            <NavLink
+            >Profile</NavLink> */}
+
+
+
+{/* need page to show index of single community to nest these links in*/}
+
+            {/* <NavLink
                 to="/post/new" style={contentStyles}
             >New Post</NavLink>
             <NavLink    
                 to="event/new" style={contentStyles}
             >New Event</NavLink>
-           
+            */}
             {/* <NavLink
                 to='/comment' style={contentStyles}
             >Comment
             </NavLink> */}
 
-            <NavLink
+            {/* <NavLink
                 to='/events' style={contentStyles}
             >All Events
-            </NavLink>
+            </NavLink> */}
 
             <NavLink
                 to='/' style={contentStyles}
@@ -66,50 +77,6 @@ export default function NavBar({checkUserActive}) {
            
 
 
-
-               {/*** routes ****/}
-{/* 
-              <Routes>
-
-                <Route  
-                    path='/'
-                    element={<EventView />}
-                    />
-
-                <Route 
-                    path="new" 
-                    element={<CommunityCreate />}></Route>
-
-                <Route  
-                    path="join"
-                    element={<CommunityJoin />}></Route>
-
-                <Route  
-                    path="profile"
-                    element={<UpdateUserProfile />}></Route>
-               
-                <Route  
-                    path="post/new"
-                    element={<PostCreate />}></Route>
-
-                <Route
-                    path="event/new"
-                    element={<EventCreate />}></Route>
-
-                     <Route
-                    path="/comment"
-                    element={<Comment />}></Route>
-
-                    <Route
-                    path = "login"
-                    element = {<Login />}>Log In</Route>
-
-                     <Route  
-                    path="register"
-                    element={<Register />}></Route>
-                   
-              
-            </Routes> */}
          </div>
         
     )

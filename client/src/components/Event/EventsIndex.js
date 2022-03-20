@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 // import { func } from 'prop-types';
 import * as eventService from '../../api/event.service';
 //import { Link } from 'react-router-dom';
-import EventView from './EventView';
+
 import { Link } from 'react-router-dom'
 
 
