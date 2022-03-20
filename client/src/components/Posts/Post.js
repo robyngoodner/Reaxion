@@ -25,7 +25,8 @@ function showPost( { post }) {
      return (
          <>
          <div>
-            <p>{post.content}</p>
+            <img src={post.content} />
+            {console.log(post.content)}
             <p>{post.User_Comment}</p>
 
          </div>

@@ -55,7 +55,7 @@ export default function PostCreate ({ eventId }) {
                             type="radio"
                             id="happyEmoji"
                             name="content"
-                            value="Happy"
+                            value="/images/Happy.png"
                         />
                         <img src="/images/Happy.png" alt="Happy"/>
                     </label>
@@ -65,7 +65,7 @@ export default function PostCreate ({ eventId }) {
                             type="radio"
                             id="sadEmoji"
                             name="content"
-                            value="Sad"
+                            value="/images/Sad.png"
                         />
                         <img src="/images/Sad.png" alt="Sad"/>
                     </label>
@@ -75,7 +75,7 @@ export default function PostCreate ({ eventId }) {
                             type="radio"
                             id="contentEmoji"
                             name="content"
-                            value="Content"
+                            value="/images/Content.png"
                         />
                          <img src="/images/Content.png" alt="Content"/>
                     </label>
@@ -85,7 +85,7 @@ export default function PostCreate ({ eventId }) {
                             type="radio"
                             id="angryEmoji"
                             name="content"
-                            value="Angry"
+                            value="/images/Angry.png"
                         />
                         <img src="/images/Angry.png" alt="Angry"/>
                     </label>
@@ -95,7 +95,7 @@ export default function PostCreate ({ eventId }) {
                             type="radio"
                             id="excitedEmoji"
                             name="content"
-                            value="Excited"
+                            value="/images/Excited.png"
                         />
                         <img src="/images/Excited.png" alt="Excited"/>
                     </label>
@@ -105,7 +105,7 @@ export default function PostCreate ({ eventId }) {
                             type="radio"
                             id="disinterestedEmoji"
                             name="content"
-                            value="Disinterested"
+                            value="/images/Disinterested.png"
                         />
                         <img src="/images/Disinterested.png" alt="Disinterested"/>
                     </label>
