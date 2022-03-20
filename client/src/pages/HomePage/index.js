@@ -15,7 +15,9 @@ import * as authService from "../../api/auth.service";
 import NavBar from "../../components/NavBar";
 import Welcome from "../../components/Welcome";
 import EventsIndex from "../../components/Event/EventsIndex";
-
+import UserIndex from "../../components/UserProfile";
+import CommunityCreate from "../../components/Community/CommunityCreate";
+import CommunityJoin from "../../components/Community/CommunityJoin";
 
 const reducer = (prevState, action) => {
     switch(action.type) {
@@ -78,15 +80,15 @@ const Home = () => {
                 {/* <Route 
                     path="community/:id/event/:id" 
                     element={<EventsIndex />}></Route> */}
-                {/* <Route 
-                    path="new" 
+                <Route 
+                    path="/community/new" 
                     element={<CommunityCreate />}></Route>
                 <Route  
-                    path="join"
-                    element={<CommunityJoin />}></Route> */}
+                    path="/community/join"
+                    element={<CommunityJoin />}></Route>
                 <Route  
                     path="user/:id"
-                    element={<UpdateUserProfile />}></Route>
+                    element={<UserIndex />}></Route>
                 <Route  
                     path="post/new"
                     element={<PostCreate />}></Route>

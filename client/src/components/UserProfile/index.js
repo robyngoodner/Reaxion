@@ -1,0 +1,165 @@
+import React, {useState, useEffect} from 'react';
+import * as userProfileService from "../../api/userprofile.service";
+import * as postService from "../../api/post.service";
+import { Link, Route } from 'react-router-dom';
+import * as communityService from "../../api/community.service";
+import PostCreate from '../Posts/PostCreate';
+
+
+
+const UserIndex = () => {
+    const [firstName, setFirstName]= useState("");
+    const [lastName, setLastName]= useState("");
+    const [description, setDescription]= useState("");
+    const [userIcon, setUserIcon]= useState("");
+    const [posts, setPosts] = useState([]);
+    const [community, setCommunity] = useState([]);
+
+
+
+    // useEffect(() => {
+    //     UserIndex();
+    //     }
+        
+    // }, [user])
+
+
+    // const handleSubmit = async () => {
+    //     let newUserInfo = { firstName, lastName, description, userIcon };
+    //     let res = await userProfileService.update(newUserInfo).then(() => {
+    //         setFirstName("");
+    //         setLastName("");
+    //         setDescription("");
+    //         setUserIcon("");
+    //         console.log("userprofile newuserinfo: ", newUserInfo)
+    //     });
+    //     if (!res === 201) {
+    //         alert(`Error updating user information, ${res.status}`);
+    //     }
+    // };
+
+    // const handleProfileDelete = async () => {
+    //     console.log('in handleProfileDelete');
+    //     let res = await userProfileService.destroy()
+    //         .then(() => {
+    //             // window.location.href = "/";
+    //         });
+    //      if ( !res === 201 ) {
+    //          alert("Profile Not Deleted") 
+    //      } 
+    // }        
+    
+    const getExistingProfile = async () => {
+        let res = await userProfileService.show()
+            .then((data) => {
+            // console.log("get existing profile: ", data.data.data)
+            setFirstName(data.data.data.firstName);
+            setLastName(data.data.data.lastName);
+            setDescription(data.data.data.description);
+            setUserIcon(data.data.data.setUserIcon);
+        });
+        if ( !res === 201 ) {
+            alert("Profile Not Deleted") 
+        } 
+    }
+
+
+    const handleSubmitDelete = async () => {
+        let res = await postService.destroy()
+            .then(() => {
+                findPosts();
+            });
+        
+         if ( !res === 201 ) {
+             alert(`Post error. Please submit again. ${res.status}`) 
+         } 
+    }        
+
+    const handleSubmitEdit = (id) => {
+        console.log(`/post/${id}`)
+        // console.log(`/post/${post.id}`)
+    
+    //  if ( !res === 201 ) {
+    //      alert(`Post error. Please submit again. ${res.status}`) 
+    //  } 
+}  
+  
+    const findPosts = async () => {
+        await postService.getAll().then((res) => {
+            console.log(res.data.data)
+            setPosts(res.data.data);
+        });
+    }
+    
+    useEffect(() => {
+        findPosts();
+        getExistingProfile();
+    }, []);
+
+    const findCommunity = async () => {
+        await communityService.getCommunities()
+            .then((res) => {
+           setCommunity(res.data.data)
+        });
+    }
+        useEffect(() => {
+            findCommunity();
+
+        }, []);
+    
+
+
+return (
+    <div>
+    <h1>Welcome, Name Here</h1>
+
+{/*Add User Icon Here*/}
+   
+        <h2>My Communities</h2>
+        <ul>
+        <Link to="/community/new"><button type="submit">CREATE A COMMUNITY</button></Link>
+        <Link to="/community/join"><button type="submit">JOIN A COMMUNITY</button></Link>
+           {/* community also needs an index in order to show all post*/ } 
+            {community?.map((community, index)=> {
+                return (
+                    <>
+                        <li> 
+                        {community.communityName}
+                        </li>
+                        
+                    </>
+                    
+                )
+            })}
+        </ul> 
+
+
+
+        <h2>My Recent Posts</h2>
+        <ul>
+            {posts.map((post)=> {
+                return (
+                    <>
+                        <li style={{listStyle:"none"}} key={post.index}></li>
+                        <li> 
+                            Event:{post.event}
+                            Reaction:{post.content}
+                            User Comment:{post.User_Comment}
+                        </li>
+                        <div>
+                            <Link to={`../../post/${post._id}`} state={{ postId: post._id }} >
+                                <button>Edit</button>
+                            </Link>
+                            <button onClick={handleSubmitDelete}>Delete</button>
+                        </div>
+                    </>
+                )
+            })}
+        </ul> 
+</div>
+);  
+        }
+
+
+
+export default UserIndex;

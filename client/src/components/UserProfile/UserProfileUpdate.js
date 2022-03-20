@@ -45,8 +45,10 @@ export default function UpdateUserProfile(data) {
             setLastName(data.data.data.lastName);
             setDescription(data.data.data.description);
             setUserIcon(data.data.data.setUserIcon)
-        })
-
+        });
+        if ( !res === 201 ) {
+            alert("Profile Not Deleted") 
+        } 
     }
 
 

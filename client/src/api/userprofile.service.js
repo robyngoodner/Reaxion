@@ -1,6 +1,9 @@
 import client from "./axios.config.js";
 const userProfile = '/user';
 
+//awaiting user index for user profile ID 
+
+
 const show = (data) => {
     return client.get(`${userProfile}`, data)
 }

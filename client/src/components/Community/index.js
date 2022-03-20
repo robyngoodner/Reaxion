@@ -6,13 +6,21 @@ export default function Community () {
     return (
         <>
         <div>
-            <h1>My Communities</h1>
+
+        
+        <div>
+           
             <CommunityView />
             <CommunityJoin />
             <CommunityCreate />
             </div>
+
             <div>
+
             </div>
+
+            
+            </div> 
         </>
     )
 }

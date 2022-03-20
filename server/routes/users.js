@@ -2,7 +2,8 @@ const router = require("express").Router()
 const {users} = require("../controllers")
 const authRequired = require("../middleware/auth.required")
 
-//** missing user controller logic */
+//** missing user index route */
+
 
 router.get("/", authRequired, users.show)
 router.put("/:id", authRequired, users.updateProfile) 
