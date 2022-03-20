@@ -48,10 +48,10 @@ export default function NavBar({checkUserActive}) {
                 to="event/new" style={contentStyles}
             >New Event</NavLink>
            
-            <NavLink
+            {/* <NavLink
                 to='/comment' style={contentStyles}
             >Comment
-            </NavLink>
+            </NavLink> */}
 
             <NavLink
                 to='/events' style={contentStyles}
