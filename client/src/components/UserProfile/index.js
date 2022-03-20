@@ -122,7 +122,8 @@ const UserIndex = () => {
 
 return (
     <div>
-    <h1>Welcome, {user.firstName}</h1>
+    <h1 >Welcome, {user.firstName}</h1>
+    <img src={user.userIcon} alt="not found" style={{width: "48px" , height: "48px" , borderRadius: "10%"}}></img>
     <Link to="/user/edit"><button type="submit">CHANGE PROFILE</button></Link>
        
 {/*Add User Icon Here*/}
