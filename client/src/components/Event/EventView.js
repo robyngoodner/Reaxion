@@ -75,7 +75,7 @@ export default function EventView() {
                     return (
                     <li style={{listStyle:"none"}} key={index}>
                         <Post post={post}/>
-                        {console.log(post)} 
+                        {/* {console.log(post)}  */}
                     </li>
                     )
                 })}
