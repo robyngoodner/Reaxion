@@ -10,15 +10,13 @@ const Login = ( {checkUserActive} ) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-      await  authService.login(email, password).then(() =>{
+      await authService.login(email, password).then((res) =>{
           //allows redirect after sign in dont delete
          {checkUserActive();}
             setEmail("");
             setPassword("");
-
         });
     };
-
 
 return (
     <div>
@@ -26,7 +24,6 @@ return (
             <label  htmlFor="email">
                 Email
                 <input
-
                     onChange={(e) => setEmail(e.target.value)}
                     value={email}
                     type="text"
@@ -37,10 +34,9 @@ return (
             <label  htmlFor="password">
                 Password
                 <input
-
                     onChange={(e) => setPassword(e.target.value)}
                     value={password}
-                    type="text"
+                    type="password"
                     name="password"
                     placeholder="password"
                 />

@@ -1,8 +1,6 @@
 // Rest Routes
 const db = require('../models');
-const {User} = require('../models/user');
-const jwt = require('jsonwebtoken');
-const Community = require('../models/Community');
+
 
 /*
  * Index - GET - /users  - Presentational - respond with all users
@@ -16,61 +14,67 @@ const Community = require('../models/Community');
 
 //Show user profile
 const show= (req,res) => {
-    // let incomingReq = {
-    //     User: req.userId,
-    //     Communities: req.body.Communities,
-    //     Facilitator_Communities: req.body.Facilitator_Communities,
-    //     Posts: req.body.Posts,
-    //     Comments: req.body.Comments,
-    //     firstName: User.firstName,
-    // }
-    db.User.findById(req.userId, (err,foundUserProfile) => {
+    db.User.findById(req.userId, 
+        (err,foundUser) => {
         if (err) {
             return res.status(400)
             .json({
                 message: "Failed to find the user profile.",
                 error: err,
-            })
-    }  
-    })
-    
+            }) 
+        }  else {
+            // console.log(foundUser)
+            return res.status(200).json({
+            message: "Updated User Profile",
+            data: foundUser
+                })
+            }
+})
 }
 
 //Update profile 
 const updateProfile= (req, res) => {
-    console.log("in controller");
+    console.log("req.body: ", req.body)
+    console.log("userId: ", req.userId)
     db.User.findByIdAndUpdate(
-        req.userId,
+        {_id: req.userId },
         {
-         firstName: req.body.firstName,
-         lastName: req.body.lastName,
-         description: req.body.description,
-         userIcon: req.body.userIcon   
-        },
+            $set: {
+                firstName: req.body.firstName,
+                lastName: req.body.lastName,
+                description: req.body.description,
+                userIcon: req.body.userIcon  
+            }
+        }, 
         {new: true},
         (err,foundProfile) => {
+            console.log("found profile line 55: ",foundProfile)
         if (err) {
             return res.status(400)
             .json({
                 message: "Failed to edit the profile.",
                 error: err,
             })
-        } else {
-            console.log(foundProfile);
-            foundProfile[0].push(req.userId)
-            foundProfile[0].save();
-        }
-        return res.status(200).json({
-            message: "Updated User Profile",
-            data: foundProfile
+        } 
+        //else {
+        //     console.log(foundProfile);
+        //     foundProfile[0].push(req.userId.firstName)
+        //     foundProfile[0].save();
+        // }
+         else {
+            console.log("found profile line 69: "+foundProfile)
+            return res.status(200).json({
+                message: "Updated User Profile",
+                data: foundProfile,
+                id: req.userId
         })
+    }
     })
 }
 
 //delete profile
 
 const destroy = (req, res) => {
-    console.log("backend");
     db.User.findByIdAndDelete(req.userId, (err, deleteUser)=>{
         if (err) {
         return res

@@ -35,6 +35,24 @@ const index =  (req, res) => {
     })
 }
 
+const getCommunities = (req, res) => {
+    db.Community.find({Members: req.userId}, (err, foundCommunities) => {
+        if(err) {
+            return res
+                .status(400)
+                .json({
+                    message: "Failed to find communities",
+                    error: err
+                })
+        } return res
+            .status(200)
+            .json({
+                message: "Successfully found communities",
+                data: foundCommunities
+            })
+    })
+};
+
 const createCommunity = async (req, res) => {
     let incomingReq = {
         Facilitator: req.userId,
@@ -69,14 +87,8 @@ const createCommunity = async (req, res) => {
 }
 
 const joinCommunity =  (req, res) => {
-    // const bearerHeader = req.headers.authorization;
-    // const token = bearerHeader.split(' ')[1];
-    // const payload = await jwt.verify(token, 'reaxion')
-    // req.userId = payload._id;
-    // console.log("Req: ", req.userId)
-  
     let user = req.userId;
-     db.Community.find({ keyword: req.params.id }, 
+    db.Community.find({ keyword: req.params.id }, 
         (err, foundCommunity) => {
             if (err) {
                 return res
@@ -87,21 +99,53 @@ const joinCommunity =  (req, res) => {
                     })
             } else {
                 console.log(foundCommunity[0].Members)
-            foundCommunity[0].Members.push(user);
-            foundCommunity[0].save();
-            return res
-                .status(200)
-                .json({
-                    message: "Successfully joined community",
-                    data: foundCommunity
+                foundCommunity[0].Members.push(user);
+                foundCommunity[0].save();
+                db.User.findById(req.userId, (err, foundUser) => {
+                    if (err) {
+                        return res
+                            .status(400)
+                            .json({
+                                message: "Failed to find user",
+                                error: err
+                            })
+                    } else {
+                        console.log("foundCommunity[0]._id",foundCommunity[0]._id)
+                        foundUser.Communities.push(foundCommunity[0]._id)
+                        foundUser.save();
+                    }
+                })
+                return res
+                    .status(200)
+                    .json({
+                        message: "Successfully joined community",
+                        data: foundCommunity
                 })
             }
         })
+}
+const getAll = (req, res) => {
+    db.Community.findById(req.params.id, (err, foundCommunity) => { if (err) { 
+        return res
+            .status(400)
+            .json({ error: err }) 
+        } else { 
+            return res
+                .status(200)
+                .json({ 
+                    message: "Found Community",
+                    data: foundCommunity,
+                })}
+
+    })
 }
 
 
 module.exports = {
     index, 
+    getCommunities,
     createCommunity,
-    joinCommunity
+    joinCommunity,
+    getCommunities,
+    getAll
 }

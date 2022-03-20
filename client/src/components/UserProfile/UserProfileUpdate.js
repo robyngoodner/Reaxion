@@ -2,14 +2,30 @@ import React, {useState, useEffect} from 'react';
 import * as userProfileService from "../../api/userprofile.service";
 import * as postService from "../../api/post.service";
 import { Link } from 'react-router-dom';
+import * as communityService from "../../api/community.service";
 
-export default function UpdateUserProfile () {
-    const [firstName, setfirstName]= useState("");
-    const [lastName, setlastName]= useState("");
-    const [description, setdescription]= useState("");
+export default function UpdateUserProfile(data) {
+    const [firstName, setFirstName]= useState("");
+    const [lastName, setLastName]= useState("");
+    const [description, setDescription]= useState("");
     const [userIcon, setUserIcon]= useState("");
     const [posts, setPosts] = useState([]);
-    
+    const [community, setCommunity] = useState([]);
+
+    const handleSubmit = async () => {
+        let newUserInfo = { firstName, lastName, description, userIcon };
+        let res = await userProfileService.update(newUserInfo).then(() => {
+            setFirstName("");
+            setLastName("");
+            setDescription("");
+            setUserIcon("");
+            console.log("userprofile newuserinfo: ", newUserInfo)
+        });
+        if (!res === 201) {
+            alert(`Error updating user information, ${res.status}`);
+        }
+    };
+
     const handleProfileDelete = async () => {
         console.log('in handleProfileDelete');
         let res = await userProfileService.destroy()
@@ -21,20 +37,19 @@ export default function UpdateUserProfile () {
          } 
     }        
     
-    const handleSubmit = async () => {
-        let newUserInfo = {firstName, lastName, description, userIcon};
-        let res = await userProfileService.update(newUserInfo).then(() => {
-            setfirstName("");
-            setlastName("");
-            setdescription("");
-            setUserIcon("");
-            UpdateUserProfile();
-            console.log(newUserInfo)
-        });
-        if (!res === 201) {
-            alert(`error updating user information, ${res.status}`);
-        }
-    };
+    const getExistingProfile = async () => {
+        let res = await userProfileService.show()
+            .then((data) => {
+            // console.log("get existing profile: ", data.data.data)
+            setFirstName(data.data.data.firstName);
+            setLastName(data.data.data.lastName);
+            setDescription(data.data.data.description);
+            setUserIcon(data.data.data.setUserIcon)
+        })
+
+    }
+
+
 
     const findPosts = async () => {
         await postService.getAll().then((res) => {
@@ -67,8 +82,31 @@ export default function UpdateUserProfile () {
     //      alert(`Post error. Please submit again. ${res.status}`) 
     //  } 
 }  
-
+  
+    const findPosts = async () => {
+        await postService.getAll().then((res) => {
+            console.log(res.data.data)
+            setPosts(res.data.data);
+        });
+    }
     
+    useEffect(() => {
+        findPosts();
+        getExistingProfile();
+    }, []);
+
+    const findCommunity = async () => {
+        await communityService.getCommunities()
+            .then((res) => {
+           setCommunity(res.data.data)
+        });
+    }
+        useEffect(() => {
+            findCommunity();
+
+        }, []);
+    
+
 
 return (
     <div>
@@ -77,29 +115,29 @@ return (
         <label>
             Would you like to change your First and/or Last name?
             <input
-                onChange={(e) => setfirstName(e.target.value)}
+                onChange={(e) => setFirstName(e.target.value)}
                 value={firstName}
                 type="text"
-                name="first name"
-                placeholder="input your new first name"
+                name="firstName"
+                placeholder={firstName}
             />
         </label>
         <label>
             <input
-                onChange={(e) => setlastName(e.target.value)}
+                onChange={(e) => setLastName(e.target.value)}
                 value={lastName}
                 type="text"
-                name="last name"
+                name="lastName"
                 placeholder="input your new last name"
             />
         </label>
         <label>
             Would you like to change your description?
             <input
-                onChange={(e) => setdescription(e.target.value)}
+                onChange={(e) => setDescription(e.target.value)}
                 value={description}
                 type="text"
-                name="User Description"
+                name="description"
                 placeholder="tell everyone a little bit about yourself"
             />
         </label>
@@ -109,7 +147,7 @@ return (
                 onChange={(e) => setUserIcon(e.target.value)}
                 value={userIcon}
                 type="text"
-                name="body"
+                name="userIcon"
                 placeholder="input your new image, please use .jpg or .png"
             />
         </label>
@@ -139,6 +177,19 @@ return (
                 )
             })}
         </ul> 
+        <h1>Communities</h1>
+        <ul>
+            {community?.map((community, index)=> {
+                return (
+                    <>
+                        <li> 
+                        {community.communityName}
+                        </li>
+                    </>
+                )
+            })}
+        </ul> 
+
 </div>
 );  
-};
+        }

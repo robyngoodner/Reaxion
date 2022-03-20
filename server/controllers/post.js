@@ -10,8 +10,6 @@
  */
 
 const db = require("../models");
-const jwt = require('jsonwebtoken');
-const { findById } = require('../models/user');
 
 
 const showOne = (req, res) => {
@@ -72,7 +70,7 @@ const create = (req, res) => {
                 error: err 
             })
         } else {
-            console.log(savedPost)
+            console.log("savedPost: ",savedPost)
             db.User.findById(incomingReq.User)
             .exec(function (err, foundUser) {
                 if (err) return res 
@@ -95,9 +93,9 @@ const create = (req, res) => {
                         error: err
                     })
                 else{
-                    console.log(foundEvent)
-                    // foundEvent.posts.push(savedPost);
-                    // foundEvent.save();
+                    console.log("foundEvent",foundEvent)
+                    foundEvent.posts.push(savedPost);
+                    foundEvent.save();
                 }
             });  
             return res.status(201).json({

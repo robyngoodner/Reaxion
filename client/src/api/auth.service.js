@@ -11,14 +11,12 @@ const register = (email, password, firstName, lastName) => {
 
 
 const login = (email, password) => {
-    console.log("before try in login")
-    console.log(email,password)
     try {
         return client
         .post(`${auth}/login`, {email,password})
         .then((res) => {
-            console.log(res)
             if(res.data.token) {
+                console.log(res.data.message)
                 localStorage.setItem("user", JSON.stringify(res.data.token))
             }
             return res.data.token;
