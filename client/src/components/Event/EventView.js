@@ -3,6 +3,7 @@ import * as eventService from "../../api/event.service"
 import Post from "../Posts/Post"
 import * as postService from "../../api/post.service";
 import { useLocation } from 'react-router-dom';
+import PostCreate from '../Posts/PostCreate';
 
 
 export default function EventView() {
@@ -36,7 +37,7 @@ export default function EventView() {
         // console.log("front end events", event)
         setTitle(event.data.data.title)
         setDescription(event.data.data.description)
-        // console.log(title)
+        console.log(event.data.data)
         
         } catch(err) {
             console.log(err.message)
@@ -62,11 +63,13 @@ export default function EventView() {
     return(
         <>
             <div>
-                <h1>Event view </h1>
+                {/* <h1>Event view </h1> */}
                 <h1>{title}</h1>
                 <h2>{description}</h2>
             </div>
-            
+            <div>
+                <PostCreate eventId={eventId}/>
+            </div>
             <div>
                 {/* <Post post={post}/> */}
             </div>

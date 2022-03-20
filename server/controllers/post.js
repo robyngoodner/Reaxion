@@ -1,4 +1,5 @@
 // Rest Routes
+
 /*
  * Index - GET - /posts  - Presentational - respond with all posts
  * New - GET - /posts/new  - Presentational Form - a page with a form to create a new post
@@ -57,10 +58,8 @@ const create = (req, res) => {
         User: req.userId,
         content: req.body.content,
         User_Comment: req.body.User_Comment,
-        Event: req.body.Event
+        Event: req.body.eventId
     }
-    console.log('post create')
-
     db.Post.create(
         incomingReq, 
         (err, savedPost) => {
@@ -95,8 +94,9 @@ const create = (req, res) => {
                     })
                 else{
                     console.log("foundEvent",foundEvent)
-                    // foundEvent.posts.push(savedPost);
-                    // foundEvent.save();
+                    foundEvent.posts.push(savedPost._id);
+                    foundEvent.save();
+
                 }
             });  
             return res.status(201).json({
