@@ -41,6 +41,7 @@ const index = (req, res) => {
 
 const show = (req, res) => {
     console.log("event show req.params.id",req.params.id)
+    // console.log("req.body: ",req.body)
     db.Event.findById(req.params.id)
         //   .populate post reference
         //   .populate({
