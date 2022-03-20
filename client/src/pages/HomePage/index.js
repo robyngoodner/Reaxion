@@ -7,10 +7,11 @@ import Community from '../../components/Community/index';
 import EventView from "../../components/Event/EventView";
 import UpdateUserProfile from "../../components/UserProfile/UserProfileUpdate";
 import PostCreate from "../../components/Posts/PostCreate";
+import PostUpdate from "../../components/Posts/PostUpdate"
 import EventCreate from "../../components/Event/EventCreate";
 import * as authService from "../../api/auth.service";
 
-import Comment from "../../components/Comment/CommentView";
+// import Comment from "../../components/Comment/CommentView";
 import NavBar from "../../components/NavBar";
 import Welcome from "../../components/Welcome";
 import EventsIndex from "../../components/Event/EventsIndex";
@@ -89,12 +90,15 @@ const Home = () => {
                 <Route  
                     path="post/new"
                     element={<PostCreate />}></Route>
+                <Route  
+                    path="post/:id"
+                    element={<PostUpdate />}></Route>
                 <Route
                     path="event/new"
                     element={<EventCreate />}></Route>
-                <Route
+                {/* <Route
                     path="/comment"
-                    element={<Comment />}></Route>
+                    element={<Comment />}></Route> */}
                 <Route
                     path="/event/:id"
                     element={<EventView />}></Route>

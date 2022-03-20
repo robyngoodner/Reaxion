@@ -3,7 +3,6 @@ import client from "./axios.config.js";
 const post = '/post';
 
 const create = (data) => {
-    console.log("post service data: ",data)
     return client.post(`${post}`, data)
 }
 
@@ -15,11 +14,14 @@ const getAll = (data) => {
     return client.get(`${post}`, data)
 }
 
-const update = (id, data) => {
-    return client.put(`${post}/${id}`)
+const update = (data, postId) => {
+    console.log("in axios", postId)
+    console.log(data)
+    return client.put(`${post}/${postId}`, data)
 }
 
 const destroy = (id) => {
+    console.log(id)
     return client.delete(`${post}/${id}`)
 }
 

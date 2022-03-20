@@ -31,7 +31,10 @@ const showOne = (req, res) => {
 }
 
 const index = (req, res) => {
-    db.Post.find({User: req.userID}, (err, foundPosts) => {
+    let incomingReq = {
+        User: req.userId,
+    }
+    db.Post.find(incomingReq, (err, foundPosts) => {
         if (err) {
             return res
                 .status(400)
@@ -57,8 +60,6 @@ const create = (req, res) => {
         User_Comment: req.body.User_Comment,
         Event: req.body.eventId
     }
-    console.log("incomingReq: ", incomingReq)
-    console.log("req.body ",req.body)
     db.Post.create(
         incomingReq, 
         (err, savedPost) => {
@@ -95,6 +96,7 @@ const create = (req, res) => {
                     console.log("foundEvent",foundEvent)
                     foundEvent.posts.push(savedPost._id);
                     foundEvent.save();
+
                 }
             });  
             return res.status(201).json({
@@ -106,10 +108,16 @@ const create = (req, res) => {
 }
 
 const update = (req, res) => {
+    console.log('before findbyid')
+    console.log("req.params", req.body._id)
+    console.log("req.body", req.body)
     db.Post.findByIdAndUpdate(
-        req.params.id,
+        req.body._id,
         req.body,
         {new: true}, (err, updatedPost) => {
+            console.log('after findbyid')
+            console.log("req.params", req.body._id)
+            console.log("req.body", req.body)
             if(err) {
                 return res.status(400).json({
                     message: "Error 400",

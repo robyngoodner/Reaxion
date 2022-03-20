@@ -6,7 +6,6 @@ import * as eventService from '../../api/event.service';
 export default function PostCreate ({ eventId }) {
     const [content, setContent] = useState("");
     const [User_Comment, setUser_Comment] = useState("");
-    // const [User, setUser] = useState("");
     const [event, setEvent] = useState("");
     const [eventsId, setEventsId] = useState("");
     console.log("eventId: ", eventId)
@@ -20,7 +19,6 @@ export default function PostCreate ({ eventId }) {
                 setUser_Comment("");
                 setEvent("");
                 setEventsId("")
-                // setUser("")
                 console.log(newPost)
             });
         
@@ -35,14 +33,14 @@ export default function PostCreate ({ eventId }) {
         })
     }
 
-    useEffect(() => {
-        findEvent();
-    }, []);
+    // useEffect(() => {
+    //     findEvent();
+    // }, []);
 
-    // const userFind = async () => {
-    //     let res = await authService.currentUser();
-    //     console.log(res)
-    // }
+    const userFind = async () => {
+        let res = await authService.currentUser();
+        console.log(res)
+    }
 
     return (
         <div>

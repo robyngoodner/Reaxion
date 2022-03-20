@@ -1,8 +1,8 @@
 import React, {useState, useEffect} from 'react';
 import * as userProfileService from "../../api/userprofile.service";
 import * as postService from "../../api/post.service";
+import { Link } from 'react-router-dom';
 import * as communityService from "../../api/community.service";
-
 
 export default function UpdateUserProfile(data) {
     const [firstName, setFirstName]= useState("");
@@ -50,32 +50,33 @@ export default function UpdateUserProfile(data) {
     }
 
 
-
     const handleSubmitDelete = async () => {
         let res = await postService.destroy()
-            // .then(() => {
-            //     // window.location.href = "/post";
-            // });
+            .then(() => {
+                findPosts();
+            });
         
          if ( !res === 201 ) {
              alert(`Post error. Please submit again. ${res.status}`) 
          } 
     }        
 
-    const handleSubmitEdit = async () => {
-        // window.location.href = `/${post}/${id}`;
+    const handleSubmitEdit = (id) => {
+        console.log(`/post/${id}`)
+        // console.log(`/post/${post.id}`)
     
     //  if ( !res === 201 ) {
     //      alert(`Post error. Please submit again. ${res.status}`) 
     //  } 
-} 
-    
+}  
+  
     const findPosts = async () => {
         await postService.getAll().then((res) => {
             console.log(res.data.data)
             setPosts(res.data.data);
         });
     }
+    
     useEffect(() => {
         findPosts();
         getExistingProfile();
@@ -143,17 +144,20 @@ return (
     <p> Would you like to delete your profile?</p>
     <button onClick={handleProfileDelete}>Delete Profile</button>
         <h1>Posts</h1>
-        <ul onChange={(e) => setPosts(e.target.value)}>
+        <ul>
             {posts.map((post)=> {
                 return (
                     <>
+                        <li style={{listStyle:"none"}} key={post.index}></li>
                         <li> 
                             Event:{post.event}
                             Reaction:{post.content}
                             User Comment:{post.User_Comment}
                         </li>
                         <div>
-                            <button onClick={handleSubmitEdit}>Edit</button>
+                            <Link to={`../../post/${post._id}`} state={{ postId: post._id }} >
+                                <button>Edit</button>
+                            </Link>
                             <button onClick={handleSubmitDelete}>Delete</button>
                         </div>
                     </>
