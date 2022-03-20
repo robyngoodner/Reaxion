@@ -38,6 +38,8 @@ export default function UpdateUserProfile () {
 
     const findPosts = async () => {
         await postService.getAll().then((res) => {
+           
+            console.log(res);
             setPosts(res.data.data);
         });
     }
@@ -117,10 +119,11 @@ return (
     <p> Would you like to delete your profile?</p>
     <button onClick={handleProfileDelete}>Delete Profile</button>
         <h1>Posts</h1>
-        <ul onChange={(e) => setPosts(e.target.value)}>
+        <ul>
             {posts.map((post)=> {
                 return (
                     <>
+                        <li style={{listStyle:"none"}} key={post.index}></li>
                         <li> 
                             Event:{post.event}
                             Reaction:{post.content}
