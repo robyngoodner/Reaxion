@@ -48,54 +48,66 @@ export default function PostCreate ({ eventId }) {
             <form>
                 <div>
                     Reaction:
-                    <input 
-                        onChange={(e) => setContent(e.target.value)}
-                        type="radio"
-                        id="happyEmoji"
-                        name="content"
-                        value="Happy"
-                    />
-                    <label htmlFor="happyEmoji">Happy</label>
-                    <input 
-                        onChange={(e) => setContent(e.target.value)}
-                        type="radio"
-                        id="sadEmoji"
-                        name="content"
-                        value="Sad"
-                    />
-                    <label htmlFor="sadEmoji">Sad</label>
-                    <input 
-                        onChange={(e) => setContent(e.target.value)}
-                        type="radio"
-                        id="contentEmoji"
-                        name="content"
-                        value="Content"
-                    />
-                    <label htmlFor="contentEmoji">Content</label>
-                    <input 
-                        onChange={(e) => setContent(e.target.value)}
-                        type="radio"
-                        id="angryEmoji"
-                        name="content"
-                        value="Angry"
-                    />
-                    <label htmlFor="angryEmoji">Angry</label>
-                    <input 
-                        onChange={(e) => setContent(e.target.value)}
-                        type="radio"
-                        id="excitedEmoji"
-                        name="content"
-                        value="Excited"
-                    />
-                    <label htmlFor="excitedEmoji">Excited</label>
-                    <input 
-                        onChange={(e) => setContent(e.target.value)}
-                        type="radio"
-                        id="disinterestedEmoji"
-                        name="content"
-                        value="Disinterested"
-                    />
-                    <label htmlFor="disinterestedEmoji">Disinterested</label>
+                    <label htmlFor="happyEmoji">
+                        <input 
+                            onChange={(e) => setContent(e.target.value)}
+                            type="radio"
+                            id="happyEmoji"
+                            name="content"
+                            value="Happy"
+                        />
+                        <img src="/images/Happy.png" alt="Happy"/>
+                    </label>
+                    <label htmlFor="sadEmoji">
+                        <input 
+                            onChange={(e) => setContent(e.target.value)}
+                            type="radio"
+                            id="sadEmoji"
+                            name="content"
+                            value="Sad"
+                        />
+                        <img src="/images/Sad.png" alt="Sad"/>
+                    </label>
+                    <label htmlFor="contentEmoji">
+                        <input 
+                            onChange={(e) => setContent(e.target.value)}
+                            type="radio"
+                            id="contentEmoji"
+                            name="content"
+                            value="Content"
+                        />
+                         <img src="/images/Content.png" alt="Content"/>
+                    </label>
+                    <label htmlFor="angryEmoji">
+                        <input 
+                            onChange={(e) => setContent(e.target.value)}
+                            type="radio"
+                            id="angryEmoji"
+                            name="content"
+                            value="Angry"
+                        />
+                        <img src="/images/Angry.png" alt="Angry"/>
+                    </label>
+                    <label htmlFor="excitedEmoji">
+                        <input 
+                            onChange={(e) => setContent(e.target.value)}
+                            type="radio"
+                            id="excitedEmoji"
+                            name="content"
+                            value="Excited"
+                        />
+                        <img src="/images/Excited.png" alt="Excited"/>
+                    </label>
+                    <label htmlFor="disinterestedEmoji">
+                        <input 
+                            onChange={(e) => setContent(e.target.value)}
+                            type="radio"
+                            id="disinterestedEmoji"
+                            name="content"
+                            value="Disinterested"
+                        />
+                        <img src="/images/Disinterested.png" alt="Disinterested"/>
+                    </label>
                 </div>
                 <label>
                     If you would like, please leave an additional comment about your experience (optional):
