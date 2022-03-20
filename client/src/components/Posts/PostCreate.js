@@ -3,20 +3,23 @@ import * as postService from '../../api/post.service';
 import * as authService from '../../api/auth.service';
 import * as eventService from '../../api/event.service';
 
-export default function PostCreate () {
+export default function PostCreate ({ eventId }) {
     const [content, setContent] = useState("");
     const [User_Comment, setUser_Comment] = useState("");
     // const [User, setUser] = useState("");
     const [event, setEvent] = useState("");
+    const [eventsId, setEventsId] = useState("");
+    console.log("eventId: ", eventId)
 
     const handleSubmit = async () => {
-
-        let newPost = { content, User_Comment, event};
+        setEventsId(eventId)
+        let newPost = { content, User_Comment, event, eventId};
         let res = await postService.create(newPost)
             .then(() => {
                 setContent([]);
                 setUser_Comment("");
-                // setEvent("");
+                setEvent("");
+                setEventsId("")
                 // setUser("")
                 console.log(newPost)
             });
@@ -26,7 +29,7 @@ export default function PostCreate () {
          }    
     }
     const findEvent = async () => {
-        await eventService.get().then((res) => {
+        await eventService.get(eventId).then((res) => {
             setEvent(res.data.data);
             console.log("found event: ", event)
         })
@@ -106,11 +109,11 @@ export default function PostCreate () {
                         placeholder="Additional comment"
                     />
                 </label>
-               {/* <input 
+               <input 
                     type="hidden"
                     name="Event"
-                    value={event._id}
-                /> */}
+                    value={eventId}
+                />
 
             </form>
             <button onClick={handleSubmit}>Submit Reaction</button>

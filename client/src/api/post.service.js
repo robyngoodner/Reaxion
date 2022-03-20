@@ -3,6 +3,7 @@ import client from "./axios.config.js";
 const post = '/post';
 
 const create = (data) => {
+    console.log("post service data: ",data)
     return client.post(`${post}`, data)
 }
 
