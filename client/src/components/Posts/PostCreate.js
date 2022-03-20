@@ -36,10 +36,10 @@ export default function PostCreate () {
         findEvent();
     }, []);
 
-    const userFind = async () => {
-        let res = await authService.currentUser();
-        console.log(res)
-    }
+    // const userFind = async () => {
+    //     let res = await authService.currentUser();
+    //     console.log(res)
+    // }
 
     return (
         <div>

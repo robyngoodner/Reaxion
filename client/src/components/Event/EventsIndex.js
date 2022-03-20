@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import * as eventService from '../../api/event.service';
 //import { Link } from 'react-router-dom';
 import EventView from './EventView';
+import { Link } from 'react-router-dom'
 
 
 const EventsIndex = () => {
@@ -40,16 +41,16 @@ const EventsIndex = () => {
         <>
             <h1>Events</h1>
             <div>
-                {communities.map((community) => {
+                {communities?.map((community, index) => {
                     return (
                         <>
                         {/* <Link
                         to={community._id}>{community.communityName}
                         </Link> */}
-                        <h1>{community.communityName}</h1>
-                        <h4>{community.Events.map((event) => {
+                        <h1 key={index}>{community.communityName}</h1>
+                        <h4>{community?.Events?.map((event) => {
                             return (
-                                event.title)
+                                <Link to={`/event/${event._id}`} state={{ eventId : event._id }} >{event.title}</Link>)
                         })
                         }</h4>
                         {posts.map((post) => {
