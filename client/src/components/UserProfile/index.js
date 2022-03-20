@@ -5,6 +5,7 @@ import { Link, Route } from 'react-router-dom';
 import * as communityService from "../../api/community.service";
 import PostCreate from '../Posts/PostCreate';
 import CommunityView from '../Community/CommunityView';
+import Post from '../Posts/Post';
 
 
 
@@ -170,9 +171,10 @@ return (
                     <>
                         <li style={{listStyle:"none"}} key={post.index}></li>
                         <li> 
-                            Event:{post.event}
+                            {/* Event:{post.event}
                             Reaction:{post.content}
-                            User Comment:{post.User_Comment}
+                            User Comment:{post.User_Comment} */}
+                            <Post post={post}/>
                         </li>
                         <div>
                             <Link to={`../../post/${post._id}`} state={{ postId: post._id }} >
