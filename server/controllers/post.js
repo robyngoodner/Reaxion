@@ -59,6 +59,7 @@ const create = (req, res) => {
         User_Comment: req.body.User_Comment,
         Event: req.body.Event
     }
+    console.log('post create')
 
     db.Post.create(
         incomingReq, 
@@ -94,8 +95,8 @@ const create = (req, res) => {
                     })
                 else{
                     console.log("foundEvent",foundEvent)
-                    foundEvent.posts.push(savedPost);
-                    foundEvent.save();
+                    // foundEvent.posts.push(savedPost);
+                    // foundEvent.save();
                 }
             });  
             return res.status(201).json({
