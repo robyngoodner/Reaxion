@@ -51,7 +51,7 @@ export default function CommunityCreate () {
                     placeholder="Create a unique keyword to give to your participants"
                 />
                {/*redirect can be change to into the community once index controller is  completed. */}
-                <Link to="/user/:id">  <button onClick={handleSubmit}>Create Community</button></Link>
+                <Link to="/user/:id"> <button onClick={handleSubmit}>Create Community</button></Link>
             </form>
         </div>
     )    

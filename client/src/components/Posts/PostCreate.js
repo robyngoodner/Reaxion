@@ -111,6 +111,7 @@ export default function PostCreate () {
                 /> */}
 
             </form>
+            {/*redirects to user profile can be changed to community later on */}
            <Link to="/user/:id"> <button onClick={handleSubmit}>SUBMIT REACTION</button></Link>
         </div>
     )

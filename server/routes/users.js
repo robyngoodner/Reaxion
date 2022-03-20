@@ -4,8 +4,8 @@ const authRequired = require("../middleware/auth.required")
 
 //** missing user index route */
 
-
-router.get("/", authRequired, users.show)
+router.get("/",  users.index)
+router.get("/:id", authRequired, users.show)
 router.put("/:id", authRequired, users.updateProfile) 
 router.delete("/:id", authRequired, users.destroy)
 

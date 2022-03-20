@@ -36,9 +36,9 @@ export default function NavBar({checkUserActive}) {
                 to="/new" style={contentStyles}
             >Create new community</NavLink> */}
 
-            {/* <NavLink
+            <NavLink
                 to="/community" style={contentStyles}
-            >My Communities</NavLink> */}
+            >All Communities</NavLink>
 
             {/* <NavLink
                 to="/join" style={contentStyles}
@@ -52,13 +52,13 @@ export default function NavBar({checkUserActive}) {
 
 {/* need page to show index of single community to nest these links in*/}
 
-            <NavLink
+            {/* <NavLink
                 to="/post/new" style={contentStyles}
             >New Post</NavLink>
             <NavLink    
                 to="event/new" style={contentStyles}
             >New Event</NavLink>
-           
+            */}
             {/* <NavLink
                 to='/comment' style={contentStyles}
             >Comment

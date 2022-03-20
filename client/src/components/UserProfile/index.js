@@ -4,6 +4,7 @@ import * as postService from "../../api/post.service";
 import { Link, Route } from 'react-router-dom';
 import * as communityService from "../../api/community.service";
 import PostCreate from '../Posts/PostCreate';
+import CommunityView from '../Community/CommunityView';
 
 
 
@@ -124,17 +125,18 @@ return (
                 return (
                     <>
                         <li style={{listStyle:"none"}} key={community.index}></li>
-                        <li> 
-                           <h3>{community.communityName} </h3> 
-                           <h5>Facilitator:{community.Facilitator} </h5>  
-                            
-                        </li>
-                        <div>
+                    
+                    <CommunityView />
+                           {/* <h3>{community.communityName} </h3> 
+                           <h5>Facilitator:{community.Facilitator} </h5>   */}
+        
+                        
+                        {/* <div>
                             <Link to={`../../community/${community._id}`} state={{ communityId: community._id }} >
                                 <button>Edit</button>
                             </Link>
                             <button onClick={handleSubmitDelete}>Delete</button>
-                        </div>
+                        </div> */}
                     </>
                     
                 )
@@ -150,7 +152,7 @@ return (
 
 
         {/*here for easy access can be removed later on */}
-        <Link to="/post/new"><button type="submit">CREATE A POST</button></Link>
+      
         
         <ul>
             {posts.map((post)=> {
