@@ -50,19 +50,6 @@ export default function UpdateUserProfile(data) {
     }
 
 
-
-    const findPosts = async () => {
-        await postService.getAll().then((res) => {
-           
-            console.log(res);
-            setPosts(res.data.data);
-        });
-    }
-
-    useEffect(() => {
-        findPosts();
-    }, []);
-
     const handleSubmitDelete = async () => {
         let res = await postService.destroy()
             .then(() => {
