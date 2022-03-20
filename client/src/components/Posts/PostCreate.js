@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import * as postService from '../../api/post.service';
 import * as authService from '../../api/auth.service';
 import * as eventService from '../../api/event.service';
+import {Link} from "react-router-dom"
 
 export default function PostCreate () {
     const [content, setContent] = useState("");
@@ -110,7 +111,7 @@ export default function PostCreate () {
                 /> */}
 
             </form>
-            <button onClick={handleSubmit}>Submit Reaction</button>
+           <Link to="/user/:id"> <button onClick={handleSubmit}>SUBMIT REACTION</button></Link>
         </div>
     )
 }
