@@ -78,6 +78,7 @@ const login = async(req,res)  => {
         const isMatch= await bcrypt.compare(req.body.password, foundUser.password)
 
         if(isMatch){
+            console.log('is a match')
             const token= jwt.sign({_id:foundUser._id}, "reaxion", {expiresIn: "1h"})
             return res 
                 .status(200)
@@ -87,6 +88,7 @@ const login = async(req,res)  => {
                     token
                 })
         } else {
+            console.log('cant log in')
             return res
                 .status(400)
                 .json({

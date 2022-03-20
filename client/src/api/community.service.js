@@ -12,11 +12,6 @@ const getCommunities = (data) => {
 
 }
 
-const getCommunities = (data) => {
-    return client.get(`${community}`, data)
-
-}
-
 const create = (data) => {
     return client.post(`${community}`, data)
 }
