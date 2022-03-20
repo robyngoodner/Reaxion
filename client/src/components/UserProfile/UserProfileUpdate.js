@@ -145,40 +145,7 @@ return (
     <button onClick={handleSubmit}>Update user profile information</button>
     <p> Would you like to delete your profile?</p>
     <button onClick={handleProfileDelete}>Delete Profile</button>
-        <h1>Posts</h1>
-        <ul>
-            {posts.map((post)=> {
-                return (
-                    <>
-                        <li style={{listStyle:"none"}} key={post.index}></li>
-                        <li> 
-                            Event:{post.event}
-                            Reaction:{post.content}
-                            User Comment:{post.User_Comment}
-                        </li>
-                        <div>
-                            <Link to={`../../post/${post._id}`} state={{ postId: post._id }} >
-                                <button>Edit</button>
-                            </Link>
-                            <button onClick={handleSubmitDelete}>Delete</button>
-                        </div>
-                    </>
-                )
-            })}
-        </ul> 
-        <h1>Communities</h1>
-        <ul>
-            {community?.map((community, index)=> {
-                return (
-                    <>
-                        <li> 
-                        {community.communityName}
-                        </li>
-                    </>
-                )
-            })}
-        </ul> 
-
+        
 </div>
 );  
         }

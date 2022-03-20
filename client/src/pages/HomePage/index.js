@@ -67,10 +67,10 @@ const Home = () => {
                     path='/'
                     element={<Community/>}
                     />
-                {/* <Route  
-                    path='/'
-                    element={<EventView />}
-                    /> */}
+                <Route  
+                    path='/user/edit'
+                    element={<UpdateUserProfile />}
+                    />
                 <Route 
                     path="community" 
                     element={<Community />}></Route>

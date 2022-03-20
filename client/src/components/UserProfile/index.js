@@ -8,10 +8,10 @@ import PostCreate from '../Posts/PostCreate';
 
 
 const UserIndex = () => {
-    const [firstName, setFirstName]= useState("");
-    const [lastName, setLastName]= useState("");
-    const [description, setDescription]= useState("");
-    const [userIcon, setUserIcon]= useState("");
+    //const [firstName, setFirstName]= useState("");
+    //const [lastName, setLastName]= useState("");
+    //const [description, setDescription]= useState("");
+    //const [userIcon, setUserIcon]= useState("");
     const [posts, setPosts] = useState([]);
     const [community, setCommunity] = useState([]);
 
@@ -53,10 +53,10 @@ const UserIndex = () => {
         let res = await userProfileService.show()
             .then((data) => {
             // console.log("get existing profile: ", data.data.data)
-            setFirstName(data.data.data.firstName);
-            setLastName(data.data.data.lastName);
-            setDescription(data.data.data.description);
-            setUserIcon(data.data.data.setUserIcon);
+           // setFirstName(data.data.data.firstName);
+           // setLastName(data.data.data.lastName);
+           // setDescription(data.data.data.description);
+            //setUserIcon(data.data.data.setUserIcon);
         });
         if ( !res === 201 ) {
             alert("Profile Not Deleted") 
@@ -112,21 +112,29 @@ const UserIndex = () => {
 return (
     <div>
     <h1>Welcome, Name Here</h1>
-
+    <Link to="/user/edit"><button type="submit">CHANGE PROFILE</button></Link>
+       
 {/*Add User Icon Here*/}
    
         <h2>My Communities</h2>
         <Link to="/community/new"><button type="submit">CREATE A COMMUNITY</button></Link>
         <Link to="/community/join"><button type="submit">JOIN A COMMUNITY</button></Link>
         <ul>
-           {/* community also needs an index in order to show all post*/ } 
-            {community?.map((community, index)=> {
+            {community?.map((community)=> {
                 return (
                     <>
+                        <li style={{listStyle:"none"}} key={community.index}></li>
                         <li> 
-                        {community.communityName}
+                           <h3>{community.communityName} </h3> 
+                           <h5>Facilitator:{community.Facilitator} </h5>  
+                            
                         </li>
-                        
+                        <div>
+                            <Link to={`../../community/${community._id}`} state={{ communityId: community._id }} >
+                                <button>Edit</button>
+                            </Link>
+                            <button onClick={handleSubmitDelete}>Delete</button>
+                        </div>
                     </>
                     
                 )
