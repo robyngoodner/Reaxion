@@ -7,6 +7,7 @@ import Community from '../../components/Community/index';
 import EventView from "../../components/Event/EventView";
 import UpdateUserProfile from "../../components/UserProfile/UserProfileUpdate";
 import PostCreate from "../../components/Posts/PostCreate";
+import PostUpdate from "../../components/Posts/PostUpdate"
 import EventCreate from "../../components/Event/EventCreate";
 import * as authService from "../../api/auth.service";
 
@@ -89,6 +90,9 @@ const Home = () => {
                 <Route  
                     path="post/new"
                     element={<PostCreate />}></Route>
+                <Route  
+                    path="post/:id"
+                    element={<PostUpdate />}></Route>
                 <Route
                     path="event/new"
                     element={<EventCreate />}></Route>
