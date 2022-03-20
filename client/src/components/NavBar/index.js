@@ -27,7 +27,7 @@ export default function NavBar({checkUserActive}) {
     return (      
         <div>
             <NavLink
-                to="/" style={contentStyles}
+                to="/user/:id" style={contentStyles}
             >User Profile</NavLink>
             {/* <NavLink
                 to="/new" style={contentStyles}
