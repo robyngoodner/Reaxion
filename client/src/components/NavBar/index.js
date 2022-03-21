@@ -25,20 +25,23 @@ export default function NavBar({checkUserActive}) {
         }
 
     return (      
-        <div>
+        <div className="navBar">
+            <div className="navBarTitle">
+                <h1>REAXION</h1>
+            </div>
 
         {/* need user index to display id */}
-            <NavLink
+            {/* <NavLink
                 to="/user/" style={contentStyles}
-            >User Profile</NavLink>
+            >User Profile</NavLink> */}
             
             {/* <NavLink
                 to="/new" style={contentStyles}
             >Create new community</NavLink> */}
 
-            <NavLink
+            {/* <NavLink
                 to="/community" style={contentStyles}
-            >All Communities</NavLink>
+            >All Communities</NavLink> */}
 
             {/* <NavLink
                 to="/join" style={contentStyles}
@@ -69,8 +72,8 @@ export default function NavBar({checkUserActive}) {
             >All Events
             </NavLink> */}
 
-            <NavLink
-                to='/' style={contentStyles}
+            <NavLink className="logout"
+                to='/'
                 onClick = {handleLogout}
             >Logout
             </NavLink>
