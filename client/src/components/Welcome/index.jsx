@@ -7,15 +7,17 @@ import '../../../src/styles.css'
 const Welcome = ({ checkUserActive }) => {
 	return (
 		<div>
-			<div>
+			<div className="center">
 				<h1 className="title">Reaxion</h1>
 			</div>
-			<div>
-				<Login checkUserActive={checkUserActive}/>
-			</div>
-			<div>
-				<Register />
-			</div>
+			<div className="login-page">
+				<div className="login-container">
+					<Login checkUserActive={checkUserActive}/>
+				</div>
+				<div className="login-container">
+					<Register />
+				</div>
+			</div>	
 		</div>
 	);
 };
