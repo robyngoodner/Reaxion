@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 // import { func } from 'prop-types';
 import * as eventService from '../../api/event.service';
 import * as communityService from '../../api/community.service';
+import {Link} from "react-router-dom"
 
 const EventCreate = () => {
     const [title, setTitle] = useState("");
@@ -69,7 +70,7 @@ const EventCreate = () => {
                     placeholder="Feel free to add a description"
                 /></label>
             </form>
-            <button onClick={handleSubmit}>Post Event</button>
+            <Link to="/user/"> <button onClick={handleSubmit}>Post Event</button></Link>
         </div>
     )
 

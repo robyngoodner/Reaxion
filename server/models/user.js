@@ -11,7 +11,7 @@ const userSchema = new Schema ({
     lastName:String,
     email: String,
     description: String,
-    userIcon: String,
+    userIcon: {type: String, default:"/images/Happy.png"},
     Communities: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: "Community"

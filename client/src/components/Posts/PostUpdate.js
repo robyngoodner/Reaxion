@@ -102,7 +102,7 @@ export default function PostUpdate () {
                 /> */}
             </form>
              {/*redirect can be change to into the community once index controller is  completed. */}
-            <Link to="/user/:id"> <button onClick={handleSubmit}>Submit Reaction</button></Link>
+            <Link to="/user/"> <button onClick={handleSubmit}>Submit Reaction</button></Link>
            
         </div>
     )
