@@ -150,15 +150,18 @@ return (
                         <button onClick={toggleCommunityJoin} className="standardButton" type="submit">JOIN A COMMUNITY</button>
                     </div>
                     <ul>
+                    <CommunityView />
+                    </ul>
+                    {/* <ul>
                         {community?.map((community)=> {
                             return (
                                 <>
                                     <li style={{listStyle:"none"}} key={community.index}></li>
-                                    <CommunityView />
+                                    
                                 </>
                             )
                         })}
-                    </ul> 
+                    </ul>  */}
                 </div>    
                 <Link to="/user/edit"><button className="standardButton" type="submit">CHANGE PROFILE</button></Link>
             </div>
