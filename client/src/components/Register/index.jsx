@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import * as authService from "../../api/auth.service";
-import '../../../src/'
+import '../../../src/styles.css'
 
 
 const Register = () => {
@@ -22,54 +22,61 @@ const Register = () => {
     };
 
     return (
-        <div className="main">
-            <form>
+        <div className="container">
+            <form className = "loginForm">
+            <h1 className="formTitle">Create an Account</h1>
+            <div className="loginContainer">
                 <label htmlFor="email">
-            Email
+            Email</label>
                     <input 
+                        className = "input"
                         onChange={(e) => setEmail(e.target.value)}
                         value={email}
                         type="text"
                         name="email"
                         placeholder="email"
                     />
-                </label>
+                
                 <label htmlFor="email">
-            First Name
+            First Name</label>
                     <input 
+                        className = "input"
                         onChange={(e) => setfirstName(e.target.value)}
                         value={firstName}
                         type="text"
                         name="firstName"
-                        placeholder="firstName"
+                        placeholder="first name"
                     />
-                </label>
+                
                 <label htmlFor="email">
-            Last Name
+            Last Name</label>
                     <input 
+                        className = "input"
                         onChange={(e) => setlastName(e.target.value)}
                         value={lastName}
                         type="text"
                         name="lastName"
-                        placeholder="lastName"
+                        placeholder="last name"
                     />
-                </label>
+                
 
-                <label htmlFor="password">
-            Password
+                <label for="chk" aria-hidden="true" htmlFor="password">
+            Password</label>
                     <input 
+                        className = "input"
                         onChange={(e) => setPassword(e.target.value)}
                         value={password}
                         type="text"
                         name="password"
                         placeholder="password"
                     />
-                </label>
-            <button onClick={handleSubmit}>
-                Register
-            </button>
-        <h1>{successMsg}</h1>
-
+                </div>
+                    <div>
+                        <button className="signButton" onClick={handleSubmit}>
+                            Sign Up
+                        </button>
+                    </div>
+                    {/* <h1>{successMsg}</h1> */}
             </form>
         </div>
     );
