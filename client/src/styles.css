@@ -37,10 +37,42 @@ body {
 	align-items: center;
 }
 
+h1 {
+	font-family: 'Josefin Sans', sans-serif;
+	margin: 0;
+	font-size: 2em;
+	text-transform: uppercase;
+	color: white;
+	text-align:center;
+}
 h2 {
 	margin: 2vH 0vW 0vH 0vW;
 	color: white;
 	text-transform: uppercase;
+}
+
+/* === NAVBAR  === */
+
+.navBar {
+	display: flex;
+	background-color: var(--main-blue);
+	padding: 2vH 3vW 1vH 0vW;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.navBar h1 {
+	letter-spacing: .25em;
+}
+
+.logout {
+	color: white;
+	text-transform: uppercase;
+	text-decoration: none;
+}
+
+.navBarTitle {
+	width: 22vW;
 }
 /* === LOGIN PAGE === */
 
@@ -199,7 +231,7 @@ h2 {
 	color: white;
 }
 .userProfile {
-	width: 25vW;
+	width: 22vW;
 	background-color: var(--main-blue);
 	display: flex;
 	flex-direction: column;
@@ -212,7 +244,7 @@ h2 {
 
 .eventsAndCommunities {
 	display: flex;
-	width: 75vW;
+	width: 78vW;
 	background-color: var(--light-blue);
 }
 
