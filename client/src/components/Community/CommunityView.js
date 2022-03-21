@@ -39,7 +39,6 @@ export default function CommunityView (props) {
                 return (
 
                     <div>
-                        <button onClick={props.toggle} className="smallButton">Create event</button>
                         <li style={{listStyle:"none"}} key={index}><Link to={`/community/${community._id}`}><h4>{community.communityName}</h4></Link></li>
                     </div>  
                 )
