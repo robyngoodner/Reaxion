@@ -8,7 +8,6 @@ import CommunityView from '../Community/CommunityView';
 import CommunityJoin from '../Community/CommunityJoin';
 import CommunityCreate from '../Community/CommunityCreate';
 import Post from '../Posts/Post';
-import EventCreate from '../Event/EventCreate';
 import RecentEventView from '../Event/RecentEventView';
 
 
@@ -116,11 +115,9 @@ const UserIndex = () => {
 //Allows for toggling
     const [communityJoin, setCommunityJoin] = useState('none')
     const [communityCreate, setCommunityCreate] = useState('none')
-    const [eventCreate, setEventCreate] = useState('none')
 
     const toggleCommunityJoin = () => {
         setCommunityCreate('none')
-        setEventCreate('none')
         if(communityJoin === 'none'){
             setCommunityJoin('flex')
         } else {
@@ -130,7 +127,6 @@ const UserIndex = () => {
 
     const toggleCommunityCreate = () => {
         setCommunityJoin('none')
-        setEventCreate('none')
         if(communityCreate === 'none'){
             setCommunityCreate('flex')
         } else {
@@ -138,30 +134,21 @@ const UserIndex = () => {
         }
     }
     
-    const toggleEventCreate = () => {
-        setCommunityJoin('none')
-        setCommunityCreate('none')
-        if(eventCreate === 'none'){
-            setEventCreate('flex')
-        } else {
-            setEventCreate('none')
-        }
-    }
-
 return (    
     <div className="profile-page">
         <div className="userProfile">
             <div className="userHeight">
-                <div className="userHead">
+                <div className="infoBlock">
+                    <h2>Welcome</h2>
+                    <h1>{user.firstName}</h1>
                     <img className="userIcon" src={user.userIcon} alt="not found"/>
-                    <div className="infoBlock">
-                        <h3>Welcome</h3>
-                        <h2>{user.firstName}</h2>
-                    </div>
                 </div>
                 <div className="communitiesView">
-                    <h3>Communities</h3>
-                    
+                    <h2>My Communities</h2>
+                    <div className="stack">
+                        <button onClick={toggleCommunityCreate} className="standardButton" type="submit">CREATE A COMMUNITY</button>
+                        <button onClick={toggleCommunityJoin} className="standardButton" type="submit">JOIN A COMMUNITY</button>
+                    </div>
                     <ul>
                     <CommunityView />
                     </ul>
@@ -170,23 +157,11 @@ return (
                             return (
                                 <>
                                     <li style={{listStyle:"none"}} key={community.index}></li>
-
-                                    <CommunityView active={eventCreate} toggle={toggleEventCreate}/>
-                                </>
-                            )
-                        })}
-                    </ul> 
-                    <div className="stack">
-                        <button onClick={toggleCommunityCreate} className="smallButton" type="submit">CREATE Community</button>
-                        <button onClick={toggleCommunityJoin} className="smallButton" type="submit">JOIN Community</button>
-                    </div>
-
                                     
                                 </>
                             )
                         })}
                     </ul>  */}
-
                 </div>    
                 <Link to="/user/edit"><button className="standardButton" type="submit">CHANGE PROFILE</button></Link>
             </div>
@@ -195,7 +170,6 @@ return (
             <div className="recentPosts">
                 <CommunityCreate active={communityCreate}/>
                 <CommunityJoin active={communityJoin}/>
-                <EventCreate active={eventCreate}/>
                     {/*here for easy access can be removed later on */}
                     {/* <Link to="/post/new"><button type="submit">CREATE A POST</button></Link> */}
                     {/*here for easy access can be removed later on */}
