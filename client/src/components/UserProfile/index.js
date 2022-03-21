@@ -82,7 +82,7 @@ const UserIndex = () => {
 //Finds recent events, compares to current time--if fewer than 20 minutes have passed since the event was last updated, the event and the option to post to it will show up on the home page
         const findRecentEvent = () => {
             setLatestEvent(community[0].Events[community[0].Events.length-1])
-            // console.log("event time:",latestEvent)
+            console.log("latest event: ",latestEvent)
             setEventTime((new Date(latestEvent.createdAt).getTime()));
             setCurrentTime(new Date().getTime());
             // console.log("event time: ", eventTime);
@@ -110,64 +110,65 @@ const UserIndex = () => {
         }, [counter])
         
     
-return (
+return (    
     <div className="profile-page">
         <div className="userProfile">
             <div className="userHeight">
                 <div className="infoBlock">
-                    <h2>Welcome</h2>
-                    <h1>{user.firstName}</h1>
-                    <img className="userIcon" src={user.userIcon} alt="not found"/>
-                </div>
-                <Link to="/user/edit"><button className="standardButton" type="submit">CHANGE PROFILE</button></Link>
+                  <h1 >Welcome, {user.firstName}</h1>
+                  <img src={user.userIcon} alt="not found" style={{width: "48px" , height: "48px" , borderRadius: "10%"}}></img>
+                 </div>
+               <Link to="/user/edit"><button className="standardButton" type="submit">CHANGE PROFILE</button></Link>
             </div>
        </div>
        <div className="eventsAndCommunities">
-            <h2>Open Events</h2>
-             {isEventRecent ? <RecentEventView eventId={latestEvent._id}/> : <p>You have no recent events</p>}
-            <h2>My Communities</h2>
-            <Link to="/community/new"><button type="submit">CREATE A COMMUNITY</button></Link>
-            <Link to="/community/join"><button type="submit">JOIN A COMMUNITY</button></Link>
-            <ul>
-                {community?.map((community)=> {
-                    return (
-                        <>
-                            <li style={{listStyle:"none"}} key={community.index}></li>
-                            <CommunityView />
-                        </>
-                        
-                    )
-                })}
-            </ul> 
-             <h2>My Recent Posts</h2>
-                {/*here for easy access can be removed later on */}
-                <Link to="/post/new"><button type="submit">CREATE A POST</button></Link>
-                {/*here for easy access can be removed later on */}
-            <ul>
-                {posts.map((post)=> {
-                    return (
-                        <>
-                            <li style={{listStyle:"none"}} key={post.index}></li>
-                            <li> 
-                                {/* Event:{post.event}
-                                Reaction:{post.content}
-                                User Comment:{post.User_Comment} */}
-                                <Post post={post}/>
-                            </li>
-                            <div>
-                                <Link to={`../../post/${post._id}`} state={{ postId: post._id }} >
-                                    <button>Edit</button>
-                                </Link>
-                                <button onClick={handleSubmitDelete}>Delete</button>
-                            </div>
-                        </>
-                    )
-                })}
-            </ul> 
-        </div>
-    </div>
-);  
-        }
+          <h2>Open Events</h2>
+          {latestEvent? (isEventRecent ? <RecentEventView eventId={latestEvent._id}/> : <p>You have no recent events</p>): <p>You have no recent events</p>}
+          <h2>My Communities</h2>
+          <Link to="/community/new"><button type="submit">CREATE A COMMUNITY</button></Link>
+          <Link to="/community/join"><button type="submit">JOIN A COMMUNITY</button></Link>
+          <ul>
+              {community?.map((community)=> {
+                  return (
+                      <>
+                          <li style={{listStyle:"none"}} key={community.index}></li>
+                          <CommunityView />
+                      </>
+
+                  )
+              })}
+          </ul> 
+          <h2>My Recent Posts</h2>
+          {/*here for easy access can be removed later on */}
+          <Link to="/post/new">
+          {/* <button type="submit">CREATE A POST</button> */}
+          </Link>
+          {/*here for easy access can be removed later on */}
+           <ul>
+            {posts.map((post)=> {
+                return (
+                    <>
+                        <li style={{listStyle:"none"}} key={post.index}></li>
+                        <li> 
+                            {/* Event:{post.event}
+                            Reaction:{post.content}
+                            User Comment:{post.User_Comment} */}
+                            <Post post={post}/>
+                        </li>
+                        <div>
+                            <Link to={`../../post/${post._id}`} state={{ postId: post._id }} >
+                                <button>Edit</button>
+                            </Link>
+                            <button onClick={handleSubmitDelete}>Delete</button>
+                        </div>
+                    </>
+                  )
+              })}
+          </ul> 
+     </div>
+  </div>
+  );  
+}
 
 
 
