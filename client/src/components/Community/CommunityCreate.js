@@ -9,7 +9,7 @@ Have to pass in user as a prop in order to use user._id as the facilitator value
 */
 
 
-export default function CommunityCreate () {
+export default function CommunityCreate (props) {
     const [communityName, setCommunityName] = useState("");
     const [keyword, setKeyword] = useState("");
 
@@ -31,9 +31,13 @@ export default function CommunityCreate () {
         console.log(res)
     }
 
+    const contentStyle = {
+        display: (props.active)
+    }
+
     return (
-        <div>
-            <h1>Create a new Community</h1>
+        <div className="libraryComponent" style={contentStyle}>
+            <h2>Create a new Community</h2>
             <form>
                 <label>Name your Community</label>
                 <input 

@@ -5,6 +5,8 @@ import { Link, Route } from 'react-router-dom';
 import * as communityService from "../../api/community.service";
 import PostCreate from '../Posts/PostCreate';
 import CommunityView from '../Community/CommunityView';
+import CommunityJoin from '../Community/CommunityJoin';
+import CommunityCreate from '../Community/CommunityCreate';
 import Post from '../Posts/Post';
 import RecentEventView from '../Event/RecentEventView';
 
@@ -58,6 +60,7 @@ const UserIndex = () => {
     //      alert(`Post error. Please submit again. ${res.status}`) 
     //  } 
 }  
+
   
     const findPosts = async () => {
         await postService.getAll().then((res) => {
@@ -109,6 +112,27 @@ const UserIndex = () => {
             }
         }, [counter])
         
+//Allows for toggling
+    const [communityJoin, setCommunityJoin] = useState('none')
+    const [communityCreate, setCommunityCreate] = useState('none')
+
+    const toggleCommunityJoin = () => {
+        setCommunityCreate('none')
+        if(communityJoin === 'none'){
+            setCommunityJoin('flex')
+        } else {
+            setCommunityJoin('none')
+        }
+    }
+
+    const toggleCommunityCreate = () => {
+        setCommunityJoin('none')
+        if(communityCreate === 'none'){
+            setCommunityCreate('flex')
+        } else {
+            setCommunityCreate('none')
+        }
+    }
     
 return (    
     <div className="profile-page">
@@ -122,8 +146,8 @@ return (
                 <div className="communitiesView">
                     <h2>My Communities</h2>
                     <div className="stack">
-                        <Link to="/community/new"><button className="standardButton" type="submit">CREATE A COMMUNITY</button></Link>
-                        <Link to="/community/join"><button className="standardButton" type="submit">JOIN A COMMUNITY</button></Link>
+                        <button onClick={toggleCommunityCreate} className="standardButton" type="submit">CREATE A COMMUNITY</button>
+                        <button onClick={toggleCommunityJoin} className="standardButton" type="submit">JOIN A COMMUNITY</button>
                     </div>
                     <ul>
                         {community?.map((community)=> {
@@ -141,20 +165,21 @@ return (
        </div>
        <div className="eventsAndCommunities">
             <div className="recentPosts">
-                <h2>My Recent Posts</h2>
+                <CommunityCreate active={communityCreate}/>
+                <CommunityJoin active={communityJoin}/>
                     {/*here for easy access can be removed later on */}
-                    <Link to="/post/new"><button type="submit">CREATE A POST</button></Link>
+                    {/* <Link to="/post/new"><button type="submit">CREATE A POST</button></Link> */}
                     {/*here for easy access can be removed later on */}
-                <ul>
+                {/* <ul>
                     {posts.map((post)=> {
                         return (
                             <>
                                 <li key={post.index}>
                                 </li>
                                 <li className="postShow"> 
-                                    {/* Event:{post.event}
+                                    Event:{post.event}
                                     Reaction:{post.content}
-                                    User Comment:{post.User_Comment} */}
+                                    User Comment:{post.User_Comment}
                                     <Post post={post}/>
                                     <div className="postButtons">
                                         <Link to={`../../post/${post._id}`} state={{ postId: post._id }} >
@@ -165,8 +190,8 @@ return (
                                 </li>
                             </>
                         )
-                    })}
-                </ul> 
+                    })} 
+                </ul> */}
             </div>
             <div className="openEvents">
                 <h2>Open Events</h2>

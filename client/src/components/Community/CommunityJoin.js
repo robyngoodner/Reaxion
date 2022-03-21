@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import * as communityService from "../../api/community.service";
 import {Link} from "react-router-dom"
 
-export default function CommunityJoin () {
+export default function CommunityJoin (props) {
     const [keyword, setKeyword] = useState("");
     console.log("keyword line 6: ",keyword)
     const handleSubmit = async () => {
@@ -15,9 +15,14 @@ export default function CommunityJoin () {
             alert('Attempt to join existing community failed. Please refresh and try again: ', res.status)
         }
     };
+
+    const contentStyle = {
+        display: (props.active)
+    }
+
     return (
-        <div>
-            <h1>Join an existing community</h1>
+        <div className="libraryComponent" style={contentStyle}>
+            <h2>Join an existing community</h2>
             <form>
                 <label>Please enter your community's keyword</label>
                 <input 
