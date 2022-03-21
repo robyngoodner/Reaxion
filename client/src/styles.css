@@ -31,6 +31,17 @@ body {
 	--light-blue: #b8f3ff;
 }
 
+.stack {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+h2 {
+	margin: 2vH 0vW 0vH 0vW;
+	color: white;
+	text-transform: uppercase;
+}
 /* === LOGIN PAGE === */
 
 .login-page {
@@ -108,6 +119,7 @@ body {
 	justify-content: center;
 	padding: 16px;
   }
+
   /* container for the labels and inputs */
 .loginContainer{
 	text-align: left;
@@ -148,6 +160,8 @@ body {
 	justify-content: space-between;
   }
 
+/* === PROFILE === */
+
 .profile-page {
 	display: flex;
 }
@@ -173,6 +187,13 @@ body {
 	text-transform: uppercase;
 }
 
+.communitiesView {
+	color: white;
+	text-transform: uppercase;
+	text-align: center;
+}
+
+
 .infoBlock h1 {
 	margin: 3vH 0vW 2vH 0vW;
 	color: white;
@@ -190,8 +211,19 @@ body {
 }
 
 .eventsAndCommunities {
+	display: flex;
 	width: 75vW;
 	background-color: var(--light-blue);
+}
+
+.recentPosts{
+	width: 40vW;
+	border-right: 1px solid var(--highlight-blue)
+}
+
+.openEvents{
+	width: 35vW;
+
 }
 
 /* === REACTIONS === */
@@ -200,3 +232,22 @@ body {
 	width: 5vW;
 }
 
+.postShow {
+	display: flex;
+	flex-direction: column;
+	background-color: white;
+	padding: 1vH 1vW;
+	border-radius: 20px;
+	box-shadow: 0px 5px 20px 2px rgba(0, 0, 0, 0.14);
+	margin: 1vH 3vW;
+}
+
+.postButtons{
+	display: flex;
+	justify-content: space-between;
+}
+
+ul {
+	padding: 0;
+	list-style-type: none;
+}

@@ -24,10 +24,9 @@ function showPost( { post }) {
 // }  
      return (
          <>
-         <div>
-            <img src={post.content} />
+         <div >
+            <img className="reaction" src={post.content} />
             <p>{post.User_Comment}</p>
-
          </div>
          <div>
              {/* <button onClick={handleSubmitEdit}>Edit</button> */}
