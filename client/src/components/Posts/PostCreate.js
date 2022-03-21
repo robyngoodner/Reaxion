@@ -57,7 +57,7 @@ export default function PostCreate ({ eventId }) {
                             name="content"
                             value="/images/Happy.png"
                         />
-                        <img src="/images/Happy.png" alt="Happy"/>
+                        <img className="reaction" src="/images/Happy.png" alt="Happy"/>
                     </label>
                     <label htmlFor="sadEmoji">
                         <input 
@@ -67,7 +67,7 @@ export default function PostCreate ({ eventId }) {
                             name="content"
                             value="/images/Sad.png"
                         />
-                        <img src="/images/Sad.png" alt="Sad"/>
+                        <img className="reaction" src="/images/Sad.png" alt="Sad"/>
                     </label>
                     <label htmlFor="contentEmoji">
                         <input 
@@ -77,7 +77,7 @@ export default function PostCreate ({ eventId }) {
                             name="content"
                             value="/images/Content.png"
                         />
-                         <img src="/images/Content.png" alt="Content"/>
+                         <img className="reaction" src="/images/Content.png" alt="Content"/>
                     </label>
                     <label htmlFor="angryEmoji">
                         <input 
@@ -87,7 +87,7 @@ export default function PostCreate ({ eventId }) {
                             name="content"
                             value="/images/Angry.png"
                         />
-                        <img src="/images/Angry.png" alt="Angry"/>
+                        <img className="reaction" src="/images/Angry.png" alt="Angry"/>
                     </label>
                     <label htmlFor="excitedEmoji">
                         <input 
@@ -97,7 +97,7 @@ export default function PostCreate ({ eventId }) {
                             name="content"
                             value="/images/Excited.png"
                         />
-                        <img src="/images/Excited.png" alt="Excited"/>
+                        <img className="reaction" src="/images/Excited.png" alt="Excited"/>
                     </label>
                     <label htmlFor="disinterestedEmoji">
                         <input 
@@ -107,7 +107,7 @@ export default function PostCreate ({ eventId }) {
                             name="content"
                             value="/images/Disinterested.png"
                         />
-                        <img src="/images/Disinterested.png" alt="Disinterested"/>
+                        <img className="reaction" src="/images/Disinterested.png" alt="Disinterested"/>
                     </label>
                 </div>
                 <label>
