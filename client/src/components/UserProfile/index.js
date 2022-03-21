@@ -82,7 +82,7 @@ const UserIndex = () => {
 //Finds recent events, compares to current time--if fewer than 20 minutes have passed since the event was last updated, the event and the option to post to it will show up on the home page
         const findRecentEvent = () => {
             setLatestEvent(community[0].Events[community[0].Events.length-1])
-            // console.log("event time:",latestEvent)
+            console.log("latest event: ",latestEvent)
             setEventTime((new Date(latestEvent.createdAt).getTime()));
             setCurrentTime(new Date().getTime());
             // console.log("event time: ", eventTime);
@@ -119,7 +119,7 @@ return (
        
 {/*Add User Icon Here*/}
     <h2>Open Events</h2>
-    {isEventRecent ? <RecentEventView eventId={latestEvent._id}/> : <p>You have no recent events</p>}
+    {latestEvent? (isEventRecent ? <RecentEventView eventId={latestEvent._id}/> : <p>You have no recent events</p>): <p>You have no recent events</p>}
     <h2>My Communities</h2>
     <Link to="/community/new"><button type="submit">CREATE A COMMUNITY</button></Link>
     <Link to="/community/join"><button type="submit">JOIN A COMMUNITY</button></Link>
@@ -140,7 +140,9 @@ return (
     <h2>My Recent Posts</h2>
 
     {/*here for easy access can be removed later on */}
-    <Link to="/post/new"><button type="submit">CREATE A POST</button></Link>
+    <Link to="/post/new">
+    {/* <button type="submit">CREATE A POST</button> */}
+    </Link>
 
 
     {/*here for easy access can be removed later on */}
