@@ -40,7 +40,7 @@ const index = (req, res) => {
 }
 
 const show = (req, res) => {
-    console.log("event show req.params.id",req.params.id)
+    // console.log("event show req.params.id",req.params.id)
     // console.log("req.body: ",req.body)
     db.Event.findById(req.params.id)
         //   .populate post reference
@@ -61,7 +61,7 @@ const show = (req, res) => {
                         err: err,
                     })
             } else {
-                console.log("found event", foundEvent)
+                // console.log("found event", foundEvent)
                 return res        
                 .status(200)
                 .json({
@@ -79,7 +79,7 @@ const create = (req, res) => {
         description: req.body.description,
         community: req.body.community
     }
-    console.log("incomingReq: ",incomingReq)
+    // console.log("incomingReq: ",incomingReq)
     db.Event.create(incomingReq, (err, savedEvent) => {
         if(err) {
             return res  
@@ -98,11 +98,11 @@ const create = (req, res) => {
                             error: err
                         })
                 } else {
-                   console.log("found this community to push to: ",foundCommunity)
-                   console.log("is the event saved yet? ", savedEvent._id)
+                //    console.log("found this community to push to: ",foundCommunity)
+                //    console.log("is the event saved yet? ", savedEvent._id)
                     foundCommunity.Events.push(savedEvent._id) ;
                     foundCommunity.save();
-                    console.log("Event hopefully: ",foundCommunity.Events)
+                    // console.log("Event hopefully: ",foundCommunity.Events)
                 }
             })
             return res  

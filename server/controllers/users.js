@@ -18,7 +18,7 @@ const index = (req, res) => {
         User: req.userId,
     }
     db.User.find(incomingReq, (err, foundUser) => {
-        console.log("FOUND USER " + foundUser)
+        // console.log("FOUND USER " + foundUser)
         if (err) {
             return res
                 .status(400)
@@ -41,7 +41,7 @@ const index = (req, res) => {
 const show= (req,res) => {
     db.User.findById(req.userId, 
         (err,foundUser) => {
-            console.log("FOUND BY ID" + foundUser)
+            // console.log("FOUND BY ID" + foundUser)
         if (err) {
             return res.status(400)
             .json({
@@ -60,8 +60,8 @@ const show= (req,res) => {
 
 //Update profile 
 const updateProfile= (req, res) => {
-    console.log("req.body: ", req.body)
-    console.log("userId: ", req.userId)
+    // console.log("req.body: ", req.body)
+    // console.log("userId: ", req.userId)
     db.User.findByIdAndUpdate(
         {_id: req.userId },
         {
@@ -74,7 +74,7 @@ const updateProfile= (req, res) => {
         }, 
         {new: true},
         (err,foundProfile) => {
-            console.log("found profile line 55: ",foundProfile)
+            // console.log("found profile line 55: ",foundProfile)
         if (err) {
             return res.status(400)
             .json({
@@ -88,7 +88,7 @@ const updateProfile= (req, res) => {
         //     foundProfile[0].save();
         // }
          else {
-            console.log("found profile line 69: "+foundProfile)
+            // console.log("found profile line 69: "+foundProfile)
             return res.status(200).json({
                 message: "Updated User Profile",
                 data: foundProfile,

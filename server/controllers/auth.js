@@ -4,7 +4,7 @@ const db = require ('../models');
 
 
 const register = async (req, res) => {
-    console.log( req.body)
+    // console.log( req.body)
     try {
         const foundUser = await db.User.findOne({
             email: req.body.email
@@ -21,12 +21,12 @@ const register = async (req, res) => {
             //     },
             //     { new: true }
             //)
-            console.log("inside founduser if statement")
+            // console.log("inside founduser if statement")
             return res
                 .status
                 .json({ message: "Email in use."})
         } else {
-            console.log("elseee")
+            // console.log("elseee")
             
             const salt = await bcrypt.genSalt(9)
             const hash = await bcrypt.hash(req.body.password, salt)
@@ -39,11 +39,11 @@ const register = async (req, res) => {
             }
 
             
-             console.log(newUser)
+            //  console.log(newUser)
 
           const createdUser = db.User.create(newUser)
                 .then((err, createdUser) => {
-                   console.log("new user created " + createdUser)
+                //    console.log("new user created " + createdUser)
         
                 })
       
@@ -63,7 +63,7 @@ const register = async (req, res) => {
 }
 
 const login = async(req,res)  => {
-    console.log('in login!!');
+    // console.log('in login!!');
     try{
         const foundUser = await db.User.findOne({email: req.body.email}) 
         .select("+password") 
@@ -78,7 +78,7 @@ const login = async(req,res)  => {
         const isMatch= await bcrypt.compare(req.body.password, foundUser.password)
 
         if(isMatch){
-            console.log('is a match')
+            // console.log('is a match')
             const token= jwt.sign({_id:foundUser._id}, "reaxion", {expiresIn: "48h"}
             )
             return res 
@@ -89,7 +89,7 @@ const login = async(req,res)  => {
                     token
                 })
         } else {
-            console.log('cant log in')
+            // console.log('cant log in')
             return res
                 .status(400)
                 .json({
