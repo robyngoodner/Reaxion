@@ -12,6 +12,7 @@ export default function CommunityView () {
         await communityService.getCommunities()
             .then((res) => {
                 setCommunities(res.data.data)
+                console.log(res.data.data);
                 // console.log("res.data",res.data.data)
                 // console.log("Found communities: ",communities )
             })
@@ -20,7 +21,6 @@ export default function CommunityView () {
     const findUser = async () => {
         await userProfileService.show().then((res) => {
             setUser(res.data.data);
-            
         });
     }
     useEffect(() => {
@@ -33,7 +33,6 @@ export default function CommunityView () {
         <>
         <h1>All Communities</h1>
             {communities?.map((community, index)=> {
-               
                 if(user._id == community.Facilitator){
                 return (
                     <div>
