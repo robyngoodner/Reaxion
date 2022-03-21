@@ -55,7 +55,7 @@ export default function EventView() {
         checkEventTime();
         // console.log("posts: ",posts)
         } catch(err) {
-            console.log(err.message)
+            console.log(err)
         }
     }
     useEffect(() => {
@@ -84,7 +84,7 @@ export default function EventView() {
             </div>
             <div>
                 <div>
-                {!isEventRecent ? posts.map((post, index) => {
+                {isEventRecent ? posts.map((post, index) => {
                         return (
                         <li style={{listStyle:"none"}} key={index}>
                             <Post post={post}/>
