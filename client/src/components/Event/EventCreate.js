@@ -4,7 +4,7 @@ import * as eventService from '../../api/event.service';
 import * as communityService from '../../api/community.service';
 import {Link} from "react-router-dom"
 
-const EventCreate = (props) => {
+const EventCreate = () => {
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
     const [communities, setCommunities] = useState([]);
@@ -38,12 +38,8 @@ const EventCreate = (props) => {
         findCommunity();
     }, []);
 
-    const contentStyle = {
-        display: (props.active)
-    }
-
     return (
-        <div className="libraryComponent" style={contentStyle}>
+        <div>
           <h2>Community</h2>
             <select onChange={(e) => setCommunity(e.target.value)}>
             {communities.map((community)=> {
