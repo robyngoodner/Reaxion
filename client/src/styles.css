@@ -33,6 +33,7 @@ body {
 
 .stack {
 	display: flex;
+	flex-direction: column;
 	align-items: center;
 	justify-content: space-around;
 	flex-wrap: wrap;
@@ -50,10 +51,6 @@ h2 {
 	margin: 2vH 0vW 0vH 0vW;
 	color: white;
 	text-transform: uppercase;
-}
-h3 {
-	margin: 0;
-	color: white;
 }
 
 /* === NAVBAR  === */
@@ -177,19 +174,7 @@ h3 {
 	cursor: pointer;
 	border-radius: 10px;
 	text-transform: uppercase;
-  }
-
-  .smallButton {
-	background-color: var(--light-blue);
-	color: var(--highlight-blue);
-	padding: 10px 20px;
-	margin: 8px 0;
-	border: none;
-	cursor: pointer;
-	border-radius: 10px;
-	text-transform: uppercase;
-	font-size: .75em;
-	width: 8vW
+	/* width: 15vh; */
   }
 
   .standardButton:hover{
@@ -220,23 +205,18 @@ h3 {
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
+	align-items: center;
 }
 
 .infoBlock{
 	display: flex;
 	flex-direction: column;
-	padding-left: .5vW;
-}
-
-.userHead {
-	display: flex;
-	justify-content: flex-start;
-	width: 22vW;
-	padding: 3vH 0vW 3vH 1vW;
+	justify-content: center;
 	align-items: center;
 }
+
 .infoBlock h2 {
-	margin: 0;
+	margin: 2vH 0vW 0vH 0vW;
 	color: white;
 	text-transform: uppercase;
 }
@@ -244,9 +224,7 @@ h3 {
 .communitiesView {
 	color: white;
 	text-transform: uppercase;
-	text-align: left;
-	background-color: var(--highlight-blue);
-	padding: 2vH 0vW 0vH 1vW;
+	text-align: center;
 }
 
 
@@ -263,8 +241,7 @@ h3 {
 }
 
 .userIcon{
-	width: 5vW;
-	max-height: 5vW;
+	width: 10vW;
 }
 
 .eventsAndCommunities {
