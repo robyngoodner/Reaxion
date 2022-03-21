@@ -13,7 +13,7 @@ const { findById } = require('../models/user');
  * Delete - DELETE - /communities/:id  - Functional - Deletes community by id from request
  */
 
-
+//find communities that belong to facilitator only
 const index =  (req, res) => {
      db.Community.find({Facilitator: req.userId}, (err, foundCommunities) => {
         // console.log("community controller ",req.userId);
@@ -35,8 +35,11 @@ const index =  (req, res) => {
     })
 }
 
+//find communities of which user is a member
 const getCommunities = (req, res) => {
-    db.Community.find({Members: req.userId}, (err, foundCommunities) => {
+    db.Community.find({Members: req.userId})
+    .populate("Events")
+    .exec((err, foundCommunities) => {
         if(err) {
             return res
                 .status(400)

@@ -9,7 +9,7 @@ export default function PostCreate ({ eventId }) {
     const [User_Comment, setUser_Comment] = useState("");
     const [event, setEvent] = useState("");
     const [eventsId, setEventsId] = useState("");
-    console.log("eventId: ", eventId)
+    // console.log("eventId: ", eventId)
 
     const handleSubmit = async () => {
         setEventsId(eventId)

@@ -6,8 +6,8 @@ import { useLocation } from 'react-router-dom';
 import PostCreate from '../Posts/PostCreate';
 
 
-export default function EventView() {
-    const location = useLocation();
+export default function RecentEventView( { eventId } ) {
+    // const location = useLocation();
     const [event, setEvent] = useState("");   
     const [post, setPost] = useState([]);
     const [posts, setPosts] = useState([]);
@@ -15,14 +15,14 @@ export default function EventView() {
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("")
     const [counter, setCounter] = useState(0);
-    const { eventId } = location.state;
+    // const { eventId } = location.state;
     // console.log("line 14: ",eventId)
 
     const findPost = async () => {
-        console.log("findPost function happening")
+        // console.log("findPost function happening")
         await postService.showOne().then((res) => {
             setPost(res.data.data);
-            console.log("found posts: ", post)
+            // console.log("found posts: ", post)
         });
     }
 //HAVE TO FIGURE OUT HOW TO PULL EVENT ID FROM EVENTINDEX WHEN YOU CLICK THE LINK
@@ -43,7 +43,7 @@ export default function EventView() {
         setPosts(foundEvent.data.data.posts)
         // console.log("posts: ",posts)
         } catch(err) {
-            console.log(err.message)
+            // console.log(err.message)
         }
     }
     useEffect(() => {
@@ -71,14 +71,7 @@ export default function EventView() {
                 <h2>{description}</h2>
             </div>
             <div>
-                {posts?.map((post, index) => {
-                    return (
-                    <li style={{listStyle:"none"}} key={index}>
-                        <Post post={post}/>
-                        {/* {console.log(post)}  */}
-                    </li>
-                    )
-                })}
+                
                 {/* <Post post={post}/> */}
             </div>
             <div>
