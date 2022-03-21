@@ -95,6 +95,11 @@ body {
 	box-sizing: border-box;
 	border-radius: 10px;
   }
+ 
+.input:focus {
+	outline: 1px solid var(--highlight-blue);
+}
+
 
 /* container of the form */
 .container {
@@ -114,7 +119,7 @@ body {
 	box-sizing: border-box;
 }
 /* sign in and sign up buttons */
-.signButton {
+.standardButton {
 	background-color: var(--highlight-blue);
 	color: white;
 	padding: 14px 20px;
@@ -126,9 +131,10 @@ body {
 	/* width: 15vh; */
   }
 
-  .signButton:hover{
+  .standardButton:hover{
 	opacity: 0.8;
   }
+
 
   /** homepage emoji resize **/
 
@@ -137,4 +143,55 @@ body {
 	  width:5vw;
   }
 
-  
+.profile-page {
+	display: flex;
+}
+
+.userHeight {
+	height: 90vH;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.infoBlock{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.infoBlock h2 {
+	margin: 2vH 0vW 0vH 0vW;
+	color: white;
+	text-transform: uppercase;
+}
+
+.infoBlock h1 {
+	margin: 3vH 0vW 2vH 0vW;
+	color: white;
+}
+.userProfile {
+	width: 25vW;
+	background-color: var(--main-blue);
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;	
+}
+
+.userIcon{
+	width: 10vW;
+}
+
+.eventsAndCommunities {
+	width: 75vW;
+	background-color: var(--light-blue);
+}
+
+/* === REACTIONS === */
+
+.reaction{
+	width: 5vW;
+}
+
