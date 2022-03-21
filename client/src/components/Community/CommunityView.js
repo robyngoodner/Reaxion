@@ -4,7 +4,7 @@ import * as communityService from '../../api/community.service'
 import * as userProfileService from "../../api/userprofile.service";
 import EventCreate from '../Event/EventCreate';
 
-export default function CommunityView () {
+export default function CommunityView (props) {
     const [communities, setCommunities] = useState();
     const [user, setUser] = useState("");
 
@@ -27,31 +27,32 @@ export default function CommunityView () {
         getCommunities();
         findUser();
     }, [])
-
     
     return (
         <>
+
+        <h3>All Communities</h3>
+
             {communities?.map((community, index)=> {
                 if(user._id === community.Facilitator){
                     
                 return (
-                    <div> 
-                    <li style={{listStyle:"none"}} key={index}><Link to={`/community/${community._id}`}><h3> Facilitator for {community.communityName}</h3></Link></li>
-                    <Link to="/event/new"> <button>Create event</button></Link>
+
+                    <div>
+                        <button onClick={props.toggle} className="smallButton">Create event</button>
+                        <li style={{listStyle:"none"}} key={index}><Link to={`/community/${community._id}`}><h4>{community.communityName}</h4></Link></li>
                     </div>  
-         )
-                } 
-                if(user._id !== community.Facilitator) {
-                    
+                )
+                }  else {
                     return (
-                          
-                    <div> 
-                    <li style={{listStyle:"none"}} key={index}><Link to={`/community/${community._id}`}><h3>Member of {community.communityName}</h3></Link></li>                  
+                    <div>
+                        <li style={{listStyle:"none"}} key={index}><Link to={`/community/${community._id}`}><h4>{community.communityName}</h4></Link></li>                  
+
                     </div>  
                     )
                 }
-                
-                   })}
+            })}
         
         </>
-    )     }
+    )   
+}
