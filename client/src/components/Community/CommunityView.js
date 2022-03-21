@@ -34,7 +34,7 @@ export default function CommunityView () {
         <h1>All Communities</h1>
             {communities?.map((community, index)=> {
                
-                if(user._id == community.Facilitator){
+                if(user._id === community.Facilitator){
                 return (
                     <div>
                     <Link to="/event/new"> <button>Create event</button></Link>
