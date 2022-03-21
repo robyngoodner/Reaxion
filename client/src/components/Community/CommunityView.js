@@ -34,24 +34,20 @@ export default function CommunityView () {
             {communities?.map((community, index)=> {
                 if(user._id === community.Facilitator){
                     
-                return (
-                    <div> 
-                    <li style={{listStyle:"none"}} key={index}><Link to={`/community/${community._id}`}><h3> Facilitator for {community.communityName}</h3></Link></li>
-                    <Link to="/event/new"> <button>Create event</button></Link>
+                  return (
+                    <div>
+                        <li style={{listStyle:"none"}} key={index}><Link to={`/community/${community._id}`}><h4>{community.communityName}</h4></Link></li>
                     </div>  
-         )
-                } 
-                if(user._id !== community.Facilitator) {
-                    
-                    return (
-                          
+                )
+                } if(user._id !== community.Facilitator) {
+                  return (    
                     <div> 
-                    <li style={{listStyle:"none"}} key={index}><Link to={`/community/${community._id}`}><h3>Member of {community.communityName}</h3></Link></li>                  
+                      <li style={{listStyle:"none"}} key={index}><Link to={`/community/${community._id}`}><h3>Member of {community.communityName}</h3></Link></li>                  
                     </div>  
                     )
                 }
                 
-                   })}
+             })}
         
         </>
     )     }

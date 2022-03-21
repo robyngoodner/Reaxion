@@ -150,18 +150,23 @@ return (
                         <button onClick={toggleCommunityJoin} className="standardButton" type="submit">JOIN A COMMUNITY</button>
                     </div>
                     <ul>
-                    <CommunityView />
+                    <CommunityView toggle={toggleEventCreate}/>
                     </ul>
                     {/* <ul>
                         {community?.map((community)=> {
                             return (
                                 <>
                                     <li style={{listStyle:"none"}} key={community.index}></li>
-                                    
+                                    <CommunityView active={eventCreate} toggle={toggleEventCreate}/>
                                 </>
                             )
                         })}
-                    </ul>  */}
+                    </ul> */}
+                    <div className="stack">
+                        <button onClick={toggleCommunityCreate} className="smallButton" type="submit">CREATE Community</button>
+                        <button onClick={toggleCommunityJoin} className="smallButton" type="submit">JOIN Community</button>
+                        <button onClick={toggleEventCreate} className="smallButton">Create event</button>
+                    </div>
                 </div>    
                 <Link to="/user/edit"><button className="standardButton" type="submit">CHANGE PROFILE</button></Link>
             </div>
