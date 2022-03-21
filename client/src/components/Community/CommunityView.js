@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import  { Link } from 'react-router-dom';
 import * as communityService from '../../api/community.service'
-
+import EventCreate from '../Event/EventCreate';
 export default function CommunityView () {
     const [communities, setCommunities] = useState();
 
@@ -18,17 +18,27 @@ export default function CommunityView () {
         getCommunities();
     }, [])
 
+    
     return (
         <>
+        <h1>All Communities</h1>
             {communities?.map((community, index)=> {
+               
+                if(!community.Facilitator){
                 return (
                     <div>
                     <li style={{listStyle:"none"}} key={index}><Link to={`/community/${community._id}`}><h3>{community.communityName}</h3></Link></li>
-                    </div>
-                   
-                    
-                )
-            })}
+                    </div>  
+         )
+                }  else {
+                    return (
+                    <div>
+                    <li style={{listStyle:"none"}} key={index}><Link to={`/community/${community._id}`}><h3>{community.communityName}</h3></Link></li>                  
+                    </div>  
+                    )
+                }
+                
+                   })}
+        
         </>
-    )
-}
+    )     }
