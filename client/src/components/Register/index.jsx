@@ -72,7 +72,7 @@ const Register = () => {
                     />
                 </div>
                     <div>
-                        <button className="signButton" onClick={handleSubmit}>
+                        <button className = "standardButton" onClick={handleSubmit}>
                             Sign Up
                         </button>
                     </div>

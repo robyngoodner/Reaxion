@@ -10,7 +10,7 @@ const Welcome = ({ checkUserActive }) => {
 			<div className="center">
 			<div>
 			<h1 className="title">Reaxion</h1>
-				<div class="reactionimgs">
+				<div className="reactionimgs">
 				<img className="resizeReactions" src="../images/angry.png" alt="angry"></img>
 				<img className="resizeReactions" src="../images/content.png" alt="content"></img>
 				<img className="resizeReactions" src="../images/disinterested.png" alt="disinterested"></img>

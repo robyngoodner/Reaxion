@@ -24,7 +24,6 @@ export default function CommunityView () {
                 return (
                     <div>
                     <li style={{listStyle:"none"}} key={index}><Link to={`/community/${community._id}`}><h3>{community.communityName}</h3></Link></li>
-                    
                     </div>
                    
                     
