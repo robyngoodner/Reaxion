@@ -138,9 +138,14 @@ body {
 
   /** homepage emoji resize **/
 
-  .resizeReactions {
-	  height:10vh;
-	  width:5vw;
+.resizeReactions {
+	width: 5vW;
+  }
+
+.reactionimgs{
+	margin-top: 1vH;
+	display: flex;
+	justify-content: space-between;
   }
 
 .profile-page {
