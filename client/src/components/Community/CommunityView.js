@@ -37,8 +37,7 @@ export default function CommunityView () {
                 if(user._id === community.Facilitator){
                 return (
                     <div>
-                    <Link to="/event/new"> <button>Create event</button></Link>
-                    <li style={{listStyle:"none"}} key={index}><Link to={`/community/${community._id}`}><h3>{community.communityName}</h3></Link></li>
+                    <li style={{listStyle:"none"}} key={index}><Link to={`/community/${community._id}`}><h3>{community.communityName}</h3></Link><Link to="/event/new"> <button>Create event</button></Link></li>
                     </div>  
          )
                 }  else {
