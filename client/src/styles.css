@@ -56,17 +56,18 @@ body {
 	letter-spacing: 1em;
 }
 
-/* Main title in welcome/inde.jsx */
+/* Main title in welcome/index.jsx */
 .title {
 	font-family: 'Josefin Sans', sans-serif;
 	margin: 0;
 	font-size: 5em;
 	text-transform: uppercase;
 	color: white;
+	text-align:center;
 }
 
 
-/* title for the log in and resgister forms */
+/* title for the log in and register forms */
 .formTitle{
 	margin-top: 5px;
 	font-size: 24px;
@@ -134,7 +135,13 @@ body {
 	opacity: 0.8;
   }
 
-/* === PROFILE === */
+
+  /** homepage emoji resize **/
+
+  .resizeReactions {
+	  height:10vh;
+	  width:5vw;
+  }
 
 .profile-page {
 	display: flex;
@@ -187,3 +194,4 @@ body {
 .reaction{
 	width: 5vW;
 }
+
