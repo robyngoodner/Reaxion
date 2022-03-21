@@ -170,7 +170,7 @@ return (
             </div>
             <div className="openEvents">
                 <h2>Open Events</h2>
-                {isEventRecent ? <RecentEventView eventId={latestEvent._id}/> : <p>You have no recent events</p>}
+                {latestEvent? (isEventRecent ? <RecentEventView eventId={latestEvent._id}/> : <p>You have no recent events</p>): <p>You have no recent events</p>}
             </div>
         </div>
     </div>
