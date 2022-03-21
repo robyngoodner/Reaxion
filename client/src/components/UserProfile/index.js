@@ -110,68 +110,65 @@ const UserIndex = () => {
         }, [counter])
         
     
-return (
-    <div>
-    <h1 >Welcome, {user.firstName}</h1>
-    <img src={user.userIcon} alt="not found" style={{width: "48px" , height: "48px" , borderRadius: "10%"}}></img>
+return (    
+    <div className="profile-page">
+        <div className="userProfile">
+            <div className="userHeight">
+                <div className="infoBlock">
+                  <h1 >Welcome, {user.firstName}</h1>
+                  <img src={user.userIcon} alt="not found" style={{width: "48px" , height: "48px" , borderRadius: "10%"}}></img>
+                 </div>
+               <Link to="/user/edit"><button className="standardButton" type="submit">CHANGE PROFILE</button></Link>
+            </div>
+       </div>
+       <div className="eventsAndCommunities">
+          <h2>Open Events</h2>
+          {latestEvent? (isEventRecent ? <RecentEventView eventId={latestEvent._id}/> : <p>You have no recent events</p>): <p>You have no recent events</p>}
+          <h2>My Communities</h2>
+          <Link to="/community/new"><button type="submit">CREATE A COMMUNITY</button></Link>
+          <Link to="/community/join"><button type="submit">JOIN A COMMUNITY</button></Link>
+          <ul>
+              {community?.map((community)=> {
+                  return (
+                      <>
+                          <li style={{listStyle:"none"}} key={community.index}></li>
+                          <CommunityView />
+                      </>
 
-    <Link to="/user/edit"><button type="submit">CHANGE PROFILE</button></Link>
-       
-{/*Add User Icon Here*/}
-    <h2>Open Events</h2>
-    {latestEvent? (isEventRecent ? <RecentEventView eventId={latestEvent._id}/> : <p>You have no recent events</p>): <p>You have no recent events</p>}
-    <h2>My Communities</h2>
-    <Link to="/community/new"><button type="submit">CREATE A COMMUNITY</button></Link>
-    <Link to="/community/join"><button type="submit">JOIN A COMMUNITY</button></Link>
-    <ul>
-        {community?.map((community)=> {
-            return (
-                <>
-                    <li style={{listStyle:"none"}} key={community.index}></li>
-                    <CommunityView />
-                </>
-                
-            )
-        })}
-    </ul> 
-
-
-
-    <h2>My Recent Posts</h2>
-
-    {/*here for easy access can be removed later on */}
-    <Link to="/post/new">
-    {/* <button type="submit">CREATE A POST</button> */}
-    </Link>
-
-
-    {/*here for easy access can be removed later on */}
-    
-    
-    <ul>
-        {posts.map((post)=> {
-            return (
-                <>
-                    <li style={{listStyle:"none"}} key={post.index}></li>
-                    <li> 
-                        {/* Event:{post.event}
-                        Reaction:{post.content}
-                        User Comment:{post.User_Comment} */}
-                        <Post post={post}/>
-                    </li>
-                    <div>
-                        <Link to={`../../post/${post._id}`} state={{ postId: post._id }} >
-                            <button>Edit</button>
-                        </Link>
-                        <button onClick={handleSubmitDelete}>Delete</button>
-                    </div>
-                </>
-            )
-        })}
-    </ul> 
-</div>
-);  
-        }
+                  )
+              })}
+          </ul> 
+          <h2>My Recent Posts</h2>
+          {/*here for easy access can be removed later on */}
+          <Link to="/post/new">
+          {/* <button type="submit">CREATE A POST</button> */}
+          </Link>
+          {/*here for easy access can be removed later on */}
+           <ul>
+            {posts.map((post)=> {
+                return (
+                    <>
+                        <li style={{listStyle:"none"}} key={post.index}></li>
+                        <li> 
+                            {/* Event:{post.event}
+                            Reaction:{post.content}
+                            User Comment:{post.User_Comment} */}
+                            <Post post={post}/>
+                        </li>
+                        <div>
+                            <Link to={`../../post/${post._id}`} state={{ postId: post._id }} >
+                                <button>Edit</button>
+                            </Link>
+                            <button onClick={handleSubmitDelete}>Delete</button>
+                        </div>
+                    </>
+                  )
+              })}
+          </ul> 
+     </div>
+  </div>
+  );  
+}
 
 
 
