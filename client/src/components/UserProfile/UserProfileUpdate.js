@@ -143,7 +143,7 @@ return (
         </label>
         
     </form>
-    <Link to="/user/:id"> <button onClick={handleSubmit}>Update user profile information</button></Link> 
+    <Link to="/user/"> <button onClick={handleSubmit}>Update user profile information</button></Link> 
     <p> Would you like to delete your profile?</p>
   <Link to="/logout"><button onClick={() => {handleProfileDelete(); handleLogout();}}>Delete Profile</button></Link> 
         

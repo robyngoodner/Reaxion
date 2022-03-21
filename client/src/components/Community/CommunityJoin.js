@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import * as communityService from "../../api/community.service";
+import {Link} from "react-router-dom"
 
 export default function CommunityJoin () {
     const [keyword, setKeyword] = useState("");
@@ -25,7 +26,7 @@ export default function CommunityJoin () {
                     onChange={(e) => setKeyword(e.target.value)}
                     placeholder="Keyword"
                 />
-                <button onClick={handleSubmit}>Join Community</button>
+                <Link to="/user/"> <button onClick={handleSubmit}>Join Community</button></Link>
             </form>
         </div>
     )
