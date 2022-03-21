@@ -33,6 +33,7 @@ const Comment = () => {
                 /></label>
             </form>
             <button onClick={handleSubmit}>Post Comment</button>
+            
         </div>
     )
 
