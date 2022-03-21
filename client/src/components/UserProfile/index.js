@@ -11,11 +11,6 @@ import RecentEventView from '../Event/RecentEventView';
 
 
 const UserIndex = () => {
-    //const [firstName, setFirstName]= useState("");
-    //const [lastName, setLastName]= useState("");
-    //const [description, setDescription]= useState("");
-    //const [userIcon, setUserIcon]= useState("");
-    
     const [posts, setPosts] = useState([]);
     const [community, setCommunity] = useState([]);
     const [user, setUser] = useState([]);
@@ -32,17 +27,7 @@ const UserIndex = () => {
     useEffect(() => {
         findUser();
     }, []);
-
-
-
-    // useEffect(() => {
-    //     UserIndex();
-    //     }
-        
-    // }, [user])
-
-
-  
+ 
     
     const getExistingProfile = async () => {
         let res = await userProfileService.show()
@@ -52,7 +37,6 @@ const UserIndex = () => {
             alert("Profile Not Deleted") 
         } 
     }
-
 
     const handleSubmitDelete = async () => {
         let res = await postService.destroy()
@@ -89,37 +73,27 @@ const UserIndex = () => {
         await communityService.getCommunities()
             .then((res) => {
            setCommunity(res.data.data)
-        //    console.log("res.data.data line 116: ",res.data.data[0].Events[res.data.data[0].Events.length-1])
-           
-        //    let eventTimee=new Date(latestEvent.updatedAt).getTime()
-        //    console.log("latest",eventTimee);
-        //    let eventTime = latestEvent.updatedAt.getTime();
-            //setEventTime(latestEvent.updatedAt.getTime());
-            // console.log(eventTime)
         });
     }
         useEffect(() => {
             findCommunity();
         }, []);
-
+//Finds recent events, compares to current time--if fewer than 20 minutes have passed since the event was last updated, the event and the option to post to it will show up on the home page
         const findRecentEvent = () => {
             setLatestEvent(community[0].Events[community[0].Events.length-1])
             let eventTime = (new Date(latestEvent.updatedAt).getTime());
-            // console.log("latest event", latestEvent);
-            // console.log(eventTime)
             let currentTime = new Date().getTime();
-            // console.log(currentTime)
             const checkEventTime = () => {
                 if (currentTime < (eventTime+200000000)) 
                 setIsEventRecent(true)
                 else setIsEventRecent(false)
             }
             checkEventTime();
-            // console.log(isEventRecent);
-        }
-        // console.log(currentTime)
-        
 
+        }
+
+        
+//reloads events 10 times, due to delayed response from db
         useEffect(() => {
             if(counter<10){
             const interval = setInterval(() => {
