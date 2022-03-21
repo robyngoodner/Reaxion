@@ -63,7 +63,7 @@ const createCommunity = async (req, res) => {
         keyword: req.body.keyword
     }
     await db.Community.create(incomingReq, (err, createdCommunity) => {
-        console.log(createdCommunity)
+        // console.log(createdCommunity)
         if (err) {
             return res.status(400).json({
                 message: "Failed community creation",
@@ -102,7 +102,7 @@ const joinCommunity =  (req, res) => {
                         error: err,
                     })
             } else {
-                console.log(foundCommunity[0].Members)
+                // console.log(foundCommunity[0].Members)
                 foundCommunity[0].Members.push(user);
                 foundCommunity[0].save();
                 db.User.findById(req.userId, (err, foundUser) => {
@@ -114,7 +114,7 @@ const joinCommunity =  (req, res) => {
                                 error: err
                             })
                     } else {
-                        console.log("foundCommunity[0]._id",foundCommunity[0]._id)
+                        // console.log("foundCommunity[0]._id",foundCommunity[0]._id)
                         foundUser.Communities.push(foundCommunity[0]._id)
                         foundUser.save();
                     }

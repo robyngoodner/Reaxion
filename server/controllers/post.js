@@ -64,13 +64,13 @@ const create = (req, res) => {
         incomingReq, 
         (err, savedPost) => {
         if (err) {
-            console.log(err)
+            // console.log(err)
             return res.status(400).json({
                 message: "Error 400",
                 error: err 
             })
         } else {
-            console.log("savedPost: ",savedPost)
+            // console.log("savedPost: ",savedPost)
             db.User.findById(incomingReq.User)
             .exec(function (err, foundUser) {
                 if (err) return res 
@@ -93,7 +93,7 @@ const create = (req, res) => {
                         error: err
                     })
                 else{
-                    console.log("foundEvent",foundEvent)
+                    // console.log("foundEvent",foundEvent)
                     foundEvent.posts.push(savedPost._id);
                     foundEvent.save();
 
@@ -108,16 +108,16 @@ const create = (req, res) => {
 }
 
 const update = (req, res) => {
-    console.log('before findbyid')
-    console.log("req.params", req.body._id)
-    console.log("req.body", req.body)
+    // console.log('before findbyid')
+    // console.log("req.params", req.body._id)
+    // console.log("req.body", req.body)
     db.Post.findByIdAndUpdate(
         req.body._id,
         req.body,
         {new: true}, (err, updatedPost) => {
-            console.log('after findbyid')
-            console.log("req.params", req.body._id)
-            console.log("req.body", req.body)
+            // console.log('after findbyid')
+            // console.log("req.params", req.body._id)
+            // console.log("req.body", req.body)
             if(err) {
                 return res.status(400).json({
                     message: "Error 400",

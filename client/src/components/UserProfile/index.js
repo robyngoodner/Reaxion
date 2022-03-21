@@ -18,6 +18,7 @@ const UserIndex = () => {
     const [eventTime, setEventTime] = useState("");
     const [isEventRecent, setIsEventRecent] = useState(false);
     const [counter, setCounter] = useState(0);
+    const [currentTime, setCurrentTime] = useState("")
 
     const findUser = async () => {
         await userProfileService.show().then((res) => {
@@ -81,10 +82,14 @@ const UserIndex = () => {
 //Finds recent events, compares to current time--if fewer than 20 minutes have passed since the event was last updated, the event and the option to post to it will show up on the home page
         const findRecentEvent = () => {
             setLatestEvent(community[0].Events[community[0].Events.length-1])
-            let eventTime = (new Date(latestEvent.updatedAt).getTime());
-            let currentTime = new Date().getTime();
+            // console.log("event time:",latestEvent)
+            setEventTime((new Date(latestEvent.createdAt).getTime()));
+            setCurrentTime(new Date().getTime());
+            // console.log("event time: ", eventTime);
+            // console.log("current time: ", currentTime)
             const checkEventTime = () => {
-                if (currentTime < (eventTime+200000000)) 
+                //event limit set to 20 minutes
+                if (currentTime < (eventTime+1200000)) 
                 setIsEventRecent(true)
                 else setIsEventRecent(false)
             }
