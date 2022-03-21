@@ -163,10 +163,14 @@ return (
                     <h3>Communities</h3>
                     
                     <ul>
+                    <CommunityView />
+                    </ul>
+                    {/* <ul>
                         {community?.map((community)=> {
                             return (
                                 <>
                                     <li style={{listStyle:"none"}} key={community.index}></li>
+
                                     <CommunityView active={eventCreate} toggle={toggleEventCreate}/>
                                 </>
                             )
@@ -176,6 +180,13 @@ return (
                         <button onClick={toggleCommunityCreate} className="smallButton" type="submit">CREATE Community</button>
                         <button onClick={toggleCommunityJoin} className="smallButton" type="submit">JOIN Community</button>
                     </div>
+
+                                    
+                                </>
+                            )
+                        })}
+                    </ul>  */}
+
                 </div>    
                 <Link to="/user/edit"><button className="standardButton" type="submit">CHANGE PROFILE</button></Link>
             </div>

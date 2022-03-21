@@ -12,6 +12,7 @@ export default function CommunityView (props) {
         await communityService.getCommunities()
             .then((res) => {
                 setCommunities(res.data.data)
+                console.log(res.data.data);
                 // console.log("res.data",res.data.data)
                 // console.log("Found communities: ",communities )
             })
@@ -29,11 +30,14 @@ export default function CommunityView (props) {
     
     return (
         <>
+
         <h3>All Communities</h3>
+
             {communities?.map((community, index)=> {
-               
-                if(user._id == community.Facilitator){
+                if(user._id === community.Facilitator){
+                    
                 return (
+
                     <div>
                         <button onClick={props.toggle} className="smallButton">Create event</button>
                         <li style={{listStyle:"none"}} key={index}><Link to={`/community/${community._id}`}><h4>{community.communityName}</h4></Link></li>
@@ -43,6 +47,7 @@ export default function CommunityView (props) {
                     return (
                     <div>
                         <li style={{listStyle:"none"}} key={index}><Link to={`/community/${community._id}`}><h4>{community.communityName}</h4></Link></li>                  
+
                     </div>  
                     )
                 }
