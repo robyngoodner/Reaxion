@@ -4,27 +4,86 @@
 font-family: 'Josefin Sans', sans-serif;
 font-family: 'Merriweather Sans', sans-serif; */
 
+@media only screen and (max-width: 600px){
+	.login-page {
+		flex-direction: column;
+		height: 100% !important;
+	}
+	.loginForm {
+		width: 90vW !important;
+	}
+	.loginContainer{
+		width: 85vW !important;
+	}	
+}
+/* === ROOT STYLES  === */
+
 body {
 	font-family: 'Merriweather Sans', sans-serif;
 	background-color: rgb(255, 255, 255);
+	margin: 0px;
+	padding: 0px;
 }
+
+:root {
+	--main-blue: #00b4d886;
+	--highlight-blue: #40a4f7;
+	--light-blue: #b8f3ff;
+}
+
+/* === LOGIN PAGE === */
+
+.login-page {
+	display: flex;
+	height: 75vH;
+	justify-content: center;
+	align-items: center;
+	background-color: var(--main-blue);
+}
+
+.login-container {
+	width: 50vW;
+	display: flex;
+	justify-content: center;
+}
+
+.center {
+	display: flex;
+	justify-content: center;
+	align-items: flex-end;
+	height: 25vH;
+	background-color: var(--main-blue);
+	letter-spacing: 1em;
+}
+
 /* Main title in welcome/inde.jsx */
 .title {
 	font-family: 'Josefin Sans', sans-serif;
 	margin: 0;
-	font-size: 36px;
+	font-size: 5em;
+	text-transform: uppercase;
+	color: white;
 }
+
+
 /* title for the log in and resgister forms */
 .formTitle{
 	margin-top: 5px;
 	font-size: 24px;
 }
+
 /* this is the border around the forms */
 .loginForm {
-	width: 35%;
-	margin: 10px;
-	border: 3px solid #d0d0d0;
+	display: flex;
+	flex-direction: column;
+	width: 33vW;
+	padding: 4vH 2vW;
+	border: 1px solid var(--highlight-blue);
+	background-color: var(--light-blue);
+	border-radius: 20px;
+	box-shadow: 0px 11px 35px 2px rgba(0, 0, 0, 0.14);
 }
+
 /* the input boxes inside the form */
 .input {
 	text-align: left;
@@ -33,32 +92,36 @@ body {
 	display: inline-block;
 	border: 1px solid #ccc;
 	box-sizing: border-box;
+	border-radius: 10px;
   }
+
 /* container of the form */
 .container {
 	text-align: center;
 	display: flex;
 	justify-content: center;
 	padding: 16px;
-	
   }
   /* container for the labels and inputs */
 .loginContainer{
 	text-align: left;
-	width: 250px;
+	width: 30vW;
 	padding: 12px 20px;
 	margin: 5px 0;
-	display: inline-block;
+	display: flex;
+	flex-direction: column;
 	box-sizing: border-box;
 }
 /* sign in and sign up buttons */
 .signButton {
-	background-color: #14cdd4;
+	background-color: var(--highlight-blue);
 	color: white;
 	padding: 14px 20px;
 	margin: 8px 0;
 	border: none;
 	cursor: pointer;
+	border-radius: 10px;
+	text-transform: uppercase;
 	/* width: 15vh; */
   }
 

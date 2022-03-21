@@ -22,7 +22,7 @@ const Login = ( {checkUserActive} ) => {
 return (
     <div className = "container">
         <form className = "loginForm">
-        <h1 className="formTitle"> Sign In</h1>
+        <h1 className="formTitle">Login</h1>
             <div className = "loginContainer">
             <label htmlFor="email">
                 Email</label>
@@ -47,7 +47,7 @@ return (
             </div>
             <div >
                 <button className = "signButton" onClick={handleSubmit}>
-                    Sign In
+                    Login
                 </button>
             </div>
         </form>
