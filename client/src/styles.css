@@ -1,0 +1,67 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500&family=Josefin+Sans&family=Merriweather+Sans&display=swap');
+
+/* font-family: 'DM Sans', sans-serif;
+font-family: 'Josefin Sans', sans-serif;
+font-family: 'Merriweather Sans', sans-serif; */
+
+body {
+	font-family: 'Merriweather Sans', sans-serif;
+	background-color: rgb(255, 255, 255);
+}
+/* Main title in welcome/inde.jsx */
+.title {
+	font-family: 'Josefin Sans', sans-serif;
+	margin: 0;
+	font-size: 36px;
+}
+/* title for the log in and resgister forms */
+.formTitle{
+	margin-top: 5px;
+	font-size: 24px;
+}
+/* this is the border around the forms */
+.loginForm {
+	width: 35%;
+	margin: 10px;
+	border: 3px solid #d0d0d0;
+}
+/* the input boxes inside the form */
+.input {
+	text-align: left;
+	padding: 12px 25px;
+	margin: 8px 0;
+	display: inline-block;
+	border: 1px solid #ccc;
+	box-sizing: border-box;
+  }
+/* container of the form */
+.container {
+	text-align: center;
+	display: flex;
+	justify-content: center;
+	padding: 16px;
+	
+  }
+  /* container for the labels and inputs */
+.loginContainer{
+	text-align: left;
+	width: 250px;
+	padding: 12px 20px;
+	margin: 5px 0;
+	display: inline-block;
+	box-sizing: border-box;
+}
+/* sign in and sign up buttons */
+.signButton {
+	background-color: #14cdd4;
+	color: white;
+	padding: 14px 20px;
+	margin: 8px 0;
+	border: none;
+	cursor: pointer;
+	/* width: 15vh; */
+  }
+
+  .signButton:hover{
+	opacity: 0.8;
+  }

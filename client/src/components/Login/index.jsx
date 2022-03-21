@@ -1,5 +1,6 @@
 import { useState } from "react";
 import * as authService from "../../api/auth.service";
+import '../../../src/styles.css'
 
 //**we do not have a CheckUserActive */
 
@@ -19,31 +20,34 @@ const Login = ( {checkUserActive} ) => {
     };
 
 return (
-    <div>
-        <form>
-            <label  htmlFor="email">
-                Email
+    <div className = "container">
+        <form className = "loginForm">
+        <h1 className="formTitle"> Sign In</h1>
+            <div className = "loginContainer">
+            <label htmlFor="email">
+                Email</label>
                 <input
+                    className = "input"
                     onChange={(e) => setEmail(e.target.value)}
                     value={email}
                     type="text"
                     name="email"
                     placeholder="email"
                 />
-            </label>
             <label  htmlFor="password">
-                Password
+                Password</label>
                 <input
+                    className = "input"
                     onChange={(e) => setPassword(e.target.value)}
                     value={password}
                     type="password"
                     name="password"
                     placeholder="password"
                 />
-            </label>
+            </div>
             <div >
-                <button onClick={handleSubmit}>
-                    Login
+                <button className = "signButton" onClick={handleSubmit}>
+                    Sign In
                 </button>
             </div>
         </form>
