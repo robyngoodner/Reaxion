@@ -84,7 +84,7 @@ export default function EventView() {
             </div>
             <div>
                 <div>
-                {isEventRecent ? posts.map((post, index) => {
+                {!isEventRecent ? posts.map((post, index) => {
                         return (
                         <li style={{listStyle:"none"}} key={index}>
                             <Post post={post}/>

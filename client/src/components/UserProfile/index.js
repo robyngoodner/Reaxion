@@ -20,6 +20,7 @@ const UserIndex = () => {
     const [counter, setCounter] = useState(0);
     const [currentTime, setCurrentTime] = useState("")
 
+    //find single user
     const findUser = async () => {
         await userProfileService.show().then((res) => {
             setUser(res.data.data);
@@ -29,7 +30,7 @@ const UserIndex = () => {
         findUser();
     }, []);
  
-    
+    //get existing profile info
     const getExistingProfile = async () => {
         let res = await userProfileService.show()
             .then((data) => {
@@ -38,7 +39,7 @@ const UserIndex = () => {
             alert("Profile Not Deleted") 
         } 
     }
-
+    
     const handleSubmitDelete = async () => {
         let res = await postService.destroy()
             .then(() => {
@@ -82,11 +83,8 @@ const UserIndex = () => {
 //Finds recent events, compares to current time--if fewer than 20 minutes have passed since the event was last updated, the event and the option to post to it will show up on the home page
         const findRecentEvent = () => {
             setLatestEvent(community[0].Events[community[0].Events.length-1])
-            console.log("latest event: ",latestEvent)
             setEventTime((new Date(latestEvent.createdAt).getTime()));
             setCurrentTime(new Date().getTime());
-            // console.log("event time: ", eventTime);
-            // console.log("current time: ", currentTime)
             const checkEventTime = () => {
                 //event limit set to 20 minutes
                 if (currentTime < (eventTime+1200000)) 
