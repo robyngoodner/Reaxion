@@ -8,22 +8,24 @@ body {
 	font-family: 'Merriweather Sans', sans-serif;
 	background-color: rgb(255, 255, 255);
 }
+/* Main title in welcome/inde.jsx */
 .title {
 	font-family: 'Josefin Sans', sans-serif;
 	margin: 0;
 	font-size: 36px;
 }
-
+/* title for the log in and resgister forms */
 .formTitle{
 	margin-top: 5px;
 	font-size: 24px;
 }
+/* this is the border around the forms */
 .loginForm {
 	width: 35%;
 	margin: 10px;
 	border: 3px solid #d0d0d0;
 }
-
+/* the input boxes inside the form */
 .input {
 	text-align: left;
 	padding: 12px 25px;
@@ -32,7 +34,7 @@ body {
 	border: 1px solid #ccc;
 	box-sizing: border-box;
   }
-
+/* container of the form */
 .container {
 	text-align: center;
 	display: flex;
@@ -40,6 +42,7 @@ body {
 	padding: 16px;
 	
   }
+  /* container for the labels and inputs */
 .loginContainer{
 	text-align: left;
 	width: 250px;
@@ -48,6 +51,7 @@ body {
 	display: inline-block;
 	box-sizing: border-box;
 }
+/* sign in and sign up buttons */
 .signButton {
 	background-color: #14cdd4;
 	color: white;
