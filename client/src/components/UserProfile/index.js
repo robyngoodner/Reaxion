@@ -42,39 +42,11 @@ const UserIndex = () => {
     // }, [user])
 
 
-    // const handleSubmit = async () => {
-    //     let newUserInfo = { firstName, lastName, description, userIcon };
-    //     let res = await userProfileService.update(newUserInfo).then(() => {
-    //         setFirstName("");
-    //         setLastName("");
-    //         setDescription("");
-    //         setUserIcon("");
-    //         console.log("userprofile newuserinfo: ", newUserInfo)
-    //     });
-    //     if (!res === 201) {
-    //         alert(`Error updating user information, ${res.status}`);
-    //     }
-    // };
-
-    // const handleProfileDelete = async () => {
-    //     console.log('in handleProfileDelete');
-    //     let res = await userProfileService.destroy()
-    //         .then(() => {
-    //             // window.location.href = "/";
-    //         });
-    //      if ( !res === 201 ) {
-    //          alert("Profile Not Deleted") 
-    //      } 
-    // }        
+  
     
     const getExistingProfile = async () => {
         let res = await userProfileService.show()
             .then((data) => {
-            // console.log("get existing profile: ", data.data.data)
-           // setFirstName(data.data.data.firstName);
-           // setLastName(data.data.data.lastName);
-           // setDescription(data.data.data.description);
-            //setUserIcon(data.data.data.setUserIcon);
         });
         if ( !res === 201 ) {
             alert("Profile Not Deleted") 
@@ -111,7 +83,6 @@ const UserIndex = () => {
     useEffect(() => {
         findPosts();
         getExistingProfile();
-        // checkEventTime();
     }, []);
 
     const findCommunity = async () => {
@@ -134,17 +105,17 @@ const UserIndex = () => {
         const findRecentEvent = () => {
             setLatestEvent(community[0].Events[community[0].Events.length-1])
             let eventTime = (new Date(latestEvent.updatedAt).getTime());
-            console.log("latest event", latestEvent);
-            console.log(eventTime)
+            // console.log("latest event", latestEvent);
+            // console.log(eventTime)
             let currentTime = new Date().getTime();
-            console.log(currentTime)
+            // console.log(currentTime)
             const checkEventTime = () => {
                 if (currentTime < (eventTime+200000000)) 
                 setIsEventRecent(true)
                 else setIsEventRecent(false)
             }
             checkEventTime();
-            console.log(isEventRecent);
+            // console.log(isEventRecent);
         }
         // console.log(currentTime)
         
