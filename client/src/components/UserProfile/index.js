@@ -229,10 +229,8 @@ return (
                     <p>{user.description}</p>
                 </div>
                 <div className="communitiesView">
-                    <h3>Communities</h3>
-                    <ul>
+                    <h2>Communities</h2>
                     <CommunityView toggle={toggleEventCreate}/>
-                    </ul>
                     {/* <ul>
                         {community?.map((community)=> {
                             return (
