@@ -4,11 +4,11 @@ import {Link} from "react-router-dom"
 
 export default function CommunityJoin (props) {
     const [keyword, setKeyword] = useState("");
-    console.log("keyword line 6: ",keyword)
+    // console.log("keyword line 6: ",keyword)
     const handleSubmit = async () => {
         let res = await communityService.update(keyword).then(() => {
             setKeyword("");
-            console.log("keyword: ",keyword)
+            // console.log("keyword: ",keyword)
         });
 
         if (!res === 201) {

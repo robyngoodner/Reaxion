@@ -118,14 +118,23 @@ const UserIndex = () => {
             checkEventTime();
 
             
-            // console.log("community events: ", community[0].Events)
-            community.map((community) => {
-                // console.log("community.events ", community.Events)
-                setEvents(community.Events)
-            })
             
-            // console.log("serEvents array: ", events)
 
+        }
+
+        const setAllEvents = () => {
+            // console.log("community events: ", community[0].Events)
+            community.map((comms) => {
+                // console.log(comms)
+                comms.Events.map((comm) => {
+                    // console.log("community.events ", comm)
+                    setEvents(events => [...events, comm])
+                })
+                
+            })
+            // userEvents.push(events);
+            // console.log("userEvents: ",userEvents)
+            // console.log("serEvents array: ", events)
         }
         
         //compared event times to decide if past events can be seen
@@ -142,6 +151,8 @@ const UserIndex = () => {
             const interval = setInterval(() => {
                 setCounter(counter + 1);
                 findRecentEvent();
+                setEvents(userEvents);
+                setAllEvents();
             }, 100)
             return () => clearInterval(interval)
             }
