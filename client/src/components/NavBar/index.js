@@ -32,7 +32,9 @@ export default function NavBar({checkUserActive}) {
         const getCommunities = async () => {
             await communityService.getCommunities()
                 .then((res) => {
-                    setCommunity(res.data.data)
+
+                    setCommunity(res.data)
+                    
                     console.log("res.data",res.data.data)
                     // console.log("Found communities: ",communities )
                 })
@@ -59,8 +61,8 @@ export default function NavBar({checkUserActive}) {
             >User Profile</NavLink>
             
             {/* <NavLink
-                to="/new" style={contentStyles}
-            >Create new community</NavLink> */}
+                to="/new" style={contentStyles}>
+                Create new community</NavLink> */}
 
             {/* <NavLink
         to={`/community/${community._id}`} style={contentStyles}

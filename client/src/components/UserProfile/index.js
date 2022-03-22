@@ -87,10 +87,7 @@ const UserIndex = () => {
             setLatestEvent(community[0].Events[community[0].Events.length-1])
             console.log("latest event: ",latestEvent)
            
-            const found = community[0].Members.find(member => member === user._id)
-
-            console.log("FOUND ! "+ found)
-            console.log("user! " + user._id)
+            // console.log("user! " + user._id)
 
             setEventTime((new Date(latestEvent.createdAt).getTime()));
             setCurrentTime(new Date().getTime());
