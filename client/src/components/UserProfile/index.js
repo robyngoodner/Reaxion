@@ -132,6 +132,9 @@ return (
                         <Link to="/community/join"><button className="standardButton" type="submit">JOIN A COMMUNITY</button></Link>
                     </div>
 
+
+                    {/***grabs individual community ***/}
+
                     {community?.map((singleCommunity, index) => {
 
                             if(singleCommunity.Members.includes(user._id)){  
@@ -152,7 +155,7 @@ return (
                    return (
                    <div>
                 
-                   <li style={{listStyle:"none"}} key={index}><Link to={`/community/${singleCommunity._id}`}><h3>{singleCommunity.communityName}</h3></Link></li> hi
+                   <li style={{listStyle:"none"}} key={index}><Link to={`/community/${singleCommunity._id}`}><h3>{singleCommunity.communityName}</h3></Link></li> 
            
                    </div>  
                    )
