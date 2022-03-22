@@ -151,7 +151,7 @@ const UserIndex = () => {
     const [communityCreate, setCommunityCreate] = useState('none')
     const [eventCreate, setEventCreate] = useState('none')
     const [profileUpdate, setProfileUpdate] = useState('none')
-    const [eventsView, setEventsView] = useState('none');
+    const [eventsView, setEventsView] = useState('flex');
 
     const toggleCommunityJoin = () => {
         setProfileUpdate('none')
@@ -290,11 +290,15 @@ return (
                 </ul> */}
             </div>
             <div className="openEvents">
-                <h2>Open Events</h2>
-                {/* <PostCreate /> */}
-            <h2>Open Events</h2>
-                {latestEvent? (isEventRecent ? <RecentEventView eventId={latestEvent._id}/> : <p>You have no recent events</p>): <p>You have no recent events</p>}
-                <h2>Past Events</h2>
+            <h1>Open Events</h1>
+                {events.map((event) => {
+                            {/* console.log("event: ",event.createdAt); */}
+                            return (
+                            compareEventTimes(event.createdAt) ? null
+                            : <RecentEventView eventId={event._id}/>
+                            )
+                        })}
+            <h1>Past Events</h1>
                 {/* {console.log("User events: ", events)} */}
                     {events.map((event) => {
                         {/* console.log("event: ",event.createdAt); */}

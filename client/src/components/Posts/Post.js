@@ -24,7 +24,7 @@ function showPost( { post }) {
 // }  
      return (
          <>
-         <div >
+         <div>
             <img className="reaction" src={post.content} />
             <p>{post.User_Comment}</p>
          </div>
