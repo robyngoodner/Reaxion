@@ -38,12 +38,7 @@ const index =  (req, res) => {
 //find communities of which user is a member
 const getCommunities = (req, res) => {
     db.Community.find({Members: req.userId})
-    .populate({
-        path: 'Events',
-        populate : {
-            path: 'posts'
-        }
-    })
+    .populate("Events")
     .exec((err, foundCommunities) => {
         if(err) {
             return res
