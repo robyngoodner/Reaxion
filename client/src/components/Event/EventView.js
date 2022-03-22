@@ -7,7 +7,7 @@ import PostCreate from '../Posts/PostCreate';
 
 
 export default function EventView({ eventId }) {
-    // const location = useLocation();
+   // const location = useLocation();
     const [event, setEvent] = useState("");   
     const [post, setPost] = useState([]);
     const [posts, setPosts] = useState([]);
@@ -18,7 +18,7 @@ export default function EventView({ eventId }) {
     const [isEventRecent, setIsEventRecent] = useState(false);
     const [counter, setCounter] = useState(0);
     const [currentTime, setCurrentTime] = useState("")
-    // const { eventId } = location.state;
+    //const { eventId } = location.state;
     // console.log("line 14: ",eventId)
 
     const findPost = async () => {
@@ -45,8 +45,7 @@ export default function EventView({ eventId }) {
         setEventTime(event.data.data.createdAt)
         setCurrentTime(new Date().getTime());
         // console.log(event.data.data)
-        setPosts(foundEvent.data.data.posts);
-        // console.log(posts)
+        setPosts(foundEvent.data.data.posts)
         const checkEventTime = () => {
             //event limit set to 20 minutes
             if (currentTime < (eventTime+1200000)) 
@@ -54,7 +53,6 @@ export default function EventView({ eventId }) {
             else setIsEventRecent(false)
         }
         checkEventTime();
-        // console.log(isEventRecent);
         // console.log("posts: ",posts)
         } catch(err) {
             console.log(err)
@@ -78,29 +76,29 @@ export default function EventView({ eventId }) {
 
 
     return(
-        <div>
+        <>
+            <div>
                 {/* <h1>Event view </h1> */}
-                {!isEventRecent ?
-                    <div>
-                        <h1>{title}</h1>
-                        <h2>{description}</h2>
-                        <div>
-                            {posts.map((post, index) => {
-                                    return (
-                                        <>
-                                        
-                                    <li style={{listStyle:"none"}} key={index}>
-                                        <Post post={post}/>
-                                        {/* {console.log(post)}  */}
-                                    </li>
-                                        </>
-                                    )
-                                })}
-                                {/* <Post post={post}/> */}
-                        </div>
-                    </div>
-                    : <p>You cannot view this event yet</p> }
-        </div>
+                <h1>{title}</h1>
+                <h2>{description}</h2>
+            </div>
+            <div>
+                <div>
+                {!isEventRecent ? posts.map((post, index) => {
+                        return (
+                        <li style={{listStyle:"none"}} key={index}>
+                            <Post post={post}/>
+                            {/* {console.log(post)}  */}
+                        </li>
+                        )
+                    }) : <PostCreate eventId={eventId}/> }
+                    {/* <Post post={post}/> */}
+                </div>
+            </div>
+            <div>
+                
+            </div>
             
+        </>
     )
 }
