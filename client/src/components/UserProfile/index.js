@@ -10,7 +10,8 @@ import CommunityCreate from '../Community/CommunityCreate';
 import Post from '../Posts/Post';
 import EventCreate from '../Event/EventCreate'
 import RecentEventView from '../Event/RecentEventView';
-
+import EventsIndex from '../Event/EventsIndex';
+import UserProfileUpdate from './UserProfileUpdate'
 
 
 const UserIndex = () => {
@@ -124,9 +125,10 @@ const UserIndex = () => {
     const [communityJoin, setCommunityJoin] = useState('none')
     const [communityCreate, setCommunityCreate] = useState('none')
     const [eventCreate, setEventCreate] = useState('none')
-
+    const [profileUpdate, setProfileUpdate] = useState('none')
 
     const toggleCommunityJoin = () => {
+        setProfileUpdate('none')
         setCommunityCreate('none')
         setEventCreate('none')
         if(communityJoin === 'none'){
@@ -137,6 +139,7 @@ const UserIndex = () => {
     }
 
     const toggleCommunityCreate = () => {
+        setProfileUpdate('none')
         setCommunityJoin('none')
         setEventCreate('none')
         if(communityCreate === 'none'){
@@ -147,6 +150,7 @@ const UserIndex = () => {
     }
     
     const toggleEventCreate = () => {
+        setProfileUpdate('none')
         setCommunityJoin('none')
         setCommunityCreate('none')
         if(eventCreate === 'none'){
@@ -156,6 +160,18 @@ const UserIndex = () => {
         }
     }
     
+    const toggleProfileUpdate = () => {
+        console.log('profile')
+        setCommunityJoin('none')
+        setCommunityCreate('none')
+        setEventCreate('none')
+        if(profileUpdate === 'none'){
+            setProfileUpdate('flex')
+        } else {
+            setProfileUpdate('none')
+        }
+    }
+
 return (    
     <div className="profile-page">
         <div className="userProfile">
@@ -168,6 +184,7 @@ return (
                             <h2>{user.firstName}</h2>
                         </div>
                     </div> 
+                    <p>{user.description}</p>
                 </div>
                 <div className="communitiesView">
 
@@ -209,7 +226,7 @@ return (
                         <button onClick={toggleEventCreate} className="smallButton">Create event</button>
                     </div>
                 </div>    
-                <Link to="/user/edit"><button className="standardButton" type="submit">CHANGE PROFILE</button></Link>
+                    <button onClick={toggleProfileUpdate} className="smallButton">Update Profile</button>
             </div>
        </div>
        <div className="eventsAndCommunities">
@@ -217,7 +234,10 @@ return (
                 <CommunityCreate active={communityCreate}/>
                 <CommunityJoin active={communityJoin}/>
                 <EventCreate active={eventCreate} />
-                
+
+                <UserProfileUpdate active={profileUpdate} />
+                {/* <EventsIndex /> */}
+
                     {/*here for easy access can be removed later on */}
                     {/* <Link to="/post/new"><button type="submit">CREATE A POST</button></Link> */}
                     {/*here for easy access can be removed later on */}

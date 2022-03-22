@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import * as communityService from "../../api/community.service";
 import * as authService from "../../api/auth.service";
 
-export default function UpdateUserProfile(data) {
+export default function UpdateUserProfile(props) {
     const [firstName, setFirstName]= useState("");
     const [lastName, setLastName]= useState("");
     const [description, setDescription]= useState("");
@@ -96,56 +96,59 @@ export default function UpdateUserProfile(data) {
 
         }, []);
     
+        const contentStyle = {
+            display: (props.active)
+        }
+    
 
 
 return (
-    <div>
-        <h1>Update your Public Profile</h1>
-    <form>
-        <label>
-            Would you like to change your First and/or Last name?
+    <div className="libraryComponent" style={contentStyle}>
+        <h2>Update your Public Profile</h2>
+    <form className="formSpacing">
+        <label className="formInput">
+            Would you like to change your First and/or Last name?</label>
             <input
+                className = "input"
                 onChange={(e) => setFirstName(e.target.value)}
                 value={firstName}
                 type="text"
                 name="firstName"
                 placeholder={firstName}
             />
-        </label>
-        <label>
             <input
+                className = "input"
                 onChange={(e) => setLastName(e.target.value)}
                 value={lastName}
                 type="text"
                 name="lastName"
                 placeholder="input your new last name"
             />
-        </label>
-        <label>
-            Would you like to change your description?
+        
+        <label className="formInput">
+            Would you like to change your description?</label>
             <input
+                className = "input"
                 onChange={(e) => setDescription(e.target.value)}
                 value={description}
                 type="text"
                 name="description"
                 placeholder="tell everyone a little bit about yourself"
             />
-        </label>
-        <label>
-            Would you like to change your User Icon?
+        <label className="formInput">
+            Would you like to change your User Icon?</label>
             <textarea
+                className = "input"
                 onChange={(e) => setUserIcon(e.target.value)}
                 value={userIcon}
                 type="text"
                 name="userIcon"
                 placeholder="input your new image, please use .jpg or .png"
             />
-        </label>
-        
     </form>
-    <Link to="/user/"> <button onClick={handleSubmit}>Update user profile information</button></Link> 
+    <Link to="/user/"> <button className="standardButton" onClick={handleSubmit}>Update user profile information</button></Link> 
     <p> Would you like to delete your profile?</p>
-  <Link to="/logout"><button onClick={() => {handleProfileDelete(); handleLogout();}}>Delete Profile</button></Link> 
+  <Link to="/logout"><button className="standardButton" onClick={() => {handleProfileDelete(); handleLogout();}}>Delete Profile</button></Link> 
         
 </div>
 );  
