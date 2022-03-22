@@ -76,7 +76,7 @@ const Home = () => {
                     element={<Community />}></Route>
                 <Route 
                     path="community/:id" 
-                    element={<EventsIndex />}></Route>
+                    element={<EventView />}></Route>
                 {/* <Route 
                     path="community/:id/event/:id" 
                     element={<EventsIndex />}></Route> */}
@@ -87,7 +87,7 @@ const Home = () => {
                     path="/community/join"
                     element={<CommunityJoin />}></Route>
                 <Route  
-                    path="user/"
+                    path="user/:id"
                     element={<UserIndex />}></Route>
                 <Route  
                     path="post/new"
