@@ -24,6 +24,7 @@ export default function CommunityCreate (props) {
         if (!res ===201) {
             alert('Attempt to create new community failed. Please refresh and try again: ', res.status)
         }
+        window.location.href="/user";
     };
 
     const userTest = async () => {
