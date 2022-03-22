@@ -298,6 +298,25 @@ h2 {
 .openEvents{
 	width: 20vW;
 }
+/* === EVENTS === */
+
+
+.indexComponent h3 {
+	color: black;
+	margin: 0px; 
+	padding: 0px;
+}
+
+.indexComponent p {
+	padding: 0vH 02vW 0vH 2vW;
+	margin: 0;
+	text-decoration: none;
+	color: var(--highlight-blue);
+}
+
+.indexComponent a {
+	text-decoration: none;
+}
 
 /* === REACTIONS === */
 

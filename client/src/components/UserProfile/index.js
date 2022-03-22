@@ -119,11 +119,13 @@ const UserIndex = () => {
     const [communityCreate, setCommunityCreate] = useState('none')
     const [eventCreate, setEventCreate] = useState('none')
     const [profileUpdate, setProfileUpdate] = useState('none')
+    const [eventsView, setEventsView] = useState('none');
 
     const toggleCommunityJoin = () => {
         setProfileUpdate('none')
         setCommunityCreate('none')
         setEventCreate('none')
+        setEventsView('none')
         if(communityJoin === 'none'){
             setCommunityJoin('flex')
         } else {
@@ -135,6 +137,7 @@ const UserIndex = () => {
         setProfileUpdate('none')
         setCommunityJoin('none')
         setEventCreate('none')
+        setEventsView('none')
         if(communityCreate === 'none'){
             setCommunityCreate('flex')
         } else {
@@ -146,6 +149,7 @@ const UserIndex = () => {
         setProfileUpdate('none')
         setCommunityJoin('none')
         setCommunityCreate('none')
+        setEventsView('none')
         if(eventCreate === 'none'){
             setEventCreate('flex')
         } else {
@@ -154,14 +158,26 @@ const UserIndex = () => {
     }
     
     const toggleProfileUpdate = () => {
-        console.log('profile')
         setCommunityJoin('none')
         setCommunityCreate('none')
         setEventCreate('none')
+        setEventsView('none')
         if(profileUpdate === 'none'){
             setProfileUpdate('flex')
         } else {
             setProfileUpdate('none')
+        }
+    }
+
+    const toggleEventsView = () => {
+        setCommunityJoin('none')
+        setCommunityCreate('none')
+        setEventCreate('none')
+        setEventsView('none')
+        if(eventsView === 'none'){
+            setEventsView('flex')
+        } else {
+            setEventsView('none')
         }
     }
 
@@ -198,9 +214,10 @@ return (
                         <button onClick={toggleCommunityCreate} className="smallButton" type="submit">CREATE Community</button>
                         <button onClick={toggleCommunityJoin} className="smallButton" type="submit">JOIN Community</button>
                         <button onClick={toggleEventCreate} className="smallButton">Create event</button>
+                        <button onClick={toggleEventsView} className="smallButton">View events</button>
                     </div>
                 </div>    
-                    <button onClick={toggleProfileUpdate} className="smallButton">Update Profile</button>
+                    <button onClick={toggleProfileUpdate} className="standardButton">Update Profile</button>
             </div>
        </div>
        <div className="eventsAndCommunities">
@@ -209,7 +226,7 @@ return (
                 <CommunityJoin active={communityJoin}/>
                 <EventCreate active={eventCreate} />
                 <UserProfileUpdate active={profileUpdate} />
-                {/* <EventsIndex /> */}
+                <EventsIndex active={eventsView} />
                     {/*here for easy access can be removed later on */}
                     {/* <Link to="/post/new"><button type="submit">CREATE A POST</button></Link> */}
                     {/*here for easy access can be removed later on */}

@@ -6,7 +6,7 @@ import * as eventService from '../../api/event.service';
 import { Link } from 'react-router-dom'
 
 
-const EventsIndex = () => {
+const EventsIndex = (props) => {
     const [communities, setCommunities] = useState([]);
     const [events, setEvents] = useState([]);
     const [posts, setPosts] = useState([]);
@@ -34,13 +34,14 @@ const EventsIndex = () => {
         findPosts();
     }, [communities])
     
-    
-
+    const contentStyle = {
+        display: (props.active)
+    }
 
     return (
-        <>
-            <h1 className="black">Events</h1>
-            <div>
+        <div style={contentStyle} className="libraryComponent">
+            <h2 className="black">Events</h2>
+            <div className="indexComponent">
                 {communities?.map((community, index) => {
                     return (
                         <>
@@ -49,11 +50,11 @@ const EventsIndex = () => {
                         to={community._id}>{community.communityName}
                         </Link> */}
                         
-                        <h1>{community.communityName}</h1>
+                        <h3>{community.communityName}</h3>
                         <h4>{community?.Events?.map((event) => {
                             return (
                                 <li style={{listStyle:"none"}} key={index}>
-                                <Link to={`/event/${event._id}`} state={{ eventId : event._id }} >{event.title}</Link>
+                                <Link to={`/event/${event._id}`} state={{ eventId : event._id }} ><p>{event.title}</p></Link>
                                 </li>
                                 )
                             })
@@ -68,7 +69,7 @@ const EventsIndex = () => {
                     )
                 })}
             </div>
-        </>
+        </div>
     )
 
 }
