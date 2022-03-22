@@ -379,16 +379,15 @@ h2 {
 }
 
 .indexComponent p {
-	padding: 0vH 02vW 0vH 2vW;
+	padding: 0vH 2vW 0vH 2vW;
 	margin: 0;
 	text-decoration: none;
-	color: var(--highlight-blue);
+	color: black;
 }
-
-.indexComponent a {
-	text-decoration: none;
+.indexComponent h4 {
+	margin: 0px;
+	padding: 1vH 0vW 1vH 0vW;
 }
-
 .smallPost {
 	width: 2vW;
 	margin-right: .5vW;

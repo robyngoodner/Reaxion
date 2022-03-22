@@ -54,7 +54,7 @@ const EventsIndex = (props) => {
                         <h4>{community?.Events?.map((event, index) => {
                             return (
                                 <li style={{listStyle:"none"}} key={index}>
-                                <Link to={`/event/${event._id}`} state={{ eventId : event._id }} ><p>{event.title}</p></Link>
+                                <p>{event.title}</p>
                                 </li>
                                 )
                             })
