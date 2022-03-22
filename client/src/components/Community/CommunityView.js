@@ -4,7 +4,7 @@ import * as communityService from '../../api/community.service'
 import * as userProfileService from "../../api/userprofile.service";
 import EventCreate from '../Event/EventCreate';
 
-export default function CommunityView () {
+export default function CommunityView (props) {
     const [communities, setCommunities] = useState();
     const [user, setUser] = useState("");
 
@@ -28,9 +28,9 @@ export default function CommunityView () {
         findUser();
     }, [])
 
-    
     return (
         <>
+            <h3>All Communities</h3>
             {communities?.map((community, index)=> {
                 if(user._id === community.Facilitator){
                     

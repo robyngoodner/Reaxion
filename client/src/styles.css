@@ -33,7 +33,6 @@ body {
 
 .stack {
 	display: flex;
-	flex-direction: column;
 	align-items: center;
 	justify-content: space-around;
 	flex-wrap: wrap;
@@ -47,11 +46,30 @@ h1 {
 	color: white;
 	text-align:center;
 }
+
+h3 {
+	margin: 0;
+	color: white;
+}
+
 h2 {
 	margin: 2vH 0vW 0vH 0vW;
 	color: white;
 	text-transform: uppercase;
 }
+
+.smallButton {
+	background-color: var(--light-blue);
+	color: var(--highlight-blue);
+	padding: 10px 20px;
+	margin: 8px 0;
+	border: none;
+	cursor: pointer;
+	border-radius: 10px;
+	text-transform: uppercase;
+	font-size: .75em;
+	width: 8vW
+  }
 
 /* === NAVBAR  === */
 
@@ -211,12 +229,19 @@ h2 {
 .infoBlock{
 	display: flex;
 	flex-direction: column;
-	justify-content: center;
+	padding-left: .5vW;
+}
+
+.userHead {
+	display: flex;
+	justify-content: flex-start;
+	width: 22vW;
+	padding: 3vH 0vW 3vH 1vW;
 	align-items: center;
 }
 
 .infoBlock h2 {
-	margin: 2vH 0vW 0vH 0vW;
+	margin: 0;
 	color: white;
 	text-transform: uppercase;
 }
@@ -224,7 +249,9 @@ h2 {
 .communitiesView {
 	color: white;
 	text-transform: uppercase;
-	text-align: center;
+	text-align: left;
+	background-color: var(--highlight-blue);
+	padding: 2vH 0vW 0vH 1vW;
 }
 
 
@@ -241,7 +268,8 @@ h2 {
 }
 
 .userIcon{
-	width: 10vW;
+	width: 5vW;
+	max-height: 5vW;
 }
 
 .eventsAndCommunities {
