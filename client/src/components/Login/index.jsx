@@ -17,6 +17,7 @@ const Login = ( {checkUserActive} ) => {
             setEmail("");
             setPassword("");
         });
+        window.location.href="/user";
     };
 
 return (

@@ -3,7 +3,7 @@ import * as postService from '../../api/post.service';
 import * as authService from '../../api/auth.service';
 import * as eventService from '../../api/event.service';
 import {Link} from "react-router-dom"
-import PostUpdate from './PostUpdate';
+// import PostUpdate from './PostUpdate';
 
 export default function PostCreate ({ eventId }) {
     const [content, setContent] = useState("");
