@@ -3,9 +3,12 @@ import * as userProfileService from "../../api/userprofile.service";
 import * as postService from "../../api/post.service";
 import { Link } from 'react-router-dom';
 import * as communityService from "../../api/community.service";
-//import PostCreate from '../Posts/PostCreate';
-//import CommunityView from '../Community/CommunityView';
-import Post from "../Posts/Post";
+import PostCreate from '../Posts/PostCreate';
+import CommunityView from '../Community/CommunityView';
+import CommunityJoin from '../Community/CommunityJoin';
+import CommunityCreate from '../Community/CommunityCreate';
+import Post from '../Posts/Post';
+import EventCreate from '../Event/EventCreate'
 import RecentEventView from '../Event/RecentEventView';
 
 
@@ -58,6 +61,7 @@ const UserIndex = () => {
     //      alert(`Post error. Please submit again. ${res.status}`) 
     //  } 
 }  
+
   
     const findPosts = async () => {
         await postService.getAll().then((res) => {
@@ -116,17 +120,57 @@ const UserIndex = () => {
             }
         }, [counter])
         
+//Allows for toggling
+    const [communityJoin, setCommunityJoin] = useState('none')
+    const [communityCreate, setCommunityCreate] = useState('none')
+    const [eventCreate, setEventCreate] = useState('none')
+
+
+    const toggleCommunityJoin = () => {
+        setCommunityCreate('none')
+        setEventCreate('none')
+        if(communityJoin === 'none'){
+            setCommunityJoin('flex')
+        } else {
+            setCommunityJoin('none')
+        }
+    }
+
+    const toggleCommunityCreate = () => {
+        setCommunityJoin('none')
+        setEventCreate('none')
+        if(communityCreate === 'none'){
+            setCommunityCreate('flex')
+        } else {
+            setCommunityCreate('none')
+        }
+    }
+    
+    const toggleEventCreate = () => {
+        setCommunityJoin('none')
+        setCommunityCreate('none')
+        if(eventCreate === 'none'){
+            setEventCreate('flex')
+        } else {
+            setEventCreate('none')
+        }
+    }
     
 return (    
     <div className="profile-page">
         <div className="userProfile">
             <div className="userHeight">
                 <div className="infoBlock">
-                    <h2>Welcome</h2>
-                    <h1>{user.firstName}</h1>
-                    <img className="userIcon" src={user.userIcon} alt="not found"/>
+                    <div className="userHead">
+                        <img className="userIcon" src={user.userIcon} alt="not found"/>
+                        <div className="infoBlock">
+                            <h3>Welcome</h3>
+                            <h2>{user.firstName}</h2>
+                        </div>
+                    </div> 
                 </div>
                 <div className="communitiesView">
+
                     <h2>My Communities</h2>
                     <div className="stack">
                         <Link to="/community/new"><button className="standardButton" type="submit">CREATE A COMMUNITY</button></Link>
@@ -146,8 +190,38 @@ return (
                    <Link to={`/community/${singleCommunity._id}`}>
                    <h3>{singleCommunity.communityName}</h3>
                    </Link>
+                   
                    {/*current location messes up user nav bar */}
-                   {/* <ul>
+               
+                    {/* <ul>
+                        {community?.map((community)=> {
+                            return (
+                                <>
+                                    <li style={{listStyle:"none"}} key={community.index}></li>
+                                    <CommunityView active={eventCreate} toggle={toggleEventCreate}/>
+                                </>
+                            )
+                        })}
+                    </ul> */}
+                    <div className="stack">
+                        <button onClick={toggleCommunityCreate} className="smallButton" type="submit">CREATE Community</button>
+                        <button onClick={toggleCommunityJoin} className="smallButton" type="submit">JOIN Community</button>
+                        <button onClick={toggleEventCreate} className="smallButton">Create event</button>
+                    </div>
+                </div>    
+                <Link to="/user/edit"><button className="standardButton" type="submit">CHANGE PROFILE</button></Link>
+            </div>
+       </div>
+       <div className="eventsAndCommunities">
+            <div className="recentPosts">
+                <CommunityCreate active={communityCreate}/>
+                <CommunityJoin active={communityJoin}/>
+                <EventCreate active={eventCreate} />
+                
+                    {/*here for easy access can be removed later on */}
+                    {/* <Link to="/post/new"><button type="submit">CREATE A POST</button></Link> */}
+                    {/*here for easy access can be removed later on */}
+                {/* <ul>
                     {posts.map((post)=> {
                         return (
                             <>
@@ -201,6 +275,7 @@ return (
                     
             </div>
                     
+
             </div>
             <div className="openEvents">
                 <h2>Open Events</h2>

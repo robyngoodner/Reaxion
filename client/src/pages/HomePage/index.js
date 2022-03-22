@@ -68,7 +68,7 @@ const Home = () => {
             <Routes>
                 <Route  
                     path='/'
-                    element={<Community/>}
+                    element={<UserIndex/>}
                     />
                 <Route  
                     path='/user/edit'
