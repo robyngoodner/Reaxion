@@ -67,8 +67,8 @@ export default function RecentEventView( { eventId } ) {
         <>
             <div>
                 {/* <h1>Event view </h1> */}
-                <h1>{title} hohoho</h1>
-                <h2>{description}</h2>
+                <h2>{title}</h2>
+                <p>{description}</p>
             </div>
             <div>
                 

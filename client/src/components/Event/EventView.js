@@ -76,14 +76,14 @@ export default function EventView({ eventId }) {
 
 
     return(
-        <>
+        <div className="eventShow" >
             <div>
                 {/* <h1>Event view </h1> */}
-                <h1>{title}</h1>
-                <h2>{description}</h2>
+                <h2>{title}</h2>
+                <p>{description}</p>
             </div>
             <div>
-                <div>
+                <div >
                 {!isEventRecent ? posts.map((post, index) => {
                         return (
                         <li style={{listStyle:"none"}} key={index}>
@@ -99,6 +99,6 @@ export default function EventView({ eventId }) {
                 
             </div>
             
-        </>
+        </div>
     )
 }

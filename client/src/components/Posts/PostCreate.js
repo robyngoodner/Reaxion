@@ -43,12 +43,13 @@ export default function PostCreate ({ eventId }) {
         console.log(res)
     }
 
+    
     return (
         <div className="libraryComponent">
             <h2>Leave your Reaction</h2>
             <form className="formSpacing">
                 <div>
-                    <p>Reaction:</p>
+                    <label>Reaction:</label>
                     <label className="formInput" htmlFor="happyEmoji"></label>
                         <input 
                             onChange={(e) => setContent(e.target.value)}

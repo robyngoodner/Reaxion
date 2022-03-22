@@ -23,15 +23,16 @@ export default function CommunityJoin (props) {
     return (
         <div className="libraryComponent" style={contentStyle}>
             <h2>Join an existing community</h2>
-            <form>
-                <label>Please enter your community's keyword</label>
+            <form className="formSpacing">
+                <label className="formInput">Please enter your community's keyword</label>
                 <input 
+                    className = "input"
                     type="text"
                     name="keyword"
                     onChange={(e) => setKeyword(e.target.value)}
                     placeholder="Keyword"
                 />
-                <Link to="/user/"> <button onClick={handleSubmit}>Join Community</button></Link>
+                <Link to="/user/"> <button className="standardButton" onClick={handleSubmit}>Join Community</button></Link>
             </form>
         </div>
     )
