@@ -24,8 +24,8 @@ function showPost( { post }) {
 // }  
      return (
          <>
-         <div>
-            <img className="reaction" src={post.content} />
+         <div className="pastEventPosts">
+            <img className="smallPost" src={post.content} />
             <p>{post.User_Comment}</p>
          </div>
          <div>
