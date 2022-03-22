@@ -33,6 +33,7 @@ export default function PostUpdate (props) {
          if ( !res === 201 ) {
              alert(`Post error. Please submit again. ${res.status}`) 
          }    
+         window.location.href="/user";
     }
 
     const contentStyle = {

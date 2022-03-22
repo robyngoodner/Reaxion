@@ -13,7 +13,9 @@ export default function CommunityJoin (props) {
 
         if (!res === 201) {
             alert('Attempt to join existing community failed. Please refresh and try again: ', res.status)
+            
         }
+        window.location.href="/user";
     };
 
     const contentStyle = {

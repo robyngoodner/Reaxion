@@ -16,6 +16,8 @@ const Register = () => {
          authService.register(email,password,firstName,lastName);
         setEmail("");
         setPassword("");
+        setfirstName("");
+        setlastName("");
         setSuccessMsg("Your Registration was Successful.");
         console.log("components-->register-->index handlesubmit: ", email, password)
 

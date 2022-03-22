@@ -23,6 +23,7 @@ const EventCreate = (props) => {
         if (!res === 201) {
                 alert("Your event failed to save. More information: ", res.status)
         }
+        window.location.href="/user";
     };
 
     const contentStyle = {
