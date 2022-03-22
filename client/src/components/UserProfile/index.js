@@ -62,6 +62,7 @@ const UserIndex = () => {
     const findPosts = async () => {
         await postService.getAll().then((res) => {
             setPosts(res.data.data);
+          
         });
     }
     
@@ -133,7 +134,7 @@ return (
                     </div>
 
 
-                    {/***grabs individual community ***/}
+                    {/***grabs individual community POSTS MAPPING NEEDS TO BE UNDER HERE TO SHOW FOR MEMBER POSTS ***/}
 
                     {community?.map((singleCommunity, index) => {
 
@@ -141,12 +142,34 @@ return (
 
                           return (
                      <div>
-
                    <li style={{listStyle:"none"}} key={index}>
                    <Link to={`/community/${singleCommunity._id}`}>
                    <h3>{singleCommunity.communityName}</h3>
                    </Link>
-                   <h1>{posts._id}</h1>
+                   {/*current location messes up user nav bar */}
+                   {/* <ul>
+                    {posts.map((post)=> {
+                        return (
+                            <>
+                                <li key={post.index}>
+                                </li>
+                                <li className="postShow"> 
+                                    Event:{post.event}
+                                    Reaction:{post.content}
+                                    User Comment:{post.User_Comment}
+                                    <Post post={post}/>
+                                    <div className="postButtons">
+                                        <Link to={`../../post/${post._id}`} state={{ postId: post._id }} >
+                                            <button className="standardButton">Edit</button>
+                                        </Link>
+                                        <button className="standardButton" onClick={handleSubmitDelete}>Delete</button>
+                                    </div>
+                                </li>
+                            </>
+                        )
+                    })} 
+                </ul> */}
+                   
                    </li>
 
                    </div>  
@@ -174,28 +197,7 @@ return (
                     {/*here for easy access can be removed later on */}
                     {/* <Link to="/post/new"><button type="submit">CREATE A POST</button></Link> */}
                     <div className="recentPosts">
-                     <ul>
-                    {posts.map((post)=> {
-                        return (
-                            <>
-                                <li key={post.index}>
-                                </li>
-                                <li className="postShow"> 
-                                    Event:{post.event}
-                                    Reaction:{post.content}
-                                    User Comment:{post.User_Comment}
-                                    <Post post={post}/>
-                                    <div className="postButtons">
-                                        <Link to={`../../post/${post._id}`} state={{ postId: post._id }} >
-                                            <button className="standardButton">Edit</button>
-                                        </Link>
-                                        <button className="standardButton" onClick={handleSubmitDelete}>Delete</button>
-                                    </div>
-                                </li>
-                            </>
-                        )
-                    })} 
-                </ul>
+                  
                     
             </div>
                     
