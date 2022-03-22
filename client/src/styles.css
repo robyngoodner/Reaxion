@@ -239,32 +239,48 @@ h2 {
 	align-items: center;
 }
 
-.infoBlock{
+.infoBlock {
 	display: flex;
 	flex-direction: column;
 	padding-left: .5vW;
 }
 
+.infoHead {
+	background-color: var(--light-blue);
+	border-radius: 20px;
+	width: 20vW;
+	padding: 0vH 0vW 0vH 1vW;
+}
+
+.infoHead h3{
+	color: black;
+}
+
+.infoHead p{
+	padding: 0vH 0vW 0vH 2vW;
+}
+
 .userHead {
 	display: flex;
 	justify-content: flex-start;
-	width: 22vW;
-	padding: 3vH 0vW 3vH 1vW;
+	padding: 3vH 0vW 0vH 1vW;
 	align-items: center;
 }
 
 .infoBlock h2 {
 	margin: 0;
-	color: white;
+	color: black;
 	text-transform: uppercase;
 }
 
 .communitiesView {
+	width: 20vW;
 	color: white;
 	text-transform: uppercase;
 	text-align: left;
 	background-color: var(--highlight-blue);
-	padding: 2vH 0vW 0vH 1vW;
+	padding: 2vH 0vW 2vH 1vW;
+	border-radius: 20px;
 }
 
 
@@ -286,6 +302,7 @@ h2 {
 }
 
 .eventsAndCommunities {
+	height: 93vH;
 	display: flex;
 	width: 78vW;
 	background-color: var(--light-blue);
@@ -294,7 +311,9 @@ h2 {
 
 .recentPosts{
 	width: 45vW;
-	border-right: 1px solid var(--highlight-blue)
+	border-right: 1px solid var(--highlight-blue);
+	overflow: scroll;
+	height: 93vH;
 }
 
 .openEvents{
@@ -308,7 +327,7 @@ h2 {
 	flex-direction: column;
 	background-color: white;
 	border-radius: 20px;
-	padding: 0vH 2vW;
+	padding: 0vH 2vW 2vH 2vW;
 	box-shadow: 0px 5px 20px 2px rgba(0, 0, 0, 0.14);
 	border: 1px solid var(--highlight-blue)
 }
@@ -345,6 +364,19 @@ h2 {
 	text-decoration: none;
 }
 
+.smallPost {
+	width: 2vW;
+	margin-right: .5vW;
+}
+
+.pastEventPosts{
+	display: flex;
+}
+
+.pastEventPosts p{
+	color: black;
+	font-size: .75em;
+}
 /* === REACTIONS === */
 
 .reaction{

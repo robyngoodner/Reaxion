@@ -218,7 +218,7 @@ return (
     <div className="profile-page">
         <div className="userProfile">
             <div className="userHeight">
-                <div className="infoBlock">
+                <div className="infoHead">
                     <div className="userHead">
                         <img className="userIcon" src={user.userIcon} alt="not found"/>
                         <div className="infoBlock">
