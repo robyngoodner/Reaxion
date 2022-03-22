@@ -18,6 +18,9 @@ font-family: 'Merriweather Sans', sans-serif; */
 }
 /* === ROOT STYLES  === */
 
+.black {
+	color: black;
+}
 body {
 	font-family: 'Merriweather Sans', sans-serif;
 	background-color: rgb(255, 255, 255);

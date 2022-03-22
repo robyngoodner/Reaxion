@@ -15,7 +15,7 @@ const EventsIndex = () => {
         async function getEventsIndex() {
             const communities = await eventService.index();
             setCommunities(communities.data.data);
-            console.log("community data: ",communities.data.data)
+            console.log("community data: ", communities.data.data)
         }
         getEventsIndex();
     }, [])
@@ -39,7 +39,7 @@ const EventsIndex = () => {
 
     return (
         <>
-            <h1>Events</h1>
+            <h1 className="black">Events</h1>
             <div>
                 {communities?.map((community, index) => {
                     return (

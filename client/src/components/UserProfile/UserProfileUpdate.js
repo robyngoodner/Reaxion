@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import * as communityService from "../../api/community.service";
 import * as authService from "../../api/auth.service";
 
-export default function UpdateUserProfile(data) {
+export default function UpdateUserProfile(props) {
     const [firstName, setFirstName]= useState("");
     const [lastName, setLastName]= useState("");
     const [description, setDescription]= useState("");
@@ -96,11 +96,15 @@ export default function UpdateUserProfile(data) {
 
         }, []);
     
+        const contentStyle = {
+            display: (props.active)
+        }
+    
 
 
 return (
-    <div>
-        <h1>Update your Public Profile</h1>
+    <div className="libraryComponent" style={contentStyle}>
+        <h2>Update your Public Profile</h2>
     <form>
         <label>
             Would you like to change your First and/or Last name?
