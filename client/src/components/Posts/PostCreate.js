@@ -44,12 +44,12 @@ export default function PostCreate ({ eventId }) {
     }
 
     return (
-        <div>
-            <h1>Leave your Reaction</h1>
-            <form>
+        <div className="libraryComponent">
+            <h2>Leave your Reaction</h2>
+            <form className="formSpacing">
                 <div>
-                    Reaction:
-                    <label htmlFor="happyEmoji">
+                    <p>Reaction:</p>
+                    <label className="formInput" htmlFor="happyEmoji"></label>
                         <input 
                             onChange={(e) => setContent(e.target.value)}
                             type="radio"
@@ -58,8 +58,8 @@ export default function PostCreate ({ eventId }) {
                             value="/images/Happy.png"
                         />
                         <img className="reaction" src="/images/Happy.png" alt="Happy"/>
-                    </label>
-                    <label htmlFor="sadEmoji">
+                
+                    <label className="formInput" htmlFor="sadEmoji">
                         <input 
                             onChange={(e) => setContent(e.target.value)}
                             type="radio"
@@ -69,7 +69,7 @@ export default function PostCreate ({ eventId }) {
                         />
                         <img className="reaction" src="/images/Sad.png" alt="Sad"/>
                     </label>
-                    <label htmlFor="contentEmoji">
+                    <label className="formInput" htmlFor="contentEmoji">
                         <input 
                             onChange={(e) => setContent(e.target.value)}
                             type="radio"
@@ -79,7 +79,7 @@ export default function PostCreate ({ eventId }) {
                         />
                          <img className="reaction" src="/images/Content.png" alt="Content"/>
                     </label>
-                    <label htmlFor="angryEmoji">
+                    <label className="formInput" htmlFor="angryEmoji">
                         <input 
                             onChange={(e) => setContent(e.target.value)}
                             type="radio"
@@ -89,7 +89,7 @@ export default function PostCreate ({ eventId }) {
                         />
                         <img className="reaction" src="/images/Angry.png" alt="Angry"/>
                     </label>
-                    <label htmlFor="excitedEmoji">
+                    <label  className="formInput" htmlFor="excitedEmoji">
                         <input 
                             onChange={(e) => setContent(e.target.value)}
                             type="radio"
@@ -98,9 +98,10 @@ export default function PostCreate ({ eventId }) {
                             value="/images/Excited.png"
                         />
                         <img className="reaction" src="/images/Excited.png" alt="Excited"/>
-                    </label>
-                    <label htmlFor="disinterestedEmoji">
+                    </label >
+                    <label  className="formInput" htmlFor="disinterestedEmoji">
                         <input 
+                            className="input"
                             onChange={(e) => setContent(e.target.value)}
                             type="radio"
                             id="disinterestedEmoji"
@@ -110,9 +111,10 @@ export default function PostCreate ({ eventId }) {
                         <img className="reaction" src="/images/Disinterested.png" alt="Disinterested"/>
                     </label>
                 </div>
-                <label>
+                <label className="formInput" >
                     If you would like, please leave an additional comment about your experience (optional):
                     <textarea 
+                        className="input"
                         onChange={(e) => setUser_Comment(e.target.value)}
                         value={User_Comment}
                         type="text"
@@ -128,7 +130,7 @@ export default function PostCreate ({ eventId }) {
 
             </form>
             {/*redirects to user profile can be changed to community later on */}
-           <Link to="/user/"> <button onClick={handleSubmit}>SUBMIT REACTION</button></Link>
+           <Link to="/user/"> <button className="standardButton" onClick={handleSubmit}>SUBMIT REACTION</button></Link>
         </div>
     )
 }

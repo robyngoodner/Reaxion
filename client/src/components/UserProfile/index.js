@@ -290,6 +290,8 @@ return (
                 </ul> */}
             </div>
             <div className="openEvents">
+                <h2>Open Events</h2>
+                {/* <PostCreate /> */}
             <h2>Open Events</h2>
                 {latestEvent? (isEventRecent ? <RecentEventView eventId={latestEvent._id}/> : <p>You have no recent events</p>): <p>You have no recent events</p>}
                 <h2>Past Events</h2>
