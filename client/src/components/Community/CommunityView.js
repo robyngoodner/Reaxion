@@ -31,7 +31,6 @@ export default function CommunityView (props) {
     return (
         <>
             {communities?.map((community, index)=> {
-
                 if(user._id === community.Facilitator){
                     
                   return (

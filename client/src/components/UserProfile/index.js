@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import * as userProfileService from "../../api/userprofile.service";
 import * as postService from "../../api/post.service";
-import { Link } from 'react-router-dom';
+import { Link, Route } from 'react-router-dom';
 import * as communityService from "../../api/community.service";
 import PostCreate from '../Posts/PostCreate';
 import CommunityView from '../Community/CommunityView';
@@ -67,7 +67,6 @@ const UserIndex = () => {
     const findPosts = async () => {
         await postService.getAll().then((res) => {
             setPosts(res.data.data);
-          
         });
     }
     
@@ -79,22 +78,16 @@ const UserIndex = () => {
     const findCommunity = async () => {
         await communityService.getCommunities()
             .then((res) => {
-            console.log("community data ! " + res.data.data)
            setCommunity(res.data.data)
         });
     }
         useEffect(() => {
             findCommunity();
         }, []);
-
 //Finds recent events, compares to current time--if fewer than 20 minutes have passed since the event was last updated, the event and the option to post to it will show up on the home page
         const findRecentEvent = () => {
-           
             setLatestEvent(community[0].Events[community[0].Events.length-1])
             console.log("latest event: ",latestEvent)
-           
-            // console.log("user! " + user._id)
-
             setEventTime((new Date(latestEvent.createdAt).getTime()));
             setCurrentTime(new Date().getTime());
             // console.log("event time: ", eventTime);
@@ -102,8 +95,8 @@ const UserIndex = () => {
             const checkEventTime = () => {
                 //event limit set to 20 minutes
                 if (currentTime < (eventTime+1200000)) 
-                setIsEventRecent(false)
-                else setIsEventRecent(true)
+                setIsEventRecent(true)
+                else setIsEventRecent(false)
             }
             checkEventTime();
 
@@ -115,7 +108,7 @@ const UserIndex = () => {
             if(counter<10){
             const interval = setInterval(() => {
                 setCounter(counter + 1);
-                findRecentEvent("");
+                findRecentEvent();
             }, 100)
             return () => clearInterval(interval)
             }
@@ -187,29 +180,10 @@ return (
                     <p>{user.description}</p>
                 </div>
                 <div className="communitiesView">
-
-                    <h2>My Communities</h2>
-                    <div className="stack">
-                        <Link to="/community/new"><button className="standardButton" type="submit">CREATE A COMMUNITY</button></Link>
-                        <Link to="/community/join"><button className="standardButton" type="submit">JOIN A COMMUNITY</button></Link>
-                    </div>
-
-
-                    {/***grabs individual community POSTS MAPPING NEEDS TO BE UNDER HERE TO SHOW FOR MEMBER POSTS ***/}
-
-                    {community?.map((singleCommunity, index) => {
-
-                            if(singleCommunity.Members.includes(user._id)){  
-
-                          return (
-                     <div>
-                   <li style={{listStyle:"none"}} key={index}>
-                   <Link to={`/community/${singleCommunity._id}`}>
-                   <h3>{singleCommunity.communityName}</h3>
-                   </Link>
-                   
-                   {/*current location messes up user nav bar */}
-               
+                    <h3>Communities</h3>
+                    <ul>
+                    <CommunityView toggle={toggleEventCreate}/>
+                    </ul>
                     {/* <ul>
                         {community?.map((community)=> {
                             return (
@@ -234,10 +208,8 @@ return (
                 <CommunityCreate active={communityCreate}/>
                 <CommunityJoin active={communityJoin}/>
                 <EventCreate active={eventCreate} />
-
                 <UserProfileUpdate active={profileUpdate} />
                 {/* <EventsIndex /> */}
-
                     {/*here for easy access can be removed later on */}
                     {/* <Link to="/post/new"><button type="submit">CREATE A POST</button></Link> */}
                     {/*here for easy access can be removed later on */}
@@ -263,39 +235,6 @@ return (
                         )
                     })} 
                 </ul> */}
-                   
-                   </li>
-
-                   </div>  
-                              )
-               }  else {
-                   return (
-                   <div>
-                
-                   <li style={{listStyle:"none"}} key={index}><Link to={`/community/${singleCommunity._id}`}><h3>{singleCommunity.communityName}</h3></Link></li> 
-           
-                   </div>  
-                   )
-               }
-                  })
-                    
-                    })
-               
-                </div>    
-                <Link to="/user/edit"><button className="standardButton" type="submit">CHANGE PROFILE</button></Link>
-            </div>
-       </div>
-       <div className="eventsAndCommunities">
-            <div className="recentPosts">
-                <h2>My Recent Posts</h2>
-                    {/*here for easy access can be removed later on */}
-                    {/* <Link to="/post/new"><button type="submit">CREATE A POST</button></Link> */}
-                    <div className="recentPosts">
-                  
-                    
-            </div>
-                    
-
             </div>
             <div className="openEvents">
                 <h2>Open Events</h2>

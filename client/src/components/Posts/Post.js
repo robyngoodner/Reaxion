@@ -1,26 +1,10 @@
 import { string } from 'prop-types';
-import React, { useEffect, useState } from 'react';
 import * as postService from "../../api/post.service"
 
 
-function ShowPost() {
-
-    const [post, setPost] = useState([]);
-
-    const findPost = async () => {
-        
-        // console.log("findPost function happening")
-        await postService.showOne().then((res) => {
-            console.log("res.data.data" + res.data.data)
-            setPost(res.data.data);
-            // console.log("found posts: ", post)
-        });
-    }
-
+function showPost( { post }) {
 
     const handleSubmitDelete = async () => {
-
-
         let res = await postService.destroy()
             .then(() => {
                 window.location.href = "/post";
@@ -31,12 +15,6 @@ function ShowPost() {
          } 
     }        
 
-
-    // useEffect(() => {
-    //     findPost();
-
-    // },[])
-
 //     const handleSubmitEdit = async () => {
 //         // window.location.href = `/${post}/${id}`;
     
@@ -46,10 +24,9 @@ function ShowPost() {
 // }  
      return (
          <>
-         <div>
-         <h1>{post.User}</h1>
-         <h2>{post.Event}</h2>
-         <img className="reaction" src={`..${post.content}`} alt="content"/> 
+         <div >
+            <img className="reaction" src={post.content} />
+            <p>{post.User_Comment}</p>
          </div>
          <div>
              {/* <button onClick={handleSubmitEdit}>Edit</button> */}
@@ -60,4 +37,4 @@ function ShowPost() {
      )
 }
 
-export default ShowPost; 
+export default showPost; 
