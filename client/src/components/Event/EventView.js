@@ -6,8 +6,8 @@ import { useLocation } from 'react-router-dom';
 import PostCreate from '../Posts/PostCreate';
 
 
-export default function EventView() {
-    const location = useLocation();
+export default function EventView({ eventId }) {
+   // const location = useLocation();
     const [event, setEvent] = useState("");   
     const [post, setPost] = useState([]);
     const [posts, setPosts] = useState([]);
@@ -18,7 +18,7 @@ export default function EventView() {
     const [isEventRecent, setIsEventRecent] = useState(false);
     const [counter, setCounter] = useState(0);
     const [currentTime, setCurrentTime] = useState("")
-    const { eventId } = location.state;
+    //const { eventId } = location.state;
     // console.log("line 14: ",eventId)
 
     const findPost = async () => {
@@ -84,7 +84,7 @@ export default function EventView() {
             </div>
             <div>
                 <div>
-                {isEventRecent ? posts.map((post, index) => {
+                {!isEventRecent ? posts.map((post, index) => {
                         return (
                         <li style={{listStyle:"none"}} key={index}>
                             <Post post={post}/>
