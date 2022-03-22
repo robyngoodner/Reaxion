@@ -30,23 +30,28 @@ export default function CommunityView (props) {
 
     return (
         <>
+            <h3>Facilitator</h3>
             {communities?.map((community, index)=> {
                 if(user._id === community.Facilitator){
                     
                   return (
                     <div>
-                        <li style={{listStyle:"none"}} key={index}><Link to={`/community/${community._id}`}><h4>{community.communityName}</h4></Link></li>
+                        {/* <li style={{listStyle:"none"}} key={index}><Link to={`/community/${community._id}`}><p>{community.communityName}</p></Link></li> */}
+                        <li style={{listStyle:"none"}} key={index}><p>{community.communityName}</p></li>
                     </div>  
-                )
-                } if(user._id !== community.Facilitator) {
+                )}})}
+            <h3>Member</h3>
+            {communities?.map((community, index)=> {      
+                if(user._id !== community.Facilitator) {
                   return (    
                     <div> 
-                      <li style={{listStyle:"none"}} key={index}><Link to={`/community/${community._id}`}><h3>Member of {community.communityName}</h3></Link></li>                  
+                    {/* <li style={{listStyle:"none"}} key={index}><Link to={`/community/${community._id}`}><p>{community.communityName}</p></Link></li>                   */}
+                    <li style={{listStyle:"none"}} key={index}><p>{community.communityName}</p></li>                  
                     </div>  
                     )
                 }
                 
-             })}
-        
+             })}               
         </>
-    )     }
+    )     
+}

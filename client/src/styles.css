@@ -40,6 +40,8 @@ body {
 	align-items: center;
 	justify-content: space-around;
 	flex-wrap: wrap;
+	margin-top: 5vH;
+	width: 19vW;
 }
 
 h1 {
@@ -232,6 +234,7 @@ h2 {
 }
 
 .userHeight {
+	width: 22vW;
 	height: 90vH;
 	display: flex;
 	flex-direction: column;
@@ -276,12 +279,24 @@ h2 {
 .communitiesView {
 	width: 20vW;
 	color: white;
-	text-transform: uppercase;
 	text-align: left;
 	background-color: var(--highlight-blue);
 	padding: 2vH 0vW 2vH 1vW;
 	border-radius: 20px;
 }
+
+.communitiesView p {
+	padding: 0vH 0vW 0vH 1vW;
+	margin: 0;
+	text-transform: none;
+}
+
+.communitiesView h3 {
+	padding: 1vH 0vW 0vH 0vW;
+	margin: 0;
+	text-transform: uppercase;
+}
+
 
 
 .infoBlock h1 {
