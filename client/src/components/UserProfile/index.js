@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import * as communityService from "../../api/community.service";
 //import PostCreate from '../Posts/PostCreate';
 //import CommunityView from '../Community/CommunityView';
-//import Post from '../Posts/Post';
+import Post from "../Posts/Post";
 import RecentEventView from '../Event/RecentEventView';
 
 
@@ -172,9 +172,33 @@ return (
             <div className="recentPosts">
                 <h2>My Recent Posts</h2>
                     {/*here for easy access can be removed later on */}
-                    <Link to="/post/new"><button type="submit">CREATE A POST</button></Link>
-                    {/*here for easy access can be removed later on */}
-                
+                    {/* <Link to="/post/new"><button type="submit">CREATE A POST</button></Link> */}
+                    <div className="recentPosts">
+                     <ul>
+                    {posts.map((post)=> {
+                        return (
+                            <>
+                                <li key={post.index}>
+                                </li>
+                                <li className="postShow"> 
+                                    Event:{post.event}
+                                    Reaction:{post.content}
+                                    User Comment:{post.User_Comment}
+                                    <Post post={post}/>
+                                    <div className="postButtons">
+                                        <Link to={`../../post/${post._id}`} state={{ postId: post._id }} >
+                                            <button className="standardButton">Edit</button>
+                                        </Link>
+                                        <button className="standardButton" onClick={handleSubmitDelete}>Delete</button>
+                                    </div>
+                                </li>
+                            </>
+                        )
+                    })} 
+                </ul>
+                    
+            </div>
+                    
             </div>
             <div className="openEvents">
                 <h2>Open Events</h2>
