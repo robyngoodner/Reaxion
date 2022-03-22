@@ -23,13 +23,13 @@ font-family: 'Merriweather Sans', sans-serif; */
 }
 body {
 	font-family: 'Merriweather Sans', sans-serif;
-	background-color: var(--main-blue);
+	background-color: rgb(255, 255, 255);
 	margin: 0px;
 	padding: 0px;
 }
 
 :root {
-	--main-blue: #64e6fd;
+	--main-blue: #00b4d886;
 	--highlight-blue: #40a4f7;
 	--light-blue: #b8f3ff;
 }
@@ -74,14 +74,6 @@ h2 {
 	width: 8vW
   }
 
-.formSpacing {
-	display: flex;
-	flex-direction: column;
-}
-
-.formInput {
-	margin: 2vH 0vW 0vH 0vW;
-}
 /* === NAVBAR  === */
 
 .navBar {
@@ -287,7 +279,6 @@ h2 {
 	display: flex;
 	width: 78vW;
 	background-color: var(--light-blue);
-	border-radius: 20px 0 0 0;
 }
 
 .recentPosts{
@@ -296,7 +287,8 @@ h2 {
 }
 
 .openEvents{
-	width: 20vW;
+	width: 35vW;
+
 }
 
 /* === REACTIONS === */
