@@ -99,8 +99,8 @@ const UserIndex = () => {
             const checkEventTime = () => {
                 //event limit set to 20 minutes
                 if (currentTime < (eventTime+1200000)) 
-                setIsEventRecent(true)
-                else setIsEventRecent(false)
+                setIsEventRecent(false)
+                else setIsEventRecent(true)
             }
             checkEventTime();
 

@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react';
 import * as eventService from "../../api/event.service"
 import Post from "../Posts/Post"
 import * as postService from "../../api/post.service";
-import { useLocation } from 'react-router-dom';
-import PostCreate from '../Posts/PostCreate';
+import { useLocation, Link } from 'react-router-dom';
+
 
 
 export default function RecentEventView( { eventId } ) {
@@ -15,6 +15,7 @@ export default function RecentEventView( { eventId } ) {
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("")
     const [counter, setCounter] = useState(0);
+    const [community, setCommunity] = useState("");
     // const { eventId } = location.state;
     // console.log("line 14: ",eventId)
 
@@ -41,6 +42,7 @@ export default function RecentEventView( { eventId } ) {
         setDescription(event.data.data.description)
         // console.log(event.data.data)
         setPosts(foundEvent.data.data.posts)
+        setCommunity(foundEvent.data.data.community)
         // console.log("posts: ",posts)
         } catch(err) {
             // console.log(err.message)
@@ -69,14 +71,16 @@ export default function RecentEventView( { eventId } ) {
                 {/* <h1>Event view </h1> */}
                 <h1>{title}</h1>
                 <h2>{description}</h2>
+                <Link to={`/community/${community}`}>check it out</Link>
             </div>
             <div>
                 
                 {/* <Post post={post}/> */}
             </div>
-            <div>
-                <PostCreate eventId={eventId}/>
-            </div>
+            {/* do we need post on eventview if  on userprofile post is mapped o*/}
+            {/* <div>
+                <Post eventId={eventId}/>
+            </div> */}
             
         </>
     )
