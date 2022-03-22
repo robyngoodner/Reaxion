@@ -59,7 +59,6 @@ const UserIndex = () => {
 
     const handleSubmitEdit = (id) => {
         console.log(`/post/${id}`)
-        // console.log(`/post/${post.id}`)
     
     //  if ( !res === 201 ) {
     //      alert(`Post error. Please submit again. ${res.status}`) 
@@ -104,19 +103,14 @@ const UserIndex = () => {
         }
 
         const setAllEvents = () => {
-            // console.log("community events: ", community[0].Events)
             community.map((comms) => {
-                // console.log(comms)
                 comms.Events.map((comm) => {
-                    // console.log("community.events ", comm)
                     setEvents(events => [...events, comm])
                 })
                 
             })
             setReverseEvents(events.reverse());
-            // userEvents.push(events);
             console.log("reverseEvents: ",reverseEvents)
-            // console.log("serEvents array: ", events)
         }
         
         //compared event times to decide if past events can be seen
@@ -244,16 +238,6 @@ return (
                 <div className="communitiesView">
                     <h2>Communities</h2>
                     <CommunityView toggle={toggleEventCreate}/>
-                    {/* <ul>
-                        {community?.map((community)=> {
-                            return (
-                                <>
-                                    <li style={{listStyle:"none"}} key={community.index}></li>
-                                    <CommunityView active={eventCreate} toggle={toggleEventCreate}/>
-                                </>
-                            )
-                        })}
-                    </ul> */}
                     <div className="stack">
                         <button onClick={toggleCommunityCreate} className="smallButton" type="submit">CREATE Community</button>
                         <button onClick={toggleCommunityJoin} className="smallButton" type="submit">JOIN Community</button>
@@ -274,38 +258,11 @@ return (
                 <EventsIndex active={eventsView} />
                 <PostUpdate active={postUpdate}/>  
 
-                {/* <EventsIndex /> */}
-
-                    {/*here for easy access can be removed later on */}
-                    {/* <Link to="/post/new"><button type="submit">CREATE A POST</button></Link> */}
-                    {/*here for easy access can be removed later on */}
-                {/* <ul>
-                    {posts.map((post)=> {
-                        return (
-                            <>
-                                <li key={post.index}>
-                                </li>
-                                <li className="postShow"> 
-                                    Event:{post.event}
-                                    Reaction:{post.content}
-                                    User Comment:{post.User_Comment}
-                                    <Post post={post}/>
-                                    <div className="postButtons">
-                                        <Link to={`../../post/${post._id}`} state={{ postId: post._id }} >
-                                            <button className="standardButton">Edit</button>
-                                        </Link>
-                                        <button className="standardButton" onClick={handleSubmitDelete}>Delete</button>
-                                    </div>
-                                </li>
-                            </>
-                        )
-                    })} 
-                </ul> */}
+               
             </div>
             <div className="openEvents">
             <h1>Open Events</h1>
                 {reverseEvents.map((event) => {
-                            {/* console.log("event: ",event.createdAt); */}
                             return (
                             compareEventTimes(event.createdAt) ? null
                             : <RecentEventView eventId={event._id}/>
@@ -313,9 +270,7 @@ return (
                         })}
                        
             <h1>Past Events</h1>
-                {/* {console.log("User events: ", events)} */}
                     {reverseEvents.map((event) => {
-                        {/* console.log("event: ",event.createdAt); */}
                         return (
                         compareEventTimes(event.createdAt) ? <EventView eventId={event._id}/> 
                         : <p>You have no past events</p>
