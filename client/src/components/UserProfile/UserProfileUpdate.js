@@ -105,50 +105,51 @@ export default function UpdateUserProfile(props) {
 return (
     <div className="libraryComponent" style={contentStyle}>
         <h2>Update your Public Profile</h2>
-    <form className="formSpacing">
-        <label className="formInput">
-            Would you like to change your First and/or Last name?</label>
+    <form>
+        <label>
+            Would you like to change your First and/or Last name?
             <input
-                className = "input"
                 onChange={(e) => setFirstName(e.target.value)}
                 value={firstName}
                 type="text"
                 name="firstName"
                 placeholder={firstName}
             />
+        </label>
+        <label>
             <input
-                className = "input"
                 onChange={(e) => setLastName(e.target.value)}
                 value={lastName}
                 type="text"
                 name="lastName"
                 placeholder="input your new last name"
             />
-        
-        <label className="formInput">
-            Would you like to change your description?</label>
+        </label>
+        <label>
+            Would you like to change your description?
             <input
-                className = "input"
                 onChange={(e) => setDescription(e.target.value)}
                 value={description}
                 type="text"
                 name="description"
                 placeholder="tell everyone a little bit about yourself"
             />
-        <label className="formInput">
-            Would you like to change your User Icon?</label>
+        </label>
+        <label>
+            Would you like to change your User Icon?
             <textarea
-                className = "input"
                 onChange={(e) => setUserIcon(e.target.value)}
                 value={userIcon}
                 type="text"
                 name="userIcon"
                 placeholder="input your new image, please use .jpg or .png"
             />
+        </label>
+        
     </form>
-    <Link to="/user/"> <button className="standardButton" onClick={handleSubmit}>Update user profile information</button></Link> 
+    <Link to="/user/"> <button onClick={handleSubmit}>Update user profile information</button></Link> 
     <p> Would you like to delete your profile?</p>
-  <Link to="/logout"><button className="standardButton" onClick={() => {handleProfileDelete(); handleLogout();}}>Delete Profile</button></Link> 
+  <Link to="/logout"><button onClick={() => {handleProfileDelete(); handleLogout();}}>Delete Profile</button></Link> 
         
 </div>
 );  
