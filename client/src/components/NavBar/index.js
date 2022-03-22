@@ -1,6 +1,8 @@
-// import { Route, Routes } from "react-router-dom";
+import { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import * as authService from '../../api/auth.service';
+import * as communityService from "../../api/community.service";
+import * as userProfileService from "../../api/userprofile.service";
 // import CommunityJoin from '../../components/Community/CommunityJoin';
 // import CommunityCreate from '../../components/Community/CommunityCreate';
 // import EventView from "../../components/Event/EventView";
@@ -18,11 +20,37 @@ const contentStyles = {
 };
 
 export default function NavBar({checkUserActive}) {
+
+    const [community, setCommunity] = useState();
+    const [user, setUser] = useState("");
         const handleLogout = async () => {
             const res = await authService.logout();
             checkUserActive();
             return res;
         }
+
+        const getCommunities = async () => {
+            await communityService.getCommunities()
+                .then((res) => {
+
+                    setCommunity(res.data)
+                    
+                    console.log("res.data",res.data.data)
+                    // console.log("Found communities: ",communities )
+                })
+        }
+
+        const findUser = async () => {
+            await userProfileService.show().then((res) => {
+                setUser(res.data.data);
+                
+            });
+        }
+        useEffect(() => {
+            getCommunities();
+            findUser();
+           
+        }, [])
 
     return (      
         <div className="navBar">
@@ -31,17 +59,19 @@ export default function NavBar({checkUserActive}) {
             </div>
 
         {/* need user index to display id */}
-            {/* <NavLink
-                to="/user/" style={contentStyles}
-            >User Profile</NavLink> */}
+
+            <NavLink
+                to={`/user/${user._id}`} style={contentStyles}
+            >User Profile</NavLink>
+
             
             {/* <NavLink
-                to="/new" style={contentStyles}
-            >Create new community</NavLink> */}
+                to="/new" style={contentStyles}>
+                Create new community</NavLink> */}
 
             {/* <NavLink
-                to="/community" style={contentStyles}
-            >All Communities</NavLink> */}
+        to={`/community/${community._id}`} style={contentStyles}
+ to="/community" style={contentStyles}>All Communities</NavLink> */}
 
             {/* <NavLink
                 to="/join" style={contentStyles}
