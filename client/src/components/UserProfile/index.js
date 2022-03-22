@@ -12,7 +12,7 @@ import EventCreate from '../Event/EventCreate'
 import RecentEventView from '../Event/RecentEventView';
 import EventsIndex from '../Event/EventsIndex';
 import UserProfileUpdate from './UserProfileUpdate'
-
+import EventView from "../Event/EventView";
 
 const UserIndex = () => {
     const [posts, setPosts] = useState([]);
@@ -22,7 +22,8 @@ const UserIndex = () => {
     const [eventTime, setEventTime] = useState("");
     const [isEventRecent, setIsEventRecent] = useState(false);
     const [counter, setCounter] = useState(0);
-    const [currentTime, setCurrentTime] = useState("")
+    const [currentTime, setCurrentTime] = useState("");
+    const [events, setEvents] = useState([]);
 
     const findUser = async () => {
         await userProfileService.show().then((res) => {
@@ -63,7 +64,6 @@ const UserIndex = () => {
     //  } 
 }  
 
-  
     const findPosts = async () => {
         await postService.getAll().then((res) => {
             setPosts(res.data.data);
@@ -84,14 +84,30 @@ const UserIndex = () => {
         useEffect(() => {
             findCommunity();
         }, []);
+
+        const userEvents = [];
 //Finds recent events, compares to current time--if fewer than 20 minutes have passed since the event was last updated, the event and the option to post to it will show up on the home page
+        // const findRecentEvent = () => {
+        //     setLatestEvent(community[0].Events[community[0].Events.length-1])
+        //     console.log("latest event: ",latestEvent)
+        //     setEventTime((new Date(latestEvent.createdAt).getTime()));
+        //     setCurrentTime(new Date().getTime());
+        //     // console.log("event time: ", eventTime);
+        //     // console.log("current time: ", currentTime)
+        //     const checkEventTime = () => {
+        //         //event limit set to 20 minutes
+        //         if (currentTime < (eventTime+1200000)) 
+        //         setIsEventRecent(true)
+        //         else setIsEventRecent(false)
+        //     }
+        //     checkEventTime();
+
+        // }
+
         const findRecentEvent = () => {
             setLatestEvent(community[0].Events[community[0].Events.length-1])
-            console.log("latest event: ",latestEvent)
             setEventTime((new Date(latestEvent.createdAt).getTime()));
             setCurrentTime(new Date().getTime());
-            // console.log("event time: ", eventTime);
-            // console.log("current time: ", currentTime)
             const checkEventTime = () => {
                 //event limit set to 20 minutes
                 if (currentTime < (eventTime+1200000)) 
@@ -100,9 +116,25 @@ const UserIndex = () => {
             }
             checkEventTime();
 
+            
+            // console.log("community events: ", community[0].Events)
+            community.map((community) => {
+                // console.log("community.events ", community.Events)
+                setEvents(community.Events)
+            })
+            
+            // console.log("serEvents array: ", events)
+
+        }
+        
+        //compared event times to decide if past events can be seen
+        const compareEventTimes = (event) => {
+            if (currentTime > (new Date(event).getTime() + 1200000)) {
+                // console.log("true")
+                return true;
+            }
         }
 
-        
 //reloads events 10 times, due to delayed response from db
         useEffect(() => {
             if(counter<10){
@@ -237,8 +269,17 @@ return (
                 </ul> */}
             </div>
             <div className="openEvents">
-                <h2>Open Events</h2>
+            <h2>Open Events</h2>
                 {latestEvent? (isEventRecent ? <RecentEventView eventId={latestEvent._id}/> : <p>You have no recent events</p>): <p>You have no recent events</p>}
+                <h2>Past Events</h2>
+                {/* {console.log("User events: ", events)} */}
+                    {events.map((event) => {
+                        {/* console.log("event: ",event.createdAt); */}
+                        return (
+                        compareEventTimes(event.createdAt) ? <EventView eventId={event._id}/> 
+                        : <p>You have no past events</p>
+                        )
+                    })}
             </div>
         </div>
     </div>
