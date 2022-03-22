@@ -55,7 +55,7 @@ export default function EventView({ eventId }) {
         checkEventTime();
         // console.log("posts: ",posts)
         } catch(err) {
-            console.log(err)
+            // console.log(err)
         }
     }
     useEffect(() => {

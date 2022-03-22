@@ -15,7 +15,7 @@ const EventsIndex = (props) => {
         async function getEventsIndex() {
             const communities = await eventService.index();
             setCommunities(communities.data.data);
-            console.log("community data: ", communities.data.data)
+            // console.log("community data: ", communities.data.data)
         }
         getEventsIndex();
     }, [])
