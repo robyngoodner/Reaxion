@@ -25,6 +25,7 @@ const UserIndex = () => {
     const [counter, setCounter] = useState(0);
     const [currentTime, setCurrentTime] = useState("");
     const [events, setEvents] = useState([]);
+    const [reverseEvents, setReverseEvents] = useState([]);
 
     const findUser = async () => {
         await userProfileService.show().then((res) => {
@@ -88,22 +89,6 @@ const UserIndex = () => {
 
         const userEvents = [];
 //Finds recent events, compares to current time--if fewer than 20 minutes have passed since the event was last updated, the event and the option to post to it will show up on the home page
-        // const findRecentEvent = () => {
-        //     setLatestEvent(community[0].Events[community[0].Events.length-1])
-        //     console.log("latest event: ",latestEvent)
-        //     setEventTime((new Date(latestEvent.createdAt).getTime()));
-        //     setCurrentTime(new Date().getTime());
-        //     // console.log("event time: ", eventTime);
-        //     // console.log("current time: ", currentTime)
-        //     const checkEventTime = () => {
-        //         //event limit set to 20 minutes
-        //         if (currentTime < (eventTime+1200000)) 
-        //         setIsEventRecent(true)
-        //         else setIsEventRecent(false)
-        //     }
-        //     checkEventTime();
-
-        // }
 
         const findRecentEvent = () => {
             setLatestEvent(community[0].Events[community[0].Events.length-1])
@@ -116,10 +101,6 @@ const UserIndex = () => {
                 else setIsEventRecent(false)
             }
             checkEventTime();
-
-            
-            
-
         }
 
         const setAllEvents = () => {
@@ -132,8 +113,9 @@ const UserIndex = () => {
                 })
                 
             })
+            setReverseEvents(events.reverse());
             // userEvents.push(events);
-            // console.log("userEvents: ",userEvents)
+            console.log("reverseEvents: ",reverseEvents)
             // console.log("serEvents array: ", events)
         }
         
@@ -322,7 +304,7 @@ return (
             </div>
             <div className="openEvents">
             <h1>Open Events</h1>
-                {events.map((event) => {
+                {reverseEvents.map((event) => {
                             {/* console.log("event: ",event.createdAt); */}
                             return (
                             compareEventTimes(event.createdAt) ? null
@@ -332,7 +314,7 @@ return (
                        
             <h1>Past Events</h1>
                 {/* {console.log("User events: ", events)} */}
-                    {events.map((event) => {
+                    {reverseEvents.map((event) => {
                         {/* console.log("event: ",event.createdAt); */}
                         return (
                         compareEventTimes(event.createdAt) ? <EventView eventId={event._id}/> 
