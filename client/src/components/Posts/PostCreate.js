@@ -3,6 +3,7 @@ import * as postService from '../../api/post.service';
 import * as authService from '../../api/auth.service';
 import * as eventService from '../../api/event.service';
 import {Link} from "react-router-dom"
+import PostUpdate from './PostUpdate';
 
 export default function PostCreate ({ eventId }) {
     const [content, setContent] = useState("");
@@ -50,7 +51,8 @@ export default function PostCreate ({ eventId }) {
             <form className="formSpacing">
                 <div>
                     <label>Reaction:</label>
-                    <label className="formInput" htmlFor="happyEmoji"></label>
+                    <div className="reactionDisplay">
+                    <label className="formInput" htmlFor="happyEmoji">
                         <input 
                             onChange={(e) => setContent(e.target.value)}
                             type="radio"
@@ -59,7 +61,7 @@ export default function PostCreate ({ eventId }) {
                             value="/images/Happy.png"
                         />
                         <img className="reaction" src="/images/Happy.png" alt="Happy"/>
-                
+                    </label>
                     <label className="formInput" htmlFor="sadEmoji">
                         <input 
                             onChange={(e) => setContent(e.target.value)}
@@ -111,9 +113,11 @@ export default function PostCreate ({ eventId }) {
                         />
                         <img className="reaction" src="/images/Disinterested.png" alt="Disinterested"/>
                     </label>
+                    </div>
                 </div>
                 <label className="formInput" >
                     If you would like, please leave an additional comment about your experience (optional):
+                    </label>
                     <textarea 
                         className="input"
                         onChange={(e) => setUser_Comment(e.target.value)}
@@ -122,7 +126,6 @@ export default function PostCreate ({ eventId }) {
                         name="User Comment"
                         placeholder="Additional comment"
                     />
-                </label>
                <input 
                     type="hidden"
                     name="Event"

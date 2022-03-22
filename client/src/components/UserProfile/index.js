@@ -13,6 +13,7 @@ import RecentEventView from '../Event/RecentEventView';
 import EventsIndex from '../Event/EventsIndex';
 import UserProfileUpdate from './UserProfileUpdate'
 import EventView from "../Event/EventView";
+import PostUpdate from '../Posts/PostUpdate';
 
 const UserIndex = () => {
     const [posts, setPosts] = useState([]);
@@ -152,8 +153,10 @@ const UserIndex = () => {
     const [eventCreate, setEventCreate] = useState('none')
     const [profileUpdate, setProfileUpdate] = useState('none')
     const [eventsView, setEventsView] = useState('flex');
+    const [postUpdate, setPostUpdate] = useState('none')
 
     const toggleCommunityJoin = () => {
+        setPostUpdate('none')
         setProfileUpdate('none')
         setCommunityCreate('none')
         setEventCreate('none')
@@ -166,6 +169,7 @@ const UserIndex = () => {
     }
 
     const toggleCommunityCreate = () => {
+        setPostUpdate('none')
         setProfileUpdate('none')
         setCommunityJoin('none')
         setEventCreate('none')
@@ -178,6 +182,7 @@ const UserIndex = () => {
     }
     
     const toggleEventCreate = () => {
+        setPostUpdate('none')
         setProfileUpdate('none')
         setCommunityJoin('none')
         setCommunityCreate('none')
@@ -190,6 +195,7 @@ const UserIndex = () => {
     }
     
     const toggleProfileUpdate = () => {
+        setPostUpdate('none')
         setCommunityJoin('none')
         setCommunityCreate('none')
         setEventCreate('none')
@@ -202,6 +208,7 @@ const UserIndex = () => {
     }
 
     const toggleEventsView = () => {
+        setPostUpdate('none')
         setCommunityJoin('none')
         setCommunityCreate('none')
         setEventCreate('none')
@@ -211,6 +218,19 @@ const UserIndex = () => {
             setEventsView('flex')
         } else {
             setEventsView('none')
+        }
+    }
+    const togglePostUpdate = () => {
+        setPostUpdate('none')
+        setCommunityJoin('none')
+        setCommunityCreate('none')
+        setEventCreate('none')
+        setEventsView('none')
+        setProfileUpdate('none')
+        if(postUpdate === 'none'){
+            setPostUpdate('flex')
+        } else {
+            setPostUpdate('none')
         }
     }
 
@@ -246,6 +266,7 @@ return (
                         <button onClick={toggleCommunityJoin} className="smallButton" type="submit">JOIN Community</button>
                         <button onClick={toggleEventCreate} className="smallButton">Create event</button>
                         <button onClick={toggleEventsView} className="smallButton">View events</button>
+                        <button onClick={togglePostUpdate} className="smallButton">Update Post</button>
                     </div>
                 </div>    
                     <button onClick={toggleProfileUpdate} className="standardButton">Update Profile</button>
@@ -258,7 +279,7 @@ return (
                 <EventCreate active={eventCreate} />
                 <UserProfileUpdate active={profileUpdate} />
                 <EventsIndex active={eventsView} />
-
+                <PostUpdate active={postUpdate}/>  
 
                 {/* <EventsIndex /> */}
 
@@ -297,6 +318,7 @@ return (
                             : <RecentEventView eventId={event._id}/>
                             )
                         })}
+                       
             <h1>Past Events</h1>
                 {/* {console.log("User events: ", events)} */}
                     {events.map((event) => {
