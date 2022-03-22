@@ -4,7 +4,7 @@ import Post from "../Posts/Post"
 import * as postService from "../../api/post.service";
 import { useLocation } from 'react-router-dom';
 import PostCreate from '../Posts/PostCreate';
-
+import PostUpdate from '../Posts/PostUpdate'
 
 export default function EventView({ eventId }) {
    // const location = useLocation();
@@ -91,7 +91,9 @@ export default function EventView({ eventId }) {
                             {/* {console.log(post)}  */}
                         </li>
                         )
-                    }) : <PostCreate eventId={eventId}/> }
+                    }) :
+                            <PostCreate eventId={eventId}/> 
+                }
                     {/* <Post post={post}/> */}
                 </div>
             </div>
