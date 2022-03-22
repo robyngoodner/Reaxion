@@ -18,29 +18,92 @@ font-family: 'Merriweather Sans', sans-serif; */
 }
 /* === ROOT STYLES  === */
 
+.black {
+	color: black;
+}
 body {
 	font-family: 'Merriweather Sans', sans-serif;
-	background-color: rgb(255, 255, 255);
+	background-color: var(--main-blue);
 	margin: 0px;
 	padding: 0px;
 }
 
 :root {
-	--main-blue: #00b4d886;
+	--main-blue: #64e6fd;
 	--highlight-blue: #40a4f7;
 	--light-blue: #b8f3ff;
 }
 
 .stack {
 	display: flex;
-	flex-direction: column;
 	align-items: center;
+	justify-content: space-around;
+	flex-wrap: wrap;
+}
+
+h1 {
+	font-family: 'Josefin Sans', sans-serif;
+	margin: 0;
+	font-size: 2em;
+	text-transform: uppercase;
+	color: white;
+	text-align:center;
+}
+
+h3 {
+	margin: 0;
+	color: white;
 }
 
 h2 {
 	margin: 2vH 0vW 0vH 0vW;
 	color: white;
 	text-transform: uppercase;
+}
+
+.smallButton {
+	background-color: var(--light-blue);
+	color: var(--highlight-blue);
+	padding: 10px 20px;
+	margin: 8px 0;
+	border: none;
+	cursor: pointer;
+	border-radius: 10px;
+	text-transform: uppercase;
+	font-size: .75em;
+	width: 8vW
+  }
+
+.formSpacing {
+	display: flex;
+	flex-direction: column;
+}
+
+.formInput {
+	margin: 2vH 0vW 0vH 0vW;
+}
+/* === NAVBAR  === */
+
+.navBar {
+	display: flex;
+	background-color: var(--main-blue);
+	padding: 2vH 3vW 1vH 0vW;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.navBar h1 {
+	letter-spacing: .25em;
+}
+
+.logout {
+	color: white;
+	text-transform: uppercase;
+	text-decoration: none;
+}
+
+.navBarTitle {
+	width: 22vW;
 }
 /* === LOGIN PAGE === */
 
@@ -177,12 +240,19 @@ h2 {
 .infoBlock{
 	display: flex;
 	flex-direction: column;
-	justify-content: center;
+	padding-left: .5vW;
+}
+
+.userHead {
+	display: flex;
+	justify-content: flex-start;
+	width: 22vW;
+	padding: 3vH 0vW 3vH 1vW;
 	align-items: center;
 }
 
 .infoBlock h2 {
-	margin: 2vH 0vW 0vH 0vW;
+	margin: 0;
 	color: white;
 	text-transform: uppercase;
 }
@@ -190,7 +260,9 @@ h2 {
 .communitiesView {
 	color: white;
 	text-transform: uppercase;
-	text-align: center;
+	text-align: left;
+	background-color: var(--highlight-blue);
+	padding: 2vH 0vW 0vH 1vW;
 }
 
 
@@ -199,7 +271,7 @@ h2 {
 	color: white;
 }
 .userProfile {
-	width: 25vW;
+	width: 22vW;
 	background-color: var(--main-blue);
 	display: flex;
 	flex-direction: column;
@@ -207,13 +279,15 @@ h2 {
 }
 
 .userIcon{
-	width: 10vW;
+	width: 5vW;
+	max-height: 5vW;
 }
 
 .eventsAndCommunities {
 	display: flex;
-	width: 75vW;
+	width: 78vW;
 	background-color: var(--light-blue);
+	border-radius: 20px 0 0 0;
 }
 
 .recentPosts{
@@ -222,8 +296,7 @@ h2 {
 }
 
 .openEvents{
-	width: 35vW;
-
+	width: 20vW;
 }
 
 /* === REACTIONS === */
@@ -240,6 +313,7 @@ h2 {
 	border-radius: 20px;
 	box-shadow: 0px 5px 20px 2px rgba(0, 0, 0, 0.14);
 	margin: 1vH 3vW;
+	border: 1px solid var(--highlight-blue)
 }
 
 .postButtons{
@@ -250,4 +324,21 @@ h2 {
 ul {
 	padding: 0;
 	list-style-type: none;
+}
+
+/* === COMMUNITY ===*/
+
+.libraryComponent {
+	margin: 2vH 3vW 2vH 3vW;
+	flex-direction: column;
+	background-color: white;
+	border-radius: 20px;
+	padding: 2vH 2vW;
+	box-shadow: 0px 5px 20px 2px rgba(0, 0, 0, 0.14);
+	border: 1px solid var(--highlight-blue)
+}
+
+.libraryComponent h2 {
+	color: var(--highlight-blue);
+	margin-bottom: 1vH;
 }

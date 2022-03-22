@@ -6,10 +6,15 @@ import * as communityService from "../../api/community.service";
 import * as eventService from '../../api/event.service';
 import PostCreate from '../Posts/PostCreate';
 import CommunityView from '../Community/CommunityView';
+import CommunityJoin from '../Community/CommunityJoin';
+import CommunityCreate from '../Community/CommunityCreate';
 import Post from '../Posts/Post';
+import EventCreate from '../Event/EventCreate'
 import RecentEventView from '../Event/RecentEventView';
 import CommunityCreate from '../Community/CommunityCreate';
 import EventView from '../Event/EventView';
+import UserProfileUpdate from './UserProfileUpdate'
+
 
 
 const UserIndex = () => {
@@ -62,6 +67,7 @@ const UserIndex = () => {
     //      alert(`Post error. Please submit again. ${res.status}`) 
     //  } 
 }  
+
   
     const findPosts = async () => {
         await postService.getAll().then((res) => {
@@ -130,52 +136,116 @@ const UserIndex = () => {
         }, [counter])
         
 
+//Allows for toggling
+    const [communityJoin, setCommunityJoin] = useState('none')
+    const [communityCreate, setCommunityCreate] = useState('none')
+    const [eventCreate, setEventCreate] = useState('none')
+    const [profileUpdate, setProfileUpdate] = useState('none')
+
+    const toggleCommunityJoin = () => {
+        setProfileUpdate('none')
+        setCommunityCreate('none')
+        setEventCreate('none')
+        if(communityJoin === 'none'){
+            setCommunityJoin('flex')
+        } else {
+            setCommunityJoin('none')
+        }
+    }
+
+    const toggleCommunityCreate = () => {
+        setProfileUpdate('none')
+        setCommunityJoin('none')
+        setEventCreate('none')
+        if(communityCreate === 'none'){
+            setCommunityCreate('flex')
+        } else {
+            setCommunityCreate('none')
+        }
+    }
     
+    const toggleEventCreate = () => {
+        setProfileUpdate('none')
+        setCommunityJoin('none')
+        setCommunityCreate('none')
+        if(eventCreate === 'none'){
+            setEventCreate('flex')
+        } else {
+            setEventCreate('none')
+        }
+    }
+
+    
+    const toggleProfileUpdate = () => {
+        console.log('profile')
+        setCommunityJoin('none')
+        setCommunityCreate('none')
+        setEventCreate('none')
+        if(profileUpdate === 'none'){
+            setProfileUpdate('flex')
+        } else {
+            setProfileUpdate('none')
+        }
+    }
+
 return (    
     <div className="profile-page">
         <div className="userProfile">
             <div className="userHeight">
                 <div className="infoBlock">
-                    <h2>Welcome</h2>
-                    <h1>{user.firstName}</h1>
-                    <img className="userIcon" src={user.userIcon} alt="not found"/>
+                    <div className="userHead">
+                        <img className="userIcon" src={user.userIcon} alt="not found"/>
+                        <div className="infoBlock">
+                            <h3>Welcome</h3>
+                            <h2>{user.firstName}</h2>
+                        </div>
+                    </div> 
+                    <p>{user.description}</p>
                 </div>
                 <div className="communitiesView">
-                    <h2>My Communities</h2>
-                    <div className="stack">
-                        <Link to="/community/new"><button className="standardButton" type="submit">CREATE A COMMUNITY</button></Link>
-                        <Link to="/community/join"><button className="standardButton" type="submit">JOIN A COMMUNITY</button></Link>
-                    </div>
+                    <h3>Communities</h3>
                     <ul>
+                    <CommunityView toggle={toggleEventCreate}/>
+                    </ul>
+                    {/* <ul>
                         {community?.map((community)=> {
                             return (
                                 <>
                                     <li style={{listStyle:"none"}} key={community.index}></li>
-                                    <CommunityView />
+                                    <CommunityView active={eventCreate} toggle={toggleEventCreate}/>
                                 </>
                             )
                         })}
-                    </ul> 
+                    </ul> */}
+                    <div className="stack">
+                        <button onClick={toggleCommunityCreate} className="smallButton" type="submit">CREATE Community</button>
+                        <button onClick={toggleCommunityJoin} className="smallButton" type="submit">JOIN Community</button>
+                        <button onClick={toggleEventCreate} className="smallButton">Create event</button>
+                    </div>
                 </div>    
-                <Link to="/user/edit"><button className="standardButton" type="submit">CHANGE PROFILE</button></Link>
+                    <button onClick={toggleProfileUpdate} className="smallButton">Update Profile</button>
             </div>
        </div>
        <div className="eventsAndCommunities">
             <div className="recentPosts">
-                <h2>My Recent Posts</h2>
+                <CommunityCreate active={communityCreate}/>
+                <CommunityJoin active={communityJoin}/>
+                <EventCreate active={eventCreate} />
+                <UserProfileUpdate active={profileUpdate} />
+                {/* <EventsIndex /> */}
                     {/*here for easy access can be removed later on */}
-                    <Link to="/post/new"><button type="submit">CREATE A POST</button></Link>
+                    {/* <Link to="/post/new"><button type="submit">CREATE A POST</button></Link> */}
                     {/*here for easy access can be removed later on */}
-                <ul>
+                {/* <ul>
                     {posts.map((post)=> {
                         return (
                             <>
                                 <li key={post.index}>
                                 </li>
                                 <li className="postShow"> 
-                                    {/* Event:{post.event}
+                                    Event:{post.event}
                                     Reaction:{post.content}
-                                    User Comment:{post.User_Comment} */}
+                                    User Comment:{post.User_Comment}
                                     <Post post={post}/>
                                     <div className="postButtons">
                                         <Link to={`../../post/${post._id}`} state={{ postId: post._id }} >
@@ -186,8 +256,8 @@ return (
                                 </li>
                             </>
                         )
-                    })}
-                </ul> 
+                    })} 
+                </ul> */}
             </div>
             <div className="openEvents">
                 <h2>Open Events</h2>

@@ -9,7 +9,7 @@ Have to pass in user as a prop in order to use user._id as the facilitator value
 */
 
 
-export default function CommunityCreate () {
+export default function CommunityCreate (props) {
     const [communityName, setCommunityName] = useState("");
     const [keyword, setKeyword] = useState("");
 
@@ -31,27 +31,33 @@ export default function CommunityCreate () {
         console.log(res)
     }
 
+    const contentStyle = {
+        display: (props.active)
+    }
+
     return (
-        <div>
-            <h1>Create a new Community</h1>
-            <form>
-                <label>Name your Community</label>
-                <input 
-                    type="text"
-                    name="communityName"
-                    onChange={((e) => setCommunityName(e.target.value))}
-                    placeholder="Name your Community"
-                /> 
-                <br />
-                <label>Create a unique keyword so your participants can find you. Make sure you remember your keyword!</label>
-                <input
-                    type="text" 
-                    name="keyword" 
-                    onChange={(e) => setKeyword(e.target.value)}
-                    placeholder="Create a unique keyword to give to your participants"
-                />
+        <div className="libraryComponent" style={contentStyle}>
+            <h2>Create a new Community</h2>
+            <form className="formSpacing">
+                <label className="formInput">Name your Community</label>
+                    <input 
+                        className = "input"
+                        type="text"
+                        name="communityName"
+                        onChange={((e) => setCommunityName(e.target.value))}
+                        placeholder="Name your Community"
+                    /> 
+                
+                <label className="formInput">Create a unique keyword so your participants can find you. Make sure you remember your keyword!</label>
+                    <input
+                        className = "input"
+                        type="text" 
+                        name="keyword" 
+                        onChange={(e) => setKeyword(e.target.value)}
+                        placeholder="Create a unique keyword to give to your participants"
+                    />
                {/*redirect can be change to into the community once index controller is  completed. */}
-                <Link to="/user/"> <button onClick={handleSubmit}>Create Community</button></Link>
+                <Link to="/user/"> <button className="standardButton" onClick={handleSubmit}>Create Community</button></Link>
             </form>
         </div>
     )    

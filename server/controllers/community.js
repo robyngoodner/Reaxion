@@ -62,6 +62,7 @@ const getCommunities = (req, res) => {
 };
 
 const createCommunity = async (req, res) => {
+    let user = req.userId;
     let incomingReq = {
         Facilitator: req.userId,
         communityName: req.body.communityName,
@@ -75,6 +76,7 @@ const createCommunity = async (req, res) => {
                 error: err,
             })
         };
+        
        db.User.findById(createdCommunity.Facilitator)
         .exec(function (err, foundUser) {
             if (err) {
@@ -83,17 +85,19 @@ const createCommunity = async (req, res) => {
                     error: err,
                 })
             };
-
-           
-
+            createdCommunity.Members.push(foundUser);
+            createdCommunity.save();
             return res.status(200).json({
                 message: "Success",
                 data: createdCommunity,
-                user: foundUser
+                user: foundUser,
             })
         })
     })
+    
 }
+
+
 
 const joinCommunity =  (req, res) => {
     let user = req.userId;
