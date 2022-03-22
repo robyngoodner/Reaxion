@@ -75,6 +75,15 @@ h2 {
 	width: 8vW
   }
 
+  .formSpacing {
+	display: flex;
+	flex-direction: column;
+}
+
+.formInput {
+	margin: 2vH 0vW 0vH 0vW;
+}
+
 /* === NAVBAR  === */
 
 .navBar {

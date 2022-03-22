@@ -46,7 +46,7 @@ const EventCreate = (props) => {
         <div>
             <div className="libraryComponent" style={contentStyle}>
                 <h2>Community</h2>
-                    <select onChange={(e) => setCommunity(e.target.value)}>
+                    <select className="formInput" onChange={(e) => setCommunity(e.target.value)}>
                     {communities.map((community)=> {
                         return (
                             <option 
@@ -55,25 +55,27 @@ const EventCreate = (props) => {
                         )
                     })}
                     </select> 
-                <form>
-                    <label>Event Title
+                <form className="formSpacing">
+                    <label className="formInput">Event Title</label>
                     <input  
+                        className = "input"
                         onChange={(e) => setTitle(e.target.value)}
                         value={title}
                         type="text"
                         name="title"
                         placeholder="Date or name of event"
-                    /></label>
-                    <label>Event Description
+                    />
+                    <label className="formInput">Event Description</label>
                     <input  
+                        className = "input"
                         onChange={(e) => setDescription(e.target.value)}
                         value={description}
                         type="text"
                         name="description"
                         placeholder="Feel free to add a description"
-                    /></label>
+                    />
                 </form>
-                <Link to="/user/"> <button onClick={handleSubmit}>Post Event</button></Link>
+                <Link to="/user/"> <button className="standardButton" onClick={handleSubmit}>Post Event</button></Link>
             </div>
         </div>
     )

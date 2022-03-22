@@ -206,6 +206,7 @@ const UserIndex = () => {
         setCommunityCreate('none')
         setEventCreate('none')
         setEventsView('none')
+        setProfileUpdate('none')
         if(eventsView === 'none'){
             setEventsView('flex')
         } else {
