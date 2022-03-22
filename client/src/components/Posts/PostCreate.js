@@ -35,6 +35,8 @@ export default function PostCreate ({ eventId }) {
         })
     }
 
+    
+
     // useEffect(() => {
     //     findEvent();
     // }, []);
@@ -44,9 +46,28 @@ export default function PostCreate ({ eventId }) {
         console.log(res)
     }
 
+    const [active, setActive] = useState('flex');
+
+    const toggleActive = () => {
+        if(active === 'flex'){
+            setActive('none')
+        } else {
+            setActive('flex')
+        }
+    }
+
+    const contentStyle = {
+        display: (active)
+    }
+
+    const onClick = () => {
+        toggleActive()
+        handleSubmit()
+    }
+
     
     return (
-        <div className="libraryComponent">
+        <div style={contentStyle} className="libraryComponent">
             <h2>Leave your Reaction</h2>
             <form className="formSpacing">
                 <div>
@@ -134,7 +155,7 @@ export default function PostCreate ({ eventId }) {
 
             </form>
             {/*redirects to user profile can be changed to community later on */}
-           <Link to="/user/"> <button className="standardButton" onClick={handleSubmit}>SUBMIT REACTION</button></Link>
+           <Link to="/user/"> <button className="standardButton" onClick={onClick}>SUBMIT REACTION</button></Link>
         </div>
     )
 }
