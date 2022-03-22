@@ -1,6 +1,6 @@
 import { Route, Routes, Link } from "react-router-dom";
 import { useReducer, useEffect } from "react";
-// import * as communityService from '../../api/community.service';
+//import * as communityService from '../../api/community.service';
 // import CommunityJoin from '../../components/Community/CommunityJoin';
 // import CommunityCreate from '../../components/Community/CommunityCreate';
 import Community from '../../components/Community/index';
@@ -18,6 +18,7 @@ import EventsIndex from "../../components/Event/EventsIndex";
 import UserIndex from "../../components/UserProfile";
 import CommunityCreate from "../../components/Community/CommunityCreate";
 import CommunityJoin from "../../components/Community/CommunityJoin";
+import CommunityView from "../../components/Community/CommunityView";
 
 const reducer = (prevState, action) => {
     switch(action.type) {
@@ -45,8 +46,10 @@ const Home = () => {
         }
     }
 
+   
     useEffect(() => {
         userActive();
+       
     }, []);
 
     if (isLoggedIn) {
@@ -76,7 +79,7 @@ const Home = () => {
                     element={<Community />}></Route>
                 <Route 
                     path="community/:id" 
-                    element={<EventsIndex />}></Route>
+                    element={<CommunityView />}></Route>
                 {/* <Route 
                     path="community/:id/event/:id" 
                     element={<EventsIndex />}></Route> */}
@@ -87,7 +90,7 @@ const Home = () => {
                     path="/community/join"
                     element={<CommunityJoin />}></Route>
                 <Route  
-                    path="user/"
+                    path="user/:id"
                     element={<UserIndex />}></Route>
                 <Route  
                     path="post/new"
