@@ -94,7 +94,7 @@ const login = async(req,res)  => {
                 .status(400)
                 .json({
                     status: 400,
-                    message: "Email or password is incorrect"
+                    message: "Email or password is incorrect."
                 }) 
         }
     } catch(err) {

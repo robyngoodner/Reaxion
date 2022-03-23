@@ -132,7 +132,7 @@ const UserIndex = () => {
             }, 100)
             return () => clearInterval(interval)
             }
-        }, [counter])
+        }, [counter, events])
         
 //Allows for toggling
     const [communityJoin, setCommunityJoin] = useState('none')
