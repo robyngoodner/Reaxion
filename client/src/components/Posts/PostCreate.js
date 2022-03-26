@@ -4,6 +4,12 @@ import * as authService from '../../api/auth.service';
 import * as eventService from '../../api/event.service';
 import {Link} from "react-router-dom"
 // import PostUpdate from './PostUpdate';
+import Angry from "../../images/Angry.png";
+import Content from "../../images/Content.png";
+import Disinterested from "../../images/Disinterested.png";
+import Excited from "../../images/Excited.png";
+import Happy from "../../images/Happy.png";
+import Sad from "../../images/Sad.png";
 
 export default function PostCreate ({ eventId }) {
     const [content, setContent] = useState("");
@@ -79,7 +85,7 @@ export default function PostCreate ({ eventId }) {
                             type="radio"
                             id="happyEmoji"
                             name="content"
-                            value="/images/Happy.png"
+                            value={Happy}
                         />
                         <img className="reaction" src="/images/Happy.png" alt="Happy"/>
                     </label>
@@ -89,7 +95,7 @@ export default function PostCreate ({ eventId }) {
                             type="radio"
                             id="sadEmoji"
                             name="content"
-                            value="/images/Sad.png"
+                            value={Sad}
                         />
                         <img className="reaction" src="/images/Sad.png" alt="Sad"/>
                     </label>
@@ -99,9 +105,9 @@ export default function PostCreate ({ eventId }) {
                             type="radio"
                             id="contentEmoji"
                             name="content"
-                            value="/images/Content.png"
+                            value={Content}
                         />
-                         <img className="reaction" src="/images/Content.png" alt="Content"/>
+                         <img className="reaction" src={Content} alt="Content"/>
                     </label>
                     <label className="formInput" htmlFor="angryEmoji">
                         <input 
@@ -109,9 +115,9 @@ export default function PostCreate ({ eventId }) {
                             type="radio"
                             id="angryEmoji"
                             name="content"
-                            value="/images/Angry.png"
+                            value={Angry}
                         />
-                        <img className="reaction" src="/images/Angry.png" alt="Angry"/>
+                        <img className="reaction" src={Angry} alt="Angry"/>
                     </label>
                     <label  className="formInput" htmlFor="excitedEmoji">
                         <input 
@@ -119,9 +125,9 @@ export default function PostCreate ({ eventId }) {
                             type="radio"
                             id="excitedEmoji"
                             name="content"
-                            value="/images/Excited.png"
+                            value={Excited}
                         />
-                        <img className="reaction" src="/images/Excited.png" alt="Excited"/>
+                        <img className="reaction" src={Excited} alt="Excited"/>
                     </label >
                     <label  className="formInput" htmlFor="disinterestedEmoji">
                         <input 
@@ -130,9 +136,9 @@ export default function PostCreate ({ eventId }) {
                             type="radio"
                             id="disinterestedEmoji"
                             name="content"
-                            value="/images/Disinterested.png"
+                            value={Disinterested}
                         />
-                        <img className="reaction" src="/images/Disinterested.png" alt="Disinterested"/>
+                        <img className="reaction" src={Disinterested} alt="Disinterested"/>
                     </label>
                     </div>
                 </div>
