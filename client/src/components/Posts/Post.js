@@ -25,7 +25,7 @@ function showPost( { post }) {
      return (
          <>
          <div className="pastEventPosts">
-            <img className="smallPost" src={post.content} />
+            <img className="smallPost" src={post.content} alt="content"/>
             <p>{post.User_Comment}</p>
          </div>
          <div>

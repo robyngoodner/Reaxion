@@ -2,6 +2,12 @@ import React from "react";
 import Login from "../Login"
 import Register from "../Register"
 import '../../../src/styles.css'
+import Angry from "../../images/Angry.png";
+import Content from "../../images/Content.png";
+import Disinterested from "../../images/Disinterested.png";
+import Excited from "../../images/Excited.png";
+import Happy from "../../images/Happy.png";
+import Sad from "../../images/Sad.png";
 
 //define our welcome component
 const Welcome = ({ checkUserActive }) => {
@@ -11,12 +17,12 @@ const Welcome = ({ checkUserActive }) => {
 			<div>
 			<h1 className="title">Reaxion</h1>
 				<div className="reactionimgs">
-				<img className="resizeReactions" src="../images/angry.png" alt="angry"></img>
-				<img className="resizeReactions" src="../images/content.png" alt="content"></img>
-				<img className="resizeReactions" src="../images/disinterested.png" alt="disinterested"></img>
-				<img className="resizeReactions" src="../images/excited.png" alt="excited"></img>
-				<img className="resizeReactions" src="../images/happy.png" alt="happy"></img>
-				<img className="resizeReactions" src="../images/sad.png" alt="sad"></img>
+				<img className="resizeReactions" src={Angry} alt="angry"></img>
+				<img className="resizeReactions" src={Content} alt="content"></img>
+				<img className="resizeReactions" src={Disinterested} alt="disinterested"></img>
+				<img className="resizeReactions" src={Excited} alt="excited"></img>
+				<img className="resizeReactions" src={Happy} alt="happy"></img>
+				<img className="resizeReactions" src={Sad} alt="sad"></img>
 				</div>
 			</div>
 				

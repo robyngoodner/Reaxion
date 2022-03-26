@@ -36,7 +36,6 @@ export default function CommunityView (props) {
                     
                   return (
                     <div>
-                        {/* <li style={{listStyle:"none"}} key={index}><Link to={`/community/${community._id}`}><p>{community.communityName}</p></Link></li> */}
                         <li style={{listStyle:"none"}} key={index}><p>{community.communityName}</p></li>
                     </div>  
                 )}})}
@@ -45,7 +44,6 @@ export default function CommunityView (props) {
                 if(user._id !== community.Facilitator) {
                   return (    
                     <div> 
-                    {/* <li style={{listStyle:"none"}} key={index}><Link to={`/community/${community._id}`}><p>{community.communityName}</p></Link></li>                   */}
                     <li style={{listStyle:"none"}} key={index}><p>{community.communityName}</p></li>                  
                     </div>  
                     )
